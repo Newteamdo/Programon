@@ -1,6 +1,5 @@
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.dll
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.pdb
-c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb

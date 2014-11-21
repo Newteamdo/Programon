@@ -12,22 +12,26 @@ namespace ProgramonEngine
 
     public struct Transform
     {
-        public Vector2 Position { get; set; }
-        public Vector2 Scale { get; set; }
-        public Direction Direction { get; set; }
+        public Vector2 Position { get { return Pposition; } set { Pposition = value; } }
+        public Vector2 Scale { get { return Pscale; } set { Pscale = value; } }
+        public Direction Direction { get { return Pdirection; } set { Pdirection = value; } }
+
+        private Vector2 Pposition;
+        private Vector2 Pscale;
+        private Direction Pdirection;
 
         public Transform(Vector2 position, Vector2 scale)
         {
-            Position = position;
-            Scale = scale;
-            Direction = global::ProgramonEngine.Direction.Up;
+            Pposition = position;
+            Pscale = scale;
+            Pdirection = global::ProgramonEngine.Direction.Up;
         }
 
         public Transform(Vector2 position, Vector2 scale, Direction direction)
         {
-            Position = position;
-            Scale = scale;
-            Direction = direction;
+            Pposition = position;
+            Pscale = scale;
+            Pdirection = direction;
         }
     }
 }

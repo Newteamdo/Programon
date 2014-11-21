@@ -5,16 +5,19 @@ namespace ProgramonEngine
 {
     public struct Sprite
     {
-        public static const int TextureHeight = 16;
-        public static const int TextureWidth = 16;
+        public const int TextureHeight = 16;
+        public const int TextureWidth = 16;
 
-        public Texture2D Texture { get; private set; }
-        public Color Tint { get; private set; }
+        public Texture2D Texture { get { return Ptexture; } private set { Ptexture = value; } }
+        public Color Tint { get { return Ptint; } private set { Ptint = value; } }
+
+        private Texture2D Ptexture;
+        private Color Ptint;
 
         public Sprite(Texture2D texture, Color tint)
         {
-            Texture = texture;
-            Tint = tint;
+            Ptexture = texture;
+            Ptint = tint;
         }
 
         /// <summary> Returns a Sprite with a static color. </summary>
