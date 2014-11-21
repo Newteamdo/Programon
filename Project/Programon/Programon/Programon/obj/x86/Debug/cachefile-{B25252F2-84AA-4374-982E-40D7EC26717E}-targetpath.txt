@@ -1,1 +1,3 @@
 Content\loading screen.xnb
+Content\Normal.xnb
+Content\Start.xnb

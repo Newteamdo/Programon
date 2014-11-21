@@ -88,6 +88,10 @@
       <Project>{76dc92ff-9d24-4c7c-8e8f-fdfc6948a291}</Project>
       <Name>ProgramonEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ProgramonSoundEngine\ProgramonSoundEngine.csproj">
+      <Project>{0f5aae86-af76-485c-a864-5f143f4cbb92}</Project>
+      <Name>ProgramonSoundEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProgramonContent\ProgramonContent.contentproj">
       <Name>ProgramonContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

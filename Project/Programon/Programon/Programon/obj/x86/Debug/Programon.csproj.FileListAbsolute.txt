@@ -24,3 +24,7 @@ D:\Git\Programon\Project\Programon\Programon\Programon\obj\x86\Debug\Programon.c
 D:\Git\Programon\Project\Programon\Programon\Programon\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\Git\Programon\Project\Programon\Programon\Programon\obj\x86\Debug\Programon.exe
 D:\Git\Programon\Project\Programon\Programon\Programon\obj\x86\Debug\Programon.pdb
+C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\Normal.xnb
+C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\ProgramonSoundEngine.dll
+C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\ProgramonSoundEngine.pdb
+C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\Start.xnb
