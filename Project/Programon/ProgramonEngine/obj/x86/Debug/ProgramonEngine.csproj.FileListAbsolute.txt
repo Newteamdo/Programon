@@ -9,3 +9,9 @@ C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\Progra
 C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
 C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb
+D:\Git\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.dll
+D:\Git\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.pdb
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb

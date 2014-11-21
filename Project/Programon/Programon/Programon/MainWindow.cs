@@ -12,14 +12,13 @@ using ProgramonEngine;
 
 namespace Programon
 {
-    public class MainWindow : Game
+    class MainWindow : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private SpriteDrawer spriteDrawer { get; set; }
 
         public MainWindow()
         {
-            graphics = new GraphicsDeviceManager(this);
+            spriteDrawer = new SpriteDrawer(this, 1024, 720, false);
             Content.RootDirectory = "Content";
         }
 
@@ -30,11 +29,13 @@ namespace Programon
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice));
+
         }
 
         protected override void UnloadContent()
         {
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -49,19 +50,21 @@ namespace Programon
 
         protected override bool BeginDraw()
         {
-            spriteBatch.Begin();
+            spriteDrawer.SpriteBatch.Begin();
 
             return base.BeginDraw();
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            spriteDrawer.Draw();
+
             base.Draw(gameTime);
         }
 
         protected override void EndDraw()
         {
-            spriteBatch.End();
+            spriteDrawer.SpriteBatch.End();
 
             base.EndDraw();
         }
