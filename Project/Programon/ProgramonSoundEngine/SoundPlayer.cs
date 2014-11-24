@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Microsoft.Xna.Framework.Audio;
 
 namespace ProgramonSoundEngine
@@ -10,12 +11,20 @@ namespace ProgramonSoundEngine
     {
         public void PlayStaticSound(SoundEffect sound)
         {
-            sound.Play();
+            SoundEffectInstance instSound = sound.CreateInstance();
+
+            instSound.Play();
         }
 
-        public void PLayStaticSound(SoundEffect sound, float volume, float pitch, float pan)
+        public void PlayStaticSound(SoundEffect sound, float volume, float pitch, float pan)
         {
-            sound.Play(volume, pitch, pan);
+            SoundEffectInstance instSound = sound.CreateInstance();
+
+            instSound.Volume = volume;
+            instSound.Pitch = pitch;
+            instSound.Pan = pan;
+
+            instSound.Play();
         }
     }
 }

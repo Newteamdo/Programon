@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\loading screen.xnb</Output>
-      <Time>2014-11-21T12:41:37.700891+01:00</Time>
+      <Output>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\loading screen.xnb</Output>
+      <Time>2014-11-21T14:55:37.2247312+01:00</Time>
     </Item>
     <Item>
       <Source>Normal.wav</Source>
@@ -16,8 +16,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\Normal.xnb</Output>
-      <Time>2014-11-21T14:03:50.8440552+01:00</Time>
+      <Output>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\Normal.xnb</Output>
+      <Time>2014-11-21T14:55:36.9697167+01:00</Time>
     </Item>
     <Item>
       <Source>Start.wav</Source>
@@ -25,8 +25,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\Start.xnb</Output>
-      <Time>2014-11-21T14:12:36.4801199+01:00</Time>
+      <Output>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\Start.xnb</Output>
+      <Time>2014-11-21T14:55:37.2187309+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -35,10 +35,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\ProgramonContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\ProgramonContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

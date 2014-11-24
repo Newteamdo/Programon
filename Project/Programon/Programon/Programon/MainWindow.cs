@@ -15,7 +15,6 @@ namespace Programon
     class MainWindow : Game
     {
         private SpriteDrawer spriteDrawer { get; set; }
-        private SoundEffect testSound;
 
         public MainWindow()
         {
@@ -31,7 +30,6 @@ namespace Programon
         protected override void LoadContent()
         {
             spriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice));
-            testSound = Content.Load<SoundEffect>("Normal");
         }
 
         protected override void UnloadContent()
@@ -45,8 +43,6 @@ namespace Programon
 
             if (state.IsKeyDown(Keys.Escape))
                 this.Exit();
-            if (state.IsKeyDown(Keys.Enter))
-                new ProgramonSoundEngine.SoundPlayer().PlayStaticSound(testSound);
 
             base.Update(gameTime);
         }
