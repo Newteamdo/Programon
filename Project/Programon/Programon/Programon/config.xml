@@ -1,13 +1,10 @@
-<Resolutions currentwidth="" currentheight="">
-	<Resolution width="800" height="600"/>
-	<Resolution width="1024" height="768"/>
-	<Resolution width="1152" height="864"/>
-	<Resolution width="1280" height="720"/>
-	<Resolution width="1280" height="960"/>
-	<Resolution width="1280" height="1024"/>
-	<Resolution width="1366" height="768"/>
-	<Resolution width="1400" height="1050"/>
-	<Resolution width="1600" height="900"/>
-	<Resolution width="1600" height="1024"/>
-	<Resolution width="1920" height="1080"/>
-<Resolutions/>	
+
+<Config>
+    <Resolution>
+        <width>800</width>
+        <height>600</height>
+    </Resolution>
+    <Fullscreen>True</Fullscreen>
+    <Mastervolume>100</Mastervolume>
+    <KeepOpen>True<KeepOpen>
+</Config>	
