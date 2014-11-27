@@ -21,7 +21,7 @@ namespace ProgramonLauncher
         {
             InitializeComponent();
 
-            path = @"C:\Users\Ricky van den Berg\Documents\Programming\Programon\Project\Programon\Programon\Programon\config.xml";
+            path = @"C:\Users\anthony\Documents\GitHub\Programon\Project\Programon\Programon\Programon\config.xml";
             xDoc = new XmlDocument();
             xDoc.Load(path);
             string temp;
