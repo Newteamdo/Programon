@@ -1,6 +1,5 @@
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.dll
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.pdb
-c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
 c:\users\frank\documents\visual studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb
@@ -10,3 +9,15 @@ C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\Progra
 C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
 C:\Users\Frank\Desktop\Nieuwe map\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb
+D:\Git\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.dll
+D:\Git\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.pdb
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
+D:\Git\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb
+C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.dll
+C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.pdb
+C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
+C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb
+C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache

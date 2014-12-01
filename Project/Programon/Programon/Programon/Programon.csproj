@@ -72,11 +72,13 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainWindow.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="config.xml" />
     <Content Include="Images\Game.ico" />
     <Content Include="Images\GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
@@ -86,6 +88,10 @@
     <ProjectReference Include="..\..\ProgramonEngine\ProgramonEngine.csproj">
       <Project>{76dc92ff-9d24-4c7c-8e8f-fdfc6948a291}</Project>
       <Name>ProgramonEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ProgramonSoundEngine\ProgramonSoundEngine.csproj">
+      <Project>{0f5aae86-af76-485c-a864-5f143f4cbb92}</Project>
+      <Name>ProgramonSoundEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProgramonContent\ProgramonContent.contentproj">
       <Name>ProgramonContent</Name>

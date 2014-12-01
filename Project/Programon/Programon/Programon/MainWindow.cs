@@ -12,25 +12,43 @@ using ProgramonEngine;
 
 namespace Programon
 {
-    public class MainWindow : Game
+    class MainWindow : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private SpriteDrawer spriteDrawer { get; set; }
+        private KeyHandler Keyhandler { get; set; }
+
+        private Dictionary<Vector2, Node> BackGround { get; set; }
+        private Texture2D TestTexture { get; set; }
+
+        public Rectangle DrawPlane { get; set; }
 
         public MainWindow()
         {
-            graphics = new GraphicsDeviceManager(this);
+            spriteDrawer = new SpriteDrawer(this, 1024, 720, false);
+            Keyhandler = new KeyHandler(this);
             Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
         {
+            BackGround = new Dictionary<Vector2, Node>();
+            DrawPlane = GraphicsDevice.Viewport.Bounds;
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
+            TestTexture = Content.Load<Texture2D>("TestNodeTextures/grass");
+
+            for (int y = 0; y < 100; y++)
+            {
+                for (int x = 0; x < 100; x++)
+                {
+                    Vector2 curPos = new Vector2(x, y);
+                    BackGround.Add(curPos, new Node(curPos, TestTexture));
+                }
+            }
         }
 
         protected override void UnloadContent()
@@ -39,29 +57,28 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
-            KeyboardState state = Keyboard.GetState();
-
-            if (state.IsKeyDown(Keys.Escape))
-                this.Exit();
-
+            this.Keyhandler.KeyPress();
+            spriteDrawer.Update(BackGround, DrawPlane);
             base.Update(gameTime);
         }
 
         protected override bool BeginDraw()
         {
-            spriteBatch.Begin();
+            spriteDrawer.BeginDraw();
 
             return base.BeginDraw();
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            spriteDrawer.Draw(DrawPlane);
+
             base.Draw(gameTime);
         }
 
         protected override void EndDraw()
         {
-            spriteBatch.End();
+            spriteDrawer.EndDraw();
 
             base.EndDraw();
         }
