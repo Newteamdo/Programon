@@ -33,7 +33,7 @@ namespace ProgramonEngine
         public void Update(Dictionary<Vector2, Node> background, Rectangle drawPlane)
         {
             FixedNodes = background.Values.Where(n => n.Transform.IsBetweenBounds(drawPlane));
-            Offset = new Vector2(drawPlane.X * 16, drawPlane.Y * 16);
+            Offset = new Vector2(drawPlane.X * Sprite.TextureWidth, drawPlane.Y * Sprite.TextureHeight);
         }
 
         public void BeginDraw()
