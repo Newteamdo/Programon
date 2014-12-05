@@ -46,3 +46,21 @@ C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Program
 C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Normal.xnb
 C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Start.xnb
 C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\DebugFont.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\loading screen.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\grass.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\lava.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\stone.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\Water.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Normal.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Start.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\DebugFont.xnb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Programon.exe
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Programon.pdb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\ProgramonEngine.dll
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\ProgramonSoundEngine.dll
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\ProgramonEngine.pdb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\ProgramonSoundEngine.pdb
+C:\Users\Frank\Desktop\Programon\Programon\Programon\obj\x86\Debug\Programon.csprojResolveAssemblyReference.cache
+C:\Users\Frank\Desktop\Programon\Programon\Programon\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Frank\Desktop\Programon\Programon\Programon\obj\x86\Debug\Programon.exe
+C:\Users\Frank\Desktop\Programon\Programon\Programon\obj\x86\Debug\Programon.pdb

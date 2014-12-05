@@ -59,6 +59,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actor.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="LCGRandom.cs" />
     <Compile Include="Node.cs" />

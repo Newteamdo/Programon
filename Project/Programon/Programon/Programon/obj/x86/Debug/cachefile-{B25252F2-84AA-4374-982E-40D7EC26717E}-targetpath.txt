@@ -1,3 +1,8 @@
 Content\loading screen.xnb
-Content\Normal.xnb
-Content\Start.xnb
+Content\TestNodeTextures\grass.xnb
+Content\TestNodeTextures\lava.xnb
+Content\TestNodeTextures\stone.xnb
+Content\TestNodeTextures\Water.xnb
+Content\TestSounds\Normal.xnb
+Content\TestSounds\Start.xnb
+Content\DebugFont.xnb

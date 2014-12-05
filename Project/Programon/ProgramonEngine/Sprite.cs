@@ -20,6 +20,12 @@ namespace ProgramonEngine
             Ptint = tint;
         }
 
+        public Sprite(Texture2D texture)
+        {
+            Ptexture = texture;
+            Ptint = Color.White;
+        }
+
         /// <summary> Returns a Sprite with a static color. </summary>
         /// <param name="staticColor"> The color of the texture. </param>
         /// <param name="tint"> A tint for the Sprite. </param>
