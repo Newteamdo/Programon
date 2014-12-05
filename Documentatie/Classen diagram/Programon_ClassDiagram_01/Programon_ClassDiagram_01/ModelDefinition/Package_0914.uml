@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="a17ed4c5-ca4f-4178-b0f0-d0ccf40aee23"
+  name="Programon_Engine" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="289159f1-16fb-4f64-b3e8-8d0a82c4da1f"
+        name="LCGRandom"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="4f4147ff-4859-4d03-97e6-4c579674614b"
+            name="_int_State"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="23858490-4587-4e18-b784-0e4994166740"
+            name="short_NextShort"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="1fb82916-f97a-4d72-b1cd-030e14b9f412"
+        name="Direction"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="3204ee28-475a-443c-8907-853b99f814ac"
+            name="Up" />
+          <enumerationLiteral
+            Id="a0e7a8be-316a-4eac-823d-1836afc23f00"
+            name="Down" />
+          <enumerationLiteral
+            Id="9168dc4e-fe68-4e0c-9549-cc6f95280bd7"
+            name="Left" />
+          <enumerationLiteral
+            Id="cf00e781-10bf-4979-a549-ec2132a2a7c8"
+            name="Right" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6a115ccc-4bb0-481c-ab1e-9fc644c95d39"
+        name="Transform"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="edc31601-6258-4f81-8350-797c0dac8b44">
+            <enumerationMoniker
+              Id="1fb82916-f97a-4d72-b1cd-030e14b9f412"
+              LastKnownName="Direction"
+              LastKnownLocation="Package_0914.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="5e67d762-2c45-44a2-9e6e-f16b2d252783"
+            name="Vector2_Position"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="8e79d252-a858-44a7-b12f-319ab2753295"
+            name="Vector2_Scale"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="cc99404b-0964-44d2-841f-c4e61dd2811b"
+            name="Direction_Direction"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="43744414-4818-44c9-8dcb-94d0f7ca3c61"
+            name="_Vector2_Pposition"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="fee53b01-78db-4d6c-8e53-23806f689ace"
+            name="_Vector2_Pscale"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="f82be3b5-6c26-41f5-9ec2-ff192351c475"
+            name="_Direction_Pdirection"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="5efd0cf5-4da5-4631-ba02-8037a83b8104"
+            name="bool_IsBetweenBounds"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="430fb0bd-7a20-4fa2-9df5-6cd67ad07602"
+                  name="Rectangle bounds"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="21acf9cb-cd81-41d6-9f35-c2c6bcd13d4a"
+        name="Sprite"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="d488d37c-a59d-4df9-8ddd-5f898cfbcc32"
+            name="Const_int_TextureHeight"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="fc8be66f-9ec6-4f87-bfcf-b8475817d8b8"
+            name="Const_int_TextureWidth"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="251d18be-b32a-4ed4-9fb8-c7b786d731ce"
+            name="Texture2D_Texture"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c05d34a3-1380-405d-8e6f-475eace80f34"
+            name="Color_Tint"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="2d219374-e616-4c32-a8f6-849a5b527171"
+            name="_Color_Ptint"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="0d35f484-8cf8-4a90-b6af-6826e2685605"
+            name="_Texture2D_Ptexture"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="d28e2933-fdc1-4f7c-a0c6-36491f961e61"
+            name="Static_Sprite_FromStaticColor"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d9d8d937-6a28-482a-8045-6b2cd5b35213"
+                  name="Color staticColor"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5a4d8de6-75f3-40fa-973b-57e5a236a0ec"
+                  name="Color tint"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="93bbadcd-1d8c-436b-b920-88575bec3c6b"
+                  name="GraphicsDevice device"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="52520655-1832-432a-a54e-2abf5f863c2c"
+        name="Node"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="a08ff523-1510-48c4-af07-b475525bcfbf">
+            <classMoniker
+              Id="6a115ccc-4bb0-481c-ab1e-9fc644c95d39"
+              LastKnownName="Transform"
+              LastKnownLocation="Package_0914.uml" />
+          </dependency>
+          <dependency
+            Id="fcb19942-1b3a-469c-a330-dfbcd74e40c2">
+            <classMoniker
+              Id="21acf9cb-cd81-41d6-9f35-c2c6bcd13d4a"
+              LastKnownName="Sprite"
+              LastKnownLocation="Package_0914.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="7dfb91d4-829b-4452-884e-b6b510a883a4"
+            name="Vector2_FixedPosition"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="0e8bb9a4-7fab-4220-b61e-ddd26de0414b"
+            name="Transform_Transform"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="de675c67-3b49-40fa-8b7a-039ee1512828"
+            name="Sprite_Sprite"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
