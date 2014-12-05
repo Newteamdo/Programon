@@ -1,6 +1,6 @@
 ﻿namespace ProgramonEngine
 {
-    public struct Stats
+    public class Stats
     {
         public int health;
         public int maxHealth;
@@ -9,7 +9,7 @@
         public int sAttack;
         public int sDefence;
         public int speed;
-        public Stats (int health, int maxHealth, int attack, int defence, int sAttack, int sDefence, int speed)
+        public Stats(int health, int maxHealth, int attack, int defence, int sAttack, int sDefence, int speed)
         {
             this.health = health;
             this.maxHealth = maxHealth;
@@ -18,6 +18,30 @@
             this.sAttack = sAttack;
             this.sDefence = sDefence;
             this.speed = speed;
+        }
+        public static Stats operator +(Stats sender, Stats adder)
+        {
+            return new Stats(
+                sender.health + adder.health,
+                sender.maxHealth + adder.maxHealth,
+                sender.attack + adder.attack,
+                sender.defence + adder.defence,
+                sender.sAttack + adder.sAttack,
+                sender.sDefence + adder.sDefence,
+                sender.speed + adder.speed
+                );
+        }
+        public static Stats operator -(Stats sender, Stats adder)
+        {
+            return new Stats(
+                sender.health - adder.health,
+                sender.maxHealth - adder.maxHealth,
+                sender.attack - adder.attack,
+                sender.defence - adder.defence,
+                sender.sAttack - adder.sAttack,
+                sender.sDefence - adder.sDefence,
+                sender.speed - adder.speed
+                );
         }
     }
 }
