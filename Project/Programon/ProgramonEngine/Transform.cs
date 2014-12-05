@@ -33,5 +33,13 @@ namespace ProgramonEngine
             Pscale = scale;
             Pdirection = direction;
         }
+
+        public bool IsBetweenBounds(Rectangle bounds)
+        {
+            if (Pposition.X >= bounds.X && Pposition.X <= bounds.Width && Pposition.Y >= bounds.Y && Pposition.Y <= bounds.Height)
+                return true;
+
+            return false;
+        }
     }
 }

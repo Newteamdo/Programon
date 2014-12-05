@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,22 +23,26 @@ namespace Programon
         {
             KeyboardState state = Keyboard.GetState();
 
-            switch(state.GetPressedKeys()[0])
+            Keys[] PressedKeys = state.GetPressedKeys();
+
+            if (PressedKeys.Length == 0) return;
+
+            switch(PressedKeys[0])
             {
                 case Keys.Up:
-                    // walking or moving menu cursor up
+                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X, GameWindow.DrawPlane.Y + 1, GameWindow.DrawPlane.Width, GameWindow.DrawPlane.Height + 1);
                     break;
                 case Keys.Down:
-                    // walking or moving menu cursor down
+                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X, GameWindow.DrawPlane.Y - 1, GameWindow.DrawPlane.Width, GameWindow.DrawPlane.Height - 1);
                     break;
                 case Keys.Left:
-                    // walking or moving menu cursor left
+                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X + 1, GameWindow.DrawPlane.Y, GameWindow.DrawPlane.Width + 1, GameWindow.DrawPlane.Height);
                     break;
                 case Keys.Right:
-                    // walking or moving menu cursor right
+                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X - 1, GameWindow.DrawPlane.Y, GameWindow.DrawPlane.Width - 1, GameWindow.DrawPlane.Height);
                     break;
                 case Keys.Escape:
-                    // opening pause menu
+                    GameWindow.Exit();
                     break;
                 case Keys.Z:
                     // action button or agree button

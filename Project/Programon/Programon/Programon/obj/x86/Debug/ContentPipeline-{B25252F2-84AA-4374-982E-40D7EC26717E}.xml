@@ -7,26 +7,71 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\loading screen.xnb</Output>
-      <Time>2014-11-21T14:55:37.2247312+01:00</Time>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\loading screen.xnb</Output>
+      <Time>2014-11-27T09:19:25.5682984+01:00</Time>
     </Item>
     <Item>
-      <Source>Normal.wav</Source>
-      <Name>Normal</Name>
+      <Source>TestNodeTextures\grass.jpg</Source>
+      <Name>TestNodeTextures\grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\grass.xnb</Output>
+      <Time>2014-11-27T09:43:20.9257008+01:00</Time>
+    </Item>
+    <Item>
+      <Source>TestNodeTextures\lava.jpg</Source>
+      <Name>TestNodeTextures\lava</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\lava.xnb</Output>
+      <Time>2014-11-27T09:43:20.9357008+01:00</Time>
+    </Item>
+    <Item>
+      <Source>TestNodeTextures\stone.jpg</Source>
+      <Name>TestNodeTextures\stone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\stone.xnb</Output>
+      <Time>2014-11-27T09:43:20.9357008+01:00</Time>
+    </Item>
+    <Item>
+      <Source>TestNodeTextures\Water.jpg</Source>
+      <Name>TestNodeTextures\Water</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\Water.xnb</Output>
+      <Time>2014-11-27T09:43:20.9357008+01:00</Time>
+    </Item>
+    <Item>
+      <Source>TestSounds\Normal.wav</Source>
+      <Name>TestSounds\Normal</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\Normal.xnb</Output>
-      <Time>2014-11-21T14:55:36.9697167+01:00</Time>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Normal.xnb</Output>
+      <Time>2014-11-27T09:19:24.582242+01:00</Time>
     </Item>
     <Item>
-      <Source>Start.wav</Source>
-      <Name>Start</Name>
+      <Source>TestSounds\Start.wav</Source>
+      <Name>TestSounds\Start</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\Start.xnb</Output>
-      <Time>2014-11-21T14:55:37.2187309+01:00</Time>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Start.xnb</Output>
+      <Time>2014-11-27T09:19:25.5632981+01:00</Time>
+    </Item>
+    <Item>
+      <Source>DebugFont.spritefont</Source>
+      <Name>DebugFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\DebugFont.xnb</Output>
+      <Time>2014-11-28T09:24:20.8036674+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -35,10 +80,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\ProgramonContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Frank\Desktop\Project\Programon\Programon\Programon\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\ProgramonContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\Programon\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

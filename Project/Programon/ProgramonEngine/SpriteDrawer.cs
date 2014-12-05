@@ -1,47 +1,78 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ProgramonEngine
 {
     public class SpriteDrawer
-    {
+    {        
+        private SpriteBatch SpriteBatch { get; set; }
+        private SpriteFont DebugFont { get; set; }
 
-        private Game GameWindow { get; set; }
-        public SpriteBatch SpriteBatch { get; private set; }
         private GraphicsDeviceManager Graphics { get; set; }
+        private IEnumerable<Node> FixedNodes { get; set; }
+        private Vector2 Offset { get; set; }
 
-        public SpriteDrawer(Game game, int width, int height, bool fullscreen)
+        public SpriteDrawer(Game GameWindow, int width, int height, bool fullscreen)
         {
-            this.GameWindow = game;
             Graphics = new GraphicsDeviceManager(GameWindow);
+            Graphics.SynchronizeWithVerticalRetrace = false;
             Graphics.PreferredBackBufferWidth = width;
             Graphics.PreferredBackBufferHeight = height;
             Graphics.IsFullScreen = fullscreen;
         }
 
-        public void LoadContent(SpriteBatch spriteBatch)
+        public void LoadContent(SpriteBatch spriteBatch, ContentManager content)
         {
             this.SpriteBatch = spriteBatch;
+            DebugFont = content.Load<SpriteFont>("DebugFont");
         }
 
-        public void Draw()
+        public void Update(Dictionary<Vector2, Node> background, Rectangle drawPlane)
         {
-            DrawNodes();
-            DrawGUI();
+            FixedNodes = background.Values.Where(n => n.Transform.IsBetweenBounds(drawPlane));
+            Offset = new Vector2(drawPlane.X * Sprite.TextureWidth, drawPlane.Y * Sprite.TextureHeight);
         }
 
-        private void DrawNodes()
+        public void BeginDraw()
         {
-            //Node drawing will happen here
+            SpriteBatch.Begin();
         }
+
+        public void Draw(Rectangle drawPanel, List<Node> addedNodes = null)
+        {
+            DrawBackground();
+
+            if (addedNodes != null) 
+                DrawNodes(addedNodes);
+        }
+
+        private void DrawBackground()
+        {
+            foreach(Node cur in FixedNodes)
+            {
+                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + Offset, cur.Sprite.Tint);
+            }
+        }
+
+        private void DrawNodes(List<Node> nodes)
+        {
+            foreach(Node cur in nodes)
+            {
+                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + Offset, cur.Sprite.Tint);
+            }
+        }
+
         private void DrawGUI()
         {
             //GUI drawing will happen here
         }
 
+        public void EndDraw()
+        {
+            SpriteBatch.End();
+        }
     }
 }
