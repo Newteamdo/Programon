@@ -9,6 +9,16 @@
         public int sAttack;
         public int sDefence;
         public int speed;
+        public Stats()
+        {
+            this.health = 0;
+            this.maxHealth = 0;
+            this.attack = 0;
+            this.defence = 0;
+            this.sAttack = 0;
+            this.sDefence = 0;
+            this.speed = 0;
+        }
         public Stats(int health, int maxHealth, int attack, int defence, int sAttack, int sDefence, int speed)
         {
             this.health = health;

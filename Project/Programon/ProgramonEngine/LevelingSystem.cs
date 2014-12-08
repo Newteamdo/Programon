@@ -26,7 +26,7 @@ namespace ProgramonEngine
         public static void Levelup(Creature programon)
         {
             programon.level++;
-            programon.programonStats = programon.programonStats + programon.statsPerLevel;
+            programon.programonBaseStats = programon.programonBaseStats + programon.statsPerLevel;
         }
     }
 }
