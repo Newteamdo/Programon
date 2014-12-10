@@ -5,7 +5,7 @@ namespace ProgramonEngine
 {
     public class Node
     {
-        public Vector2 FixedPosition { get { return Transform.Position * 16; } private set { } }
+        public Vector2 FixedPosition { get { return Transform.Position * global::ProgramonEngine.Sprite.TextureHeight; } private set { } }
         public Transform Transform { get; private set; }
         public Sprite Sprite { get; private set; }
 
