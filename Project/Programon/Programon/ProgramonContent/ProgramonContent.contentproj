@@ -80,17 +80,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackButton.png">
+    <Compile Include="OptionsMenu\BackButton.png">
       <Name>BackButton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Background.png">
+    <Compile Include="OptionsMenu\Background.png">
       <Name>Background</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="ControlsButton.png">
+    <Compile Include="OptionsMenu\ControlsButton.png">
       <Name>ControlsButton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -110,7 +110,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="nextButton.png">
+    <Compile Include="OptionsMenu\nextButton.png">
       <Name>nextButton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -125,7 +125,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="prevButton.png">
+    <Compile Include="OptionsMenu\prevButton.png">
       <Name>prevButton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -135,7 +135,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="SaveChangesButton.png">
+    <Compile Include="OptionsMenu\SaveChangesButton.png">
       <Name>SaveChangesButton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

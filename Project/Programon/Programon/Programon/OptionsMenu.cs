@@ -91,13 +91,13 @@ namespace Programon
             this.screenHeight = mainWindow.Window.ClientBounds.Height;
             this.currentIndex = 3;
 
-            backBtn = new Button(new Rectangle(screenWidth - (screenWidth / 8 + 20), screenHeight - (screenHeight / 10 + 50), screenWidth / 8, screenHeight / 10), GameWindow.Content.Load<Texture2D>("BackButton"), mainWindow);
+            backBtn = new Button(new Rectangle(screenWidth - (screenWidth / 8 + 20), screenHeight - (screenHeight / 10 + 50), screenWidth / 8, screenHeight / 10), GameWindow.Content.Load<Texture2D>(@"OptionsMenu\BackButton"), mainWindow);
 
             backBtn.OnMouseClick += backBtn_OnClick;
 
-            controlsBtn = new Button(new Rectangle(screenWidth / 2 + 20, screenHeight - (screenHeight / 10 + 50), screenWidth / 4, screenHeight / 10), mainWindow.Content.Load<Texture2D>("ControlsButton"), mainWindow);
+            controlsBtn = new Button(new Rectangle(screenWidth / 2 + 20, screenHeight - (screenHeight / 10 + 50), screenWidth / 4, screenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\ControlsButton"), mainWindow);
 
-            saveChangesBtn = new Button(new Rectangle(20, screenHeight - (screenHeight / 10 + 50), (int)((float)screenWidth / 2.5), screenHeight / 10), mainWindow.Content.Load<Texture2D>("SaveChangesButton"), mainWindow);
+            saveChangesBtn = new Button(new Rectangle(20, screenHeight - (screenHeight / 10 + 50), (int)((float)screenWidth / 2.5), screenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\SaveChangesButton"), mainWindow);
             saveChangesBtn.OnMouseClick += saveChangesBtn_OnClick;
 
             resolutionText = new TextField("Resolution:", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(300, 300, 10, 20), textFont);
@@ -107,13 +107,13 @@ namespace Programon
             resolutionTextField = new TextField(resolutions[currentIndex], Color.Red, Color.White, Color.Black, new Rectangle(500, 300, 10, 20), textFont);
             masterVolumeTextField = new TextField("100", Color.Red, Color.White, Color.Black, new Rectangle(500, 400, 300, 20), textFont);
 
-            prevButtonResolution = new Button(new Rectangle(475, 300, 20, 20), mainWindow.Content.Load<Texture2D>("prevButton"), mainWindow);
+            prevButtonResolution = new Button(new Rectangle(475, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\prevButton"), mainWindow);
             prevButtonResolution.OnMouseClick += prevButtonResolution_OnMouseClick;
 
-            nextButtonResolution = new Button(new Rectangle(800, 300, 20, 20), mainWindow.Content.Load<Texture2D>("nextButton"), mainWindow);
+            nextButtonResolution = new Button(new Rectangle(800, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\nextButton"), mainWindow);
             nextButtonResolution.OnMouseClick += nextButtonResolution_OnMouseClick;
 
-            backgroundTexture = mainWindow.Content.Load<Texture2D>("Background");
+            backgroundTexture = mainWindow.Content.Load<Texture2D>(@"OptionsMenu\Background");
             slider = new Slider(new Rectangle((int)(screenWidth / 1.8), screenHeight / 2 + 2, screenWidth / 4, screenHeight / 35), 20, 0, 100, 100, Color.Red, textFont, GameWindow);
             slider.OnMouseHold += slider_OnMouseHold;
 

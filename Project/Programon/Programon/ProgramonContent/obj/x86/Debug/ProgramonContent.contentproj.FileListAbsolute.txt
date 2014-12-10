@@ -1,5 +1,0 @@
-C:\Users\Frank\Desktop\Nieuwe map\Programon\Programon\ProgramonContent\obj\x86\Debug\ProgramonContent.contentprojResolveAssemblyReference.cache
-D:\Git\Programon\Project\Programon\Programon\ProgramonContent\obj\x86\Debug\ProgramonContent.contentprojResolveAssemblyReference.cache
-C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\Programon\ProgramonContent\obj\x86\Debug\ProgramonContent.contentprojResolveAssemblyReference.cache
-C:\Users\Frank\Desktop\Programon\Programon\ProgramonContent\obj\x86\Debug\ProgramonContent.contentprojResolveAssemblyReference.cache
-D:\Github\Programon\Project\Programon\Programon\ProgramonContent\obj\x86\Debug\ProgramonContent.contentprojResolveAssemblyReference.cache
