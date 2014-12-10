@@ -32,3 +32,9 @@ C:\Users\VLIEGTUIG\Desktop\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngi
 C:\Users\VLIEGTUIG\Desktop\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\VLIEGTUIG\Desktop\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
 C:\Users\VLIEGTUIG\Desktop\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb
+D:\Github\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.dll
+D:\Github\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.pdb
+D:\Github\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache
+D:\Github\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Github\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
+D:\Github\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb

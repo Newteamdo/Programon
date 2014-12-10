@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\loading screen.xnb</Output>
-      <Time>2014-11-27T09:19:25.5682984+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\loading screen.xnb</Output>
+      <Time>2014-12-01T15:48:02.6900287+01:00</Time>
     </Item>
     <Item>
       <Source>TestNodeTextures\grass.jpg</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\grass.xnb</Output>
-      <Time>2014-12-05T12:26:15.1797886+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\grass.xnb</Output>
+      <Time>2014-12-05T12:27:39.315963+01:00</Time>
     </Item>
     <Item>
       <Source>TestNodeTextures\lava.jpg</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\lava.xnb</Output>
-      <Time>2014-12-05T12:26:15.1797886+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\lava.xnb</Output>
+      <Time>2014-12-05T12:27:39.3189656+01:00</Time>
     </Item>
     <Item>
       <Source>TestNodeTextures\stone.jpg</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\stone.xnb</Output>
-      <Time>2014-12-05T12:26:15.1807887+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\stone.xnb</Output>
+      <Time>2014-12-05T12:27:39.3218487+01:00</Time>
     </Item>
     <Item>
       <Source>TestNodeTextures\Water.jpg</Source>
@@ -43,8 +43,125 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\Water.xnb</Output>
-      <Time>2014-12-05T12:26:15.1787886+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\TestNodeTextures\Water.xnb</Output>
+      <Time>2014-12-05T12:27:39.3136829+01:00</Time>
+    </Item>
+    <Item>
+      <Source>BackButton.png</Source>
+      <Name>BackButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\BackButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6699011+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Background.png</Source>
+      <Name>Background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\Background.xnb</Output>
+      <Time>2014-12-10T15:16:08.6855238+01:00</Time>
+    </Item>
+    <Item>
+      <Source>ControlsButton.png</Source>
+      <Name>ControlsButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\ControlsButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6855238+01:00</Time>
+    </Item>
+    <Item>
+      <Source>LeaveMenu.png</Source>
+      <Name>LeaveMenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\LeaveMenu.xnb</Output>
+      <Time>2014-12-10T15:16:08.6855238+01:00</Time>
+    </Item>
+    <Item>
+      <Source>LoadGameButton.png</Source>
+      <Name>LoadGameButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\LoadGameButton.xnb</Output>
+      <Time>2014-12-10T15:16:03.3194152+01:00</Time>
+    </Item>
+    <Item>
+      <Source>NewGameButton.png</Source>
+      <Name>NewGameButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\NewGameButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6386467+01:00</Time>
+    </Item>
+    <Item>
+      <Source>nextButton.png</Source>
+      <Name>nextButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\nextButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6386467+01:00</Time>
+    </Item>
+    <Item>
+      <Source>No.png</Source>
+      <Name>No</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\No.xnb</Output>
+      <Time>2014-12-10T15:16:08.6542731+01:00</Time>
+    </Item>
+    <Item>
+      <Source>OptionsButton.png</Source>
+      <Name>OptionsButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\OptionsButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6542731+01:00</Time>
+    </Item>
+    <Item>
+      <Source>prevButton.png</Source>
+      <Name>prevButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\prevButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6542731+01:00</Time>
+    </Item>
+    <Item>
+      <Source>QuitButton.png</Source>
+      <Name>QuitButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\QuitButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6699011+01:00</Time>
+    </Item>
+    <Item>
+      <Source>SaveChangesButton.png</Source>
+      <Name>SaveChangesButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\SaveChangesButton.xnb</Output>
+      <Time>2014-12-10T15:16:08.6699011+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Yes.png</Source>
+      <Name>Yes</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\Yes.xnb</Output>
+      <Time>2014-12-10T15:16:08.6699011+01:00</Time>
     </Item>
     <Item>
       <Source>TestSounds\Normal.wav</Source>
@@ -52,8 +169,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Normal.xnb</Output>
-      <Time>2014-12-05T12:26:15.3017956+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Normal.xnb</Output>
+      <Time>2014-12-05T12:27:39.4519359+01:00</Time>
     </Item>
     <Item>
       <Source>TestSounds\Start.wav</Source>
@@ -61,8 +178,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Start.xnb</Output>
-      <Time>2014-12-05T12:26:15.5448095+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\TestSounds\Start.xnb</Output>
+      <Time>2014-12-05T12:27:39.7111079+01:00</Time>
     </Item>
     <Item>
       <Source>DebugFont.spritefont</Source>
@@ -70,8 +187,17 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\DebugFont.xnb</Output>
-      <Time>2014-12-05T12:26:15.1757884+01:00</Time>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\DebugFont.xnb</Output>
+      <Time>2014-12-05T12:27:39.2855005+01:00</Time>
+    </Item>
+    <Item>
+      <Source>PokemonFontSize50.spritefont</Source>
+      <Name>PokemonFontSize50</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\PokemonFontSize50.xnb</Output>
+      <Time>2014-12-10T15:16:08.6542731+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -80,10 +206,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Frank\Desktop\Programon\Programon\ProgramonContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Frank\Desktop\Programon\Programon\Programon\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Frank\Desktop\Programon\Programon\Programon\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Frank\Desktop\Programon\Programon\Programon\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\Github\Programon\Project\Programon\Programon\ProgramonContent\</RootDirectory>
+      <LoggerRootDirectory>D:\Github\Programon\Project\Programon\Programon\Programon\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\Github\Programon\Project\Programon\Programon\Programon\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\Github\Programon\Project\Programon\Programon\Programon\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -112,7 +238,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-11-17T08:05:10.869039+01:00</Value>
+        <Value>2014-11-13T12:00:56.1819492+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

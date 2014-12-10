@@ -19,10 +19,22 @@ namespace Programon
 
         private Dictionary<Vector2, Node> BackGround { get; set; }
         private Texture2D TestTexture { get; set; }
-
         public Rectangle DrawPlane { get; set; }
 
-        private enum gameState { INTRO, MAINMENU, OPTIONS, LOADGAME, NEWGAME, OVERWORLD, PROGRAMONSCREEN, INVENTORY, BATTLE}
+        private MainMenuWindow MainMenu { get; set; }
+        private OptionsMenu OptionsMenu { get; set; }
+
+        public State GameState { get; set; }
+
+        public enum State
+        {
+            INTRO,
+            MAINMENU,
+            NEWGAME,
+            GAME,
+            LOADGAME,
+            OPTIONS
+        }
 
         public MainWindow()
         {
@@ -33,8 +45,13 @@ namespace Programon
 
         protected override void Initialize()
         {
+            IsMouseVisible = true;
+            MainMenu = new MainMenuWindow(this, spriteDrawer);
             BackGround = new Dictionary<Vector2, Node>();
             DrawPlane = GraphicsDevice.Viewport.Bounds;
+            MainMenu.initialize();
+            OptionsMenu = new Programon.OptionsMenu(this, spriteDrawer);
+            GameState = State.INTRO;
             base.Initialize();
         }
 
@@ -59,6 +76,31 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                GameState = State.MAINMENU;
+            }
+            this.Keyhandler.KeyPress();
+            switch (GameState)
+            {
+                case State.INTRO:
+                    break;
+                case State.MAINMENU:
+                    MainMenu.Update();
+                    break;
+                case State.NEWGAME:
+                    spriteDrawer.Update(BackGround, DrawPlane);
+                    break;
+                case State.GAME:
+                    break;
+                case State.LOADGAME:
+                    break;
+                case State.OPTIONS:
+                    OptionsMenu.Update();
+                    break;
+                default:
+                    break;
+            }
             this.Keyhandler.KeyPress();
             spriteDrawer.Update(BackGround, DrawPlane);
             base.Update(gameTime);
@@ -73,7 +115,24 @@ namespace Programon
 
         protected override void Draw(GameTime gameTime)
         {
-            spriteDrawer.Draw(DrawPlane);
+            switch (GameState)
+            {
+                case State.MAINMENU:
+                    MainMenu.Draw();
+                    break;
+                case State.NEWGAME:
+                    spriteDrawer.Draw(DrawPlane);
+                    break;
+                case State.GAME:
+                    break;
+                case State.LOADGAME:
+                    break;
+                case State.OPTIONS:
+                    OptionsMenu.Draw(spriteDrawer.SpriteBatch);
+                    break;
+                default:
+                    break;
+            }
 
             base.Draw(gameTime);
         }
