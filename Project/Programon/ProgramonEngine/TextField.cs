@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ProgramonEngine
 {
     /// <summary>
-    /// A class to display a textfield.
+    /// A class to display a text field.
     /// </summary>
     public class TextField
     {
@@ -40,12 +40,12 @@ namespace ProgramonEngine
         /// <summary>
         /// Initializes a new instance of the <see cref="TextField"/> class.
         /// </summary>
-        /// <param name="text">The text in the textfield.</param>
-        /// <param name="textColor">The text color for the textfield.</param>
-        /// <param name="backgroundColor">The background color of the textfield.</param>
-        /// <param name="borderColor">The border color of the textfield.</param>
-        /// <param name="rectangle">The rectangle (Position and Size) of the textfield.</param>
-        /// <param name="fontType">The font to use for the text in the textfield.</param>
+        /// <param name="text">The text in the text field.</param>
+        /// <param name="textColor">The text color for the text field.</param>
+        /// <param name="backgroundColor">The background color of the text field.</param>
+        /// <param name="borderColor">The border color of the text field.</param>
+        /// <param name="rectangle">The rectangle (Position and Size) of the text field.</param>
+        /// <param name="fontType">The font to use for the text in the text field.</param>
         public TextField(string text, Color textColor, Color backgroundColor, Color borderColor, Rectangle rectangle, SpriteFont fontType)
         {
             this.text = text;
@@ -60,7 +60,7 @@ namespace ProgramonEngine
             CalculatePosition();
         }
         /// <summary>
-        /// Draws the current textfield to the screen, using the provided SpriteBatch.
+        /// Draws the current text field to the screen, using the provided SpriteBatch.
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch to draw to.</param>
         public void Draw(SpriteBatch spriteBatch)
@@ -72,10 +72,10 @@ namespace ProgramonEngine
         }
 
         /// <summary>
-        /// Sets the position of the textfield.
+        /// Sets the position of the text field.
         /// </summary>
-        /// <param name="x">The new X position of the textfield.</param>
-        /// <param name="y">The new Y position of the textfield.</param>
+        /// <param name="x">The new X position of the text field.</param>
+        /// <param name="y">The new Y position of the text field.</param>
         public void SetPosition(int x, int y)
         {
             this.rect.X = x;
@@ -84,10 +84,10 @@ namespace ProgramonEngine
         }
 
         /// <summary>
-        /// Sets the size of the textfield.
+        /// Sets the size of the text field.
         /// </summary>
-        /// <param name="width">The new width of the textfield.</param>
-        /// <param name="height">The new height of the textfield.</param>
+        /// <param name="width">The new width of the text field.</param>
+        /// <param name="height">The new height of the text field.</param>
         public void SetSize(int width, int height)
         {
             this.rect.Width = width;
@@ -96,9 +96,9 @@ namespace ProgramonEngine
         }
 
         /// <summary>
-        /// Sets the text of the textfield.
+        /// Sets the text of the text field.
         /// </summary>
-        /// <param name="text">The new text for the textfield.</param>
+        /// <param name="text">The new text for the text field.</param>
         public void SetText(string text)
         {
             this.text = text;
@@ -106,7 +106,7 @@ namespace ProgramonEngine
         }
 
         /// <summary>
-        /// Sets the color of the text for the textfield.
+        /// Sets the color of the text for the text field.
         /// </summary>
         /// <param name="color">The new color for the text.</param>
         public void SetTextColor(Color color)
@@ -115,7 +115,7 @@ namespace ProgramonEngine
         }
 
         /// <summary>
-        /// Sets the background color for the textfield.
+        /// Sets the background color for the text field.
         /// </summary>
         /// <param name="color">The new background color.</param>
         public void SetBackgroundColor(Color color)
@@ -124,16 +124,16 @@ namespace ProgramonEngine
         }
 
         /// <summary>
-        /// Gets the textfield rectangle.
+        /// Gets the text field rectangle.
         /// </summary>
-        /// <returns>The rectangle from the textfield.</returns>
+        /// <returns>The rectangle from the text field.</returns>
         public Rectangle GetRectangle()
         {
             return this.rect;
         }
 
         /// <summary>
-        /// Calculates the position of the border rectangle, font position and the fontscale.
+        /// Calculates the position of the border rectangle, font position and the font scale.
         /// </summary>
         private void CalculatePosition()
         {
