@@ -21,9 +21,3 @@ C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\obj\x86\Debug\Microsoft
 C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
 C:\Users\Frank\Desktop\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb
 C:\Users\Frank\Documents\Visual Studio 2013\Projects\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache
-C:\Users\joey\Documents\Leerjaar 2\programon\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.dll
-C:\Users\joey\Documents\Leerjaar 2\programon\Programon\Project\Programon\ProgramonEngine\bin\x86\Debug\ProgramonEngine.pdb
-C:\Users\joey\Documents\Leerjaar 2\programon\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.csprojResolveAssemblyReference.cache
-C:\Users\joey\Documents\Leerjaar 2\programon\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\joey\Documents\Leerjaar 2\programon\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.dll
-C:\Users\joey\Documents\Leerjaar 2\programon\Programon\Project\Programon\ProgramonEngine\obj\x86\Debug\ProgramonEngine.pdb

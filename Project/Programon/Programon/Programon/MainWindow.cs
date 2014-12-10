@@ -19,14 +19,8 @@ namespace Programon
 
         private Dictionary<Vector2, Node> BackGround { get; set; }
         private Texture2D TestTexture { get; set; }
-        public Rectangle DrawPlane { get; set; }
 
-        //joey's zn rotzooi :P
-        SpriteBatch spriteBatch;
-        SpriteFont spriteFont;
-        MenuComponent1 MenuComponent;
-        GameScreen gameScreen;
-        PopUpDialogueScreen dialogueBox;
+        public Rectangle DrawPlane { get; set; }
 
         public MainWindow()
         {
@@ -44,8 +38,9 @@ namespace Programon
 
         protected override void LoadContent()
         {
-            //spriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
-            //TestTexture = Content.Load<Texture2D>("TestNodeTextures/grass");
+            spriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
+            TestTexture = Content.Load<Texture2D>("TestNodeTextures/grass");
+
             for (int y = 0; y < 100; y++)
             {
                 for (int x = 0; x < 100; x++)
@@ -54,9 +49,6 @@ namespace Programon
                     BackGround.Add(curPos, new Node(curPos, TestTexture));
                 }
             }
-            dialogueBox = new PopUpDialogueScreen(this, spriteBatch, spriteFont, Content.Load<Texture2D>("DialogueBox/DialogueBox"));
-            Components.Add(dialogueBox);
-            dialogueBox.Show();
         }
 
         protected override void UnloadContent()
@@ -76,11 +68,10 @@ namespace Programon
 
             return base.BeginDraw();
         }
-        
+
         protected override void Draw(GameTime gameTime)
         {
             spriteDrawer.Draw(DrawPlane);
-
 
             base.Draw(gameTime);
         }
