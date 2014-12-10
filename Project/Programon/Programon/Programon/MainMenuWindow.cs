@@ -19,8 +19,11 @@ namespace Programon
         Rectangle optionsRect;
         Rectangle quitRect;
         Rectangle leaveMenu;
+        Rectangle txtLeaveRect;
         Rectangle yesRect;
         Rectangle noRect;
+
+        TextField txtFieldLeave;
 
         Button btnPlay;
         Button btnLoad;
@@ -97,6 +100,8 @@ namespace Programon
             leaveMenu = new Rectangle((scrWidth / 2) - width, buttonY * 4, (scrWidth / 10) * 6, (scrHeight / 6) * 2);
             yesRect = new Rectangle((leaveMenu.X + leaveMenu.Width) - ((leaveMenu.Width / 100) * 40) - ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
             noRect = new Rectangle((leaveMenu.X) + ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
+            txtLeaveRect = new Rectangle(leaveMenu.X + ((leaveMenu.X / 100) * 10), leaveMenu.Y + ((leaveMenu.Y / 100) * 10), (leaveMenu.Width / 100) * 80, 0);
+            txtFieldLeave = new TextField("Are you sure you want to quit?", Color.Black, Color.Transparent, Color.Transparent,txtLeaveRect, game.Content.Load<SpriteFont>("PokemonFontSize50"));
             btnYes = new Button(yesRect, game.Content.Load<Texture2D>("Yes"), game);
             btnNo = new Button(noRect, game.Content.Load<Texture2D>("No"), game);
 
@@ -175,6 +180,7 @@ namespace Programon
                 spriteDrawer.SpriteBatch.Draw(mainWindow.Content.Load<Texture2D>("LeaveMenu"), leaveMenu, Color.White);
                 if (btnYes != null)
                 {
+                    txtFieldLeave.Draw(spriteDrawer.SpriteBatch);
                     btnYes.Draw(spriteDrawer.SpriteBatch);
                     btnNo.Draw(spriteDrawer.SpriteBatch);
                 }
