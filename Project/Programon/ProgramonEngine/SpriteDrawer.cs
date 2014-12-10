@@ -48,7 +48,7 @@ namespace ProgramonEngine
             if (addedNodes != null) 
                 DrawNodes(addedNodes);
         }
-
+        
         private void DrawBackground()
         {
             foreach(Node cur in FixedNodes)
