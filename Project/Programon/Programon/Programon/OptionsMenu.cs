@@ -129,6 +129,62 @@ namespace Programon
             CalculatePositions();
         }
 
+        private void saveChangesBtn_OnClick(Button btn)
+        {
+            string[] resolution = resolutions[currentIndex].Split('x');
+            int width = Convert.ToInt16(resolution[0]);
+            int height = Convert.ToInt16(resolution[1]);
+
+            this.screenWidth = width;
+            this.screenHeight = height;
+
+            drawer.SetWindowSize(width, height);
+            CalculatePositions();
+        }
+
+        private void backBtn_OnClick(Button btn)
+        {
+            GameWindow.State = MainWindow.GameState.MAINMENU;
+        }
+
+        private void button_OnMouseLeave(Button btn)
+        {
+            ShowHoverIndicator(btn, 10, false);
+        }
+
+        private void button_OnMouseEnter(Button btn)
+        {
+            ShowHoverIndicator(btn, 10, true);
+        }
+
+        private void nextButtonResolution_OnMouseClick(Button btn)
+        {
+            if ((currentIndex + 1) > (resolutions.Length - 1))
+            {
+                currentIndex = resolutions.Length - 1;
+            }
+            else
+            {
+                currentIndex++;
+            }
+
+            resolutionTextField.SetText(resolutions[currentIndex]);
+        }
+
+        private void prevButtonResolution_OnMouseClick(Button btn)
+        {
+            if ((currentIndex - 1) < 0)
+            {
+                currentIndex = 0;
+            }
+            else
+            {
+                currentIndex--;
+            }
+
+            resolutionTextField.SetText(resolutions[currentIndex]);
+        }
+
 
         /// <summary>
         /// Shows or hides the hover.
@@ -247,16 +303,7 @@ namespace Programon
         /// <param name="btn">The Button.</param>
         private void nextButtonResolution_OnMouseClick(Game game, Button btn)
         {
-            if ((currentIndex + 1) > (resolutions.Length - 1))
-            {
-                currentIndex = resolutions.Length - 1;
-            }
-            else
-            {
-                currentIndex++;
-            }
 
-            resolutionTextField.SetText(resolutions[currentIndex]);
         }
 
         /// <summary>
@@ -285,15 +332,7 @@ namespace Programon
         /// <param name="btn">The Button.</param>
         private void saveChangesBtn_OnClick(Game game, Button btn)
         {
-            string[] resolution = resolutions[currentIndex].Split('x');
-            int width = Convert.ToInt16(resolution[0]);
-            int height = Convert.ToInt16(resolution[1]);
 
-            this.screenWidth = width;
-            this.screenHeight = height;
-
-            drawer.SetWindowSize(width, height);
-            CalculatePositions();
         }
 
         /// <summary>
@@ -303,7 +342,7 @@ namespace Programon
         /// <param name="btn">The Button.</param>
         private void backBtn_OnClick(Game game, Button btn)
         {
-            GameWindow.GameState = MainWindow.State.MAINMENU;
+
         }
 
         /// <summary>
@@ -324,7 +363,7 @@ namespace Programon
         /// <param name="btn">The BTN.</param>
         private void button_OnMouseEnter(Game game, Button btn)
         {
-            ShowHoverIndicator(btn, 10, true);
+
         }
 
         /// <summary>
@@ -334,7 +373,7 @@ namespace Programon
         /// <param name="btn">The button.</param>
         void button_OnMouseLeave(Game game, Button btn)
         {
-            ShowHoverIndicator(btn, 10, false);
+
         }
     }
 }

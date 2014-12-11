@@ -84,12 +84,12 @@ namespace Programon
 
         void btnPlay_OnMouseClick(Game game, Button btn)
         {
-            this.mainWindow.GameState = MainWindow.State.NEWGAME;
+            this.mainWindow.State = MainWindow.GameState.NEWGAME;
         }
 
         void btnOptions_OnMouseClick(Game game, Button btn)
         {
-            this.mainWindow.GameState = MainWindow.State.OPTIONS;
+            this.mainWindow.State = MainWindow.GameState.OPTIONS;
         }
 
         void btnQuit_OnMouseClick(Game game, Button btn)

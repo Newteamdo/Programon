@@ -24,6 +24,7 @@ namespace Programon
         public GameState State { get; set; }
 
         BattleScreen testBattle;
+        MainMenuWindow menuWindow;
 
         public MainWindow()
         {
@@ -46,6 +47,11 @@ namespace Programon
             spriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
             switch (State)
             {
+                case GameState.MAINMENU:
+                    {
+                        menuWindow.initialize();
+                        break;
+                    }
                 case GameState.OVERWORLD:
                     {
                         TestTexture = Content.Load<Texture2D>("TestNodeTextures/grass");
