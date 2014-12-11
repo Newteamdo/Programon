@@ -8,7 +8,7 @@ namespace ProgramonEngine
 {
     public class SpriteDrawer
     {        
-        private SpriteBatch SpriteBatch { get; set; }
+        public SpriteBatch SpriteBatch { get; set; }
         private SpriteFont DebugFont { get; set; }
 
         private GraphicsDeviceManager Graphics { get; set; }
@@ -80,6 +80,13 @@ namespace ProgramonEngine
         public void EndDraw()
         {
             SpriteBatch.End();
+        }
+
+        public void SetWindowSize(int width, int height)
+        {
+            Graphics.PreferredBackBufferWidth = width;
+            Graphics.PreferredBackBufferHeight = height;
+            Graphics.ApplyChanges();
         }
     }
 }

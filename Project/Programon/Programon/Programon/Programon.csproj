@@ -75,6 +75,8 @@
     <Compile Include="BattleBox.cs" />
     <Compile Include="BattleScreen.cs" />
     <Compile Include="KeyHandler.cs" />
+    <Compile Include="MainMenuWindow.cs" />
+    <Compile Include="OptionsMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainWindow.cs" />
