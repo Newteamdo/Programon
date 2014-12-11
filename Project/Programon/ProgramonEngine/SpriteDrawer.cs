@@ -48,6 +48,13 @@ namespace ProgramonEngine
             if (addedNodes != null) 
                 DrawNodes(addedNodes);
         }
+        public void DrawBattleScreen(List<Node> battleGui)
+        {
+            foreach (Node cur in battleGui)
+            {
+                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition, cur.Sprite.Tint);
+            }
+        }
 
         private void DrawBackground()
         {
@@ -65,9 +72,9 @@ namespace ProgramonEngine
             }
         }
 
-        private void DrawGUI()
+        public void DrawBattleGUI()
         {
-            //GUI drawing will happen here
+            
         }
 
         public void EndDraw()

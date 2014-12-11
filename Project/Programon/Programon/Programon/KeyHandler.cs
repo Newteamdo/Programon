@@ -50,6 +50,12 @@ namespace Programon
                 case Keys.X:
                     // cancel button or back button
                     break;
+                case Keys.F1:
+                    GameWindow.SetState(MainWindow.GameState.BATTLE);
+                    break;
+                case Keys.F2:
+                    GameWindow.SetState(MainWindow.GameState.OVERWORLD);
+                    break;
             }
         }
     }
