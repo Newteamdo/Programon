@@ -8,18 +8,18 @@ namespace ProgramonEngine
     /// </summary>
     public class TextField
     {
-        private string text { get; set; }
-        private Color textColor { get; set; }
-        private Color backgroundColor { get; set; }
-        private Color borderColor { get; set; }
+        private string Text { get; set; }
+        private Color TextColor { get; set; }
+        private Color BackgroundColor { get; set; }
+        private Color BorderColor { get; set; }
 
-        private SpriteFont font { get; set; }
-        private Rectangle fontRect { get; set; }
-        private Rectangle borderRect { get; set; }
+        private SpriteFont Font { get; set; }
+        private Rectangle FontRect { get; set; }
+        private Rectangle BorderRect { get; set; }
 
-        private float fontScale { get; set; }
+        private Rectangle backgroundRect;
 
-        private Rectangle rect;
+        private float FontScale { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TextField"/> class.
@@ -27,14 +27,14 @@ namespace ProgramonEngine
         /// </summary>
         public TextField()
         {
-            text = "Test";
-            textColor = Color.Red;
-            backgroundColor = Color.Red;
-            borderColor = Color.Black;
-            rect = new Rectangle(0, 0, 120, 20);
-            font = null;
-            fontRect = new Rectangle();
-            borderRect = new Rectangle(0, 0, 234, 42);
+            Text = "Test";
+            TextColor = Color.Red;
+            BackgroundColor = Color.Red;
+            BorderColor = Color.Black;
+            backgroundRect = new Rectangle(0, 0, 120, 20);
+            Font = null;
+            FontRect = new Rectangle();
+            BorderRect = new Rectangle(0, 0, 234, 42);
         }
 
         /// <summary>
@@ -48,14 +48,14 @@ namespace ProgramonEngine
         /// <param name="fontType">The font to use for the text in the text field.</param>
         public TextField(string text, Color textColor, Color backgroundColor, Color borderColor, Rectangle rectangle, SpriteFont fontType)
         {
-            this.text = text;
-            this.textColor = textColor;
-            this.backgroundColor = backgroundColor;
-            this.rect = rectangle;
-            this.font = fontType;
-            this.fontScale = 0.0f;
+            this.Text = text;
+            this.TextColor = textColor;
+            this.BackgroundColor = backgroundColor;
+            this.backgroundRect = rectangle;
+            this.Font = fontType;
+            this.FontScale = 0.0f;
 
-            this.borderColor = borderColor;
+            this.BorderColor = borderColor;
 
             CalculatePosition();
         }
@@ -65,10 +65,10 @@ namespace ProgramonEngine
         /// <param name="spriteBatch">The SpriteBatch to draw to.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Sprite.FromStaticColor(borderColor, Color.White, spriteBatch.GraphicsDevice).Texture, rect, Color.White);
-            spriteBatch.Draw(Sprite.FromStaticColor(backgroundColor, Color.White, spriteBatch.GraphicsDevice).Texture, borderRect, Color.White);
+            spriteBatch.Draw(Sprite.FromStaticColor(BorderColor, Color.White, spriteBatch.GraphicsDevice).Texture, backgroundRect, Color.White);
+            spriteBatch.Draw(Sprite.FromStaticColor(BackgroundColor, Color.White, spriteBatch.GraphicsDevice).Texture, BorderRect, Color.White);
 
-            spriteBatch.DrawString(font, text, new Vector2(fontRect.X, fontRect.Y), textColor, 0, new Vector2(0, 0), this.fontScale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(Font, Text, new Vector2(FontRect.X, FontRect.Y), TextColor, 0, new Vector2(0, 0), this.FontScale, SpriteEffects.None, 0);
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace ProgramonEngine
         /// <param name="y">The new Y position of the text field.</param>
         public void SetPosition(int x, int y)
         {
-            this.rect.X = x;
-            this.rect.Y = y;
+            this.backgroundRect.X = x;
+            this.backgroundRect.Y = y;
             CalculatePosition();
         }
 
@@ -90,8 +90,8 @@ namespace ProgramonEngine
         /// <param name="height">The new height of the text field.</param>
         public void SetSize(int width, int height)
         {
-            this.rect.Width = width;
-            this.rect.Height = height;
+            this.backgroundRect.Width = width;
+            this.backgroundRect.Height = height;
             CalculatePosition();
         }
 
@@ -101,7 +101,7 @@ namespace ProgramonEngine
         /// <param name="text">The new text for the text field.</param>
         public void SetText(string text)
         {
-            this.text = text;
+            this.Text = text;
             CalculatePosition();
         }
 
@@ -111,7 +111,7 @@ namespace ProgramonEngine
         /// <param name="color">The new color for the text.</param>
         public void SetTextColor(Color color)
         {
-            this.textColor = color;
+            this.TextColor = color;
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace ProgramonEngine
         /// <param name="color">The new background color.</param>
         public void SetBackgroundColor(Color color)
         {
-            this.backgroundColor = color;
+            this.BackgroundColor = color;
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace ProgramonEngine
         /// <returns>The rectangle from the text field.</returns>
         public Rectangle GetRectangle()
         {
-            return this.rect;
+            return this.backgroundRect;
         }
 
         /// <summary>
@@ -137,29 +137,29 @@ namespace ProgramonEngine
         /// </summary>
         private void CalculatePosition()
         {
-            this.borderRect = new Rectangle(rect.X + 1, rect.Y + 1, rect.Width - 2, rect.Height - 2);
+            this.BorderRect = new Rectangle(backgroundRect.X + 1, backgroundRect.Y + 1, backgroundRect.Width - 2, backgroundRect.Height - 2);
 
-            Vector2 size = font.MeasureString(text);
+            Vector2 size = Font.MeasureString(Text);
 
             float width = size.X;
             float height = size.Y;
 
-            if (rect.Height == 0)
+            if (backgroundRect.Height == 0)
             {
-                this.fontScale = borderRect.Width / width;
+                this.FontScale = BorderRect.Width / width;
             }
             else
             {
-                this.fontScale = borderRect.Height / height;
+                this.FontScale = BorderRect.Height / height;
             }
 
-            width = width * fontScale;
-            height = height * fontScale;
+            width = width * FontScale;
+            height = height * FontScale;
 
-            float posX = (borderRect.Width / 2) - (width / 2) + borderRect.X;
-            float posY = (borderRect.Height / 2) - (height / 2) + borderRect.Y + 2;
+            float posX = (BorderRect.Width / 2) - (width / 2) + BorderRect.X;
+            float posY = (BorderRect.Height / 2) - (height / 2) + BorderRect.Y + 2;
 
-            fontRect = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
+            FontRect = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using ProgramonEngine;
+using System.Collections.Generic;
 
 namespace Programon
 {
@@ -11,36 +12,36 @@ namespace Programon
     /// </summary>
     class OptionsMenu
     {
-        private string[] resolutions = { "640x360", "800x600", "1024x768", "1280x720" };
+        private string[] SupportedResolutions { get; set; }
 
         private MainWindow GameWindow { get; set; }
-        private SpriteDrawer drawer { get; set; }
+        private SpriteDrawer SpriteDrawer { get; set; }
 
-        private Button backBtn { get; set; }
-        private Button controlsBtn { get; set; }
-        private Button saveChangesBtn { get; set; }
+        private Button BackBtn { get; set; }
+        private Button ControlsBtn { get; set; }
+        private Button SaveChangesBtn { get; set; }
 
-        private Button prevButtonResolution { get; set; }
-        private Button nextButtonResolution { get; set; }
+        private Button PrevButtonResolution { get; set; }
+        private Button NextButtonResolution { get; set; }
 
-        private TextField resolutionTextField { get; set; }
-        private TextField masterVolumeTextField { get; set; }
+        private TextField ResolutionTextField { get; set; }
+        private TextField MasterVolumeTextField { get; set; }
 
-        private TextField resolutionText { get; set; }
-        private TextField masterVolumeText { get; set; }
+        private TextField ResolutionText { get; set; }
+        private TextField MasterVolumeText { get; set; }
 
-        private TextField optionsText { get; set; }
+        private TextField OptionsText { get; set; }
 
-        private Slider slider { get; set; }
+        private Slider Slider { get; set; }
 
-        private Texture2D backgroundTexture { get; set; }
+        private Texture2D BackgroundTexture { get; set; }
 
-        private int currentIndex { get; set; }
+        private int CurrentIndexResolution { get; set; }
 
-        private SpriteFont textFont { get; set; }
+        private SpriteFont TextFont { get; set; }
 
-        private int screenWidth { get; set; }
-        private int screenHeight { get; set; }
+        private int ScreenWidth { get; set; }
+        private int ScreenHeight { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsMenu"/> class.
@@ -48,31 +49,31 @@ namespace Programon
         public OptionsMenu()
         {
             this.GameWindow = null;
-            this.drawer = null;
-            this.textFont = null;
+            this.SpriteDrawer = null;
+            this.TextFont = null;
 
-            this.screenWidth = 0;
-            this.screenHeight = 0;
-            this.currentIndex = 0;
+            this.ScreenWidth = 0;
+            this.ScreenHeight = 0;
+            this.CurrentIndexResolution = 0;
 
-            backBtn = null;
-            controlsBtn = null;
+            BackBtn = null;
+            ControlsBtn = null;
 
-            saveChangesBtn = null;
+            SaveChangesBtn = null;
 
-            resolutionText = null;
-            masterVolumeText = null;
-            optionsText = null;
+            ResolutionText = null;
+            MasterVolumeText = null;
+            OptionsText = null;
 
-            resolutionTextField = null;
-            masterVolumeTextField = null;
+            ResolutionTextField = null;
+            MasterVolumeTextField = null;
 
-            prevButtonResolution = null;
+            PrevButtonResolution = null;
 
-            nextButtonResolution = null;
+            NextButtonResolution = null;
 
-            backgroundTexture = null;
-            slider = null;
+            BackgroundTexture = null;
+            Slider = null;
 
         }
 
@@ -84,105 +85,51 @@ namespace Programon
         public OptionsMenu(MainWindow mainWindow, SpriteDrawer sDrawer)
         {
             this.GameWindow = mainWindow;
-            this.drawer = sDrawer;
-            this.textFont = mainWindow.Content.Load<SpriteFont>("PokemonFontSize50");
+            this.SpriteDrawer = sDrawer;
+            this.TextFont = mainWindow.Content.Load<SpriteFont>("DebugFont");
 
-            this.screenWidth = mainWindow.Window.ClientBounds.Width;
-            this.screenHeight = mainWindow.Window.ClientBounds.Height;
-            this.currentIndex = 3;
+            this.ScreenWidth = sDrawer.GetWindowWidth();
+            this.ScreenHeight = sDrawer.GetWindowHeight();
+            this.CurrentIndexResolution = 3;
 
-            backBtn = new Button(new Rectangle(screenWidth - (screenWidth / 8 + 20), screenHeight - (screenHeight / 10 + 50), screenWidth / 8, screenHeight / 10), GameWindow.Content.Load<Texture2D>(@"OptionsMenu\BackButton"), mainWindow);
+            GetSupportedResolutions();
 
-            backBtn.OnMouseClick += backBtn_OnClick;
+            BackBtn = new Button(new Rectangle(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 8, ScreenHeight / 10), GameWindow.Content.Load<Texture2D>(@"OptionsMenu\BackButton"), mainWindow);
 
-            controlsBtn = new Button(new Rectangle(screenWidth / 2 + 20, screenHeight - (screenHeight / 10 + 50), screenWidth / 4, screenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\ControlsButton"), mainWindow);
+            BackBtn.OnMouseClick += backBtn_OnClick;
 
-            saveChangesBtn = new Button(new Rectangle(20, screenHeight - (screenHeight / 10 + 50), (int)((float)screenWidth / 2.5), screenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\SaveChangesButton"), mainWindow);
-            saveChangesBtn.OnMouseClick += saveChangesBtn_OnClick;
+            ControlsBtn = new Button(new Rectangle(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 4, ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\ControlsButton"), mainWindow);
 
-            resolutionText = new TextField("Resolution:", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(300, 300, 10, 20), textFont);
-            masterVolumeText = new TextField("Master Volume:", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(330, 400, 0, 20), textFont);
-            optionsText = new TextField("Options", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(520, 150, 0, 0), textFont);
+            SaveChangesBtn = new Button(new Rectangle(20, ScreenHeight - (ScreenHeight / 10 + 50), (int)((float)ScreenWidth / 2.5), ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\SaveChangesButton"), mainWindow);
+            SaveChangesBtn.OnMouseClick += saveChangesBtn_OnClick;
 
-            resolutionTextField = new TextField(resolutions[currentIndex], Color.Red, Color.White, Color.Black, new Rectangle(500, 300, 10, 20), textFont);
-            masterVolumeTextField = new TextField("100", Color.Red, Color.White, Color.Black, new Rectangle(500, 400, 300, 20), textFont);
+            ResolutionText = new TextField("Resolution:", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(300, 300, 10, 20), TextFont);
+            MasterVolumeText = new TextField("Master Volume:", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(330, 400, 0, 20), TextFont);
+            OptionsText = new TextField("Options", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(520, 150, 0, 0), TextFont);
 
-            prevButtonResolution = new Button(new Rectangle(475, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\prevButton"), mainWindow);
-            prevButtonResolution.OnMouseClick += prevButtonResolution_OnMouseClick;
+            ResolutionTextField = new TextField(SupportedResolutions[CurrentIndexResolution], Color.Red, Color.White, Color.Black, new Rectangle(500, 300, 10, 20), TextFont);
+            MasterVolumeTextField = new TextField("100", Color.Red, Color.White, Color.Black, new Rectangle(500, 400, 300, 20), TextFont);
 
-            nextButtonResolution = new Button(new Rectangle(800, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\nextButton"), mainWindow);
-            nextButtonResolution.OnMouseClick += nextButtonResolution_OnMouseClick;
+            PrevButtonResolution = new Button(new Rectangle(475, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\prevButton"), mainWindow);
+            PrevButtonResolution.OnMouseClick += prevButtonResolution_OnMouseClick;
 
-            backgroundTexture = mainWindow.Content.Load<Texture2D>(@"OptionsMenu\Background");
-            slider = new Slider(new Rectangle((int)(screenWidth / 1.8), screenHeight / 2 + 2, screenWidth / 4, screenHeight / 35), 20, 0, 100, 100, Color.Red, textFont, GameWindow);
-            slider.OnMouseHold += slider_OnMouseHold;
+            NextButtonResolution = new Button(new Rectangle(800, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\nextButton"), mainWindow);
+            NextButtonResolution.OnMouseClick += nextButtonResolution_OnMouseClick;
 
-            saveChangesBtn.OnMouseEnter += button_OnMouseEnter;
-            saveChangesBtn.OnMouseLeave += button_OnMouseLeave;
+            BackgroundTexture = mainWindow.Content.Load<Texture2D>(@"OptionsMenu\Background");
+            Slider = new Slider(new Rectangle((int)(ScreenWidth / 1.8), ScreenHeight / 2 + 2, ScreenWidth / 4, ScreenHeight / 35), 20, 0, 100, mainWindow.VolumeLevel, Color.Red, TextFont);
+            Slider.OnMouseHold += slider_OnMouseHold;
 
-            controlsBtn.OnMouseEnter += button_OnMouseEnter;
-            controlsBtn.OnMouseLeave += button_OnMouseLeave;
+            SaveChangesBtn.OnMouseEnter += button_OnMouseEnter;
+            SaveChangesBtn.OnMouseLeave += button_OnMouseLeave;
 
-            backBtn.OnMouseEnter += button_OnMouseEnter;
-            backBtn.OnMouseLeave += button_OnMouseLeave;
+            ControlsBtn.OnMouseEnter += button_OnMouseEnter;
+            ControlsBtn.OnMouseLeave += button_OnMouseLeave;
+
+            BackBtn.OnMouseEnter += button_OnMouseEnter;
+            BackBtn.OnMouseLeave += button_OnMouseLeave;
 
             CalculatePositions();
-        }
-
-        private void saveChangesBtn_OnClick(Button btn)
-        {
-            string[] resolution = resolutions[currentIndex].Split('x');
-            int width = Convert.ToInt16(resolution[0]);
-            int height = Convert.ToInt16(resolution[1]);
-
-            this.screenWidth = width;
-            this.screenHeight = height;
-
-            drawer.SetWindowSize(width, height);
-            CalculatePositions();
-        }
-
-        private void backBtn_OnClick(Button btn)
-        {
-            GameWindow.State = MainWindow.GameState.MAINMENU;
-        }
-
-        private void button_OnMouseLeave(Button btn)
-        {
-            ShowHoverIndicator(btn, 10, false);
-        }
-
-        private void button_OnMouseEnter(Button btn)
-        {
-            ShowHoverIndicator(btn, 10, true);
-        }
-
-        private void nextButtonResolution_OnMouseClick(Button btn)
-        {
-            if ((currentIndex + 1) > (resolutions.Length - 1))
-            {
-                currentIndex = resolutions.Length - 1;
-            }
-            else
-            {
-                currentIndex++;
-            }
-
-            resolutionTextField.SetText(resolutions[currentIndex]);
-        }
-
-        private void prevButtonResolution_OnMouseClick(Button btn)
-        {
-            if ((currentIndex - 1) < 0)
-            {
-                currentIndex = 0;
-            }
-            else
-            {
-                currentIndex--;
-            }
-
-            resolutionTextField.SetText(resolutions[currentIndex]);
         }
 
 
@@ -223,12 +170,12 @@ namespace Programon
         /// </summary>
         public void Update()
         {
-            backBtn.Update();
-            controlsBtn.Update();
-            saveChangesBtn.Update();
-            prevButtonResolution.Update();
-            nextButtonResolution.Update();
-            slider.Update();
+            BackBtn.Update();
+            ControlsBtn.Update();
+            SaveChangesBtn.Update();
+            PrevButtonResolution.Update();
+            NextButtonResolution.Update();
+            Slider.Update();
         }
 
         /// <summary>
@@ -237,24 +184,24 @@ namespace Programon
         /// <param name="spriteBatch">The sprite batch to use.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+            spriteBatch.Draw(BackgroundTexture, new Rectangle(0, 0, ScreenWidth, ScreenHeight), Color.White);
 
-            optionsText.Draw(spriteBatch);
+            OptionsText.Draw(spriteBatch);
 
-            prevButtonResolution.Draw(spriteBatch);
-            nextButtonResolution.Draw(spriteBatch);
+            PrevButtonResolution.Draw(spriteBatch);
+            NextButtonResolution.Draw(spriteBatch);
 
-            backBtn.Draw(spriteBatch);
-            controlsBtn.Draw(spriteBatch);
-            saveChangesBtn.Draw(spriteBatch);
+            BackBtn.Draw(spriteBatch);
+            ControlsBtn.Draw(spriteBatch);
+            SaveChangesBtn.Draw(spriteBatch);
 
-            resolutionText.Draw(spriteBatch);
-            masterVolumeText.Draw(spriteBatch);
+            ResolutionText.Draw(spriteBatch);
+            MasterVolumeText.Draw(spriteBatch);
 
-            resolutionTextField.Draw(spriteBatch);
-            masterVolumeTextField.Draw(spriteBatch);
+            ResolutionTextField.Draw(spriteBatch);
+            MasterVolumeTextField.Draw(spriteBatch);
 
-            slider.Draw(spriteBatch);
+            Slider.Draw(spriteBatch);
         }
 
         /// <summary>
@@ -262,96 +209,136 @@ namespace Programon
         /// </summary>
         private void CalculatePositions()
         {
-            backBtn.SetPosition(screenWidth - (screenWidth / 8 + 20), screenHeight - (screenHeight / 10 + 20));
-            backBtn.SetSize(screenWidth / 8, screenHeight / 10);
+            BackBtn.SetPosition(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 20));
+            BackBtn.SetSize(ScreenWidth / 8, ScreenHeight / 10);
 
-            controlsBtn.SetPosition(screenWidth / 2 + 20, screenHeight - (screenHeight / 10 + 20));
-            controlsBtn.SetSize(screenWidth / 4, screenHeight / 10);
+            ControlsBtn.SetPosition(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 20));
+            ControlsBtn.SetSize(ScreenWidth / 4, ScreenHeight / 10);
 
-            saveChangesBtn.SetPosition(20, screenHeight - (screenHeight / 10 + 20));
-            saveChangesBtn.SetSize((int)((float)screenWidth / 2.5), screenHeight / 10);
+            SaveChangesBtn.SetPosition(20, ScreenHeight - (ScreenHeight / 10 + 20));
+            SaveChangesBtn.SetSize((int)((float)ScreenWidth / 2.5), ScreenHeight / 10);
 
-            resolutionText.SetPosition(screenWidth / 3, (int)(screenHeight / 2.5));
-            resolutionText.SetSize(0, screenHeight / 25);
+            ResolutionText.SetPosition(ScreenWidth / 3, (int)(ScreenHeight / 2.5));
+            ResolutionText.SetSize(0, ScreenHeight / 25);
 
-            resolutionTextField.SetPosition((int)(screenWidth / 1.8), (int)(screenHeight / 2.5) + 2);
-            resolutionTextField.SetSize(screenWidth / 4, screenHeight / 35);
+            ResolutionTextField.SetPosition((int)(ScreenWidth / 1.8), (int)(ScreenHeight / 2.5) + 2);
+            ResolutionTextField.SetSize(ScreenWidth / 4, ScreenHeight / 35);
 
-            masterVolumeText.SetPosition((int)(screenWidth / 2.8), screenHeight / 2);
-            masterVolumeText.SetSize(0, screenHeight / 25);
+            MasterVolumeText.SetPosition((int)(ScreenWidth / 2.8), ScreenHeight / 2);
+            MasterVolumeText.SetSize(0, ScreenHeight / 25);
 
-            masterVolumeTextField.SetPosition((int)(screenWidth / 1.8), screenHeight / 2 + 2);
-            masterVolumeTextField.SetSize(screenWidth / 4, screenHeight / 35);
+            MasterVolumeTextField.SetPosition((int)(ScreenWidth / 1.8), ScreenHeight / 2 + 2);
+            MasterVolumeTextField.SetSize(ScreenWidth / 4, ScreenHeight / 35);
 
-            optionsText.SetPosition(screenWidth / 2, 30);
-            optionsText.SetSize(0, screenHeight / 8);
+            OptionsText.SetPosition(ScreenWidth / 2, 30);
+            OptionsText.SetSize(0, ScreenHeight / 8);
 
-            prevButtonResolution.SetSize(screenWidth / 60, screenHeight / 33);
-            prevButtonResolution.SetPosition((int)(screenWidth / 1.8) - prevButtonResolution.GetRectangle().Width, (int)(screenHeight / 2.5) + 2);
+            PrevButtonResolution.SetSize(ScreenWidth / 60, ScreenHeight / 33);
+            PrevButtonResolution.SetPosition((int)(ScreenWidth / 1.8) - PrevButtonResolution.GetRectangle().Width, (int)(ScreenHeight / 2.5) + 2);
 
-            nextButtonResolution.SetSize(screenWidth / 60, screenHeight / 33);
-            nextButtonResolution.SetPosition((int)(screenWidth / 1.8) + resolutionTextField.GetRectangle().Width, (int)(screenHeight / 2.5) + 2);
+            NextButtonResolution.SetSize(ScreenWidth / 60, ScreenHeight / 33);
+            NextButtonResolution.SetPosition((int)(ScreenWidth / 1.8) + ResolutionTextField.GetRectangle().Width, (int)(ScreenHeight / 2.5) + 2);
 
-            slider.SetPosition((int)(screenWidth / 1.8), screenHeight / 2 + 2);
-            slider.SetSize(screenWidth / 4, screenHeight / 35);
+            Slider.SetPosition((int)(ScreenWidth / 1.8), ScreenHeight / 2 + 2);
+            Slider.SetSize(ScreenWidth / 4, ScreenHeight / 35);
         }
 
-        /// <summary>
-        /// The event handle method for the mouseclick event of nextButtonResolution.
-        /// </summary>
-        /// <param name="game">The game.</param>
-        /// <param name="btn">The Button.</param>
-        private void nextButtonResolution_OnMouseClick(Game game, Button btn)
+        private void GetSupportedResolutions()
         {
-
-        }
-
-        /// <summary>
-        /// The event handle method for the mouseclick event of prevButtonResolution.
-        /// </summary>
-        /// <param name="game">The game.</param>
-        /// <param name="btn">The Button.</param>
-        private void prevButtonResolution_OnMouseClick(Game game, Button btn)
-        {
-            if ((currentIndex - 1) < 0)
+            List<DisplayMode> supportedDisplayModes = new List<DisplayMode>();
+            foreach (DisplayMode dm in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
             {
-                currentIndex = 0;
+                if (dm.Width >= 800 && dm.Height >= 600)
+                {
+                    if (dm.Width <= 1920 && dm.Height <= 1080)
+                    {
+                        supportedDisplayModes.Add(dm);
+                    }
+                }
+            }
+
+            SupportedResolutions = new string[supportedDisplayModes.Count];
+            for (int i = 0; i < supportedDisplayModes.Count; i++)
+            {
+                SupportedResolutions[i] = supportedDisplayModes[i].Width + "x" + supportedDisplayModes[i].Height;
+                if (supportedDisplayModes[i].Width == ScreenWidth && supportedDisplayModes[i].Height == ScreenHeight)
+                {
+                    CurrentIndexResolution = i;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The event handle method for the mouse click event of nextButtonResolution.
+        /// </summary>
+        /// <param name="btn">The Button.</param>
+        private void nextButtonResolution_OnMouseClick(Button btn)
+        {
+            if ((CurrentIndexResolution + 1) > (SupportedResolutions.Length - 1))
+            {
+                CurrentIndexResolution = SupportedResolutions.Length - 1;
             }
             else
             {
-                currentIndex--;
+                CurrentIndexResolution++;
             }
 
-            resolutionTextField.SetText(resolutions[currentIndex]);
+            ResolutionTextField.SetText(SupportedResolutions[CurrentIndexResolution]);
         }
 
         /// <summary>
-        /// The event handle method for the the mouseclick event of saveChangesBtn.
+        /// The event handle method for the mouse click event of prevButtonResolution.
         /// </summary>
-        /// <param name="game">The game.</param>
         /// <param name="btn">The Button.</param>
-        private void saveChangesBtn_OnClick(Game game, Button btn)
+        private void prevButtonResolution_OnMouseClick(Button btn)
         {
+            if ((CurrentIndexResolution - 1) < 0)
+            {
+                CurrentIndexResolution = 0;
+            }
+            else
+            {
+                CurrentIndexResolution--;
+            }
 
+            ResolutionTextField.SetText(SupportedResolutions[CurrentIndexResolution]);
         }
 
         /// <summary>
-        /// The event handle method for the the mouseclick event of backBtn.
+        /// The event handle method for the mouse click event of saveChangesBtn.
         /// </summary>
-        /// <param name="game">The game.</param>
         /// <param name="btn">The Button.</param>
-        private void backBtn_OnClick(Game game, Button btn)
+        private void saveChangesBtn_OnClick(Button btn)
         {
+            string[] resolution = SupportedResolutions[CurrentIndexResolution].Split('x');
+            int width = Convert.ToInt16(resolution[0]);
+            int height = Convert.ToInt16(resolution[1]);
 
+            this.ScreenWidth = width;
+            this.ScreenHeight = height;
+
+            GameWindow.VolumeLevel = Slider.GetSliderValue();
+            SpriteDrawer.SetWindowSize(width, height);
+            GameWindow.SaveChangesToXml();
+
+            CalculatePositions();
         }
 
         /// <summary>
-        /// The event handle method for the mouseHold event of slider.
+        /// The event handle method for the mouse click event of backBtn.
         /// </summary>
-        /// <param name="game">The game.</param>
+        /// <param name="btn">The Button.</param>
+        private void backBtn_OnClick(Button btn)
+        {
+            GameWindow.SetState(MainWindow.GameState.MAINMENU);
+        }
+
+        /// <summary>
+        /// The event handle method for the OnMouseHold event of slider.
+        /// </summary>
         /// <param name="slider">The slider.</param>
         /// <param name="mouseState">State of the mouse.</param>
-        private void slider_OnMouseHold(Game game, Slider slider, MouseState mouseState)
+        private void slider_OnMouseHold(Slider slider, MouseState mouseState)
         {
             slider.SetSliderValue(mouseState.X);
         }
@@ -359,21 +346,19 @@ namespace Programon
         /// <summary>
         /// The event handle method for the OnMouseEnter event of button.
         /// </summary>
-        /// <param name="game">The game.</param>
-        /// <param name="btn">The BTN.</param>
-        private void button_OnMouseEnter(Game game, Button btn)
+        /// <param name="btn">The button.</param>
+        private void button_OnMouseEnter(Button btn)
         {
-
+            ShowHoverIndicator(btn, 10, true);
         }
 
         /// <summary>
         /// The event handle method for the OnMouseLeave event of button.
         /// </summary>
-        /// <param name="game">The game.</param>
         /// <param name="btn">The button.</param>
-        void button_OnMouseLeave(Game game, Button btn)
+        private void button_OnMouseLeave(Button btn)
         {
-
+            ShowHoverIndicator(btn, 10, false);
         }
     }
 }

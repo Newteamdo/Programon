@@ -9,36 +9,47 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ProgramonEngine;
+using System.Xml;
 
 namespace Programon
 {
     class MainWindow : Game
     {
+        private const string CONFIGLOCATION = "config.xml";
         private SpriteDrawer spriteDrawer { get; set; }
         private KeyHandler Keyhandler { get; set; }
         private Dictionary<Vector2, Node> BackGround { get; set; }
         private Texture2D TestTexture { get; set; }
         private Texture2D TestTextBoxCenter { get; set; }
         public Rectangle DrawPlane { get; set; }
-        public enum GameState { INTRO, MAINMENU, OPTIONS, LOADGAME, NEWGAME, OVERWORLD, PROGRAMONSCREEN, INVENTORY, BATTLE}
+        public double VolumeLevel { get; set; }
+        public enum GameState { INTRO, MAINMENU, OPTIONS, LOADGAME, NEWGAME, OVERWORLD, PROGRAMONSCREEN, INVENTORY, BATTLE }
         public GameState State { get; set; }
 
         BattleScreen testBattle;
         MainMenuWindow menuWindow;
 
+        private OptionsMenu OptionsMenu { get; set; }
+
         public MainWindow()
         {
             spriteDrawer = new SpriteDrawer(this, 1024, 720, false);
-            Keyhandler = new KeyHandler(this);
+            LoadSettingsFromXml();
             Content.RootDirectory = "Content";
-            State = GameState.BATTLE;
+            State = GameState.OPTIONS;
+
+            Keyhandler = new KeyHandler(this);
             testBattle = new BattleScreen(this);
         }
 
         protected override void Initialize()
         {
+            menuWindow = new MainMenuWindow(this, spriteDrawer);
             BackGround = new Dictionary<Vector2, Node>();
+            menuWindow.initialize();
             DrawPlane = GraphicsDevice.Viewport.Bounds;
+            OptionsMenu = new Programon.OptionsMenu(this, spriteDrawer);
+
             base.Initialize();
         }
 
@@ -83,8 +94,17 @@ namespace Programon
         protected override void Update(GameTime gameTime)
         {
             this.Keyhandler.KeyPress();
-            switch(State)
+            switch (State)
             {
+                case GameState.MAINMENU:
+                    menuWindow.Update();
+                    break;
+                case GameState.NEWGAME:
+                    spriteDrawer.Update(BackGround, DrawPlane);
+                    break;
+                case GameState.OPTIONS:
+                    OptionsMenu.Update();
+                    break;
                 case GameState.OVERWORLD:
                     {
                         spriteDrawer.Update(BackGround, DrawPlane);
@@ -96,15 +116,15 @@ namespace Programon
                         break;
                     }
             }
-            
+
             base.Update(gameTime);
         }
 
         public void SetState(GameState newState)
         {
             State = newState;
-            UnloadContent();
-            LoadContent();
+          //  UnloadContent();
+           // LoadContent();
         }
 
 
@@ -119,6 +139,15 @@ namespace Programon
         {
             switch (State)
             {
+                case GameState.MAINMENU:
+                    menuWindow.Draw();
+                    break;
+                case GameState.NEWGAME:
+                    spriteDrawer.Draw(DrawPlane);
+                    break;
+                case GameState.OPTIONS:
+                    OptionsMenu.Draw(spriteDrawer.SpriteBatch);
+                    break;
                 case GameState.OVERWORLD:
                     {
                         spriteDrawer.Draw(DrawPlane);
@@ -131,7 +160,6 @@ namespace Programon
                     }
             }
 
-
             base.Draw(gameTime);
         }
 
@@ -140,6 +168,59 @@ namespace Programon
             spriteDrawer.EndDraw();
 
             base.EndDraw();
+        }
+
+        /// <summary>
+        /// Loads the settings from XML.
+        /// </summary>
+        private void LoadSettingsFromXml()
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(CONFIGLOCATION);
+
+            string width;
+            width = xDoc.SelectSingleNode("Config/Resolution/width").InnerText;
+
+            string height = xDoc.SelectSingleNode("Config/Resolution/height").InnerText;
+
+            int screenWidth = 800;
+            int screenHeight = 600;
+
+            if (int.TryParse(width, out screenWidth) && int.TryParse(height, out screenHeight))
+            {
+                spriteDrawer.SetWindowSize(screenWidth, screenHeight);
+            }
+            else
+            {
+                spriteDrawer.SetWindowSize(screenWidth, screenHeight);
+            }
+
+            string volumeText = xDoc.SelectSingleNode("Config/Mastervolume").InnerText;
+
+            double volumeValue;
+            if (double.TryParse(volumeText, out volumeValue))
+            {
+                this.VolumeLevel = volumeValue;
+            }
+            else
+            {
+                this.VolumeLevel = 100;
+            }
+        }
+
+        /// <summary>
+        /// Saves the changes to XML.
+        /// </summary>
+        public void SaveChangesToXml()
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(CONFIGLOCATION);
+
+            xDoc.SelectSingleNode("Config/Resolution/width").InnerText = spriteDrawer.GetWindowWidth().ToString();
+            xDoc.SelectSingleNode("Config/Resolution/height").InnerText = spriteDrawer.GetWindowHeight().ToString();
+
+            xDoc.SelectSingleNode("Config/Mastervolume").InnerText = VolumeLevel.ToString();
+            xDoc.Save(CONFIGLOCATION);
         }
     }
 }

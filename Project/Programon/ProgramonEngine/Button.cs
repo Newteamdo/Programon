@@ -10,22 +10,22 @@ namespace ProgramonEngine
     /// </summary>
     public class Button
     {
-        public delegate void OnMouseClickEventHandler(Game game, Button btn);
+        public delegate void OnMouseClickEventHandler(Button btn);
         public event OnMouseClickEventHandler OnMouseClick;
 
-        public delegate void OnMouseHoverEventHandler(Game game, Button btn);
+        public delegate void OnMouseHoverEventHandler(Button btn);
         public event OnMouseHoverEventHandler OnMouseHover;
 
-        public delegate void OnMouseEnterEventHandler(Game game, Button btn);
+        public delegate void OnMouseEnterEventHandler(Button btn);
         public event OnMouseEnterEventHandler OnMouseEnter;
 
-        public delegate void OnMouseLeaveEventHandler(Game game, Button btn);
+        public delegate void OnMouseLeaveEventHandler(Button btn);
         public event OnMouseLeaveEventHandler OnMouseLeave;
 
         private Rectangle btnRect;
-        private Texture2D texture{ get; set; }
-        private Color tint{ get; set; }
-        private Game game{ get; set; }
+        private Texture2D texture { get; set; }
+        private Color Tint { get; set; }
+        private Game Game { get; set; }
         public bool isEnabled { get; set; }
 
         private MouseState oldMouseState { get; set; }
@@ -37,7 +37,7 @@ namespace ProgramonEngine
         public Button()
         {
             btnRect = new Rectangle(0, 0, 100, 100);
-            game = null;
+            Game = null;
             isEnabled = true;
         }
 
@@ -49,11 +49,11 @@ namespace ProgramonEngine
         /// <param name="game">The game.</param>
         public Button(Rectangle rect, Texture2D texture, Game game)
         {
-            isEnabled= true;
+            isEnabled = true;
             btnRect = rect;
             this.texture = texture;
-            tint = Color.White;
-            this.game = game;
+            Tint = Color.White;
+            this.Game = game;
             oldMouseState = Mouse.GetState();
         }
 
@@ -101,7 +101,7 @@ namespace ProgramonEngine
 
             if (isEnabled)
             {
-                tint = Color.White;
+                Tint = Color.White;
                 Rectangle mouseRect = new Rectangle(mouseX, mouseY, 1, 1);
                 if (mouse.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released)
                 {
@@ -109,7 +109,7 @@ namespace ProgramonEngine
                     {
                         if (OnMouseClick != null)
                         {
-                            OnMouseClick(game, this);
+                            OnMouseClick(this);
                         }
                     }
                 }
@@ -118,19 +118,19 @@ namespace ProgramonEngine
                 {
                     if (OnMouseHover != null)
                     {
-                        OnMouseHover(game, this);
+                        OnMouseHover(this);
                     }
 
                     if (!btnRect.Contains(oldMousePoint))
                     {
                         if (OnMouseEnter != null)
-                            OnMouseEnter(game, this);
+                            OnMouseEnter(this);
                     }
                 }
                 else if (btnRect.Contains(oldMousePoint))
                 {
                     if (OnMouseLeave != null)
-                        OnMouseLeave(game, this);
+                        OnMouseLeave(this);
                 }
 
                 oldMouseState = mouse;
@@ -138,7 +138,7 @@ namespace ProgramonEngine
             }
             else
             {
-                tint = Color.SlateGray;
+                Tint = Color.SlateGray;
             }
 
         }
@@ -149,7 +149,7 @@ namespace ProgramonEngine
         /// <param name="spriteBatch">The sprite batch to use.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, btnRect, tint);
+            spriteBatch.Draw(texture, btnRect, Tint);
         }
     }
 }

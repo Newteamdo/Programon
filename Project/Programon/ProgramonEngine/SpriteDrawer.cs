@@ -88,5 +88,15 @@ namespace ProgramonEngine
             Graphics.PreferredBackBufferHeight = height;
             Graphics.ApplyChanges();
         }
+
+        public int GetWindowWidth()
+        {
+            return Graphics.PreferredBackBufferWidth;
+        }
+
+        public int GetWindowHeight()
+        {
+            return Graphics.PreferredBackBufferHeight;
+        }
     }
 }

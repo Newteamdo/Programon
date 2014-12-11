@@ -82,17 +82,17 @@ namespace Programon
             btnQuit.OnMouseClick += btnQuit_OnMouseClick;
         }
 
-        void btnPlay_OnMouseClick(Game game, Button btn)
+        void btnPlay_OnMouseClick(Button btn)
         {
-            this.mainWindow.State = MainWindow.GameState.NEWGAME;
+            this.mainWindow.SetState(MainWindow.GameState.NEWGAME);
         }
 
-        void btnOptions_OnMouseClick(Game game, Button btn)
+        void btnOptions_OnMouseClick(Button btn)
         {
-            this.mainWindow.State = MainWindow.GameState.OPTIONS;
+            this.mainWindow.SetState(MainWindow.GameState.OPTIONS);
         }
 
-        void btnQuit_OnMouseClick(Game game, Button btn)
+        void btnQuit_OnMouseClick(Button btn)
         {
             isLeaving = true;
             int width = (scrWidth / 10) * 6;
@@ -101,9 +101,9 @@ namespace Programon
             yesRect = new Rectangle((leaveMenu.X + leaveMenu.Width) - ((leaveMenu.Width / 100) * 40) - ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
             noRect = new Rectangle((leaveMenu.X) + ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
             txtLeaveRect = new Rectangle(leaveMenu.X + ((leaveMenu.X / 100) * 10), leaveMenu.Y + ((leaveMenu.Y / 100) * 10), (leaveMenu.Width / 100) * 80, 0);
-            txtFieldLeave = new TextField("Are you sure you want to quit?", Color.Black, Color.Transparent, Color.Transparent,txtLeaveRect, game.Content.Load<SpriteFont>("PokemonFontSize50"));
-            btnYes = new Button(yesRect, game.Content.Load<Texture2D>("Yes"), game);
-            btnNo = new Button(noRect, game.Content.Load<Texture2D>("No"), game);
+            txtFieldLeave = new TextField("Are you sure you want to quit?", Color.Black, Color.Transparent, Color.Transparent, txtLeaveRect, mainWindow.Content.Load<SpriteFont>("PokemonFontSize50"));
+            btnYes = new Button(yesRect, mainWindow.Content.Load<Texture2D>("Yes"), mainWindow);
+            btnNo = new Button(noRect, mainWindow.Content.Load<Texture2D>("No"), mainWindow);
 
             btnPlay.isEnabled = false;
             btnLoad.isEnabled = false;
@@ -118,12 +118,12 @@ namespace Programon
             btnNo.OnMouseClick += btnNo_OnMouseClick;
         }
 
-        void btnYes_OnMouseClick(Game game, Button btn)
+        void btnYes_OnMouseClick(Button btn)
         {
             Environment.Exit(0);
         }
 
-        void btnNo_OnMouseClick(Game game, Button btn)
+        void btnNo_OnMouseClick(Button btn)
         {
             isLeaving = false;
             btnPlay.isEnabled = true;
@@ -132,17 +132,17 @@ namespace Programon
             btnQuit.isEnabled = true;
         }
 
-        void btnLoad_OnMouseEnter(Game game, Button btn)
+        void btnLoad_OnMouseEnter(Button btn)
         {
 
         }
 
-        void play_OnMouseLeave(Game game, Button btn)
+        void play_OnMouseLeave(Button btn)
         {
             ShowHoverIndicator(btn, 10, false);
         }
 
-        void play_OnMouseEnter(Game game, Button btn)
+        void play_OnMouseEnter(Button btn)
         {
             ShowHoverIndicator(btn, 10, true);
         }
@@ -162,7 +162,7 @@ namespace Programon
 
         }
 
-        void play_OnMouseClick(Game game, Button btn)
+        void play_OnMouseClick(Button btn)
         {
 
         }

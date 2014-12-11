@@ -11,24 +11,23 @@ namespace ProgramonEngine
     public class Slider
     {
         const int DISTANCESLIDERTEXTY = 10;
-        public delegate void OnMouseHoldEventHandler(Game game, Slider slider, MouseState mouseState);
+
+        public delegate void OnMouseHoldEventHandler(Slider slider, MouseState mouseState);
         public event OnMouseHoldEventHandler OnMouseHold;
 
-        private int minValue { get; set; }
-        private int maxValue { get; set; }
-        private double currentValue { get; set; }
+        private int MinValue { get; set; }
+        private int MaxValue { get; set; }
+        private double CurrentValue { get; set; }
 
-        private Rectangle rectangle;
+        private Rectangle backgroundRectangle;
         private Rectangle sliderRectangle;
-        private Rectangle fontRectangle { get; set; }
+        private Rectangle FontRectangle { get; set; }
 
-        private double perPixel { get; set; }
-        private float fontScale { get; set; }
+        private double ValuePerPixel { get; set; }
+        private float FontScale { get; set; }
 
-        private Color textColor { get; set; }
-        private SpriteFont font { get; set; }
-
-        private Game gameWindow { get; set; }
+        private Color TextColor { get; set; }
+        private SpriteFont TextFont { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Slider"/> class.
@@ -36,16 +35,15 @@ namespace ProgramonEngine
         /// </summary>
         public Slider()
         {
-            this.gameWindow = null;
-            this.minValue = 0;
-            this.maxValue = 0;
-            this.currentValue = 0;
+            this.MinValue = 0;
+            this.MaxValue = 0;
+            this.CurrentValue = 0;
 
-            this.rectangle = new Rectangle(0, 10, 100, 20);
+            this.backgroundRectangle = new Rectangle(0, 10, 100, 20);
             this.sliderRectangle = new Rectangle(40, 5, 20, 30);
-            this.fontRectangle = new Rectangle(40, 50, 20, 30);
-            this.font = null;
-            this.fontScale = 0.0f;
+            this.FontRectangle = new Rectangle(40, 50, 20, 30);
+            this.TextFont = null;
+            this.FontScale = 0.0f;
         }
 
         /// <summary>
@@ -58,17 +56,15 @@ namespace ProgramonEngine
         /// <param name="startValue">The start value of the slider.</param>
         /// <param name="textColor">Color of the slider text.</param>
         /// <param name="fontType">The font.</param>
-        /// <param name="game">The game.</param>
-        public Slider(Rectangle rectangle, int sliderWidth, int minValue, int maxValue, int startValue, Color textColor, SpriteFont fontType, Game game)
+        public Slider(Rectangle rectangle, int sliderWidth, int minValue, int maxValue, double startValue, Color textColor, SpriteFont fontType)
         {
-            this.gameWindow = game;
-            this.minValue = minValue;
-            this.maxValue = maxValue;
-            this.currentValue = startValue;
-            this.textColor = textColor;
-            this.font = fontType;
+            this.MinValue = minValue;
+            this.MaxValue = maxValue;
+            this.CurrentValue = startValue;
+            this.TextColor = textColor;
+            this.TextFont = fontType;
 
-            this.rectangle = rectangle;
+            this.backgroundRectangle = rectangle;
             this.sliderRectangle = new Rectangle(40, 5, sliderWidth, 300);
         }
 
@@ -78,10 +74,10 @@ namespace ProgramonEngine
         /// <param name="spriteBatch">The sprite batch to draw to.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Sprite.FromStaticColor(Color.White, Color.White, spriteBatch.GraphicsDevice).Texture, rectangle, Color.White);
+            spriteBatch.Draw(Sprite.FromStaticColor(Color.White, Color.White, spriteBatch.GraphicsDevice).Texture, backgroundRectangle, Color.White);
             spriteBatch.Draw(Sprite.FromStaticColor(Color.Red, Color.White, spriteBatch.GraphicsDevice).Texture, sliderRectangle, Color.White);
 
-            spriteBatch.DrawString(font, Math.Round(currentValue).ToString(), new Vector2(fontRectangle.X, fontRectangle.Y), textColor, 0.0f, new Vector2(0, 0), fontScale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(TextFont, Math.Round(CurrentValue).ToString(), new Vector2(FontRectangle.X, FontRectangle.Y), TextColor, 0.0f, new Vector2(0, 0), FontScale, SpriteEffects.None, 0);
         }
 
         /// <summary>
@@ -89,32 +85,32 @@ namespace ProgramonEngine
         /// </summary>
         public void CalculatePositions()
         {
-            Vector2 size = font.MeasureString(Math.Round(currentValue).ToString());
+            Vector2 size = TextFont.MeasureString(Math.Round(CurrentValue).ToString());
 
             float width = size.X;
             float height = size.Y;
 
-            if (rectangle.Height == 0)
+            if (backgroundRectangle.Height == 0)
             {
-                this.fontScale = rectangle.Width / width;
+                this.FontScale = backgroundRectangle.Width / width;
             }
             else
             {
-                this.fontScale = rectangle.Height / height;
+                this.FontScale = backgroundRectangle.Height / height;
             }
 
-            width = width * fontScale;
-            height = height * fontScale;
+            width = width * FontScale;
+            height = height * FontScale;
 
             float posX = (sliderRectangle.Width / 2) - (width / 2) + sliderRectangle.X;
             float posY = sliderRectangle.Y + sliderRectangle.Height + DISTANCESLIDERTEXTY;
 
-            fontRectangle = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
+            FontRectangle = new Rectangle((int)posX, (int)posY, (int)width, (int)height);
 
-            perPixel = (double)rectangle.Width / (maxValue - minValue);
-            sliderRectangle.Height = this.rectangle.Height * 2;
+            ValuePerPixel = (double)backgroundRectangle.Width / (MaxValue - MinValue);
+            sliderRectangle.Height = this.backgroundRectangle.Height * 2;
 
-            SetSliderPosition((this.rectangle.X + (int)(currentValue * perPixel)), rectangle.Y - rectangle.Height / 2);
+            SetSliderPosition((this.backgroundRectangle.X + (int)(CurrentValue * ValuePerPixel)), backgroundRectangle.Y - backgroundRectangle.Height / 2);
         }
 
         /// <summary>
@@ -131,11 +127,11 @@ namespace ProgramonEngine
             Rectangle mouseRect = new Rectangle(mouseX, mouseY, 1, 1);
             if (mouse.LeftButton == ButtonState.Pressed)
             {
-                if (rectangle.Contains(mousePoint))
+                if (backgroundRectangle.Contains(mousePoint))
                 {
                     if (OnMouseHold != null)
                     {
-                        OnMouseHold(gameWindow, this, mouse);
+                        OnMouseHold(this, mouse);
                     }
                 }
             }
@@ -160,8 +156,8 @@ namespace ProgramonEngine
         /// <param name="y">The new y position.</param>
         public void SetPosition(int x, int y)
         {
-            this.rectangle.X = x;
-            this.rectangle.Y = y;
+            this.backgroundRectangle.X = x;
+            this.backgroundRectangle.Y = y;
             CalculatePositions();
         }
 
@@ -172,8 +168,8 @@ namespace ProgramonEngine
         /// <param name="heigth">The new heigth.</param>
         public void SetSize(int width, int heigth)
         {
-            this.rectangle.Width = width;
-            this.rectangle.Height = heigth;
+            this.backgroundRectangle.Width = width;
+            this.backgroundRectangle.Height = heigth;
             CalculatePositions();
         }
 
@@ -183,7 +179,7 @@ namespace ProgramonEngine
         /// <returns>The background rectangle of the slider.</returns>
         public Rectangle GetRectangle()
         {
-            return this.rectangle;
+            return this.backgroundRectangle;
         }
 
         /// <summary>
@@ -198,14 +194,28 @@ namespace ProgramonEngine
         /// <summary>
         /// Sets the slider value.
         /// </summary>
+        /// <param name="value">The value of the slider.</param>
+        public void SetSliderValue(double value)
+        {
+            this.CurrentValue = value;
+        }
+
+        public double GetSliderValue()
+        {
+            return this.CurrentValue;
+        }
+
+        /// <summary>
+        /// Sets the slider value.
+        /// </summary>
         /// <param name="xMousePos">The x mouse position.</param>
         public void SetSliderValue(int xMousePos)
         {
             int current = xMousePos;
-            double sliderPos = current - rectangle.X;
-            double currentPos = (sliderPos / rectangle.Width) * 100;
+            double sliderPos = current - backgroundRectangle.X;
+            double currentPos = (sliderPos / backgroundRectangle.Width) * 100;
 
-            currentValue = currentPos;
+            CurrentValue = currentPos;
         }
     }
 }
