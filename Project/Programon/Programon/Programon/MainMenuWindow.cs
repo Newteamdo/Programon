@@ -3,133 +3,166 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace Programon
 {
+    /// <summary>
+    /// Class MainMenuWindow.
+    /// </summary>
     class MainMenuWindow
     {
-        private int scrWidth;
-        private int scrHeight;
+        private int scrWidth { get; set; }
+        private int scrHeight { get; set; }
+
         private bool isLeaving = false;
 
-        private MainWindow mainWindow;
-        private SpriteDrawer spriteDrawer;
+        private MainWindow MainWindow { get; set; }
+        private SpriteDrawer SpriteDrawer { get; set; }
 
-        Rectangle playRect;
-        Rectangle loadRect;
-        Rectangle optionsRect;
-        Rectangle quitRect;
-        Rectangle leaveMenu;
-        Rectangle txtLeaveRect;
-        Rectangle yesRect;
-        Rectangle noRect;
+        Rectangle PlayRect { get; set; }
+        Rectangle LoadRect { get; set; }
+        Rectangle OptionsRect { get; set; }
+        Rectangle QuitRect { get; set; }
+        Rectangle LeaveMenu { get; set; }
+        Rectangle TxtLeaveRect { get; set; }
+        Rectangle YesRect { get; set; }
+        Rectangle NoRect { get; set; }
 
-        TextField txtFieldLeave;
+        TextField TxtFieldLeave { get; set; }
 
-        Button btnPlay;
-        Button btnLoad;
-        Button btnOptions;
-        Button btnQuit;
-        Button btnYes;
-        Button btnNo;
+        Button BtnPlay { get; set; }
+        Button BtnLoad { get; set; }
+        Button BtnOptions {get; set;}
+        Button BtnQuit { get; set; }
+        Button BtnYes { get; set; }
+        Button BtnNo { get; set; }
 
-        int buttonWidth;
-        int buttonHeight;
-        int buttonX;
-        int buttonY;
+        int ButtonWidth { get; set; }
+        int ButtonHeight { get; set; }
+        int ButtonX { get; set; }
+        int ButtonY { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainMenuWindow"/> class.
+        /// </summary>
+        /// <param name="g">The g.</param>
+        /// <param name="s">The s.</param>
         public MainMenuWindow(MainWindow g, SpriteDrawer s)
         {
-            mainWindow = g;
-            spriteDrawer = s;
+            MainWindow = g;
+            SpriteDrawer = s;
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         public void initialize()
         {
-            scrWidth = mainWindow.Window.ClientBounds.Width;
-            scrHeight = mainWindow.Window.ClientBounds.Height;
+            scrWidth = MainWindow.Window.ClientBounds.Width;
+            scrHeight = MainWindow.Window.ClientBounds.Height;
 
-            buttonWidth = scrWidth / 4;
-            buttonHeight = scrHeight / 10;
+            ButtonWidth = scrWidth / 4;
+            ButtonHeight = scrHeight / 10;
 
-            buttonX = scrWidth / 2 - buttonWidth / 2;
-            buttonY = scrHeight / 6 - buttonHeight / 2;
+            ButtonX = scrWidth / 2 - ButtonWidth / 2;
+            ButtonY = scrHeight / 6 - ButtonHeight / 2;
 
-            playRect = new Rectangle(buttonX, buttonY * 2, buttonWidth, buttonHeight);
-            loadRect = new Rectangle(buttonX, buttonY * 3, buttonWidth, buttonHeight);
-            optionsRect = new Rectangle(buttonX, buttonY * 4, buttonWidth, buttonHeight);
-            quitRect = new Rectangle(buttonX, buttonY * 5, buttonWidth, buttonHeight);
+            PlayRect = new Rectangle(ButtonX, ButtonY * 2, ButtonWidth, ButtonHeight);
+            LoadRect = new Rectangle(ButtonX, ButtonY * 3, ButtonWidth, ButtonHeight);
+            OptionsRect = new Rectangle(ButtonX, ButtonY * 4, ButtonWidth, ButtonHeight);
+            QuitRect = new Rectangle(ButtonX, ButtonY * 5, ButtonWidth, ButtonHeight);
 
-            btnPlay = new Button(playRect, mainWindow.Content.Load<Texture2D>("NewGameButton"), mainWindow);
-            btnLoad = new Button(loadRect, mainWindow.Content.Load<Texture2D>("LoadGameButton"), mainWindow);
-            btnOptions = new Button(optionsRect, mainWindow.Content.Load<Texture2D>("OptionsButton"), mainWindow);
-            btnQuit = new Button(quitRect, mainWindow.Content.Load<Texture2D>("QuitButton"), mainWindow);
+            BtnPlay = new Button(PlayRect, MainWindow.Content.Load<Texture2D>("NewGameButton"), MainWindow);
+            BtnLoad = new Button(LoadRect, MainWindow.Content.Load<Texture2D>("LoadGameButton"), MainWindow);
+            BtnOptions = new Button(OptionsRect, MainWindow.Content.Load<Texture2D>("OptionsButton"), MainWindow);
+            BtnQuit = new Button(QuitRect, MainWindow.Content.Load<Texture2D>("QuitButton"), MainWindow);
 
-            btnPlay.OnMouseClick += btnPlay_OnMouseClick;
+            BtnPlay.OnMouseClick += btnPlay_OnMouseClick;
 
-            btnPlay.OnMouseClick += play_OnMouseClick;
-            btnPlay.OnMouseEnter += play_OnMouseEnter;
-            btnPlay.OnMouseLeave += play_OnMouseLeave;
+            BtnPlay.OnMouseClick += play_OnMouseClick;
+            BtnPlay.OnMouseEnter += play_OnMouseEnter;
+            BtnPlay.OnMouseLeave += play_OnMouseLeave;
 
-            btnLoad.OnMouseEnter += play_OnMouseEnter;
-            btnLoad.OnMouseLeave += play_OnMouseLeave;
+            BtnLoad.OnMouseEnter += play_OnMouseEnter;
+            BtnLoad.OnMouseLeave += play_OnMouseLeave;
 
-            btnOptions.OnMouseClick += btnOptions_OnMouseClick;
-            btnOptions.OnMouseEnter += play_OnMouseEnter;
-            btnOptions.OnMouseLeave += play_OnMouseLeave;
+            BtnOptions.OnMouseClick += btnOptions_OnMouseClick;
+            BtnOptions.OnMouseEnter += play_OnMouseEnter;
+            BtnOptions.OnMouseLeave += play_OnMouseLeave;
 
-            btnQuit.OnMouseEnter += play_OnMouseEnter;
-            btnQuit.OnMouseLeave += play_OnMouseLeave;
-            btnQuit.OnMouseClick += btnQuit_OnMouseClick;
+            BtnQuit.OnMouseEnter += play_OnMouseEnter;
+            BtnQuit.OnMouseLeave += play_OnMouseLeave;
+            BtnQuit.OnMouseClick += btnQuit_OnMouseClick;
         }
 
+        /// <summary>
+        /// BTNs the play_ on mouse click.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void btnPlay_OnMouseClick(Button btn)
         {
-            this.mainWindow.SetState(MainWindow.GameState.NEWGAME);
+            this.MainWindow.SetState(MainWindow.GameState.NEWGAME);
         }
 
+        /// <summary>
+        /// BTNs the options_ on mouse click.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void btnOptions_OnMouseClick(Button btn)
         {
-            this.mainWindow.SetState(MainWindow.GameState.OPTIONS);
+            this.MainWindow.SetState(MainWindow.GameState.OPTIONS);
         }
 
+        /// <summary>
+        /// BTNs the quit_ on mouse click.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void btnQuit_OnMouseClick(Button btn)
         {
             isLeaving = true;
             int width = (scrWidth / 10) * 6;
             width = width / 2;
-            leaveMenu = new Rectangle((scrWidth / 2) - width, buttonY * 4, (scrWidth / 10) * 6, (scrHeight / 6) * 2);
-            yesRect = new Rectangle((leaveMenu.X + leaveMenu.Width) - ((leaveMenu.Width / 100) * 40) - ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
-            noRect = new Rectangle((leaveMenu.X) + ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
-            txtLeaveRect = new Rectangle(leaveMenu.X + ((leaveMenu.X / 100) * 10), leaveMenu.Y + ((leaveMenu.Y / 100) * 10), (leaveMenu.Width / 100) * 80, 0);
-            txtFieldLeave = new TextField("Are you sure you want to quit?", Color.Black, Color.Transparent, Color.Transparent, txtLeaveRect, mainWindow.Content.Load<SpriteFont>("PokemonFontSize50"));
-            btnYes = new Button(yesRect, mainWindow.Content.Load<Texture2D>("Yes"), mainWindow);
-            btnNo = new Button(noRect, mainWindow.Content.Load<Texture2D>("No"), mainWindow);
+            LeaveMenu = new Rectangle((scrWidth / 2) - width, ButtonY * 4, (scrWidth / 10) * 6, (scrHeight / 6) * 2);
+            YesRect = new Rectangle((LeaveMenu.X + LeaveMenu.Width) - ((LeaveMenu.Width / 100) * 40) - ((LeaveMenu.Width / 100) * 5), (LeaveMenu.Y + LeaveMenu.Height) - ((LeaveMenu.Height / 100) * 40) - ((LeaveMenu.Height / 100) * 10), (LeaveMenu.Width / 100) * 40, (LeaveMenu.Height / 100) * 40);
+            NoRect = new Rectangle((LeaveMenu.X) + ((LeaveMenu.Width / 100) * 5), (LeaveMenu.Y + LeaveMenu.Height) - ((LeaveMenu.Height / 100) * 40) - ((LeaveMenu.Height / 100) * 10), (LeaveMenu.Width / 100) * 40, (LeaveMenu.Height / 100) * 40);
+            TxtLeaveRect = new Rectangle(LeaveMenu.X + ((LeaveMenu.X / 100) * 10), LeaveMenu.Y + ((LeaveMenu.Y / 100) * 10), (LeaveMenu.Width / 100) * 80, 0);
+            TxtFieldLeave = new TextField("Are you sure you want to quit?", Color.Black, Color.Transparent, Color.Transparent, TxtLeaveRect, MainWindow.Content.Load<SpriteFont>("PokemonFontSize50"));
+            BtnYes = new Button(YesRect, MainWindow.Content.Load<Texture2D>("Yes"), MainWindow);
+            BtnNo = new Button(NoRect, MainWindow.Content.Load<Texture2D>("No"), MainWindow);
 
-            btnPlay.isEnabled = false;
-            btnLoad.isEnabled = false;
-            btnOptions.isEnabled = false;
-            btnQuit.isEnabled = false;
+            BtnPlay.isEnabled = false;
+            BtnLoad.isEnabled = false;
+            BtnOptions.isEnabled = false;
+            BtnQuit.isEnabled = false;
 
-            btnYes.OnMouseEnter += play_OnMouseEnter;
-            btnYes.OnMouseLeave += play_OnMouseLeave;
-            btnYes.OnMouseClick += btnYes_OnMouseClick;
-            btnNo.OnMouseEnter += play_OnMouseEnter;
-            btnNo.OnMouseLeave += play_OnMouseLeave;
-            btnNo.OnMouseClick += btnNo_OnMouseClick;
+            BtnYes.OnMouseEnter += play_OnMouseEnter;
+            BtnYes.OnMouseLeave += play_OnMouseLeave;
+            BtnYes.OnMouseClick += btnYes_OnMouseClick;
+            BtnNo.OnMouseEnter += play_OnMouseEnter;
+            BtnNo.OnMouseLeave += play_OnMouseLeave;
+            BtnNo.OnMouseClick += btnNo_OnMouseClick;
         }
 
+        /// <summary>
+        /// BTNs the yes_ on mouse click.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void btnYes_OnMouseClick(Button btn)
         {
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// BTNs the no_ on mouse click.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void btnNo_OnMouseClick(Button btn)
         {
             isLeaving = false;
-            btnPlay.isEnabled = true;
-            btnLoad.isEnabled = true;
-            btnOptions.isEnabled = true;
-            btnQuit.isEnabled = true;
+            BtnPlay.isEnabled = true;
+            BtnLoad.isEnabled = true;
+            BtnOptions.isEnabled = true;
+            BtnQuit.isEnabled = true;
         }
 
         void btnLoad_OnMouseEnter(Button btn)
@@ -137,57 +170,81 @@ namespace Programon
 
         }
 
+        /// <summary>
+        /// Play_s the on mouse leave.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void play_OnMouseLeave(Button btn)
         {
             ShowHoverIndicator(btn, 10, false);
         }
 
+        /// <summary>
+        /// Play_s the on mouse enter.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void play_OnMouseEnter(Button btn)
         {
             ShowHoverIndicator(btn, 10, true);
         }
 
+        /// <summary>
+        /// Updates this instance.
+        /// </summary>
         public void Update()
         {
-            btnPlay.Update();
-            btnLoad.Update();
-            btnOptions.Update();
-            btnQuit.Update();
+            BtnPlay.Update();
+            BtnLoad.Update();
+            BtnOptions.Update();
+            BtnQuit.Update();
 
-            if (btnYes != null)
+            if (BtnYes != null)
             {
-                btnNo.Update();
-                btnYes.Update();
+                BtnNo.Update();
+                BtnYes.Update();
             }
 
         }
 
+        /// <summary>
+        /// Play_s the on mouse click.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
         void play_OnMouseClick(Button btn)
         {
 
         }
 
+        /// <summary>
+        /// Draws this instance.
+        /// </summary>
         public void Draw()
         {
-            btnPlay.Draw(spriteDrawer.SpriteBatch);
-            btnLoad.Draw(spriteDrawer.SpriteBatch);
-            btnOptions.Draw(spriteDrawer.SpriteBatch);
-            btnQuit.Draw(spriteDrawer.SpriteBatch);
+            BtnPlay.Draw(SpriteDrawer.SpriteBatch);
+            BtnLoad.Draw(SpriteDrawer.SpriteBatch);
+            BtnOptions.Draw(SpriteDrawer.SpriteBatch);
+            BtnQuit.Draw(SpriteDrawer.SpriteBatch);
 
 
             if (isLeaving)
             {
-                spriteDrawer.SpriteBatch.Draw(mainWindow.Content.Load<Texture2D>("LeaveMenu"), leaveMenu, Color.White);
-                if (btnYes != null)
+                SpriteDrawer.SpriteBatch.Draw(MainWindow.Content.Load<Texture2D>("LeaveMenu"), LeaveMenu, Color.White);
+                if (BtnYes != null)
                 {
-                    txtFieldLeave.Draw(spriteDrawer.SpriteBatch);
-                    btnYes.Draw(spriteDrawer.SpriteBatch);
-                    btnNo.Draw(spriteDrawer.SpriteBatch);
+                    TxtFieldLeave.Draw(SpriteDrawer.SpriteBatch);
+                    BtnYes.Draw(SpriteDrawer.SpriteBatch);
+                    BtnNo.Draw(SpriteDrawer.SpriteBatch);
                 }
             }
 
         }
 
+        /// <summary>
+        /// Shows the hover indicator.
+        /// </summary>
+        /// <param name="btn">The BTN.</param>
+        /// <param name="size">The size.</param>
+        /// <param name="ScaleUp">if set to <c>true</c> [scale up].</param>
         public void ShowHoverIndicator(Button btn, int size, bool ScaleUp)
         {
             if (ScaleUp)
