@@ -104,9 +104,6 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.K))
-                SetState(GameState.PROGRAMONSCREEN);
-
             this.Keyhandler.KeyPress();
             switch (State)
             {

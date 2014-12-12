@@ -58,7 +58,7 @@ namespace ProgramonEngine
         {
             foreach (Node cur in FixedNodes)
             {
-                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, cur.Sprite.Tint);
+                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, null, cur.Sprite.Tint, 0f, Vector2.Zero, cur.Transform.Scale, SpriteEffects.None, 0f);
             }
         }
 
@@ -66,15 +66,13 @@ namespace ProgramonEngine
         {
             foreach (Node cur in nodes)
             {
-                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, cur.Sprite.Tint);
+                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, null, cur.Sprite.Tint, 0f, Vector2.Zero, cur.Transform.Scale, SpriteEffects.None, 0f);
             }
         }
 
         private void DrawPlayer(Actor player)
         {
-            SpriteBatch.Draw(player.Sprite.Texture, player.FixedPosition + CameraOffset, player.Sprite.Tint);
-
-            SpriteBatch.DrawString(DebugFont, player.Transform.Position.ToString(), Vector2.Zero, Color.White);
+            SpriteBatch.Draw(player.Sprite.Texture, player.FixedPosition + CameraOffset, null, player.Sprite.Tint, 0f, Vector2.Zero, player.Transform.Scale, SpriteEffects.None, 0f);
         }
 
         public void DrawGUI(IMenu menu)

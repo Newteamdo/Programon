@@ -12,7 +12,7 @@ namespace ProgramonEngine
 
         public Node(Vector2 position, Texture2D texture)
         {
-            Transform = new Transform(position, Vector2.One);
+            Transform = new Transform(position, new Vector2(Sprite.TextureWidth / texture.Width, Sprite.TextureHeight / texture.Height));
             Sprite = new Sprite(texture, Color.White);
             Walkable = true;
         }

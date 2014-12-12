@@ -87,6 +87,11 @@ namespace Programon
             {
                 GameWindow.SetState(GameState.OVERWORLD);
             }
+
+            if(state.IsKeyDown(Keys.F3))
+            {
+                GameWindow.SetState(GameState.PROGRAMONSCREEN);
+            }
         }
     }
 }
