@@ -8,6 +8,7 @@ namespace ProgramonEngine
     public static class LevelingSystem
     {
         private const int startingExp = 100;
+
         public static void CheckForLevelup(Creature programon)
         {
             bool canLevel = true;
@@ -23,6 +24,7 @@ namespace ProgramonEngine
                 }
             }
         }
+
         public static void Levelup(Creature programon)
         {
             programon.level++;

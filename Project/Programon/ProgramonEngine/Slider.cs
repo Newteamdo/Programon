@@ -8,7 +8,7 @@ namespace ProgramonEngine
     /// <summary>
     /// A class to display a slider.
     /// </summary>
-    public class Slider
+    public class Slider : IGuiItem
     {
         const int DISTANCESLIDERTEXTY = 10;
 

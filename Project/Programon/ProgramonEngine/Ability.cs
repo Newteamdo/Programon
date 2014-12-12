@@ -13,6 +13,7 @@ namespace ProgramonEngine
         public Buff selfBuff;
         public Buff enemyBuff;
         public int damage;
+
         public Ability(string name, int EP, int damage)
         {
             this.name = name;
@@ -22,6 +23,7 @@ namespace ProgramonEngine
             this.enemyBuff = new Buff();
             this.damage = damage;
         }
+
         public Ability(string name, int EP, Buff selfBuff, Buff enemyBuff)
         {
             this.name = name;
@@ -31,6 +33,7 @@ namespace ProgramonEngine
             this.enemyBuff = enemyBuff;
             this.damage = 0;
         }
+
         public Ability(string name, int EP, Buff selfBuff, Buff enemyBuff, int damage)
         {
             this.name = name;

@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProgramonEngine;
 
 namespace Programon
 {
-    class KeyHandler
+    public class KeyHandler
     {
         private MainWindow GameWindow { get; set; }
 
@@ -16,46 +17,75 @@ namespace Programon
         public KeyHandler(MainWindow gameWindow)
         {
             this.GameWindow = gameWindow;
-
         }
 
         public void KeyPress()
         {
             KeyboardState state = Keyboard.GetState();
 
-            Keys[] PressedKeys = state.GetPressedKeys();
-
-            if (PressedKeys.Length == 0) return;
-
-            switch(PressedKeys[0])
+            if (state.IsKeyDown(Keys.Up))
             {
-                case Keys.Up:
+                if (GameWindow.Player.FixedPosition.Y - GameWindow.GraphicsDevice.Viewport.Height / 2 > 0 &&
+                    GameWindow.MapBounds.Height * Sprite.TextureHeight - GameWindow.Player.FixedPosition.Y > GameWindow.GraphicsDevice.Viewport.Height / 2)
                     GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X, GameWindow.DrawPlane.Y + 1, GameWindow.DrawPlane.Width, GameWindow.DrawPlane.Height + 1);
-                    break;
-                case Keys.Down:
+
+                if (GameWindow.BackGround.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitY))
+                    GameWindow.Player.Move(GameWindow.BackGround[GameWindow.Player.Transform.Position - Vector2.UnitY]);
+            }
+
+            else if (state.IsKeyDown(Keys.Down))
+            {
+                if (GameWindow.Player.FixedPosition.Y - GameWindow.GraphicsDevice.Viewport.Height / 2 > 0 &&
+                    GameWindow.MapBounds.Height * Sprite.TextureHeight - GameWindow.Player.FixedPosition.Y > GameWindow.GraphicsDevice.Viewport.Height / 2)
                     GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X, GameWindow.DrawPlane.Y - 1, GameWindow.DrawPlane.Width, GameWindow.DrawPlane.Height - 1);
-                    break;
-                case Keys.Left:
+
+                if (GameWindow.BackGround.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitY))
+                    GameWindow.Player.Move(GameWindow.BackGround[GameWindow.Player.Transform.Position + Vector2.UnitY]);
+            }
+
+            else if (state.IsKeyDown(Keys.Left))
+            {
+                if (GameWindow.Player.FixedPosition.X - GameWindow.GraphicsDevice.Viewport.Width / 2 > 0 &&
+                    GameWindow.MapBounds.Width * Sprite.TextureWidth - GameWindow.Player.FixedPosition.X > GameWindow.GraphicsDevice.Viewport.Width / 2)
                     GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X + 1, GameWindow.DrawPlane.Y, GameWindow.DrawPlane.Width + 1, GameWindow.DrawPlane.Height);
-                    break;
-                case Keys.Right:
+
+                if (GameWindow.BackGround.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitX))
+                    GameWindow.Player.Move(GameWindow.BackGround[GameWindow.Player.Transform.Position - Vector2.UnitX]);
+            }
+
+            else if (state.IsKeyDown(Keys.Right))
+            {
+                if (GameWindow.Player.FixedPosition.X - GameWindow.GraphicsDevice.Viewport.Width / 2 > 0 &&
+                    GameWindow.MapBounds.Width * Sprite.TextureWidth - GameWindow.Player.FixedPosition.X > GameWindow.GraphicsDevice.Viewport.Width / 2)
                     GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X - 1, GameWindow.DrawPlane.Y, GameWindow.DrawPlane.Width - 1, GameWindow.DrawPlane.Height);
-                    break;
-                case Keys.Escape:
-                    GameWindow.Exit();
-                    break;
-                case Keys.Z:
-                    // action button or agree button
-                    break;
-                case Keys.X:
-                    // cancel button or back button
-                    break;
-                case Keys.F1:
-                    GameWindow.SetState(MainWindow.GameState.BATTLE);
-                    break;
-                case Keys.F2:
-                    GameWindow.SetState(MainWindow.GameState.OVERWORLD);
-                    break;
+
+                if (GameWindow.BackGround.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitX))
+                    GameWindow.Player.Move(GameWindow.BackGround[GameWindow.Player.Transform.Position + Vector2.UnitX]);
+            }
+
+            if (state.IsKeyDown(Keys.Escape))
+            {
+                GameWindow.Exit();
+            }
+
+            if (state.IsKeyDown(Keys.Z))
+            {
+                // action button or agree button
+            }
+
+            if (state.IsKeyDown(Keys.X))
+            {
+                // cancel button or back button
+            }
+
+            if(state.IsKeyDown(Keys.F1))
+            {
+                GameWindow.SetState(GameState.BATTLE);
+            }
+            
+            if(state.IsKeyDown(Keys.F2))
+            {
+                GameWindow.SetState(GameState.OVERWORLD);
             }
         }
     }

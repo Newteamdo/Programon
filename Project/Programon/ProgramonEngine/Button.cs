@@ -8,7 +8,7 @@ namespace ProgramonEngine
     /// <summary>
     /// A class to display a button.
     /// </summary>
-    public class Button
+    public class Button : IGuiItem
     {
         public delegate void OnMouseClickEventHandler(Button btn);
         public event OnMouseClickEventHandler OnMouseClick;

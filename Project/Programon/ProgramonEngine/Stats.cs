@@ -9,6 +9,7 @@
         public int sAttack;
         public int sDefence;
         public int speed;
+
         public Stats()
         {
             this.health = 0;
@@ -19,6 +20,7 @@
             this.sDefence = 0;
             this.speed = 0;
         }
+
         public Stats(int health, int maxHealth, int attack, int defence, int sAttack, int sDefence, int speed)
         {
             this.health = health;
@@ -29,6 +31,7 @@
             this.sDefence = sDefence;
             this.speed = speed;
         }
+
         public static Stats operator +(Stats sender, Stats adder)
         {
             return new Stats(
@@ -41,6 +44,7 @@
                 sender.speed + adder.speed
                 );
         }
+
         public static Stats operator -(Stats sender, Stats adder)
         {
             return new Stats(

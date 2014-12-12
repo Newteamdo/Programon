@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 namespace Programon
 {
-    class BattleScreen
+    public class BattleScreen
     {
-        protected MainWindow mainWindow;
-        Creature Enemy;
+        private MainWindow mainWindow;
+        private Creature Enemy;
 
         public List<Node> GuiList { get; private set; }
 
-        Texture2D texture;
+        private Texture2D texture;
 
         public BattleScreen(MainWindow mainWindow)
         {

@@ -6,7 +6,7 @@ namespace ProgramonEngine
     /// <summary>
     /// A class to display a text field.
     /// </summary>
-    public class TextField
+    public class TextField : IGuiItem
     {
         private string Text { get; set; }
         private Color TextColor { get; set; }

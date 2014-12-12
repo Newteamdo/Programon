@@ -7,21 +7,24 @@ using System.Linq;
 namespace ProgramonEngine
 {
     public class SpriteDrawer
-    {        
-        public SpriteBatch SpriteBatch { get; set; }
+    {
+        private SpriteBatch SpriteBatch { get; set; }
         private SpriteFont DebugFont { get; set; }
+        private Vector2 CameraOffset { get; set; }
+        private Vector2 ScreenCenter { get; set; }
 
-        private GraphicsDeviceManager Graphics { get; set; }
+        public GraphicsDeviceManager Graphics { get; set; }
         private IEnumerable<Node> FixedNodes { get; set; }
-        private Vector2 Offset { get; set; }
 
-        public SpriteDrawer(Game GameWindow, int width, int height, bool fullscreen)
+        public SpriteDrawer(Game GameWindow, Rectangle bounds, bool fullscreen)
         {
             Graphics = new GraphicsDeviceManager(GameWindow);
             Graphics.SynchronizeWithVerticalRetrace = false;
-            Graphics.PreferredBackBufferWidth = width;
-            Graphics.PreferredBackBufferHeight = height;
+            Graphics.PreferredBackBufferWidth = bounds.Width;
+            Graphics.PreferredBackBufferHeight = bounds.Height;
+            ScreenCenter = new Vector2(bounds.Width >> 1, bounds.Height >> 1);
             Graphics.IsFullScreen = fullscreen;
+            FixedNodes = new Node[0];
         }
 
         public void LoadContent(SpriteBatch spriteBatch, ContentManager content)
@@ -30,10 +33,11 @@ namespace ProgramonEngine
             DebugFont = content.Load<SpriteFont>("DebugFont");
         }
 
-        public void Update(Dictionary<Vector2, Node> background, Rectangle drawPlane)
+        public void Update(Dictionary<Vector2, Node> background, Rectangle drawPlane, Actor player)
         {
             FixedNodes = background.Values.Where(n => n.Transform.IsBetweenBounds(drawPlane));
-            Offset = new Vector2(drawPlane.X * Sprite.TextureWidth, drawPlane.Y * Sprite.TextureHeight);
+
+            CameraOffset = new Vector2(drawPlane.X * Sprite.TextureWidth, drawPlane.Y * Sprite.TextureHeight);
         }
 
         public void BeginDraw()
@@ -41,40 +45,44 @@ namespace ProgramonEngine
             SpriteBatch.Begin();
         }
 
-        public void Draw(Rectangle drawPanel, List<Node> addedNodes = null)
+        public void Draw(Actor player, List<Node> addedNodes = null)
         {
             DrawBackground();
+            DrawPlayer(player);
 
-            if (addedNodes != null) 
+            if (addedNodes != null)
                 DrawNodes(addedNodes);
-        }
-        public void DrawBattleScreen(List<Node> battleGui)
-        {
-            foreach (Node cur in battleGui)
-            {
-                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition, cur.Sprite.Tint);
-            }
         }
 
         private void DrawBackground()
         {
-            foreach(Node cur in FixedNodes)
+            foreach (Node cur in FixedNodes)
             {
-                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + Offset, cur.Sprite.Tint);
+                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, cur.Sprite.Tint);
             }
         }
 
-        private void DrawNodes(List<Node> nodes)
+        public void DrawNodes(List<Node> nodes)
         {
-            foreach(Node cur in nodes)
+            foreach (Node cur in nodes)
             {
-                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + Offset, cur.Sprite.Tint);
+                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, cur.Sprite.Tint);
             }
         }
 
-        public void DrawBattleGUI()
+        private void DrawPlayer(Actor player)
         {
-            
+            SpriteBatch.Draw(player.Sprite.Texture, player.FixedPosition + CameraOffset, player.Sprite.Tint);
+
+            SpriteBatch.DrawString(DebugFont, player.Transform.Position.ToString(), Vector2.Zero, Color.White);
+        }
+
+        public void DrawGUI(IMenu menu)
+        {
+            foreach (IGuiItem cur in menu.Childs)
+            {
+                cur.Draw(SpriteBatch);
+            }
         }
 
         public void EndDraw()

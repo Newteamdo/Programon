@@ -8,17 +8,20 @@ namespace ProgramonEngine
         public Vector2 FixedPosition { get { return Transform.Position * global::ProgramonEngine.Sprite.TextureHeight; } private set { } }
         public Transform Transform { get; private set; }
         public Sprite Sprite { get; private set; }
+        public bool Walkable { get; private set; }
 
         public Node(Vector2 position, Texture2D texture)
         {
             Transform = new Transform(position, Vector2.One);
             Sprite = new Sprite(texture, Color.White);
+            Walkable = true;
         }
 
-        public Node(Transform transform, Sprite sprite)
+        public Node(Transform transform, Sprite sprite, bool walkable)
         {
             Transform = transform;
             Sprite = sprite;
+            Walkable = walkable;
         }
     }
 }

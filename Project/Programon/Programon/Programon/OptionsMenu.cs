@@ -10,8 +10,32 @@ namespace Programon
     /// <summary>
     /// A class to display a options menu.
     /// </summary>
-    class OptionsMenu
+    public class OptionsMenu : IMenu
     {
+        public IGuiItem[] Childs
+        {
+            get
+            {
+                return new IGuiItem[]
+                {
+                    BackBtn,
+                    ControlsBtn,
+                    SaveChangesBtn, 
+                    PrevButtonResolution,
+                    NextButtonResolution,
+                    ResolutionTextField,
+                    MasterVolumeTextField,
+                    ResolutionText,
+                    MasterVolumeText,
+                    OptionsText,Slider,
+                };
+            }
+
+            set { }
+        }
+
+        public Texture2D BackgroundTexture { get; set; }
+
         private string[] SupportedResolutions { get; set; }
 
         private MainWindow GameWindow { get; set; }
@@ -33,8 +57,6 @@ namespace Programon
         private TextField OptionsText { get; set; }
 
         private Slider Slider { get; set; }
-
-        private Texture2D BackgroundTexture { get; set; }
 
         private int CurrentIndexResolution { get; set; }
 
@@ -179,32 +201,6 @@ namespace Programon
         }
 
         /// <summary>
-        /// Draws the options menu with the specified sprite batch.
-        /// </summary>
-        /// <param name="spriteBatch">The sprite batch to use.</param>
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(BackgroundTexture, new Rectangle(0, 0, ScreenWidth, ScreenHeight), Color.White);
-
-            OptionsText.Draw(spriteBatch);
-
-            PrevButtonResolution.Draw(spriteBatch);
-            NextButtonResolution.Draw(spriteBatch);
-
-            BackBtn.Draw(spriteBatch);
-            ControlsBtn.Draw(spriteBatch);
-            SaveChangesBtn.Draw(spriteBatch);
-
-            ResolutionText.Draw(spriteBatch);
-            MasterVolumeText.Draw(spriteBatch);
-
-            ResolutionTextField.Draw(spriteBatch);
-            MasterVolumeTextField.Draw(spriteBatch);
-
-            Slider.Draw(spriteBatch);
-        }
-
-        /// <summary>
         /// Calculates the positions of all objects in the options menu.
         /// </summary>
         private void CalculatePositions()
@@ -330,7 +326,7 @@ namespace Programon
         /// <param name="btn">The Button.</param>
         private void backBtn_OnClick(Button btn)
         {
-            GameWindow.SetState(MainWindow.GameState.MAINMENU);
+            GameWindow.SetState(GameState.MAINMENU);
         }
 
         /// <summary>

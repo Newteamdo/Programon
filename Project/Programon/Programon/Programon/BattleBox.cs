@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Programon
 {
-    class BattleBox
+    public class BattleBox
     {
         Vector2 startPos;
 

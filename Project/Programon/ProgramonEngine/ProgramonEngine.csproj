@@ -64,8 +64,10 @@
     <Compile Include="Buff.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Creature.cs" />
+    <Compile Include="IGuiItem.cs" />
     <Compile Include="LCGRandom.cs" />
     <Compile Include="LevelingSystem.cs" />
+    <Compile Include="IMenu.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slider.cs" />

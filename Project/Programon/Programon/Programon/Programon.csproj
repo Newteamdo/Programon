@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="BattleBox.cs" />
     <Compile Include="BattleScreen.cs" />
+    <Compile Include="GameState.cs" />
     <Compile Include="KeyHandler.cs" />
     <Compile Include="MainMenuWindow.cs" />
     <Compile Include="OptionsMenu.cs" />

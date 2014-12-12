@@ -24,10 +24,12 @@ namespace ProgramonEngine
             this.statsPerLevel = statsPerLevel;
             this.abilities = abilities;
         }
+
         public void AddBuff(Buff buff)
         {
             buffList.Add(buff);
         }
+
         public void UpdateStats()
         {
             Stats buffSum = new Stats();
@@ -43,6 +45,7 @@ namespace ProgramonEngine
                     buffList.Remove(buff);     
                 }
             }
+
             programonTotalStats = buffSum + programonBaseStats;
         }
     }

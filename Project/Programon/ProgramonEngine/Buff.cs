@@ -17,6 +17,7 @@ namespace ProgramonEngine
             this.duration = 0;
             this.statChange = new Stats();
         }
+
         public Buff(string name, int duration, Stats statChange)
         {
             this.name = name;
