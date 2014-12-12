@@ -69,6 +69,7 @@
     <Compile Include="LevelingSystem.cs" />
     <Compile Include="IMenu.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="ProgramonMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Slider.cs" />
     <Compile Include="Sprite.cs" />

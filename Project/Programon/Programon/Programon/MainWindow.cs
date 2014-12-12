@@ -35,6 +35,7 @@ namespace Programon
 
         private BattleScreen testBattle;
         private MainMenuWindow menuWindow;
+        private ProgramonMenu programonMenu;
 
         private OptionsMenu OptionsMenu { get; set; }
 
@@ -42,6 +43,7 @@ namespace Programon
         {
             spriteDrawer = new SpriteDrawer(this, new Rectangle(0, 0, 1024, 720), false);
             menuWindow = new MainMenuWindow(this);
+            programonMenu = new ProgramonMenu(spriteDrawer, this);
             Keyhandler = new KeyHandler(this);
             testBattle = new BattleScreen(this);
 
@@ -56,6 +58,7 @@ namespace Programon
         {
             BackGround = new Dictionary<Vector2, Node>();
             menuWindow.initialize();
+            programonMenu.Initialize();
 
             DrawPlane = GraphicsDevice.Viewport.Bounds;
             MapBounds = new Rectangle(0, 0, 100, 100);
@@ -101,6 +104,9 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.K))
+                SetState(GameState.PROGRAMONSCREEN);
+
             this.Keyhandler.KeyPress();
             switch (State)
             {
@@ -118,6 +124,9 @@ namespace Programon
                     break;
                 case GameState.BATTLE:
                     spriteDrawer.Update(BackGround, DrawPlane, Player);
+                    break;
+                case GameState.PROGRAMONSCREEN:
+                    programonMenu.Update();
                     break;
             }
 
@@ -157,6 +166,9 @@ namespace Programon
                     break;
                 case GameState.BATTLE:
                     spriteDrawer.DrawNodes(testBattle.GuiList);
+                    break;
+                case GameState.PROGRAMONSCREEN:
+                    spriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[] { programonMenu } });
                     break;
             }
 
