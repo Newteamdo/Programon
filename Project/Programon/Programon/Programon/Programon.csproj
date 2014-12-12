@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="BattleBox.cs" />
     <Compile Include="BattleScreen.cs" />
+    <Compile Include="XmlLoader.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="KeyHandler.cs" />
     <Compile Include="MainMenuWindow.cs" />
@@ -89,6 +90,9 @@
     <Content Include="Images\Game.ico" />
     <Content Include="Images\GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
+    </Content>
+    <Content Include="map.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

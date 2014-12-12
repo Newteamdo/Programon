@@ -5,8 +5,8 @@ namespace ProgramonEngine
 {
     public struct Sprite
     {
-        public const int TextureHeight = 16;
-        public const int TextureWidth = 16;
+        public const int TextureHeight = 64;
+        public const int TextureWidth = 64;
 
         public Texture2D Texture { get { return Ptexture; } private set { Ptexture = value; } }
         public Color Tint { get { return Ptint; } private set { Ptint = value; } }

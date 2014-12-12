@@ -17,6 +17,13 @@ namespace ProgramonEngine
             Walkable = true;
         }
 
+        public Node(Vector2 position, Texture2D texture, bool walkable)
+        {
+            Transform = new Transform(position, new Vector2(Sprite.TextureWidth / texture.Width, Sprite.TextureHeight / texture.Height));
+            Sprite = new Sprite(texture, Color.White);
+            Walkable = walkable;
+        }
+
         public Node(Transform transform, Sprite sprite, bool walkable)
         {
             Transform = transform;

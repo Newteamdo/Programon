@@ -26,8 +26,9 @@ Content\TestGuiTextures\TestBattleTextures\BoxMiddle2.xnb
 Content\TestGuiTextures\TestBattleTextures\BoxMiddle3.xnb
 Content\TestGuiTextures\TestBattleTextures\BoxMiddle4.xnb
 Content\TestGuiTextures\Testbox.xnb
-Content\vierkant.xnb
 Content\TestSounds\Normal.xnb
 Content\TestSounds\Start.xnb
 Content\DebugFont.xnb
+Content\vierkant.xnb
 config.xml
+map.xml

@@ -68,6 +68,7 @@
     <Compile Include="LCGRandom.cs" />
     <Compile Include="LevelingSystem.cs" />
     <Compile Include="IMenu.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="ProgramonMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

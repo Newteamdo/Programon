@@ -15,7 +15,8 @@ namespace Programon
 {
     public class MainWindow : Game
     {
-        private const string CONFIGLOCATION = "config.xml";
+        public const string CONFIGLOCATION = "config.xml";
+        private const string MAPLOCATION = "map.xml";
 
         private SpriteDrawer spriteDrawer { get; set; }
         private KeyHandler Keyhandler { get; set; }
@@ -23,8 +24,8 @@ namespace Programon
         private Texture2D TestTexture { get; set; }
         private Texture2D TestTextBoxCenter { get; set; }
 
-        public Dictionary<Vector2, Node> BackGround { get; set; }
         public Actor Player { get; set; }
+        public Map Map { get; private set; }
 
         public Rectangle DrawPlane { get; set; }
         public Rectangle MapBounds { get; set; }
@@ -47,7 +48,7 @@ namespace Programon
             Keyhandler = new KeyHandler(this);
             testBattle = new BattleScreen(this);
 
-            LoadSettingsFromXml();
+            XmlLoader.LoadSettings(this, spriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
             State = GameState.OPTIONS;
 
@@ -56,7 +57,7 @@ namespace Programon
 
         protected override void Initialize()
         {
-            BackGround = new Dictionary<Vector2, Node>();
+            Map = new Map();
             menuWindow.initialize();
             programonMenu.Initialize();
 
@@ -64,7 +65,7 @@ namespace Programon
             MapBounds = new Rectangle(0, 0, 100, 100);
 
             OptionsMenu = new OptionsMenu(this, spriteDrawer);
-            Player = new Actor(Vector2.Zero);
+            Player = new Actor(new Vector2(1,1));
 
             base.Initialize();
         }
@@ -81,15 +82,7 @@ namespace Programon
                     break;
                 case GameState.OVERWORLD:
                 case GameState.NEWGAME:
-                    TestTexture = Content.Load<Texture2D>("TestNodeTextures/grass");
-                    for (int y = 0; y < 100; y++)
-                    {
-                        for (int x = 0; x < 100; x++)
-                        {
-                            Vector2 curPos = new Vector2(x, y);
-                            BackGround.Add(curPos, new Node(curPos, TestTexture));
-                        }
-                    }
+                    Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.BATTLE:
                     testBattle.Load(Content);
@@ -99,7 +92,7 @@ namespace Programon
 
         protected override void UnloadContent()
         {
-            BackGround.Clear();
+            Map = null;
         }
 
         protected override void Update(GameTime gameTime)
@@ -111,16 +104,15 @@ namespace Programon
                     menuWindow.Update();
                     break;
                 case GameState.NEWGAME:
-                    spriteDrawer.Update(BackGround, DrawPlane, Player);
+                    spriteDrawer.Update(Map.MapDictionary, DrawPlane, Player);
                     break;
                 case GameState.OPTIONS:
                     OptionsMenu.Update();
                     break;
                 case GameState.OVERWORLD:
-                    spriteDrawer.Update(BackGround, DrawPlane, Player);
+                    spriteDrawer.Update(Map.MapDictionary, DrawPlane, Player);
                     break;
                 case GameState.BATTLE:
-                    spriteDrawer.Update(BackGround, DrawPlane, Player);
                     break;
                 case GameState.PROGRAMONSCREEN:
                     programonMenu.Update();
@@ -177,59 +169,6 @@ namespace Programon
             spriteDrawer.EndDraw();
 
             base.EndDraw();
-        }
-
-        /// <summary>
-        /// Loads the settings from XML.
-        /// </summary>
-        private void LoadSettingsFromXml()
-        {
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(CONFIGLOCATION);
-
-            string width;
-            width = xDoc.SelectSingleNode("Config/Resolution/width").InnerText;
-
-            string height = xDoc.SelectSingleNode("Config/Resolution/height").InnerText;
-
-            int screenWidth = 800;
-            int screenHeight = 600;
-
-            if (int.TryParse(width, out screenWidth) && int.TryParse(height, out screenHeight))
-            {
-                spriteDrawer.SetWindowSize(screenWidth, screenHeight);
-            }
-            else
-            {
-                spriteDrawer.SetWindowSize(screenWidth, screenHeight);
-            }
-
-            string volumeText = xDoc.SelectSingleNode("Config/Mastervolume").InnerText;
-
-            double volumeValue;
-            if (double.TryParse(volumeText, out volumeValue))
-            {
-                this.VolumeLevel = volumeValue;
-            }
-            else
-            {
-                this.VolumeLevel = 100;
-            }
-        }
-
-        /// <summary>
-        /// Saves the changes to XML.
-        /// </summary>
-        public void SaveChangesToXml()
-        {
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(CONFIGLOCATION);
-
-            xDoc.SelectSingleNode("Config/Resolution/width").InnerText = spriteDrawer.GetWindowWidth().ToString();
-            xDoc.SelectSingleNode("Config/Resolution/height").InnerText = spriteDrawer.GetWindowHeight().ToString();
-
-            xDoc.SelectSingleNode("Config/Mastervolume").InnerText = VolumeLevel.ToString();
-            xDoc.Save(CONFIGLOCATION);
         }
     }
 }

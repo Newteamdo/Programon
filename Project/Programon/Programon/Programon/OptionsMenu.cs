@@ -315,7 +315,7 @@ namespace Programon
 
             GameWindow.VolumeLevel = Slider.GetSliderValue();
             SpriteDrawer.SetWindowSize(width, height);
-            GameWindow.SaveChangesToXml();
+            XmlLoader.SaveSettings(GameWindow, SpriteDrawer,MainWindow.CONFIGLOCATION);
 
             CalculatePositions();
         }
