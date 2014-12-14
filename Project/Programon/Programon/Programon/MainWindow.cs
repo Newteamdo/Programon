@@ -16,22 +16,18 @@ namespace Programon
     public class MainWindow : Game
     {
         public const string CONFIGLOCATION = "config.xml";
-        private const string MAPLOCATION = "map.xml";
+        private const string MAPLOCATION = "Maps/map.xml";
 
         private Camera MainCamera { get; set; }
         private SpriteDrawer SpriteDrawer { get; set; }
         private KeyHandler Keyhandler { get; set; }
 
-        private Texture2D TestTexture { get; set; }
-        private Texture2D TestTextBoxCenter { get; set; }
-
-        public Actor Player { get; set; }
+        public Actor Player { get; private set; }
         public Map Map { get; private set; }
-        public Rectangle MapBounds { get; set; }
 
         public double VolumeLevel { get; set; }
 
-        public GameState State { get; set; }
+        public GameState State { get; private set; }
 
         private BattleScreen testBattle;
         private MainMenuWindow menuWindow;
@@ -57,12 +53,9 @@ namespace Programon
 
         protected override void Initialize()
         {
-            Map = new Map();
             menuWindow.initialize();
             programonMenu.Initialize();
             MainCamera.Initialize(GraphicsDevice.Viewport.Bounds);
-
-            MapBounds = new Rectangle(0, 0, 100, 100);
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
             Player = new Actor(new Vector2(1, 1), Vector2.One);
@@ -104,15 +97,15 @@ namespace Programon
                     menuWindow.Update();
                     break;
                 case GameState.NEWGAME:
-                    MainCamera.Update(Player.FixedPosition, MapBounds);
-                    SpriteDrawer.Update(Map.MapDictionary, MainCamera, Player);
+                    MainCamera.Update(Player.FixedPosition, Map.Size);
+                    SpriteDrawer.Update(Map.MapDictionary, MainCamera);
                     break;
                 case GameState.OPTIONS:
                     OptionsMenu.Update();
                     break;
                 case GameState.OVERWORLD:
-                    MainCamera.Update(Player.FixedPosition, MapBounds);
-                    SpriteDrawer.Update(Map.MapDictionary, MainCamera, Player);
+                    MainCamera.Update(Player.FixedPosition, Map.Size);
+                    SpriteDrawer.Update(Map.MapDictionary, MainCamera);
                     break;
                 case GameState.BATTLE:
                     break;
@@ -159,7 +152,7 @@ namespace Programon
                     SpriteDrawer.DrawNodes(testBattle.GuiList, MainCamera);
                     break;
                 case GameState.PROGRAMONSCREEN:
-                    SpriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[] { programonMenu } });
+                    SpriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[1] { programonMenu } });
                     break;
             }
 

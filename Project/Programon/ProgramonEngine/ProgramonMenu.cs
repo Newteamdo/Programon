@@ -79,8 +79,8 @@ namespace ProgramonEngine
 
         public void Update()
         {
-            screenWidth = spritedrawer.Graphics.PreferredBackBufferWidth;
-            screenHeight = spritedrawer.Graphics.PreferredBackBufferHeight;
+            screenWidth = spritedrawer.BufferSize.Width;
+            screenHeight = spritedrawer.BufferSize.Height;
             CheckAmountOfProgramon();
         }
 

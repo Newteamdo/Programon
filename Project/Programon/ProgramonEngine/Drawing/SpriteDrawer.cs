@@ -8,11 +8,13 @@ namespace ProgramonEngine
 {
     public class SpriteDrawer
     {
+        public Rectangle BufferSize { get { return Graphics.GraphicsDevice.Viewport.Bounds; } private set { } }
+
         private SpriteBatch SpriteBatch { get; set; }
         private SpriteFont DebugFont { get; set; }
 
-        public GraphicsDeviceManager Graphics { get; set; }
-        private IEnumerable<Node> FixedNodes { get; set; }
+        private GraphicsDeviceManager Graphics { get; set; }
+        private Node[] FixedNodes { get; set; }
 
         public SpriteDrawer(Game GameWindow, Rectangle bounds, bool fullscreen)
         {
@@ -31,9 +33,9 @@ namespace ProgramonEngine
         }
 
         /// <summary> Update the drawables based on the camera. </summary>
-        public void Update(Dictionary<Vector2, Node> background, Camera cam, Actor player)
+        public void Update(Dictionary<Vector2, Node> background, Camera cam)
         {
-            FixedNodes = background.Values.Where(n => n.Transform.IsBetweenBounds(cam.CameraWorld));
+            FixedNodes = background.Values.Where(n => n.Transform.IsBetweenBounds(cam.CameraWorld)).ToArray();
         }
 
         public void BeginDraw()
@@ -42,19 +44,23 @@ namespace ProgramonEngine
         }
 
         /// <summary> Draw the background, player and special nodes. </summary>
-        public void Draw(Camera camera, Actor player, List<Node> addedNodes = null)
+        public void Draw(Camera camera, Actor player, IEnumerable<Node> addedNodes = null, IEnumerable<Actor> actors = null)
         {
             DrawBackground(camera);
+
+            if (actors != null) DrawActors(actors, camera);
+
             DrawPlayer(player, camera);
 
-            if (addedNodes != null)
-                DrawNodes(addedNodes, camera);
+            if (addedNodes != null) DrawNodes(addedNodes, camera);
         }
 
         private void DrawBackground(Camera cam)
         {
-            foreach (Node cur in FixedNodes)
+            for (int i = 0; i < FixedNodes.Count(); i++)
             {
+                Node cur = FixedNodes.ElementAt(i);
+
                 SpriteBatch.Draw(cur.Sprite.Texture,
                     cam.GetRelativePosition(cur.FixedPosition),
                     null,
@@ -67,10 +73,12 @@ namespace ProgramonEngine
             }
         }
 
-        public void DrawNodes(List<Node> nodes, Camera cam)
+        public void DrawNodes(IEnumerable<Node> nodes, Camera cam)
         {
-            foreach (Node cur in nodes)
+            for (int i = 0; i < nodes.Count(); i++)
             {
+                Node cur = nodes.ElementAt(i);
+
                 SpriteBatch.Draw(cur.Sprite.Texture,
                     cam.GetRelativePosition(cur.FixedPosition),
                     null,
@@ -96,12 +104,30 @@ namespace ProgramonEngine
                 0f);
         }
 
+        private void DrawActors(IEnumerable<Actor> actors, Camera cam)
+        {
+            for (int i = 0; i < actors.Count(); i++)
+            {
+                Actor cur = actors.ElementAt(i);
+
+                SpriteBatch.Draw(cur.Sprite.Texture,
+                    cam.GetRelativePosition(cur.FixedPosition),
+                    null,
+                    cur.Sprite.Tint,
+                    0f,
+                    Vector2.Zero,
+                    cur.Transform.Scale,
+                    SpriteEffects.None,
+                    0f);
+            }
+        }
+
         /// <summary> Draw the given menu. </summary>
         public void DrawGUI(IMenu menu)
         {
-            foreach (IGuiItem cur in menu.Childs)
+            for (int i = 0; i < menu.Childs.Length; i++)
             {
-                cur.Draw(SpriteBatch);
+                menu.Childs[i].Draw(SpriteBatch);
             }
         }
 
@@ -116,16 +142,6 @@ namespace ProgramonEngine
             Graphics.PreferredBackBufferWidth = width;
             Graphics.PreferredBackBufferHeight = height;
             Graphics.ApplyChanges();
-        }
-
-        public int GetWindowWidth()
-        {
-            return Graphics.PreferredBackBufferWidth;
-        }
-
-        public int GetWindowHeight()
-        {
-            return Graphics.PreferredBackBufferHeight;
         }
     }
 }

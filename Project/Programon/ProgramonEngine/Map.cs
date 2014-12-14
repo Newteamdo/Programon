@@ -17,6 +17,8 @@ namespace ProgramonEngine
         public int SizeX { get; private set; }
         public int SizeY { get; private set; }
 
+        public Rectangle Size { get { return new Rectangle(0, 0, SizeX, SizeY); } private set { } }
+
         public Dictionary<Vector2, Node> MapDictionary { get; private set; }
 
         /// <summary>

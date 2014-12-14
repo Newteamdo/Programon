@@ -64,8 +64,8 @@ namespace Programon
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(xmlLocation);
 
-            xDoc.SelectSingleNode("Config/Resolution/width").InnerText = spriteDrawer.GetWindowWidth().ToString();
-            xDoc.SelectSingleNode("Config/Resolution/height").InnerText = spriteDrawer.GetWindowHeight().ToString();
+            xDoc.SelectSingleNode("Config/Resolution/width").InnerText = spriteDrawer.BufferSize.Width.ToString();
+            xDoc.SelectSingleNode("Config/Resolution/height").InnerText = spriteDrawer.BufferSize.Height.ToString();
 
             xDoc.SelectSingleNode("Config/Mastervolume").InnerText = mainWindow.VolumeLevel.ToString();
             xDoc.Save(xmlLocation);
@@ -81,10 +81,10 @@ namespace Programon
         {
             XmlDocument mapFile = new XmlDocument();
 
-            mapFile.Load("map.xml");
+            mapFile.Load(xmlLocation);
 
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("map.xml");
+            xmlDoc.Load(xmlLocation);
 
             XmlNode mapNode = xmlDoc.SelectSingleNode("Map");
             int mapId = Convert.ToInt16(mapNode.Attributes["Id"].Value);

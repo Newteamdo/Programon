@@ -19,58 +19,46 @@ namespace Programon
         {
             KeyboardState state = Keyboard.GetState();
 
-            if (state.IsKeyDown(Keys.Up))
-            {
-                if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitY))
-                    GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitY]);
-            }
+            if (state.GetPressedKeys().Length <= 0) return;
 
-            else if (state.IsKeyDown(Keys.Down))
+            switch (state.GetPressedKeys()[0])
             {
-                if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitY))
-                    GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitY]);
-            }
-
-            else if (state.IsKeyDown(Keys.Left))
-            {
-                if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitX))
-                    GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitX]);
-            }
-
-            else if (state.IsKeyDown(Keys.Right))
-            {
-                if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitX))
-                    GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitX]);
-            }
-
-            if (state.IsKeyDown(Keys.Escape))
-            {
-                GameWindow.Exit();
-            }
-
-            if (state.IsKeyDown(Keys.Z))
-            {
-                // action button or agree button
-            }
-
-            if (state.IsKeyDown(Keys.X))
-            {
-                // cancel button or back button
-            }
-
-            if(state.IsKeyDown(Keys.F1))
-            {
-                GameWindow.SetState(GameState.BATTLE);
-            }
-            
-            if(state.IsKeyDown(Keys.F2))
-            {
-                GameWindow.SetState(GameState.OVERWORLD);
-            }
-
-            if(state.IsKeyDown(Keys.F3))
-            {
-                GameWindow.SetState(GameState.PROGRAMONSCREEN);
+                case (Keys.Escape):
+                    GameWindow.Exit();
+                    return;
+                case (Keys.Up):
+                    if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitY))
+                        GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitY]);
+                    return;
+                case (Keys.Down):
+                    if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitY))
+                        GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitY]);
+                    return;
+                case (Keys.Left):
+                    if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitX))
+                        GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitX]);
+                    return;
+                case (Keys.Right):
+                    if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitX))
+                        GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitX]);
+                    return;
+                case (Keys.Z):
+                    // action button or agree button
+                    return;
+                case (Keys.X):
+                    // cancel button or back button
+                    return;
+                case (Keys.F1):
+                    GameWindow.SetState(GameState.BATTLE);
+                    return;
+                case (Keys.F2):
+                    GameWindow.SetState(GameState.OVERWORLD);
+                    return;
+                case (Keys.F3):
+                    GameWindow.SetState(GameState.PROGRAMONSCREEN);
+                    return;
+                default:
+                    return;
             }
         }
     }

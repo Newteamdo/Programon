@@ -110,8 +110,8 @@ namespace Programon
             this.SpriteDrawer = sDrawer;
             this.TextFont = mainWindow.Content.Load<SpriteFont>("DebugFont");
 
-            this.ScreenWidth = sDrawer.GetWindowWidth();
-            this.ScreenHeight = sDrawer.GetWindowHeight();
+            this.ScreenWidth = sDrawer.BufferSize.Width;
+            this.ScreenHeight = sDrawer.BufferSize.Height;
             this.CurrentIndexResolution = 3;
 
             GetSupportedResolutions();

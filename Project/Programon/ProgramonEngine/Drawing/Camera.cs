@@ -63,7 +63,7 @@ namespace ProgramonEngine
             if ((lookAt.Y - (GraphicsBounds.Height >> 1)) >= 0 && (lookAt.Y + (GraphicsBounds.Height >> 1)) <= mapBounds.Height * Sprite.NodeHeight)
                 Position = new Vector2(Position.X, relativeLookAt.Y);
 
-            CameraWorld = new Rectangle((int)Position.X, (int)Position.Y, (int)(GraphicsBounds.Width + Position.X), (int)(GraphicsBounds.Height + Position.Y));
+            CameraWorld = new Rectangle((int)Position.X, (int)Position.Y, (int)((GraphicsBounds.Width / Sprite.NodeWidth) + Position.X), (int)((GraphicsBounds.Height / Sprite.NodeHeight) + Position.Y));
             CameraOffset = new Vector2(CameraWorld.X * Sprite.NodeWidth, CameraWorld.Y * Sprite.NodeHeight);
         }
 
