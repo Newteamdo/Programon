@@ -10,4 +10,9 @@ namespace ProgramonEngine
     {
         void Draw(SpriteBatch spriteBatch);
     }
+
+    public interface IMenu
+    {
+        IGuiItem[] Childs { get; set; }
+    }
 }

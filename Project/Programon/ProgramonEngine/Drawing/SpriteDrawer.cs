@@ -10,8 +10,6 @@ namespace ProgramonEngine
     {
         private SpriteBatch SpriteBatch { get; set; }
         private SpriteFont DebugFont { get; set; }
-        private Vector2 CameraOffset { get; set; }
-        private Vector2 ScreenCenter { get; set; }
 
         public GraphicsDeviceManager Graphics { get; set; }
         private IEnumerable<Node> FixedNodes { get; set; }
@@ -22,7 +20,6 @@ namespace ProgramonEngine
             Graphics.SynchronizeWithVerticalRetrace = false;
             Graphics.PreferredBackBufferWidth = bounds.Width;
             Graphics.PreferredBackBufferHeight = bounds.Height;
-            ScreenCenter = new Vector2(bounds.Width >> 1, bounds.Height >> 1);
             Graphics.IsFullScreen = fullscreen;
             FixedNodes = new Node[0];
         }
@@ -33,11 +30,10 @@ namespace ProgramonEngine
             DebugFont = content.Load<SpriteFont>("DebugFont");
         }
 
-        public void Update(Dictionary<Vector2, Node> background, Rectangle drawPlane, Actor player)
+        /// <summary> Update the drawables based on the camera. </summary>
+        public void Update(Dictionary<Vector2, Node> background, Camera cam, Actor player)
         {
-            FixedNodes = background.Values.Where(n => n.Transform.IsBetweenBounds(drawPlane));
-
-            CameraOffset = new Vector2(drawPlane.X * Sprite.TextureWidth, drawPlane.Y * Sprite.TextureHeight);
+            FixedNodes = background.Values.Where(n => n.Transform.IsBetweenBounds(cam.CameraWorld));
         }
 
         public void BeginDraw()
@@ -45,36 +41,62 @@ namespace ProgramonEngine
             SpriteBatch.Begin();
         }
 
-        public void Draw(Actor player, List<Node> addedNodes = null)
+        /// <summary> Draw the background, player and special nodes. </summary>
+        public void Draw(Camera camera, Actor player, List<Node> addedNodes = null)
         {
-            DrawBackground();
-            DrawPlayer(player);
+            DrawBackground(camera);
+            DrawPlayer(player, camera);
 
             if (addedNodes != null)
-                DrawNodes(addedNodes);
+                DrawNodes(addedNodes, camera);
         }
 
-        private void DrawBackground()
+        private void DrawBackground(Camera cam)
         {
             foreach (Node cur in FixedNodes)
             {
-                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, null, cur.Sprite.Tint, 0f, Vector2.Zero, cur.Transform.Scale, SpriteEffects.None, 0f);
+                SpriteBatch.Draw(cur.Sprite.Texture,
+                    cam.GetRelativePosition(cur.FixedPosition),
+                    null,
+                    cur.Sprite.Tint,
+                    0f,
+                    Vector2.Zero,
+                    cur.Transform.Scale,
+                    SpriteEffects.None,
+                    0f);
             }
         }
 
-        public void DrawNodes(List<Node> nodes)
+        public void DrawNodes(List<Node> nodes, Camera cam)
         {
             foreach (Node cur in nodes)
             {
-                SpriteBatch.Draw(cur.Sprite.Texture, cur.FixedPosition + CameraOffset, null, cur.Sprite.Tint, 0f, Vector2.Zero, cur.Transform.Scale, SpriteEffects.None, 0f);
+                SpriteBatch.Draw(cur.Sprite.Texture,
+                    cam.GetRelativePosition(cur.FixedPosition),
+                    null,
+                    cur.Sprite.Tint,
+                    0f,
+                    Vector2.Zero,
+                    cur.Transform.Scale,
+                    SpriteEffects.None,
+                    0f);
             }
         }
 
-        private void DrawPlayer(Actor player)
+        private void DrawPlayer(Actor player, Camera cam)
         {
-            SpriteBatch.Draw(player.Sprite.Texture, player.FixedPosition + CameraOffset, null, player.Sprite.Tint, 0f, Vector2.Zero, player.Transform.Scale, SpriteEffects.None, 0f);
+            SpriteBatch.Draw(player.Sprite.Texture,
+                cam.GetRelativePosition(player.FixedPosition),
+                null,
+                player.Sprite.Tint,
+                0f,
+                Vector2.Zero,
+                player.Transform.Scale,
+                SpriteEffects.None,
+                0f);
         }
 
+        /// <summary> Draw the given menu. </summary>
         public void DrawGUI(IMenu menu)
         {
             foreach (IGuiItem cur in menu.Childs)
@@ -88,6 +110,7 @@ namespace ProgramonEngine
             SpriteBatch.End();
         }
 
+        /// <summary> Set the window sizes. (WARNING: May cause screen tearing) </summary>
         public void SetWindowSize(int width, int height)
         {
             Graphics.PreferredBackBufferWidth = width;

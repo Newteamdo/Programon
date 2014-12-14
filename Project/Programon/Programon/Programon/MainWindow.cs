@@ -18,7 +18,8 @@ namespace Programon
         public const string CONFIGLOCATION = "config.xml";
         private const string MAPLOCATION = "map.xml";
 
-        private SpriteDrawer spriteDrawer { get; set; }
+        private Camera MainCamera { get; set; }
+        private SpriteDrawer SpriteDrawer { get; set; }
         private KeyHandler Keyhandler { get; set; }
 
         private Texture2D TestTexture { get; set; }
@@ -26,8 +27,6 @@ namespace Programon
 
         public Actor Player { get; set; }
         public Map Map { get; private set; }
-
-        public Rectangle DrawPlane { get; set; }
         public Rectangle MapBounds { get; set; }
 
         public double VolumeLevel { get; set; }
@@ -42,13 +41,14 @@ namespace Programon
 
         public MainWindow()
         {
-            spriteDrawer = new SpriteDrawer(this, new Rectangle(0, 0, 1024, 720), false);
+            SpriteDrawer = new SpriteDrawer(this, new Rectangle(0, 0, 1024, 720), false);
+            MainCamera = new Camera(Vector2.Zero);
             menuWindow = new MainMenuWindow(this);
-            programonMenu = new ProgramonMenu(spriteDrawer, this);
+            programonMenu = new ProgramonMenu(SpriteDrawer, this);
             Keyhandler = new KeyHandler(this);
             testBattle = new BattleScreen(this);
 
-            XmlLoader.LoadSettings(this, spriteDrawer, CONFIGLOCATION);
+            XmlLoader.LoadSettings(this, SpriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
             State = GameState.OPTIONS;
 
@@ -60,19 +60,19 @@ namespace Programon
             Map = new Map();
             menuWindow.initialize();
             programonMenu.Initialize();
+            MainCamera.Initialize(GraphicsDevice.Viewport.Bounds);
 
-            DrawPlane = GraphicsDevice.Viewport.Bounds;
             MapBounds = new Rectangle(0, 0, 100, 100);
 
-            OptionsMenu = new OptionsMenu(this, spriteDrawer);
-            Player = new Actor(new Vector2(1,1));
+            OptionsMenu = new OptionsMenu(this, SpriteDrawer);
+            Player = new Actor(new Vector2(1, 1), Vector2.One);
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            spriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
+            SpriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
             Player.Sprite = Sprite.FromStaticColor(Color.Blue, Color.White, GraphicsDevice);
 
             switch (State)
@@ -104,13 +104,15 @@ namespace Programon
                     menuWindow.Update();
                     break;
                 case GameState.NEWGAME:
-                    spriteDrawer.Update(Map.MapDictionary, DrawPlane, Player);
+                    MainCamera.Update(Player.FixedPosition, MapBounds);
+                    SpriteDrawer.Update(Map.MapDictionary, MainCamera, Player);
                     break;
                 case GameState.OPTIONS:
                     OptionsMenu.Update();
                     break;
                 case GameState.OVERWORLD:
-                    spriteDrawer.Update(Map.MapDictionary, DrawPlane, Player);
+                    MainCamera.Update(Player.FixedPosition, MapBounds);
+                    SpriteDrawer.Update(Map.MapDictionary, MainCamera, Player);
                     break;
                 case GameState.BATTLE:
                     break;
@@ -132,7 +134,7 @@ namespace Programon
 
         protected override bool BeginDraw()
         {
-            spriteDrawer.BeginDraw();
+            SpriteDrawer.BeginDraw();
 
             return base.BeginDraw();
         }
@@ -142,22 +144,22 @@ namespace Programon
             switch (State)
             {
                 case GameState.MAINMENU:
-                    spriteDrawer.DrawGUI(menuWindow);
+                    SpriteDrawer.DrawGUI(menuWindow);
                     break;
                 case GameState.NEWGAME:
-                    spriteDrawer.Draw(Player);
+                    SpriteDrawer.Draw(MainCamera, Player);
                     break;
                 case GameState.OPTIONS:
-                    spriteDrawer.DrawGUI(OptionsMenu);
+                    SpriteDrawer.DrawGUI(OptionsMenu);
                     break;
                 case GameState.OVERWORLD:
-                    spriteDrawer.Draw(Player);
+                    SpriteDrawer.Draw(MainCamera, Player);
                     break;
                 case GameState.BATTLE:
-                    spriteDrawer.DrawNodes(testBattle.GuiList);
+                    SpriteDrawer.DrawNodes(testBattle.GuiList, MainCamera);
                     break;
                 case GameState.PROGRAMONSCREEN:
-                    spriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[] { programonMenu } });
+                    SpriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[] { programonMenu } });
                     break;
             }
 
@@ -166,7 +168,7 @@ namespace Programon
 
         protected override void EndDraw()
         {
-            spriteDrawer.EndDraw();
+            SpriteDrawer.EndDraw();
 
             base.EndDraw();
         }

@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using ProgramonEngine;
 
 namespace Programon
@@ -25,40 +21,24 @@ namespace Programon
 
             if (state.IsKeyDown(Keys.Up))
             {
-                if (GameWindow.Player.FixedPosition.Y - GameWindow.GraphicsDevice.Viewport.Height / 2 > 0 &&
-                    GameWindow.MapBounds.Height * Sprite.TextureHeight - GameWindow.Player.FixedPosition.Y > GameWindow.GraphicsDevice.Viewport.Height / 2)
-                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X, GameWindow.DrawPlane.Y + 1, GameWindow.DrawPlane.Width, GameWindow.DrawPlane.Height + 1);
-
                 if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitY))
                     GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitY]);
             }
 
             else if (state.IsKeyDown(Keys.Down))
             {
-                if (GameWindow.Player.FixedPosition.Y - GameWindow.GraphicsDevice.Viewport.Height / 2 > 0 &&
-                    GameWindow.MapBounds.Height * Sprite.TextureHeight - GameWindow.Player.FixedPosition.Y > GameWindow.GraphicsDevice.Viewport.Height / 2)
-                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X, GameWindow.DrawPlane.Y - 1, GameWindow.DrawPlane.Width, GameWindow.DrawPlane.Height - 1);
-
                 if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitY))
                     GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitY]);
             }
 
             else if (state.IsKeyDown(Keys.Left))
             {
-                if (GameWindow.Player.FixedPosition.X - GameWindow.GraphicsDevice.Viewport.Width / 2 > 0 &&
-                    GameWindow.MapBounds.Width * Sprite.TextureWidth - GameWindow.Player.FixedPosition.X > GameWindow.GraphicsDevice.Viewport.Width / 2)
-                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X + 1, GameWindow.DrawPlane.Y, GameWindow.DrawPlane.Width + 1, GameWindow.DrawPlane.Height);
-
                 if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitX))
                     GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitX]);
             }
 
             else if (state.IsKeyDown(Keys.Right))
             {
-                if (GameWindow.Player.FixedPosition.X - GameWindow.GraphicsDevice.Viewport.Width / 2 > 0 &&
-                    GameWindow.MapBounds.Width * Sprite.TextureWidth - GameWindow.Player.FixedPosition.X > GameWindow.GraphicsDevice.Viewport.Width / 2)
-                    GameWindow.DrawPlane = new Rectangle(GameWindow.DrawPlane.X - 1, GameWindow.DrawPlane.Y, GameWindow.DrawPlane.Width - 1, GameWindow.DrawPlane.Height);
-
                 if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitX))
                     GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitX]);
             }

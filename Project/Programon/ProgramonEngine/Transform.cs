@@ -34,6 +34,7 @@ namespace ProgramonEngine
             Pdirection = direction;
         }
 
+        /// <summary> Check if the transform is located in the rectangle. </summary>
         public bool IsBetweenBounds(Rectangle bounds)
         {
             if (Pposition.X >= bounds.X && Pposition.X <= bounds.Width && Pposition.Y >= bounds.Y && Pposition.Y <= bounds.Height)

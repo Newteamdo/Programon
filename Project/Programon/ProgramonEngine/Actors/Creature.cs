@@ -17,7 +17,7 @@ namespace ProgramonEngine
         public List<Ability> abilities = new List<Ability>();
 
         public Creature(Vector2 startPos, byte level, Stats programonStats, Stats statsPerLevel,List<Ability> abilities)
-            :base(startPos)
+            :base(startPos, Vector2.One)
         {
             this.level = level;
             this.programonBaseStats = programonStats;

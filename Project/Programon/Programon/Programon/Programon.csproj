@@ -77,8 +77,8 @@
     <Compile Include="XmlLoader.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="KeyHandler.cs" />
-    <Compile Include="MainMenuWindow.cs" />
-    <Compile Include="OptionsMenu.cs" />
+    <Compile Include="Menus\MainMenuWindow.cs" />
+    <Compile Include="Menus\OptionsMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainWindow.cs" />

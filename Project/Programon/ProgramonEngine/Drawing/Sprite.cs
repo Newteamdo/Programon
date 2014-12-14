@@ -5,8 +5,8 @@ namespace ProgramonEngine
 {
     public struct Sprite
     {
-        public const int TextureHeight = 64;
-        public const int TextureWidth = 64;
+        public const int NodeHeight = 64;
+        public const int NodeWidth = 64;
 
         public Texture2D Texture { get { return Ptexture; } private set { Ptexture = value; } }
         public Color Tint { get { return Ptint; } private set { Ptint = value; } }
@@ -33,15 +33,15 @@ namespace ProgramonEngine
         /// <returns> Static Color Sprite. </returns>
         public static Sprite FromStaticColor(Color staticColor, Color tint, GraphicsDevice device)
         {
-            Texture2D texture = new Texture2D(device, TextureWidth, TextureHeight);
+            Texture2D texture = new Texture2D(device, NodeWidth, NodeHeight);
 
-            Color[] colorData = new Color[TextureWidth * TextureHeight];
+            Color[] colorData = new Color[NodeWidth * NodeHeight];
 
-            for (int y = 0; y < TextureHeight; y++)
+            for (int y = 0; y < NodeHeight; y++)
             {
-                for (int x = 0; x < TextureWidth; x++)
+                for (int x = 0; x < NodeWidth; x++)
                 {
-                    colorData[(TextureHeight * y) + x] = staticColor;
+                    colorData[(NodeHeight * y) + x] = staticColor;
                 }
             }
 
