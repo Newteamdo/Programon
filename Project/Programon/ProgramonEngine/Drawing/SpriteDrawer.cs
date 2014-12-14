@@ -44,7 +44,7 @@ namespace ProgramonEngine
         }
 
         /// <summary> Draw the background, player and special nodes. </summary>
-        public void Draw(Camera camera, Actor player, IEnumerable<Node> addedNodes = null, IEnumerable<Actor> actors = null)
+        public void Draw(Camera camera, Player player, IEnumerable<Node> addedNodes = null, IEnumerable<Actor> actors = null)
         {
             DrawBackground(camera);
 
@@ -91,17 +91,34 @@ namespace ProgramonEngine
             }
         }
 
-        private void DrawPlayer(Actor player, Camera cam)
+        private void DrawPlayer(Player player, Camera cam)
         {
-            SpriteBatch.Draw(player.Sprite.Texture,
-                cam.GetRelativePosition(player.FixedPosition),
-                null,
-                player.Sprite.Tint,
-                0f,
-                Vector2.Zero,
-                player.Transform.Scale,
-                SpriteEffects.None,
-                0f);
+            if (player.IsWalking)
+            {
+                Sprite frame = player.Animations[AnimationTypes.Walking].NextFrame();
+
+                SpriteBatch.Draw(frame.Texture,
+                    cam.GetRelativePosition(player.FixedPosition),
+                    null,
+                    frame.Tint,
+                    0f,
+                    Vector2.Zero,
+                    player.Transform.Scale,
+                    SpriteEffects.None,
+                    0f);
+            }
+            else
+            {
+                SpriteBatch.Draw(player.Sprite.Texture,
+                    cam.GetRelativePosition(player.FixedPosition),
+                    null,
+                    player.Sprite.Tint,
+                    0f,
+                    Vector2.Zero,
+                    player.Transform.Scale,
+                    SpriteEffects.None,
+                    0f);
+            }
         }
 
         private void DrawActors(IEnumerable<Actor> actors, Camera cam)

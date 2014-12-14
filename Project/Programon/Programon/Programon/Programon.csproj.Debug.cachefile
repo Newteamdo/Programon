@@ -30,5 +30,12 @@ Content\vierkant.xnb
 Content\TestSounds\Normal.xnb
 Content\TestSounds\Start.xnb
 Content\DebugFont.xnb
+Content\Player\TempPlayer_Walk01.xnb
+Content\Player\TempPlayer_Walk02.xnb
+Content\Player\TempPlayer_Walk03.xnb
+Content\Player\TempPlayer_Walk04.xnb
+Content\Player\TempPlayer_Walk05.xnb
+Content\Player\TempPlayer_Stand.xnb
 config.xml
-map.xml
+Maps\map.xml
+Maps\CameraTestMap_Big.xml

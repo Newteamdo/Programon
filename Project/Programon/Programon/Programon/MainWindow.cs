@@ -22,7 +22,7 @@ namespace Programon
         private SpriteDrawer SpriteDrawer { get; set; }
         private KeyHandler Keyhandler { get; set; }
 
-        public Actor Player { get; private set; }
+        public Player Player { get; private set; }
         public Map Map { get; private set; }
 
         public double VolumeLevel { get; set; }
@@ -58,7 +58,7 @@ namespace Programon
             MainCamera.Initialize(GraphicsDevice.Viewport.Bounds);
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
-            Player = new Actor(new Vector2(1, 1), Vector2.One);
+            Player = new Player(new Vector2(1, 1), new Vector2(4, 4));
 
             base.Initialize();
         }
@@ -66,7 +66,6 @@ namespace Programon
         protected override void LoadContent()
         {
             SpriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
-            Player.Sprite = Sprite.FromStaticColor(Color.Blue, Color.White, GraphicsDevice);
 
             switch (State)
             {
@@ -75,6 +74,8 @@ namespace Programon
                     break;
                 case GameState.OVERWORLD:
                 case GameState.NEWGAME:
+                    Player.Load(Content, "Player/TempPlayer_Stand");
+                    Player.LoadAnimation(Content, AnimationTypes.Walking, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.BATTLE:
@@ -91,6 +92,7 @@ namespace Programon
         protected override void Update(GameTime gameTime)
         {
             this.Keyhandler.KeyPress();
+
             switch (State)
             {
                 case GameState.MAINMENU:

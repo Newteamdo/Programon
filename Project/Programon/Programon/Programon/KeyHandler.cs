@@ -17,6 +17,8 @@ namespace Programon
 
         public void KeyPress()
         {
+            GameWindow.Player.Update();
+
             KeyboardState state = Keyboard.GetState();
 
             if (state.GetPressedKeys().Length <= 0) return;
@@ -25,40 +27,40 @@ namespace Programon
             {
                 case (Keys.Escape):
                     GameWindow.Exit();
-                    return;
+                    break;
                 case (Keys.Up):
                     if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitY))
                         GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitY]);
-                    return;
+                    break;
                 case (Keys.Down):
                     if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitY))
                         GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitY]);
-                    return;
+                    break;
                 case (Keys.Left):
                     if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position - Vector2.UnitX))
                         GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position - Vector2.UnitX]);
-                    return;
+                    break;
                 case (Keys.Right):
                     if (GameWindow.Map.MapDictionary.ContainsKey(GameWindow.Player.Transform.Position + Vector2.UnitX))
                         GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitX]);
-                    return;
+                    break;
                 case (Keys.Z):
                     // action button or agree button
-                    return;
+                    break;
                 case (Keys.X):
                     // cancel button or back button
-                    return;
+                    break;
                 case (Keys.F1):
                     GameWindow.SetState(GameState.BATTLE);
-                    return;
+                    break;
                 case (Keys.F2):
                     GameWindow.SetState(GameState.OVERWORLD);
-                    return;
+                    break;
                 case (Keys.F3):
                     GameWindow.SetState(GameState.PROGRAMONSCREEN);
-                    return;
+                    break;
                 default:
-                    return;
+                    break;
             }
         }
     }

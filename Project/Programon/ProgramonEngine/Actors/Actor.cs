@@ -16,7 +16,7 @@ namespace ProgramonEngine
         }
 
         /// <summary> Move the actor to a new node but only if the node is walkable. </summary>
-        public void Move(Node newPos)
+        public virtual void Move(Node newPos)
         {
             if (!newPos.Walkable) return;
             Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Direction);
