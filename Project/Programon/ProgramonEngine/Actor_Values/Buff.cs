@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Content;
 
 namespace ProgramonEngine
 {
@@ -23,6 +25,11 @@ namespace ProgramonEngine
             this.name = name;
             this.duration = duration;
             this.statChange = statChange;
+        }
+
+        public static Buff Load(ContentManager content, string name)
+        {
+            return content.Load<Buff>(name);
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="ProgramonEngine.Ability">
+    <name>TestAbility</name>
+    <EP>1</EP>
+    <maxEP>10</maxEP>
+    <selfBuff>
+      <name>SelfBuff</name>
+      <duration>1</duration>
+      <statChange>
+        <health>10</health>
+        <maxHealth>100</maxHealth>
+        <attack>1</attack>
+        <defence>2</defence>
+        <sAttack>3</sAttack>
+        <sDefence>4</sDefence>
+        <speed>5</speed>
+      </statChange>
+    </selfBuff>
+    <enemyBuff>
+      <name>EnemyBuff</name>     
+      <duration>1</duration>
+      <statChange>
+        <health>10</health>
+        <maxHealth>100</maxHealth>
+        <attack>1</attack>
+        <defence>2</defence>
+        <sAttack>3</sAttack>
+        <sDefence>4</sDefence>
+        <speed>5</speed>
+      </statChange>
+    </enemyBuff>
+    <damage>2</damage>
+  </Asset>
+</XnaContent>

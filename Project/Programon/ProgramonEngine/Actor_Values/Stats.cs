@@ -1,4 +1,7 @@
-﻿namespace ProgramonEngine
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
+
+namespace ProgramonEngine
 {
     public class Stats
     {
@@ -30,6 +33,11 @@
             this.sAttack = sAttack;
             this.sDefence = sDefence;
             this.speed = speed;
+        }
+
+        public static Stats Load(ContentManager content, string name)
+        {
+            return content.Load<Stats>(name);
         }
 
         public static Stats operator +(Stats sender, Stats adder)

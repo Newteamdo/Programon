@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Content;
 
 namespace ProgramonEngine
 {
@@ -52,6 +53,11 @@ namespace ProgramonEngine
             this.selfBuff = selfBuff;
             this.enemyBuff = enemyBuff;
             this.damage = damage;
+        }
+
+        public static Ability Load(ContentManager content, string name)
+        {
+            return content.Load<Ability>(name);
         }
     }
 }
