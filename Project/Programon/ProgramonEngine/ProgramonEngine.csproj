@@ -65,6 +65,7 @@
     <Compile Include="Actor_Values\Buff.cs" />
     <Compile Include="AI.cs" />
     <Compile Include="Animation.cs" />
+    <Compile Include="BattleMechanics.cs" />
     <Compile Include="GUI Items\Button.cs" />
     <Compile Include="Drawing\Camera.cs" />
     <Compile Include="Actors\Creature.cs" />

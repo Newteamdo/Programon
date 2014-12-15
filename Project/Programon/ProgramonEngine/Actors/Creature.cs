@@ -35,18 +35,24 @@ namespace ProgramonEngine
             Stats buffSum = new Stats();
             foreach (Buff buff in buffList)
             {
+                buffSum += buff.statChange;
+            }
+            programonTotalStats = buffSum + programonBaseStats;
+        }
+
+        public void UpdateBuffDuration()
+        {
+            foreach (Buff buff in buffList)
+            {
                 if (buff.duration > 0)
                 {
                     buff.duration--;
-                    buffSum += buff.statChange;
                 }
                 else
                 {
                     buffList.Remove(buff);
                 }
             }
-
-            programonTotalStats = buffSum + programonBaseStats;
         }
     }
 }
