@@ -36,6 +36,7 @@ Content\Player\TempPlayer_Walk03.xnb
 Content\Player\TempPlayer_Walk04.xnb
 Content\Player\TempPlayer_Walk05.xnb
 Content\Player\TempPlayer_Stand.xnb
+Content\TestNodeTextures\Tree.xnb
 config.xml
 Maps\map.xml
 Maps\CameraTestMap_Big.xml

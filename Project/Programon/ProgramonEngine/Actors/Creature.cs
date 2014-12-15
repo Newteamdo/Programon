@@ -12,12 +12,12 @@ namespace ProgramonEngine
         public int exp;
         public Stats programonBaseStats;
         public Stats programonTotalStats;
-        public List<Buff> buffList= new List<Buff>();
+        public List<Buff> buffList = new List<Buff>();
         public Stats statsPerLevel;
         public List<Ability> abilities = new List<Ability>();
 
-        public Creature(Vector2 startPos, byte level, Stats programonStats, Stats statsPerLevel,List<Ability> abilities)
-            :base(startPos, Vector2.One)
+        public Creature(Vector2 startPos, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities)
+            : base(startPos, Vector2.One)
         {
             this.level = level;
             this.programonBaseStats = programonStats;
@@ -35,14 +35,14 @@ namespace ProgramonEngine
             Stats buffSum = new Stats();
             foreach (Buff buff in buffList)
             {
-                if (buff.duration>0)
+                if (buff.duration > 0)
                 {
                     buff.duration--;
-                    buffSum += buff.statChange; 
+                    buffSum += buff.statChange;
                 }
                 else
                 {
-                    buffList.Remove(buff);     
+                    buffList.Remove(buff);
                 }
             }
 

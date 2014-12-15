@@ -72,10 +72,12 @@ namespace Programon
                 case GameState.MAINMENU:
                     menuWindow.initialize();
                     break;
-                case GameState.OVERWORLD:
                 case GameState.NEWGAME:
                     Player.Load(Content, "Player/TempPlayer_Stand");
                     Player.LoadAnimation(Content, AnimationTypes.Walking, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
+                    Map = XmlLoader.LoadMap(this, MAPLOCATION);
+                    break;
+                case GameState.OVERWORLD:
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.BATTLE:

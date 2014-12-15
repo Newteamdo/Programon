@@ -14,6 +14,16 @@ namespace ProgramonEngine
         public Buff enemyBuff;
         public int damage;
 
+        public Ability()
+        {
+            this.name = "";
+            this.EP = 0;
+            this.maxEP = 0;
+            this.selfBuff = new Buff();
+            this.enemyBuff = new Buff();
+            this.damage = 0;
+        }
+
         public Ability(string name, int EP, int damage)
         {
             this.name = name;
