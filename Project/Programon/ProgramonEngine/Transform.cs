@@ -2,36 +2,28 @@
 
 namespace ProgramonEngine
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
-
     public struct Transform
     {
         public Vector2 Position { get { return Pposition; } set { Pposition = value; } }
         public Vector2 Scale { get { return Pscale; } set { Pscale = value; } }
-        public Direction Direction { get { return Pdirection; } set { Pdirection = value; } }
+        public float Rotation { get { return Pdirection; } set { Pdirection = value; } }
 
         private Vector2 Pposition;
         private Vector2 Pscale;
-        private Direction Pdirection;
+        private float Pdirection;
 
         public Transform(Vector2 position, Vector2 scale)
         {
             Pposition = position;
             Pscale = scale;
-            Pdirection = global::ProgramonEngine.Direction.Up;
+            Pdirection = 0f;
         }
 
-        public Transform(Vector2 position, Vector2 scale, Direction direction)
+        public Transform(Vector2 position, Vector2 scale, float rotation)
         {
             Pposition = position;
             Pscale = scale;
-            Pdirection = direction;
+            Pdirection = rotation;
         }
 
         /// <summary> Check if the transform is located in the rectangle. </summary>

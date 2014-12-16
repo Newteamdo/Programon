@@ -153,7 +153,7 @@ namespace Programon
                     SpriteDrawer.Draw(MainCamera, Player);
                     break;
                 case GameState.BATTLE:
-                    SpriteDrawer.DrawNodes(testBattle.GuiList, MainCamera);
+                    //SpriteDrawer.DrawNodes(testBattle.GuiList, MainCamera);
                     break;
                 case GameState.PROGRAMONSCREEN:
                     SpriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[1] { programonMenu } });

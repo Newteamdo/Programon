@@ -19,7 +19,7 @@ namespace ProgramonEngine
         public virtual void Move(Node newPos)
         {
             if (!newPos.Walkable) return;
-            Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Direction);
+            Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
         }
 
         /// <summary> Load the spite of the node. </summary>
