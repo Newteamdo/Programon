@@ -7,6 +7,7 @@ namespace ProgramonEngine
 {
     public class BattleMechanics
     {
+
         public void PlayerAttack(Creature playerProgramon, Creature computerProgramon, Ability playerAbility)
         { 
             computerProgramon.AddBuff(playerAbility.enemyBuff);
@@ -26,13 +27,20 @@ namespace ProgramonEngine
             computerProgramon.UpdateStats();
             playerProgramon.UpdateStats();
             playerProgramon.programonBaseStats.health -= Math.Min((computerAbility.damage + computerProgramon.programonTotalStats.attack - playerProgramon.programonTotalStats.defence), 0);
-            UpdateBuffDurations(playerProgramon,computerProgramon);
         }
 
-        private void UpdateBuffDurations(Creature playerProgramon, Creature computerProgramon)
+        public void UpdateBuffDurations(Creature playerProgramon, Creature computerProgramon)
         {
             playerProgramon.UpdateBuffDuration();
             computerProgramon.UpdateBuffDuration();
+        }
+
+        public void Recruit(Creature computerProgramon, Player player)
+        {
+            if (true)
+            {
+                player.AddProgramon(computerProgramon);
+            }
         }
     }
 }
