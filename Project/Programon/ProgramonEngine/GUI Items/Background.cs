@@ -7,12 +7,18 @@ using System.Text;
 
 namespace ProgramonEngine
 {
+    /// <summary>
+    /// A class to display a background.
+    /// </summary>
     public class Background:IGuiItem
     {
         public Rectangle Rectangle { get; set; }
         private Game Game { get; set; }
         private Texture2D Texture { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Background"/> class.
+        /// </summary>
         public Background()
         {
             Rectangle = new Rectangle(0, 0, 100, 100);
@@ -20,17 +26,33 @@ namespace ProgramonEngine
             Texture = null;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Background"/> class.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
         public Background(Texture2D texture, int width, int height)
         {
             this.Rectangle = new Rectangle(0,0, width,height);
             this.Texture = texture;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Background"/> class.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="rect">The rectangle.</param>
         public Background(Texture2D texture, Rectangle rect)
         {
             this.Rectangle = rect;
             this.Texture = texture;
         }
+
+        /// <summary>
+        /// Draws the background.
+        /// </summary>
+        /// <param name="spriteBatch">The sprite batch.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture,Rectangle,Color.White);
