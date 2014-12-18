@@ -37,10 +37,7 @@ namespace ProgramonEngine
 
         public void Recruit(Creature computerProgramon, Player player)
         {
-            if (true)
-            {
                 player.AddProgramon(computerProgramon);
-            }
         }
     }
 }
