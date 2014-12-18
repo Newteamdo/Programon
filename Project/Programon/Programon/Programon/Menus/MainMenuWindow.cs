@@ -15,6 +15,7 @@ namespace Programon
                 {
                     return new IGuiItem[]
                     {
+                        LeaveMenu,
                         txtFieldLeave,
                         btnYes,
                         btnNo
@@ -42,7 +43,6 @@ namespace Programon
         private Rectangle loadRect;
         private Rectangle optionsRect;
         private Rectangle quitRect;
-        private Rectangle leaveMenu;
         private Rectangle txtLeaveRect;
         private Rectangle yesRect;
         private Rectangle noRect;
@@ -55,6 +55,8 @@ namespace Programon
         private Button btnQuit;
         private Button btnYes;
         private Button btnNo;
+
+        private Background LeaveMenu;
 
         private int buttonWidth;
         private int buttonHeight;
@@ -76,6 +78,8 @@ namespace Programon
 
             buttonX = scrWidth / 2 - buttonWidth / 2;
             buttonY = scrHeight / 6 - buttonHeight / 2;
+
+            LeaveMenu = new Background(mainWindow.Content.Load<Texture2D>("LeaveMenu"), new Rectangle(0,0,100,100));
 
             playRect = new Rectangle(buttonX, buttonY * 2, buttonWidth, buttonHeight);
             loadRect = new Rectangle(buttonX, buttonY * 3, buttonWidth, buttonHeight);
@@ -120,10 +124,11 @@ namespace Programon
             isLeaving = true;
             int width = (scrWidth / 10) * 6;
             width = width / 2;
-            leaveMenu = new Rectangle((scrWidth / 2) - width, buttonY * 4, (scrWidth / 10) * 6, (scrHeight / 6) * 2);
-            yesRect = new Rectangle((leaveMenu.X + leaveMenu.Width) - ((leaveMenu.Width / 100) * 40) - ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
-            noRect = new Rectangle((leaveMenu.X) + ((leaveMenu.Width / 100) * 5), (leaveMenu.Y + leaveMenu.Height) - ((leaveMenu.Height / 100) * 40) - ((leaveMenu.Height / 100) * 10), (leaveMenu.Width / 100) * 40, (leaveMenu.Height / 100) * 40);
-            txtLeaveRect = new Rectangle(leaveMenu.X + ((leaveMenu.X / 100) * 10), leaveMenu.Y + ((leaveMenu.Y / 100) * 10), (leaveMenu.Width / 100) * 80, 0);
+
+            LeaveMenu.Rectangle = new Rectangle((scrWidth / 2) - width, buttonY * 4, (scrWidth / 10) * 6, (scrHeight / 6) * 2);
+            yesRect = new Rectangle((LeaveMenu.Rectangle.X + LeaveMenu.Rectangle.Width) - ((LeaveMenu.Rectangle.Width / 100) * 40) - ((LeaveMenu.Rectangle.Width / 100) * 5), (LeaveMenu.Rectangle.Y + LeaveMenu.Rectangle.Height) - ((LeaveMenu.Rectangle.Height / 100) * 40) - ((LeaveMenu.Rectangle.Height / 100) * 10), (LeaveMenu.Rectangle.Width / 100) * 40, (LeaveMenu.Rectangle.Height / 100) * 40);
+            noRect = new Rectangle((LeaveMenu.Rectangle.X) + ((LeaveMenu.Rectangle.Width / 100) * 5), (LeaveMenu.Rectangle.Y + LeaveMenu.Rectangle.Height) - ((LeaveMenu.Rectangle.Height / 100) * 40) - ((LeaveMenu.Rectangle.Height / 100) * 10), (LeaveMenu.Rectangle.Width / 100) * 40, (LeaveMenu.Rectangle.Height / 100) * 40);
+            txtLeaveRect = new Rectangle(LeaveMenu.Rectangle.X + ((LeaveMenu.Rectangle.X / 100) * 10), LeaveMenu.Rectangle.Y + ((LeaveMenu.Rectangle.Y / 100) * 10), (LeaveMenu.Rectangle.Width / 100) * 80, 0);
             txtFieldLeave = new TextField("Are you sure you want to quit?", Color.Black, Color.Transparent, Color.Transparent, txtLeaveRect, mainWindow.Content.Load<SpriteFont>("DebugFont"));
             btnYes = new Button(yesRect, mainWindow.Content.Load<Texture2D>("Yes"), mainWindow);
             btnNo = new Button(noRect, mainWindow.Content.Load<Texture2D>("No"), mainWindow);

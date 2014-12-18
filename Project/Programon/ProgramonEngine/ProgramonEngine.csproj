@@ -71,6 +71,7 @@
     <Compile Include="Battle\BattleState.cs" />
     <Compile Include="Battle\ProgramonStatusBox.cs" />
     <Compile Include="Battle\SelectionBox.cs" />
+    <Compile Include="GUI Items\Background.cs" />
     <Compile Include="GUI Items\Button.cs" />
     <Compile Include="Drawing\Camera.cs" />
     <Compile Include="Actors\Creature.cs" />

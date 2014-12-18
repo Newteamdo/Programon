@@ -18,6 +18,7 @@ namespace Programon
             {
                 return new IGuiItem[]
                 {
+                    Background,
                     BackBtn,
                     ControlsBtn,
                     SaveChangesBtn, 
@@ -27,7 +28,8 @@ namespace Programon
                     MasterVolumeTextField,
                     ResolutionText,
                     MasterVolumeText,
-                    OptionsText,Slider,
+                    OptionsText,
+                    Slider,
                 };
             }
 
@@ -65,6 +67,9 @@ namespace Programon
         private int ScreenWidth { get; set; }
         private int ScreenHeight { get; set; }
 
+        private Background Background { get; set; }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsMenu"/> class.
         /// </summary>
@@ -96,7 +101,7 @@ namespace Programon
 
             BackgroundTexture = null;
             Slider = null;
-
+            Background = null;
         }
 
         /// <summary>
@@ -115,6 +120,8 @@ namespace Programon
             this.CurrentIndexResolution = 3;
 
             GetSupportedResolutions();
+
+            Background = new ProgramonEngine.Background(mainWindow.Content.Load<Texture2D>(@"OptionsMenu\Background"), ScreenWidth, ScreenHeight);
 
             BackBtn = new Button(new Rectangle(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 8, ScreenHeight / 10), GameWindow.Content.Load<Texture2D>(@"OptionsMenu\BackButton"), mainWindow);
 
