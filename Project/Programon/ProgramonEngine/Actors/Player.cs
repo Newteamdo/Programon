@@ -11,7 +11,7 @@ namespace ProgramonEngine
     {
         public bool IsWalking { get; private set; }
         public Dictionary<AnimationTypes, Animation> Animations { get; private set; }
-
+        public List<Creature> programons = new List<Creature>();
         private int updateCount { get; set; }
 
         public Player(Vector2 startPos, Vector2 scale)
@@ -39,6 +39,16 @@ namespace ProgramonEngine
             IsWalking = true;
             updateCount = 0;
             base.Move(newPos);
+        }
+
+        public void AddProgramon(Creature programon)
+        {
+            programons.Add(programon);
+        }
+
+        public void RemoveProgramon(Creature programon)
+        {
+            programons.Remove(programon);
         }
     }
 }
