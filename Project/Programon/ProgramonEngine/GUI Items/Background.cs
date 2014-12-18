@@ -50,6 +50,24 @@ namespace ProgramonEngine
         }
 
         /// <summary>
+        /// Sets the width.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        public void SetWidth(int width)
+        {
+            this.Rectangle = new Rectangle(this.Rectangle.X, this.Rectangle.Y, width, this.Rectangle.Height);
+        }
+
+        /// <summary>
+        /// Sets the height.
+        /// </summary>
+        /// <param name="height">The height.</param>
+        public void SetHeight(int height)
+        {
+            this.Rectangle = new Rectangle(this.Rectangle.X, this.Rectangle.Y, this.Rectangle.Width, height);
+        }
+
+        /// <summary>
         /// Draws the background.
         /// </summary>
         /// <param name="spriteBatch">The sprite batch.</param>

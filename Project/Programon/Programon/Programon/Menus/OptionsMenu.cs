@@ -121,8 +121,6 @@ namespace Programon
 
             GetSupportedResolutions();
 
-            Background = new ProgramonEngine.Background(mainWindow.Content.Load<Texture2D>(@"OptionsMenu\Background"), ScreenWidth, ScreenHeight);
-
             BackBtn = new Button(new Rectangle(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 8, ScreenHeight / 10), GameWindow.Content.Load<Texture2D>(@"OptionsMenu\BackButton"), mainWindow);
 
             BackBtn.OnMouseClick += backBtn_OnClick;
@@ -148,6 +146,8 @@ namespace Programon
             BackgroundTexture = mainWindow.Content.Load<Texture2D>(@"OptionsMenu\Background");
             Slider = new Slider(new Rectangle((int)(ScreenWidth / 1.8), ScreenHeight / 2 + 2, ScreenWidth / 4, ScreenHeight / 35), 20, 0, 100, mainWindow.VolumeLevel, Color.Red, TextFont);
             Slider.OnMouseHold += slider_OnMouseHold;
+
+            Background = new ProgramonEngine.Background(BackgroundTexture, ScreenWidth, ScreenHeight);
 
             SaveChangesBtn.OnMouseEnter += button_OnMouseEnter;
             SaveChangesBtn.OnMouseLeave += button_OnMouseLeave;
@@ -212,6 +212,9 @@ namespace Programon
         /// </summary>
         private void CalculatePositions()
         {
+            Background.SetWidth(ScreenWidth);
+            Background.SetHeight(ScreenHeight);
+           
             BackBtn.SetPosition(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 20));
             BackBtn.SetSize(ScreenWidth / 8, ScreenHeight / 10);
 
