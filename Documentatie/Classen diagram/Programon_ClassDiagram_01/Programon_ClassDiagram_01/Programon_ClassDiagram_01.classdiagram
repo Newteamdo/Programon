@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="1a329596-1017-45dc-9076-d08256dbfa21" name="Programon_ClassDiagram_01" linkedPackageId="cc4fd0f9-72eb-48b8-a91c-1316f6f5160b" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="a6d8b9df-bc19-4534-9f8d-6e627f3fe4b2">
+      <profileInstance Id="a9177f28-c8e7-4602-ad9c-167a39cae4eb" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="4678b13c-5e83-4d45-94f4-1f900d58a199">
+      <profileInstance Id="fde56886-3ac8-49e9-9084-643d462b4872" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="c93aa999-0dca-43d7-83bc-6d307e9fd9ab" name="Programon_Engine">
+        <elementDefinition Id="a17ed4c5-ca4f-4178-b0f0-d0ccf40aee23" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="635473a5-cfa3-4f46-8340-8a599d565e4f" name="LCGRandom" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="289159f1-16fb-4f64-b3e8-8d0a82c4da1f" />
+              <ownedAttributesInternal>
+                <property Id="ba494b61-c44d-4117-a339-86d70f567653" name="_int_State" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4f4147ff-4859-4d03-97e6-4c579674614b" />
+                </property>
+              </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="82ff2163-4cf8-449a-957f-a11f41cf56c0" name="short_NextShort" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="23858490-4587-4e18-b784-0e4994166740" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <enumeration Id="47cd6ec1-47c6-4fa4-8c10-9f56d8af31e0" name="Direction" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="1fb82916-f97a-4d72-b1cd-030e14b9f412" />
+              <ownedLiterals>
+                <enumerationLiteral Id="5250e1aa-62b9-4d9c-afce-3fae4f8c3214" name="Up">
+                  <elementDefinition Id="3204ee28-475a-443c-8907-853b99f814ac" />
+                </enumerationLiteral>
+                <enumerationLiteral Id="f10cc74a-a851-4c08-bbe4-fff6627c7dfb" name="Down">
+                  <elementDefinition Id="a0e7a8be-316a-4eac-823d-1836afc23f00" />
+                </enumerationLiteral>
+                <enumerationLiteral Id="64d3c9a2-57d7-43f1-aa11-f7729ce4996e" name="Left">
+                  <elementDefinition Id="9168dc4e-fe68-4e0c-9549-cc6f95280bd7" />
+                </enumerationLiteral>
+                <enumerationLiteral Id="d2e316db-1cd3-46a0-bc89-7bbc7eed1d7e" name="Right">
+                  <elementDefinition Id="cf00e781-10bf-4979-a549-ec2132a2a7c8" />
+                </enumerationLiteral>
+              </ownedLiterals>
+            </enumeration>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="c05bed00-0513-4af3-bf29-58bb8dcf4dba" name="Transform" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="6a115ccc-4bb0-481c-ab1e-9fc644c95d39" />
+              <suppliersInternal>
+                <dependency Id="6591f420-9ab8-4873-a3b2-49203df76120">
+                  <enumerationMoniker Id="47cd6ec1-47c6-4fa4-8c10-9f56d8af31e0" LastKnownName="Direction" />
+                  <elementDefinition Id="edc31601-6258-4f81-8350-797c0dac8b44" />
+                </dependency>
+              </suppliersInternal>
+              <ownedAttributesInternal>
+                <property Id="a7e48195-c997-40d6-ba6b-0ac7913a360b" name="Vector2_Position" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5e67d762-2c45-44a2-9e6e-f16b2d252783" />
+                </property>
+                <property Id="b8eae68e-47c7-4139-beb8-2ae8ba2c6d01" name="Vector2_Scale" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8e79d252-a858-44a7-b12f-319ab2753295" />
+                </property>
+                <property Id="8a7c946d-487e-4f25-af99-83ef2ab39a3a" name="Direction_Direction" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cc99404b-0964-44d2-841f-c4e61dd2811b" />
+                </property>
+                <property Id="fe0650c6-2298-457a-b004-7502ca15de62" name="_Vector2_Pposition" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="43744414-4818-44c9-8dcb-94d0f7ca3c61" />
+                </property>
+                <property Id="5de0c1d1-50b4-4ccd-aad7-b15ad9dfd238" name="_Vector2_Pscale" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fee53b01-78db-4d6c-8e53-23806f689ace" />
+                </property>
+                <property Id="f4577a2f-6ac9-42f4-8f99-808d6bb77794" name="_Direction_Pdirection" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f82be3b5-6c26-41f5-9ec2-ff192351c475" />
+                </property>
+              </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="b13111d8-573d-42ba-b930-f6c7447d6fd7" name="bool_IsBetweenBounds" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="5efd0cf5-4da5-4631-ba02-8037a83b8104" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="a898163f-c96e-4170-b78c-eceec724c40b" name="Rectangle bounds" direction="In" isUnique="false">
+                        <elementDefinition Id="430fb0bd-7a20-4fa2-9df5-6cd67ad07602" />
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="6f1bd39a-bd02-4c66-a011-924b4c26aac4" name="Sprite" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="21acf9cb-cd81-41d6-9f35-c2c6bcd13d4a" />
+              <ownedAttributesInternal>
+                <property Id="025382a3-9bcd-47ef-b1c0-bfc88d51486e" name="Const_int_TextureHeight" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d488d37c-a59d-4df9-8ddd-5f898cfbcc32" />
+                </property>
+                <property Id="856c82de-4afb-4aee-9253-9497da66f5a6" name="Const_int_TextureWidth" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fc8be66f-9ec6-4f87-bfcf-b8475817d8b8" />
+                </property>
+                <property Id="20dfa446-6eb5-4daf-ba35-d0d77c3ffb91" name="Texture2D_Texture" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="251d18be-b32a-4ed4-9fb8-c7b786d731ce" />
+                </property>
+                <property Id="41d8eafe-bc7d-4bbf-aea1-095c0ffcade3" name="Color_Tint" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c05d34a3-1380-405d-8e6f-475eace80f34" />
+                </property>
+                <property Id="de8006ee-fd00-4415-8437-ff0474e69078" name="_Color_Ptint" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2d219374-e616-4c32-a8f6-849a5b527171" />
+                </property>
+                <property Id="c74381e9-3878-49db-9126-68c1d5ebee5c" name="_Texture2D_Ptexture" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0d35f484-8cf8-4a90-b6af-6826e2685605" />
+                </property>
+              </ownedAttributesInternal>
+              <ownedOperationsInternal>
+                <operation Id="c8dbedc5-457d-4100-bacd-bfa8652dd3ef" name="Static_Sprite_FromStaticColor" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="d28e2933-fdc1-4f7c-a0c6-36491f961e61" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="5e463578-ee3d-4490-91cd-ec78a67189a6" name="Color staticColor" direction="In" isUnique="false">
+                        <elementDefinition Id="d9d8d937-6a28-482a-8045-6b2cd5b35213" />
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="d936fe11-5378-497a-b159-5fbf7066a316" name="Color tint" direction="In" isUnique="false">
+                        <elementDefinition Id="5a4d8de6-75f3-40fa-973b-57e5a236a0ec" />
+                      </parameter>
+                    </operationHasOwnedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="a16c2890-983a-4b86-b2f4-dc709b9a4327" name="GraphicsDevice device" direction="In" isUnique="false">
+                        <elementDefinition Id="93bbadcd-1d8c-436b-b920-88575bec3c6b" />
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="58b5fa34-154d-4797-9b79-fe390a1bd592" name="Node" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="52520655-1832-432a-a54e-2abf5f863c2c" />
+              <suppliersInternal>
+                <dependency Id="b9a2534d-ff1c-4d06-8a73-c88a4c5af9d7">
+                  <classMoniker Id="c05bed00-0513-4af3-bf29-58bb8dcf4dba" LastKnownName="Transform" />
+                  <elementDefinition Id="a08ff523-1510-48c4-af07-b475525bcfbf" />
+                </dependency>
+                <dependency Id="712fa3ac-068f-44c4-9b00-a24519c2228a">
+                  <classMoniker Id="6f1bd39a-bd02-4c66-a011-924b4c26aac4" LastKnownName="Sprite" />
+                  <elementDefinition Id="fcb19942-1b3a-469c-a330-dfbcd74e40c2" />
+                </dependency>
+              </suppliersInternal>
+              <ownedAttributesInternal>
+                <property Id="7e7af221-77db-4703-b5b8-26cf9d5234b8" name="Vector2_FixedPosition" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7dfb91d4-829b-4452-884e-b6b510a883a4" />
+                </property>
+                <property Id="c7356800-dbab-4fbd-8ca8-671e88a37843" name="Transform_Transform" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0e8bb9a4-7fab-4220-b61e-ddd26de0414b" />
+                </property>
+                <property Id="3a3f614e-a12a-42ae-8918-c4c5d31defe2" name="Sprite_Sprite" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="de675c67-3b49-40fa-8b7a-039ee1512828" />
+                </property>
+              </ownedAttributesInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="cc4fd0f9-72eb-48b8-a91c-1316f6f5160b" name="Programon_ClassDiagram_01">
+    <elementDefinition Id="abd2c663-b03f-451f-93e1-42595df7cca8" />
+  </package>
+</logicalClassDesignerModel>
