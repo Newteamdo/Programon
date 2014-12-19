@@ -63,6 +63,11 @@ namespace Programon
             base.Initialize();
         }
 
+        public void ReInit()
+        {
+            MainCamera.Initialize(SpriteDrawer.BufferSize);
+        }
+
         protected override void LoadContent()
         {
             SpriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);

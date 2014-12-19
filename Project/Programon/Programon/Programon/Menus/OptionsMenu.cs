@@ -328,6 +328,8 @@ namespace Programon
             XmlLoader.SaveSettings(GameWindow, SpriteDrawer,MainWindow.CONFIGLOCATION);
 
             CalculatePositions();
+
+            GameWindow.ReInit();
         }
 
         /// <summary>
