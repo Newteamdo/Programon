@@ -26,6 +26,7 @@ namespace Programon
         public Map Map { get; private set; }
 
         public double VolumeLevel { get; set; }
+        public float DeltaTime { get; private set; }
 
         public GameState State { get; private set; }
 
@@ -34,6 +35,8 @@ namespace Programon
         private ProgramonMenu programonMenu;
 
         private OptionsMenu OptionsMenu { get; set; }
+
+        DialogueBox t;
 
         public MainWindow()
         {
@@ -46,7 +49,7 @@ namespace Programon
 
             XmlLoader.LoadSettings(this, SpriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
-            State = GameState.BATTLE;
+            State = GameState.OPTIONS;
 
             IsMouseVisible = true;
         }
@@ -71,6 +74,8 @@ namespace Programon
         protected override void LoadContent()
         {
             SpriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
+
+            t = new DialogueBox("Testing, testing", Content.Load<SpriteFont>("DebugFont"), true, SpriteDrawer.BufferSize, Content.Load<Texture2D>("LeaveMenu"));
 
             switch (State)
             {
@@ -98,6 +103,8 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
+            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             this.Keyhandler.KeyPress();
 
             switch (State)
@@ -158,7 +165,8 @@ namespace Programon
                     SpriteDrawer.Draw(MainCamera, Player);
                     break;
                 case GameState.BATTLE:
-                    SpriteDrawer.DrawGUI(testBattle);
+                    //SpriteDrawer.DrawNodes(testBattle.GuiList, MainCamera);
+                    SpriteDrawer.DrawGUIItem(t);
                     break;
                 case GameState.PROGRAMONSCREEN:
                     SpriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[1] { programonMenu } });

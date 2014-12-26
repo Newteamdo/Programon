@@ -21,7 +21,7 @@ namespace ProgramonEngine
         {
             AI battleAi = new AI();
             Ability computerAbility;
-            computerAbility = battleAi.UseAbility(playerProgramon, computerProgramon);
+            computerAbility = battleAi.UseRndAbility(playerProgramon, computerProgramon);
             computerProgramon.AddBuff(computerAbility.selfBuff);
             playerProgramon.AddBuff(computerAbility.enemyBuff);
             computerProgramon.UpdateStats();
