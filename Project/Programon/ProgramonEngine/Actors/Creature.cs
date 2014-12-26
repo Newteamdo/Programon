@@ -10,15 +10,17 @@ namespace ProgramonEngine
     {
         public byte level;
         public int exp;
+        public string name;
         public Stats programonBaseStats;
         public Stats programonTotalStats;
         public List<Buff> buffList = new List<Buff>();
         public Stats statsPerLevel;
         public List<Ability> abilities = new List<Ability>();
 
-        public Creature(Vector2 startPos, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities)
+        public Creature(Vector2 startPos,string name, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities)
             : base(startPos, Vector2.One)
         {
+            this.name = name;
             this.level = level;
             this.programonBaseStats = programonStats;
             this.statsPerLevel = statsPerLevel;

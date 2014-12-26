@@ -8,9 +8,9 @@ namespace ProgramonEngine
         public  int selectionID;
 
 
-        public AbilityBox(Vector2 startPos, List<Ability> selectionList)
+        public AbilityBox(Vector2 startPos,Vector2 endPos, List<Ability> selectionList)
+            :base(startPos)
         {
-            this.startPos = startPos;
             SelectionList = new List<Ability>(4);
             this.SelectionList = selectionList;
         }

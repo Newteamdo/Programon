@@ -9,15 +9,13 @@ namespace ProgramonEngine
 
     public class Boss : Creature
     {
-        public string Name { get; private set; }
         public BossStage Stage { get; private set; }
 
         private Dictionary<BossStage, string> Dialogue { get; set; }
 
         public Boss(string name, Vector2 startPos, byte level, Stats stats, List<Ability> abilities)
-            : base(startPos, level, stats, null, abilities)
+            : base(startPos, name, level, stats, null, abilities)
         {
-            Name = name;
             Dialogue = new Dictionary<BossStage, string>();
             Stage = BossStage.StartDialogue;
         }

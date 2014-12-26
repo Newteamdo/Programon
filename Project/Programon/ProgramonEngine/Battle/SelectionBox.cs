@@ -7,9 +7,9 @@ namespace ProgramonEngine
         public List<string> SelectionList;
         public int selectionID;
 
-        public SelectionBox(Vector2 startPos)
+        public SelectionBox(Vector2 startPos, Vector2 endPos)
+            :base(startPos)
         {
-            this.startPos = startPos;
             SelectionList = new List<string>(4);
             SelectionList.Add("Abilities");
             SelectionList.Add("Programon");
