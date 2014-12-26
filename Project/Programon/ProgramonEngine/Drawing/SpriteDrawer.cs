@@ -139,6 +139,12 @@ namespace ProgramonEngine
             }
         }
 
+        /// <summary> Draw the given GUI item. </summary>
+        public void DrawGUIItem(IGuiItem item)
+        {
+            item.Draw(SpriteBatch);
+        }
+
         /// <summary> Draw the given menu. </summary>
         public void DrawGUI(IMenu menu)
         {
