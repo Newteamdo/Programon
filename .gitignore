@@ -214,3 +214,5 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 *.cachefile
+Project/Programon/Programon/ProgramonContent/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Project/Programon/Programon.v12.suo

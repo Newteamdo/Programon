@@ -49,7 +49,7 @@ namespace Programon
 
             XmlLoader.LoadSettings(this, SpriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
-            State = GameState.OPTIONS;
+            State = GameState.BATTLE;
 
             IsMouseVisible = true;
         }
@@ -91,7 +91,7 @@ namespace Programon
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.BATTLE:
-                    testBattle.Load(Content);
+                    testBattle.Load(Content, GraphicsDevice);
                     break;
             }
         }
@@ -165,8 +165,8 @@ namespace Programon
                     SpriteDrawer.Draw(MainCamera, Player);
                     break;
                 case GameState.BATTLE:
-                    //SpriteDrawer.DrawNodes(testBattle.GuiList, MainCamera);
-                    SpriteDrawer.DrawGUIItem(t);
+                    SpriteDrawer.DrawGUI(testBattle);
+                    //SpriteDrawer.DrawGUIItem(t);
                     break;
                 case GameState.PROGRAMONSCREEN:
                     SpriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[1] { programonMenu } });

@@ -75,7 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattleBox.cs" />
     <Compile Include="BattleScreen.cs" />
     <Compile Include="XmlLoader.cs" />
     <Compile Include="GameState.cs" />

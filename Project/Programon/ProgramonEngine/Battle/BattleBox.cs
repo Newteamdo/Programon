@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using XnaGuiItems.Items;
 
 namespace ProgramonEngine
 {
@@ -11,12 +13,12 @@ namespace ProgramonEngine
         protected Vector2 Size { get; set; }
         protected SpriteFont Font { get; set; }
         public Node Node { get; set; }
-        public List<Node> TextNodeList { get; set; }
+        public List<Label> TextList { get; set; }
 
         public BattleBox(Vector2 startPos)
         {
             this.StartPos = startPos;
-            TextNodeList = new List<Node>();
+            TextList = new List<Label>();
         }
 
         //public BattleBox(Vector2 startPos, Vector2 size)
@@ -58,10 +60,8 @@ namespace ProgramonEngine
             //    }
             //}
             Node = new Node(new Transform(StartPos, new Vector2(1), 0), new Sprite(fullBox), false);
-            
-
         }
-
+        
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             //for (int i = 0; i < nodeList.Count; i++)
