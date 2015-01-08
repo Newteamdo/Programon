@@ -81,7 +81,9 @@
     <Compile Include="Drawing\Camera.cs" />
     <Compile Include="Actors\Creature.cs" />
     <Compile Include="GUI Items\DialogueBox.cs" />
+    <Compile Include="GUI Items\InventoryItem.cs" />
     <Compile Include="Interfaces.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="LCGRandom.cs" />
     <Compile Include="Actor_Values\LevelingSystem.cs" />
     <Compile Include="Map.cs" />
