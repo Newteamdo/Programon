@@ -17,8 +17,8 @@ namespace ProgramonEngine
         public Stats statsPerLevel;
         public List<Ability> abilities = new List<Ability>();
 
-        public Creature(Vector2 startPos,string name, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities)
-            : base(startPos, Vector2.One)
+        public Creature(Vector2 startPos,string name, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities, Map currentMap)
+            : base(startPos, Vector2.One, currentMap)
         {
             this.name = name;
             this.level = level;

@@ -19,7 +19,7 @@ namespace ProgramonEngine
             Transform = new Transform(startPos, scale);
             CurrentMap = null;
         }
-        public Actor(Vector2 startPos, Vector2 scale, ref Map currentMap)
+        public Actor(Vector2 startPos, Vector2 scale, Map currentMap)
         {
             Transform = new Transform(startPos, scale);
             CurrentMap = currentMap;

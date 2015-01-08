@@ -27,8 +27,8 @@ namespace Programon
 
             Stats eStats = new Stats(99, 100, 20, 20, 20, 20, 20);
             Stats pStats = new Stats(200, 300, 30, 30, 30, 30, 30);
-            Player = new Creature(new Vector2(), "Hello", 100, pStats, pStats, new List<Ability>());
-            Enemy = new Creature(new Vector2(), "World", 100, eStats, pStats, new List<Ability>());
+            Player = new Creature(new Vector2(), "Hello", 100, pStats, pStats, new List<Ability>(), mainWindow.Map);
+            Enemy = new Creature(new Vector2(), "World", 100, eStats, pStats, new List<Ability>(), mainWindow.Map);
 
             ProgramonBoxList[0] = new ProgramonStatusBox(new Vector2(0, 0), Player);
             ProgramonBoxList[1] = new ProgramonStatusBox(new Vector2(14, 5), Enemy);

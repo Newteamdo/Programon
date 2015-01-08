@@ -14,8 +14,8 @@ namespace ProgramonEngine
         public List<Creature> programons = new List<Creature>();
         private int updateCount { get; set; }
 
-        public Player(Vector2 startPos, Vector2 scale)
-            : base(startPos, scale)
+        public Player(Vector2 startPos, Vector2 scale, Map currentMap)
+            : base(startPos, scale, currentMap)
         {
             Animations = new Dictionary<AnimationTypes, Animation>();
         }
