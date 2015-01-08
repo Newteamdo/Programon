@@ -100,6 +100,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="XnaGuiItems.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ProgramonEngine\ProgramonEngine.csproj">

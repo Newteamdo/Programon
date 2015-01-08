@@ -89,8 +89,8 @@ namespace Programon
             XmlNode mapNode = xmlDoc.SelectSingleNode("Map");
             int mapId = Convert.ToInt16(mapNode.Attributes["Id"].Value);
             string mapName = mapNode.Attributes["Name"].Value;
-            int mapSizeX = Convert.ToInt16(mapNode.Attributes["SizeX"].Value);
-            int mapSizeY = Convert.ToInt16(mapNode.Attributes["SizeY"].Value);
+            int mapSizeX = 50;
+            int mapSizeY = 50;
 
 
             XmlNodeList nodeList = xmlDoc.SelectNodes("Map/Node");

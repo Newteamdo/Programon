@@ -49,7 +49,7 @@ namespace Programon
 
             XmlLoader.LoadSettings(this, SpriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
-            State = GameState.BATTLE;
+            State = GameState.MAINMENU;
 
             IsMouseVisible = true;
         }

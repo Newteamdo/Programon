@@ -14,10 +14,10 @@ namespace ProgramonEngine
         public int Id { get; private set; }
         public string Name { get; private set; }
 
-        public int SizeX { get; private set; }
-        public int SizeY { get; private set; }
+        public int PosX { get; private set; }
+        public int PosY { get; private set; }
 
-        public Rectangle Size { get { return new Rectangle(0, 0, SizeX, SizeY); } private set { } }
+        public Rectangle Size { get { return new Rectangle(0, 0, PosX, PosY); } private set { } }
 
         public Dictionary<Vector2, Node> MapDictionary { get; private set; }
 
@@ -28,8 +28,8 @@ namespace ProgramonEngine
         {
             this.Id = 0;
             this.Name = "test";
-            this.SizeX = 1;
-            this.SizeY = 1;
+            this.PosX = 1;
+            this.PosY = 1;
             this.MapDictionary = new Dictionary<Vector2, Node>();
         }
 
@@ -45,8 +45,8 @@ namespace ProgramonEngine
         {
             this.Id = id;
             this.Name = name;
-            this.SizeX = sizeX;
-            this.SizeY = sizeY;
+            this.PosX = sizeX;
+            this.PosY = sizeY;
             this.MapDictionary = map;
         }
     }
