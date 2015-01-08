@@ -61,7 +61,7 @@ namespace Programon
             MainCamera.Initialize(GraphicsDevice.Viewport.Bounds);
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
-            Player = new Player(new Vector2(1, 1), new Vector2(4, 4));
+            Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
 
             base.Initialize();
         }
@@ -105,7 +105,7 @@ namespace Programon
         {
             DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            this.Keyhandler.KeyPress();
+            this.Keyhandler.KeyPress(gameTime);
 
             switch (State)
             {
