@@ -1,0 +1,27 @@
+  <Asset Type="ProgramonEngine.Ability">
+    <name>Cawcaw</name>
+    <maxEP>10</maxEP>
+    <selfBuff>
+      <name>SelfBuff</name>
+      <statChange>
+        <attack>0</attack>
+        <defence>0</defence>
+        <sAttack>0</sAttack>
+        <sDefence>0</sDefence>
+        <speed>0</speed>
+      </statChange>
+    </selfBuff>
+    <enemyBuff>
+      <name>EnemyBuff</name>     
+      <duration>0</duration>
+      <statChange>
+        <attack>0</attack>
+        <defence>0</defence>
+        <sAttack>0</sAttack>
+        <sDefence>0</sDefence>
+        <speed>0</speed>
+      </statChange>
+    </enemyBuff>
+    <damage>7</damage>
+  </Asset>
+</XnaContent>
