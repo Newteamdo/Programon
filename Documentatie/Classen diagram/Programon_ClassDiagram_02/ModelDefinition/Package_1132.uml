@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="35de80c4-8ab6-458e-a139-e642302b6c01"
+  name="ProgramonSoundEngine"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="f3afc56f-892d-4e61-9c15-00a45f332e2b"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DProgramonSoundEngine"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="53efe5b4-5095-4bb5-af69-dfa7ffc079e8"
+        name="SoundPlayer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="76f35931-d367-4bc5-952a-b13601718fd4"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b7d07de3-b8d8-4dc6-aaae-785928b5f304"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="277f9db3-6e32-4f39-94b8-f06ccefbc6fa">
+                <propertyInstance
+                  Id="5b6a0f15-53dc-48b6-8027-2313cc025c83"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="426edb4c-cfe1-4ece-ae6a-f734f2e5f9f7">
+                <propertyInstance
+                  Id="aead3b6b-322d-4cd9-a452-eb2917f166b9"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ef77749d-30e9-4897-ba34-d22d3b29a98f">
+                <propertyInstance
+                  Id="e46b2bd0-33a2-4ef1-8097-52f44e643550"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="61b199fc-f231-43a9-b1a0-123924930484">
+                <propertyInstance
+                  Id="b2a6bdb2-ece2-4bce-a77b-853955e9e1b1"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="237b0e12-b20d-449d-a149-19b59d4a4f8a">
+                <propertyInstance
+                  Id="11ba9f90-ec81-4c26-aa22-8ce9611c9b73"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="2f5fc69c-4ced-4d10-9f2a-8d4da0c23717"
+            name="PlayStaticSound"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="cfe31b79-abd6-466c-a6ab-349065384467"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D(Name%3DPlayStaticSound OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundEffect)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6d8b6c51-33d5-4fb4-9785-09b4d09677bd"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f348815d-6683-40db-9600-bfb1ab5c497a">
+                    <propertyInstance
+                      Id="c7abafd9-e8a3-45e0-bbfe-a771a90db0af"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7fbfdc35-ff41-4264-8e56-b3d13f9c9aaf">
+                    <propertyInstance
+                      Id="9c21451e-3c6b-4535-a3f9-d809ddccc495"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="64920e49-0ef9-4b63-9061-c4d1f6b32d02">
+                    <propertyInstance
+                      Id="3b52b05a-51cb-48d1-9d51-3f76adb03e86"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="22ad45df-243f-4300-860d-8cd6888340cf">
+                    <propertyInstance
+                      Id="b1877f0b-6299-4d33-8f62-cde54e9b1a38"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36331459-3897-46ac-9ce3-8175ced1dee5">
+                    <propertyInstance
+                      Id="58b70a1a-cdf0-40d2-86b6-28f07c8f84ef"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8026b0b4-a73b-417e-953f-1d44ceeaf86a">
+                    <propertyInstance
+                      Id="175f65ec-5f16-4c0f-a784-8d1c9a8dc7a4"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0e61e896-690c-47b2-9c2d-d899a4aed94c"
+                  name="sound"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="42dab66d-8440-4756-8ec4-c54a793b0d33"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D(Name%3DPlayStaticSound OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundEffect)]) ParameterIdentifier%3Dsound"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="7d92249f-f58b-4195-8431-4e2977e2a608"
+                      LastKnownName="SoundEffect"
+                      LastKnownLocation="Package1_1132.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="569cb390-03c8-4778-a71b-bc79eb916d5c"
+            name="PlayStaticSound"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="dfa1cbed-c009-49ef-b240-50319406e969"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D(Name%3DPlayStaticSound OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundEffect)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cf51812a-2790-45a4-9774-eabbe7146f45"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="176fe557-a812-457b-9e1c-c1ec9f02a8ad">
+                    <propertyInstance
+                      Id="a02ab08d-4e49-4c9a-b16b-b4c00d966a94"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b318cb21-e227-4d28-9173-5cd72876ec13">
+                    <propertyInstance
+                      Id="6aac8e8a-526d-4f16-967f-24a7aa7db115"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c7d3a360-ab90-44f6-a7b6-357bd273037f">
+                    <propertyInstance
+                      Id="3b2baa11-71bb-4786-bf0f-f0de3c5d841c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b43bd797-8a7e-4462-8830-c8e3f512f030">
+                    <propertyInstance
+                      Id="0c188695-746c-4a38-80b5-58635b91459c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bfe15953-cd83-4c12-8f52-6e0843cce77c">
+                    <propertyInstance
+                      Id="a98309de-bce0-429f-a56a-d9c53cca59b9"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f19d7bb7-3c5e-468d-9389-90e4eff9d47a">
+                    <propertyInstance
+                      Id="9d90ae7c-9808-4aff-815a-e45b9f22afeb"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="750c2dfc-9a86-4431-a67e-ce70736d47c1"
+                  name="sound"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="5bcbe430-240c-45f5-b1a4-2cadfeca8689"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D(Name%3DPlayStaticSound OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundEffect)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)]) ParameterIdentifier%3Dsound"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="7d92249f-f58b-4195-8431-4e2977e2a608"
+                      LastKnownName="SoundEffect"
+                      LastKnownLocation="Package1_1132.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8d00d1a1-24d3-42b2-9fd3-e6b14a607ab6"
+                  name="volume"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="5df51a5b-41d1-4def-8e92-4dc6f3645645"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D(Name%3DPlayStaticSound OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundEffect)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)]) ParameterIdentifier%3Dvolume"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="75f818c2-9fd3-477a-93e3-771d27a2d580"
+                      LastKnownName="Single"
+                      LastKnownLocation="Package2_1129.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7b4eb311-e951-4569-81ae-a1b83df84e52"
+                  name="pitch"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d31d41ec-4ab6-40e7-a4e9-ee98eea31a21"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D(Name%3DPlayStaticSound OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundEffect)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)]) ParameterIdentifier%3Dpitch"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="75f818c2-9fd3-477a-93e3-771d27a2d580"
+                      LastKnownName="Single"
+                      LastKnownLocation="Package2_1129.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9bdde84e-efda-49db-891c-d359c3d5288e"
+                  name="pan"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="36b5805e-28ad-421d-aa34-c75d3ffef187"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D(Name%3DPlayStaticSound OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FMicrosoft XNA%2FXNA Game Studio%2Fv4.0%2FReferences%2FWindows%2Fx86%2FMicrosoft.Xna.Framework.dll&quot; Namespace%3DMicrosoft.Xna.Framework.Audio Type%3DSoundEffect)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.0%2FProfile%2FClient%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DSingle)]) ParameterIdentifier%3Dpan"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="75f818c2-9fd3-477a-93e3-771d27a2d580"
+                      LastKnownName="Single"
+                      LastKnownLocation="Package2_1129.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="19f39f6d-a183-4dab-977e-630cb5bbd806"
+            name="SoundPlayer"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="27e2390f-5481-4a77-ab27-9a457e4d5d05"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FGithub%2FProgramon%2FProject%2FProgramon%2FProgramonSoundEngine%2Fbin%2Fx86%2FDebug%2FProgramonSoundEngine.dll Namespace%3DProgramonSoundEngine Type%3DSoundPlayer Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="78c01afc-fa33-4036-b8d5-cbd8cb888c09"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6f24920d-d137-4bea-bd7f-dc422cb62d26">
+                    <propertyInstance
+                      Id="606bbcd5-b1dd-4177-970c-fcf8cafe5118"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d19f4116-ee95-453f-97a6-23b6eec9ce98">
+                    <propertyInstance
+                      Id="5c3879bf-5c85-4682-8053-cd99f189cd07"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="22737d7e-93fe-4ac6-85be-6b3f7cdf9d3c">
+                    <propertyInstance
+                      Id="fa39bbb4-8c6e-45b3-8fc4-58eaa79a719e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9e1cbf6e-a3e4-4335-8185-9376aaadad84">
+                    <propertyInstance
+                      Id="80708485-4583-4033-9e5c-d3315db4ed9f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="04d55d37-ffcd-4b97-ae5d-f673257e4c2d">
+                    <propertyInstance
+                      Id="d385efae-abcc-42ec-b8c6-689179f76c81"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2470ac66-58ec-4ed1-a577-d4df2a90cbcd">
+                    <propertyInstance
+                      Id="cbd143df-976f-4614-8815-4048e6cf3488"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
