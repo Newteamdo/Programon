@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleScreen.cs" />
+    <Compile Include="Menus\Inventory.cs" />
     <Compile Include="XmlLoader.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="KeyHandler.cs" />
