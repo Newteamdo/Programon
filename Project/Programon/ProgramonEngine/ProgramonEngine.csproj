@@ -57,9 +57,8 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="XnaGuiItems, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Programon\Programon\bin\x86\Debug\XnaGuiItems.dll</HintPath>
+    <Reference Include="XnaGuiItems">
+      <HintPath>..\..\..\..\..\Visual Studio 2013\Projects\XnaGuiItems\XnaGuiItems\obj\x86\Debug\XnaGuiItems.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -71,11 +70,8 @@
     <Compile Include="AI.cs" />
     <Compile Include="Animation.cs" />
     <Compile Include="BattleMechanics.cs" />
-    <Compile Include="Battle\AbilityBox.cs" />
-    <Compile Include="Battle\BattleBox.cs" />
-    <Compile Include="Battle\BattleState.cs" />
-    <Compile Include="Battle\ProgramonStatusBox.cs" />
-    <Compile Include="Battle\SelectionBox.cs" />
+    <Compile Include="BattleScreen.cs" />
+    <Compile Include="Extentions.cs" />
     <Compile Include="GUI Items\Background.cs" />
     <Compile Include="GUI Items\Button.cs" />
     <Compile Include="Drawing\Camera.cs" />

@@ -7,7 +7,7 @@ namespace ProgramonEngine
 {
     public static class LevelingSystem
     {
-        private const int startingExp = 100;
+        public const int startingExp = 100;
 
         public static void CheckForLevelup(Creature programon)
         {

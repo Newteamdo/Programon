@@ -36,8 +36,6 @@ namespace Programon
 
         private OptionsMenu OptionsMenu { get; set; }
 
-        DialogueBox t;
-
         public MainWindow()
         {
             SpriteDrawer = new SpriteDrawer(this, new Rectangle(0, 0, 1024, 720), false);
@@ -45,13 +43,16 @@ namespace Programon
             menuWindow = new MainMenuWindow(this);
             programonMenu = new ProgramonMenu(SpriteDrawer, this);
             Keyhandler = new KeyHandler(this);
-            testBattle = new BattleScreen(this);
 
             XmlLoader.LoadSettings(this, SpriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
             State = GameState.MAINMENU;
 
             IsMouseVisible = true;
+
+
+            /*Debugging!*/
+            SpriteDrawer.Debug = true;
         }
 
         protected override void Initialize()
@@ -75,8 +76,6 @@ namespace Programon
         {
             SpriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
 
-            t = new DialogueBox("Testing, testing", Content.Load<SpriteFont>("DebugFont"), true, SpriteDrawer.BufferSize, Content.Load<Texture2D>("LeaveMenu"));
-
             switch (State)
             {
                 case GameState.MAINMENU:
@@ -91,7 +90,7 @@ namespace Programon
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.BATTLE:
-                    testBattle.Load(Content, GraphicsDevice);
+                    testBattle.Load(Content, "Fonts/GuiFont_Large", "Fonts/GuiFont_Medium");
                     break;
             }
         }
@@ -112,18 +111,16 @@ namespace Programon
                 case GameState.MAINMENU:
                     menuWindow.Update();
                     break;
-                case GameState.NEWGAME:
-                    MainCamera.Update(Player.FixedPosition, Map.Size);
-                    SpriteDrawer.Update(Map.MapDictionary, MainCamera);
-                    break;
                 case GameState.OPTIONS:
                     OptionsMenu.Update();
                     break;
                 case GameState.OVERWORLD:
+                case GameState.NEWGAME:
                     MainCamera.Update(Player.FixedPosition, Map.Size);
                     SpriteDrawer.Update(Map.MapDictionary, MainCamera);
                     break;
                 case GameState.BATTLE:
+                    testBattle.Update(DeltaTime);
                     break;
                 case GameState.PROGRAMONSCREEN:
                     programonMenu.Update();
@@ -155,21 +152,18 @@ namespace Programon
                 case GameState.MAINMENU:
                     SpriteDrawer.DrawGUI(menuWindow);
                     break;
-                case GameState.NEWGAME:
-                    SpriteDrawer.Draw(MainCamera, Player);
-                    break;
                 case GameState.OPTIONS:
                     SpriteDrawer.DrawGUI(OptionsMenu);
                     break;
                 case GameState.OVERWORLD:
+                case GameState.NEWGAME:
                     SpriteDrawer.Draw(MainCamera, Player);
                     break;
                 case GameState.BATTLE:
-                    SpriteDrawer.DrawGUI(testBattle);
-                    //SpriteDrawer.DrawGUIItem(t);
+                    testBattle.Draw(SpriteDrawer.SpriteBatch);
                     break;
                 case GameState.PROGRAMONSCREEN:
-                    SpriteDrawer.DrawGUI(new CheaterClass() { Childs = new IGuiItem[1] { programonMenu } });
+                    SpriteDrawer.DrawGUIItem(programonMenu);
                     break;
             }
 

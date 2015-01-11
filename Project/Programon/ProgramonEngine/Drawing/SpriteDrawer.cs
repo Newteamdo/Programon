@@ -9,8 +9,9 @@ namespace ProgramonEngine
     public class SpriteDrawer
     {
         public Rectangle BufferSize { get { return Graphics.GraphicsDevice.Viewport.Bounds; } private set { } }
+        public bool Debug { get; set; }
 
-        private SpriteBatch SpriteBatch { get; set; }
+        public SpriteBatch SpriteBatch { get; set; }
         private SpriteFont DebugFont { get; set; }
 
         private GraphicsDeviceManager Graphics { get; set; }
@@ -29,7 +30,7 @@ namespace ProgramonEngine
         public void LoadContent(SpriteBatch spriteBatch, ContentManager content)
         {
             this.SpriteBatch = spriteBatch;
-            DebugFont = content.Load<SpriteFont>("DebugFont");
+            DebugFont = content.Load<SpriteFont>("Fonts/GuiFont_Small");
         }
 
         /// <summary> Update the drawables based on the camera. </summary>
@@ -70,6 +71,12 @@ namespace ProgramonEngine
                     cur.Transform.Scale,
                     SpriteEffects.None,
                     0f);
+
+                if (Debug)
+                {
+                    SpriteBatch.DrawString(DebugFont, cur.Transform.Position.ToString(), cam.GetRelativePosition(cur.FixedPosition), Color.Black);
+                    SpriteBatch.DrawString(DebugFont, "W: " + cur.Walkable, cam.GetRelativePosition(cur.FixedPosition + new Vector2(0, 16)), cur.Walkable ? Color.Black : Color.Red);
+                }
             }
         }
 

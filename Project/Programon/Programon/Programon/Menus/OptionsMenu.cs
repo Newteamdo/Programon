@@ -113,7 +113,7 @@ namespace Programon
         {
             this.GameWindow = mainWindow;
             this.SpriteDrawer = sDrawer;
-            this.TextFont = mainWindow.Content.Load<SpriteFont>("DebugFont");
+            this.TextFont = mainWindow.Content.Load<SpriteFont>("Fonts/DebugFont");
 
             this.ScreenWidth = sDrawer.BufferSize.Width;
             this.ScreenHeight = sDrawer.BufferSize.Height;

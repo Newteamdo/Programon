@@ -70,12 +70,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Net" />
-    <Reference Include="XnaGuiItems">
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\XnaGuiItems\XnaGuiItems\obj\x86\Debug\XnaGuiItems.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattleScreen.cs" />
     <Compile Include="Menus\Inventory.cs" />
     <Compile Include="XmlLoader.cs" />
     <Compile Include="GameState.cs" />
@@ -101,7 +97,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="XnaGuiItems.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ProgramonEngine\ProgramonEngine.csproj">

@@ -36,7 +36,10 @@ Content\Player\TempPlayer_Stand.xnb
 Content\TestNodeTextures\Tree.xnb
 Content\TestSounds\Normal.xnb
 Content\TestSounds\Start.xnb
-Content\DebugFont.xnb
+Content\Fonts\DebugFont.xnb
+Content\Fonts\GuiFont_Large.xnb
+Content\Fonts\GuiFont_Medium.xnb
+Content\Fonts\GuiFont_Small.xnb
 Content\Abilities\TestAbility.xnb
 config.xml
 Maps\map.xml
