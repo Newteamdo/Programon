@@ -57,8 +57,9 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="XnaGuiItems">
-      <HintPath>..\..\..\..\..\Visual Studio 2013\Projects\XnaGuiItems\XnaGuiItems\obj\x86\Debug\XnaGuiItems.dll</HintPath>
+    <Reference Include="XnaGuiItems, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\XnaGuiItems.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
