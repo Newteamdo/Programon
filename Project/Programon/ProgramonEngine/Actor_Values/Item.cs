@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Content;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -80,6 +81,11 @@ namespace ProgramonEngine
             programon.programonBaseStats.health = Math.Min(programon.programonBaseStats.health + item.healthToRestore, programon.programonBaseStats.maxHealth);
             programon.programonBaseStats += item.StatChange;
             programon.buffList.Add(item.BuffOnUse);
+        }
+
+        public static Item Load(ContentManager content, string name)
+        {
+            return content.Load<Item>(name);
         }
     }
 }

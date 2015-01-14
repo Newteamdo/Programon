@@ -2,89 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ProgramonEngine;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
-namespace Programon
+namespace ProgramonEngine
 {
-    /// <summary>
-    /// A class to create an inventory.
-    /// </summary>
-    public class Inventory : IMenu
+    public class Inventory
     {
-        private List<InventoryItem> invItem;
         private Dictionary<Item, int> items;
-        private MainWindow mainWindow;
-        private const int ITEMWIDTH = 500;
-        private const int ITEMHEIGHT = 100;
-        private SpriteFont font;
 
-        public IGuiItem[] Childs
+        public Inventory()
         {
-            get
-            {
-                return invItem.ToArray();
-            }
-            set { }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Inventory"/> class.
-        /// </summary>
-        /// <param name="mainWindow">The main window.</param>
-        public Inventory(MainWindow mainWindow)
-        {
-            this.mainWindow = mainWindow;
-        }
-
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
-        public void Initialize()
-        {
-            font = mainWindow.Content.Load<SpriteFont>("DebugFont");
             items = new Dictionary<Item, int>();
-            invItem = new List<InventoryItem>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                AddItem(new Item("Item " + i + ".", "This is a test description of Item " + i + ". Inventory description test. This is supposed to be working.", new Sprite(mainWindow.Content.Load<Texture2D>("No"))), i * 10);
-            }
-        }
-
-        /// <summary>
-        /// Updates this instance.
-        /// </summary>
-        public void Update()
-        {
-            CalculatePositions();
-            for (int i = 0; i < invItem.Count; i++)
-            {
-                invItem[i].Update();
-            }
-        }
-
-        /// <summary>
-        /// Calculates the positions.
-        /// </summary>
-        private void CalculatePositions()
-        {
-            int row = 0;
-            int column = 0;
-            for (int i = 0; i < items.Count; i++)
-            {
-                if ((row * ITEMHEIGHT) + ITEMHEIGHT > mainWindow.Window.ClientBounds.Height)
-                {
-                    row = 0;
-                    column++;
-                }
-                int xPos = column * ITEMWIDTH;
-                int yPos = row * ITEMHEIGHT;
-                invItem[i].SetPosition(new Vector2(xPos, yPos));
-                invItem[i].SetSize(new Vector2(ITEMWIDTH, ITEMHEIGHT));
-                row++;
-            }
         }
 
         /// <summary>
@@ -105,7 +32,6 @@ namespace Programon
                 else
                 {
                     items.Add(item, amount);
-                    invItem.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), item, amount, font));
                 }
             }
         }
@@ -123,14 +49,6 @@ namespace Programon
                 if (amount > 0)
                 {
                     items[item] = amount;
-                    foreach (InventoryItem inv in invItem)
-                    {
-                        if (inv.Item == item)
-                        {
-                            inv.SetAmount(amount);
-                            break;
-                        }
-                    }
                 }
                 else
                 {
@@ -138,7 +56,6 @@ namespace Programon
                 }
             }
         }
-
         /// <summary>
         /// Removes the item. If the inventory contains it.
         /// </summary>
@@ -148,22 +65,15 @@ namespace Programon
             if (items.ContainsKey(item))
             {
                 items.Remove(item);
-                foreach (InventoryItem inv in invItem)
-                {
-                    if (inv.Item == item)
-                    {
-                        invItem.Remove(inv);
-                        break;
-                    }
-                }
             }
         }
 
         /// <summary>
-        /// Searches the item with a specified name. Throws an <see cref="KeyNotFoundException"/> when not found.
+        /// Searches an item with a specified name. Throws an <see cref="KeyNotFoundException"/> when not found.
+        /// If the <paramref name="name"/> is more than once in the inventory, it returns the first result.
         /// </summary>
         /// <param name="name">The name of the item to search.</param>
-        /// <returns>A KeyValuePair with the Item and the amount./returns>
+        /// <returns>A KeyValuePair with the Item and the amount.</returns>
         /// <exception cref="KeyNotFoundException">The searched name doesn't exists in the inventory.</exception>
         public KeyValuePair<Item, int> GetItem(string name)
         {
@@ -171,6 +81,33 @@ namespace Programon
             foreach (KeyValuePair<Item, int> item in items)
             {
                 if (item.Key.Name == name)
+                {
+                    foundItem = item;
+                    break;
+                }
+            }
+
+            if (foundItem.Equals(default(KeyValuePair<Item, int>)))
+            {
+                throw new KeyNotFoundException("The searched name doesn't exists in the inventory.");
+            }
+
+            return foundItem;
+        }
+
+        /// <summary>
+        /// Searches an item with the specified amount. Throws an <see cref="KeyNotFoundException"/> when not found. 
+        /// If the <paramref name="amount"/> is more than once in the inventory, it returns the first result.
+        /// </summary>
+        /// <param name="amount">The amount of the item to search.</param>
+        /// <returns>A KeyValuePair with the Item and the amount.</returns>
+        /// <exception cref="KeyNotFoundException">The searched name doesn't exists in the inventory.</exception>
+        public KeyValuePair<Item, int> GetItem(int amount)
+        {
+            KeyValuePair<Item, int> foundItem = new KeyValuePair<Item, int>();
+            foreach (KeyValuePair<Item, int> item in items)
+            {
+                if (item.Value == amount)
                 {
                     foundItem = item;
                     break;
@@ -208,5 +145,6 @@ namespace Programon
 
             return 0;
         }
+
     }
 }

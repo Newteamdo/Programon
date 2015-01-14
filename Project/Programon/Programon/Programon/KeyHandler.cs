@@ -59,6 +59,9 @@ namespace Programon
                     case (Keys.X):
                         // cancel button or back button
                         break;
+                    case Keys.I:
+                        GameWindow.SetState(GameState.INVENTORY);
+                        break;
                     case (Keys.F1):
                         GameWindow.SetState(GameState.BATTLE);
                         break;

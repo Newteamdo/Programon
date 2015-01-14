@@ -72,7 +72,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menus\Inventory.cs" />
+    <Compile Include="Menus\InventoryMenu.cs" />
     <Compile Include="XmlLoader.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="KeyHandler.cs" />

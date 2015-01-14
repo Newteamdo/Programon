@@ -68,6 +68,7 @@
     <Compile Include="Actor_Values\Ability.cs" />
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Actor_Values\Buff.cs" />
+    <Compile Include="Actor_Values\Inventory.cs" />
     <Compile Include="AI.cs" />
     <Compile Include="Animation.cs" />
     <Compile Include="BattleMechanics.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="GUI Items\DialogueBox.cs" />
     <Compile Include="GUI Items\InventoryItem.cs" />
     <Compile Include="Interfaces.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="Actor_Values\Item.cs" />
     <Compile Include="LCGRandom.cs" />
     <Compile Include="Actor_Values\LevelingSystem.cs" />
     <Compile Include="Map.cs" />

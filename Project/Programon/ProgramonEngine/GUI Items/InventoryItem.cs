@@ -23,7 +23,7 @@ namespace ProgramonEngine
         private Vector2 itemDescScale;
         private Vector2 itemAmountPosition;
         private Vector2 itemAmountScale;
-
+        private string itemDescriptionText;
         /// <summary>
         /// Initializes a new instance of the <see cref="InventoryItem"/> class.
         /// </summary>
@@ -40,6 +40,7 @@ namespace ProgramonEngine
             this.itemRectangle = new Rectangle();
             this.imageRectangle = new Rectangle();
             this.textFont = null;
+            this.itemDescriptionText = "";
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace ProgramonEngine
             this.itemRectangle = ItemRectangle;
             this.imageRectangle = new Rectangle();
             this.textFont = font;
-            this.Item.Description = StringExtensions.WrapText(item.Description, (itemRectangle.Width - imageRectangle.Width), textFont);
+            this.itemDescriptionText = StringExtensions.WrapText(item.Description, (itemRectangle.Width - imageRectangle.Width), textFont);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace ProgramonEngine
             itemNamePosition = new Vector2(itemRectangle.X + imageRectangle.Width, itemRectangle.Y);
             itemDescPosition = new Vector2(itemRectangle.X + imageRectangle.Width, itemRectangle.Y + itemHeight);
 
-            Vector2 descriptionSize = textFont.MeasureString(Item.Description);
+            Vector2 descriptionSize = textFont.MeasureString(itemDescriptionText);
 
             float descriptionWidth = descriptionSize.X;
             float descriptionHeight = descriptionSize.Y;
@@ -118,7 +119,7 @@ namespace ProgramonEngine
             spriteBatch.Draw(Sprite.FromStaticColor(Color.Yellow, Color.White, spriteBatch.GraphicsDevice).Texture, imageRectangle, Color.White);
             spriteBatch.DrawString(textFont, "x" + amount, itemAmountPosition, Color.Red, 0f, new Vector2(0, 0), itemAmountScale, SpriteEffects.None, 0);
             spriteBatch.DrawString(textFont, Item.Name, itemNamePosition, Color.White, 0f, new Vector2(0, 0), itemNameScale, SpriteEffects.None, 0);
-            spriteBatch.DrawString(textFont, Item.Description, itemDescPosition, Color.White, 0f, new Vector2(0, 0), itemDescScale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(textFont, itemDescriptionText, itemDescPosition, Color.White, 0f, new Vector2(0, 0), itemDescScale, SpriteEffects.None, 0);
         }
 
         /// <summary>
