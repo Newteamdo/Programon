@@ -20,7 +20,7 @@ namespace Programon
                 {
                     Background,
                     BackBtn,
-                    ControlsBtn,
+                   // ControlsBtn,
                     SaveChangesBtn, 
                     PrevButtonResolution,
                     NextButtonResolution,
@@ -44,7 +44,7 @@ namespace Programon
         private SpriteDrawer SpriteDrawer { get; set; }
 
         private Button BackBtn { get; set; }
-        private Button ControlsBtn { get; set; }
+       // private Button ControlsBtn { get; set; }
         private Button SaveChangesBtn { get; set; }
 
         private Button PrevButtonResolution { get; set; }
@@ -84,7 +84,7 @@ namespace Programon
             this.CurrentIndexResolution = 0;
 
             BackBtn = null;
-            ControlsBtn = null;
+            //ControlsBtn = null;
 
             SaveChangesBtn = null;
 
@@ -125,7 +125,7 @@ namespace Programon
 
             BackBtn.OnMouseClick += backBtn_OnClick;
 
-            ControlsBtn = new Button(new Rectangle(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 4, ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\ControlsButton"), mainWindow);
+            //ControlsBtn = new Button(new Rectangle(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 4, ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\ControlsButton"), mainWindow);
 
             SaveChangesBtn = new Button(new Rectangle(20, ScreenHeight - (ScreenHeight / 10 + 50), (int)((float)ScreenWidth / 2.5), ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\SaveChangesButton"), mainWindow);
             SaveChangesBtn.OnMouseClick += saveChangesBtn_OnClick;
@@ -152,8 +152,8 @@ namespace Programon
             SaveChangesBtn.OnMouseEnter += button_OnMouseEnter;
             SaveChangesBtn.OnMouseLeave += button_OnMouseLeave;
 
-            ControlsBtn.OnMouseEnter += button_OnMouseEnter;
-            ControlsBtn.OnMouseLeave += button_OnMouseLeave;
+            //ControlsBtn.OnMouseEnter += button_OnMouseEnter;
+            //ControlsBtn.OnMouseLeave += button_OnMouseLeave;
 
             BackBtn.OnMouseEnter += button_OnMouseEnter;
             BackBtn.OnMouseLeave += button_OnMouseLeave;
@@ -200,7 +200,7 @@ namespace Programon
         public void Update()
         {
             BackBtn.Update();
-            ControlsBtn.Update();
+            //ControlsBtn.Update();
             SaveChangesBtn.Update();
             PrevButtonResolution.Update();
             NextButtonResolution.Update();
@@ -218,8 +218,8 @@ namespace Programon
             BackBtn.SetPosition(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 20));
             BackBtn.SetSize(ScreenWidth / 8, ScreenHeight / 10);
 
-            ControlsBtn.SetPosition(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 20));
-            ControlsBtn.SetSize(ScreenWidth / 4, ScreenHeight / 10);
+            //ControlsBtn.SetPosition(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 20));
+            //ControlsBtn.SetSize(ScreenWidth / 4, ScreenHeight / 10);
 
             SaveChangesBtn.SetPosition(20, ScreenHeight - (ScreenHeight / 10 + 20));
             SaveChangesBtn.SetSize((int)((float)ScreenWidth / 2.5), ScreenHeight / 10);
