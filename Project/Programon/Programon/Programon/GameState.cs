@@ -14,7 +14,8 @@ namespace Programon
         NEWGAME, 
         OVERWORLD, 
         PROGRAMONSCREEN, 
-        INVENTORY, 
+        INVENTORY,
+        PORTABLECOMTAKDEVICE,
         BATTLE
     }
 }

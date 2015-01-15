@@ -13,6 +13,7 @@ namespace ProgramonEngine
         public Dictionary<AnimationTypes, Animation> Animations { get; private set; }
         public List<Creature> programons = new List<Creature>();
         public Inventory Inventory { get; set; }
+        public Inventory PortableComtakDevie { get; set; } // I'm using marco's class to display all programons.
         private int updateCount { get; set; }
 
         public Player(Vector2 startPos, Vector2 scale, Map currentMap)
@@ -20,6 +21,7 @@ namespace ProgramonEngine
         {
             Animations = new Dictionary<AnimationTypes, Animation>();
             Inventory = new Inventory();
+            PortableComtakDevie = new Inventory(); 
         }
 
         public void LoadAnimation(ContentManager content, AnimationTypes type, params string[] attrNames)

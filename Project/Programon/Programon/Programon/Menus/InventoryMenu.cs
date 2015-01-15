@@ -46,9 +46,19 @@ namespace Programon
         {
             font = mainWindow.Content.Load<SpriteFont>("Fonts/DebugFont");
             InventoryItems = new List<InventoryItem>();
-            for (int i = 0; i < player.Inventory.GetItems().Count; i++)
+            if (mainWindow.State == GameState.INVENTORY)
             {
-                InventoryItems.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), player.Inventory.GetItems().Keys.ElementAt(i), player.Inventory.GetItems().Values.ElementAt(i), font));
+                for (int i = 0; i < player.Inventory.GetItems().Count; i++)
+                {
+                    InventoryItems.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), player.Inventory.GetItems().Keys.ElementAt(i), player.Inventory.GetItems().Values.ElementAt(i), font));
+                }
+            }
+            else if (mainWindow.State == GameState.PORTABLECOMTAKDEVICE)
+            {
+                for (int i = 0; i < player.Inventory.GetItems().Count; i++)
+                {
+                    InventoryItems.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), player.PortableComtakDevie.GetItems().Keys.ElementAt(i), player.PortableComtakDevie.GetItems().Values.ElementAt(i), font));
+                }
             }
         }
 
@@ -58,11 +68,21 @@ namespace Programon
         public void Update()
         {
             InventoryItems.Clear();
-            for (int i = 0; i < player.Inventory.GetItems().Count; i++)
-            {
-                InventoryItems.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), player.Inventory.GetItems().Keys.ElementAt(i), player.Inventory.GetItems().Values.ElementAt(i), font));
-            }
 
+            if (mainWindow.State == GameState.INVENTORY)
+            {
+                for (int i = 0; i < player.Inventory.GetItems().Count; i++)
+                {
+                    InventoryItems.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), player.Inventory.GetItems().Keys.ElementAt(i), player.Inventory.GetItems().Values.ElementAt(i), font));
+                }
+            }
+            else if(mainWindow.State == GameState.PORTABLECOMTAKDEVICE)
+            {
+                for (int i = 0; i < player.Inventory.GetItems().Count; i++)
+                {
+                    InventoryItems.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), player.PortableComtakDevie.GetItems().Keys.ElementAt(i), player.PortableComtakDevie.GetItems().Values.ElementAt(i), font));
+                }
+            }
             CalculatePositions();
             for (int i = 0; i < InventoryItems.Count; i++)
             {

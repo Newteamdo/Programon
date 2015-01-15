@@ -7,7 +7,6 @@ namespace Programon
     public class KeyHandler
     {
         private MainWindow GameWindow { get; set; }
-
         private double NextKeyStamp { get; set; }
         private double EventDelay { get; set; }
 
@@ -15,7 +14,7 @@ namespace Programon
         {
             this.GameWindow = gameWindow;
             NextKeyStamp = 0;
-            
+
             // Delay between key press event in ms
             EventDelay = 90;
         }
@@ -61,6 +60,9 @@ namespace Programon
                         break;
                     case Keys.I:
                         GameWindow.SetState(GameState.INVENTORY);
+                        break;
+                    case Keys.P:
+                        GameWindow.SetState(GameState.PORTABLECOMTAKDEVICE);
                         break;
                     case (Keys.F1):
                         GameWindow.SetState(GameState.BATTLE);

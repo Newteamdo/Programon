@@ -35,6 +35,7 @@ namespace Programon
         private ProgramonMenu programonMenu;
 
         private InventoryMenu inventoryMenu;
+        private InventoryMenu portableComtakDevice;
         private OptionsMenu OptionsMenu { get; set; }
 
         public MainWindow()
@@ -64,7 +65,10 @@ namespace Programon
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
             Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
-            Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()),10);
+            Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()),1);
+            Player.PortableComtakDevie.AddItem(new Item("TestProgramon", "This is a description of a programon.", new Sprite()), 10);
+            portableComtakDevice = new InventoryMenu(Player, this);
+            portableComtakDevice.Initialize();
             inventoryMenu = new InventoryMenu(Player, this);
             inventoryMenu.Initialize();
             base.Initialize();
@@ -106,9 +110,7 @@ namespace Programon
         protected override void Update(GameTime gameTime)
         {
             DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
             this.Keyhandler.KeyPress(gameTime);
-
             switch (State)
             {
                 case GameState.MAINMENU:
@@ -128,9 +130,11 @@ namespace Programon
                 case GameState.PROGRAMONSCREEN:
                     programonMenu.Update();
                     break;
-
                 case GameState.INVENTORY:
                     inventoryMenu.Update();
+                    break;
+                case GameState.PORTABLECOMTAKDEVICE:
+                    portableComtakDevice.Update();
                     break;
             }
 
@@ -174,6 +178,9 @@ namespace Programon
                     break;
                 case GameState.INVENTORY:
                     SpriteDrawer.DrawGUI(inventoryMenu);
+                    break;
+                case GameState.PORTABLECOMTAKDEVICE:
+                    SpriteDrawer.DrawGUI(portableComtakDevice);
                     break;
             }
 
