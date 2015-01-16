@@ -10,7 +10,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using ProgramonEngine;
 using System.Xml;
-using System.IO;
 
 namespace Programon
 {
@@ -67,14 +66,7 @@ namespace Programon
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
             Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
             Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()),1);
-
-            List<Ability> ability = new List<Ability> { };
-            ProgramonLoader.SaveProgramon(new Creature(new Vector2(0, 0), "TestProgramon", 0x01, new Stats(10, 100, 5, 5, 5, 5, 10), new Stats(), ability, Map, "This is a test programon"), Directory.GetCurrentDirectory() + "/testprogramon");
-            string programonName = ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml").name;
-            byte programonLevel = ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml").level;
-            string description = ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml").description;
-            Player.PortableComtakDevie.AddItem(new Item(programonName, description, new Sprite()), programonLevel);
-
+            Player.PortableComtakDevie.AddItem(new Item("TestProgramon", "This is a description of a programon.", new Sprite()), 10);
             portableComtakDevice = new InventoryMenu(Player, this);
             portableComtakDevice.Initialize();
             inventoryMenu = new InventoryMenu(Player, this);
