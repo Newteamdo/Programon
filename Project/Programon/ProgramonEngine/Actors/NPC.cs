@@ -5,6 +5,13 @@ namespace ProgramonEngine
 {
     public class NPC : Actor
     {
+        enum Direction
+        {
+            UP = 0,
+            DOWN = 1,
+            LEFT = 2,
+            RIGHT = 3
+        }
         private double NextKeyStamp = 0;
         Vector2 maxUpperLeftPosition;
         Vector2 maxDownerRightPosition;
@@ -23,8 +30,25 @@ namespace ProgramonEngine
             {
                 NextKeyStamp = gameTime.TotalGameTime.TotalSeconds + 1;
 
+                Vector2 direction = new Vector2(0,0);
+
                 Random rnd = new Random();
-                Vector2 direction = new Vector2((float) rnd.Next(-1, 2), (float) rnd.Next(-1, 2));
+                int dir = rnd.Next(0, 4);
+                switch (dir)
+                {
+                    case (int) Direction.UP:
+                        direction = new Vector2(0f, 1f);
+                        break;
+                    case (int) Direction.DOWN:
+                        direction = new Vector2(0f, -1f);
+                        break;
+                    case (int) Direction.LEFT:
+                        direction = new Vector2(-1f, 0f);
+                        break;
+                    case (int) Direction.RIGHT:
+                        direction = new Vector2(1f, 0f);
+                        break;
+                }
 
                 //Check if x is between two points
                 if (Transform.Position.X + direction.X < maxUpperLeftPosition.X || Transform.Position.X + direction.X > maxDownerRightPosition.X)
