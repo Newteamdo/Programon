@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace ProgramonEngine
 {
+    [Serializable]
     public struct Transform
     {
         public Vector2 Position { get { return Pposition; } set { Pposition = value; } }

@@ -1,18 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System;
 
 namespace ProgramonEngine
 {
+    [Serializable]
     public class Actor
     {
+        [System.Xml.Serialization.XmlIgnore]
         public Vector2 FixedPosition { get { return new Vector2(Transform.Position.X * Sprite.NodeWidth, Transform.Position.Y * Sprite.NodeWidth); } private set { } }
         public Transform Transform { get; set; }
+        [System.Xml.Serialization.XmlIgnore]
         public Sprite Sprite { get; set; }
+        [System.Xml.Serialization.XmlIgnore]
         public Map CurrentMap { get; set; }
 
         public delegate void OnEnterEventHandler(Actor actor, Node oldPos, Node newPos);
         public event OnEnterEventHandler OnEnter;
+
+        protected internal Actor()
+        {
+            this.FixedPosition = new Vector2();
+            this.Transform = new Transform();
+            this.Sprite = new Sprite();
+            this.CurrentMap = new Map();
+        }
 
         public Actor(Vector2 startPos, Vector2 scale)
         {
