@@ -21,7 +21,7 @@ namespace ProgramonEngine
         {
             Animations = new Dictionary<AnimationTypes, Animation>();
             Inventory = new Inventory();
-            PortableComtakDevie = new Inventory(); 
+            PortableComtakDevie = new Inventory();
         }
 
         public void LoadAnimation(ContentManager content, AnimationTypes type, params string[] attrNames)
@@ -34,15 +34,16 @@ namespace ProgramonEngine
 
         public void Update()
         {
-            if (updateCount > 0) IsWalking = false;
+            if (updateCount > 0)
+                IsWalking = false;
             updateCount++;
         }
 
-        public override void Move(Node newPos)
+        public override void Move(Node newPos, IEnumerable<Actor> actors)
         {
             IsWalking = true;
             updateCount = 0;
-            base.Move(newPos);
+            base.Move(newPos, actors);
         }
 
         public void AddProgramon(Creature programon)

@@ -39,6 +39,9 @@ namespace Programon
         private InventoryMenu portableComtakDevice;
         private OptionsMenu OptionsMenu { get; set; }
 
+        public List<Actor> actors = new List<Actor>();
+        public NPC npc;
+
         public MainWindow()
         {
             SpriteDrawer = new SpriteDrawer(this, new Rectangle(0, 0, 1024, 720), false);
@@ -66,7 +69,7 @@ namespace Programon
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
             Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
-            Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()),1);
+            Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()), 1);
 
             List<Ability> ability = new List<Ability> { };
             ProgramonLoader.SaveProgramon(new Creature(new Vector2(0, 0), "TestProgramon", 0x01, new Stats(10, 100, 5, 5, 5, 5, 10), new Stats(), ability, Map, "This is a test programon"), Directory.GetCurrentDirectory() + "/testprogramon");
@@ -79,6 +82,9 @@ namespace Programon
             portableComtakDevice.Initialize();
             inventoryMenu = new InventoryMenu(Player, this);
             inventoryMenu.Initialize();
+
+            npc = new NPC(new Vector2(10, 5), new Vector2(4, 4), Map);
+            actors.Add(npc);
             base.Initialize();
         }
 
@@ -97,6 +103,7 @@ namespace Programon
                     menuWindow.initialize();
                     break;
                 case GameState.NEWGAME:
+                    npc.Load(Content, "TempNPC");
                     Player.Load(Content, "Player/TempPlayer_Stand");
                     Player.LoadAnimation(Content, AnimationTypes.Walking, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
@@ -117,7 +124,7 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
-            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            DeltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
             this.Keyhandler.KeyPress(gameTime);
             switch (State)
             {
@@ -129,6 +136,7 @@ namespace Programon
                     break;
                 case GameState.OVERWORLD:
                 case GameState.NEWGAME:
+                    npc.Update(Map, gameTime);
                     MainCamera.Update(Player.FixedPosition, Map.Size);
                     SpriteDrawer.Update(Map.MapDictionary, MainCamera);
                     break;
@@ -176,7 +184,7 @@ namespace Programon
                     break;
                 case GameState.OVERWORLD:
                 case GameState.NEWGAME:
-                    SpriteDrawer.Draw(MainCamera, Player);
+                    SpriteDrawer.Draw(MainCamera, Player, null, actors);
                     break;
                 case GameState.BATTLE:
                     testBattle.Draw(SpriteDrawer.SpriteBatch);

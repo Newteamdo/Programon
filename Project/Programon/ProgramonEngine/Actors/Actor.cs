@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProgramonEngine
 {
@@ -41,7 +43,30 @@ namespace ProgramonEngine
         /// <summary> Move the actor to a new node but only if the node is walkable. </summary>
         public virtual void Move(Node newPos)
         {
-            if (!newPos.Walkable) return;
+            if (!newPos.Walkable)
+                return;
+            Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
+
+            // Implementation check before event call
+            if (CurrentMap != null)
+                OnEnter(this, CurrentMap.MapDictionary[Transform.Position], newPos);
+        }
+
+        public virtual void Move(Node newPos, IEnumerable<Actor> actors = null)
+        {
+            if (actors != null)
+            {
+                for (int i = 0; i < actors.Count(); i++)
+                {
+                    Actor ac = actors.ElementAt(i);
+
+                    if (newPos.Transform.Position == ac.Transform.Position)
+                        return;
+                }
+            }
+
+            if (!newPos.Walkable)
+                return;
             Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
 
             // Implementation check before event call

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\Boss.cs" />
+    <Compile Include="Actors\NPC.cs" />
     <Compile Include="Actors\Player.cs" />
     <Compile Include="Actor_Values\Ability.cs" />
     <Compile Include="Actors\Actor.cs" />
