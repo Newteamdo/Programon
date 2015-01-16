@@ -29,6 +29,8 @@ namespace Programon
         public double VolumeLevel { get; set; }
         public float DeltaTime { get; private set; }
 
+        private Background introBackground;
+
         public GameState State { get; private set; }
 
         private BattleScreen testBattle;
@@ -40,9 +42,11 @@ namespace Programon
         private OptionsMenu OptionsMenu { get; set; }
 
         public List<Actor> actors = new List<Actor>();
-        private NPC npc;
 
         DialogueBox dialog;
+
+        bool firstRun = true;
+        double NextTimeToSwitch = 0;
 
         public MainWindow()
         {
@@ -54,7 +58,7 @@ namespace Programon
 
             XmlLoader.LoadSettings(this, SpriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
-            State = GameState.MAINMENU;
+            State = GameState.INTRO;
 
             IsMouseVisible = true;
 
@@ -85,8 +89,10 @@ namespace Programon
             inventoryMenu = new InventoryMenu(Player, this);
             inventoryMenu.Initialize();
 
-            npc = new NPC(new Vector2(10, 5), new Vector2(4, 4), Map, new Vector2(8,3), new Vector2(12,7));
-            actors.Add(npc);
+            introBackground = new Background(Content.Load<Texture2D>("ProgramonIntro"), SpriteDrawer.BufferSize);
+
+            actors.Add(new NPC(new Vector2(5, 32), new Vector2(4, 4), Map, new Vector2(4,25), new Vector2(8,35)));
+            actors.Add(new NPC(new Vector2(10, 5), new Vector2(4, 4), Map, new Vector2(8, 3), new Vector2(12, 7)));
 
             dialog = new DialogueBox("This is a test text for the dialog box. This needs to be changed a time!", Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), false, SpriteDrawer.BufferSize, Content.Load<Texture2D>("TestGuiTextures/TestBox"));
             base.Initialize();
@@ -107,7 +113,15 @@ namespace Programon
                     menuWindow.initialize();
                     break;
                 case GameState.NEWGAME:
-                    npc.Load(Content, "TempNPC");
+                    for (int i = 0; i < actors.Count; i++)
+                    {
+                        if (actors[i] is NPC)
+                        {
+                            NPC npc = actors[i] as NPC;
+                            npc.Load(Content, "TempNPC");
+                        }
+                    }
+
                     Player.Load(Content, "Player/TempPlayer_Stand");
                     Player.Animations.Clear();
                     Player.LoadAnimation(Content, AnimationTypes.Walking, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
@@ -129,10 +143,21 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
+            if (firstRun)
+            {
+                NextTimeToSwitch = gameTime.TotalGameTime.TotalSeconds + 5;
+                firstRun = false;
+            }
             DeltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
             this.Keyhandler.KeyPress(gameTime);
             switch (State)
             {
+                case GameState.INTRO:
+                    if (gameTime.TotalGameTime.TotalSeconds >= NextTimeToSwitch)
+                    {
+                        SetState(GameState.MAINMENU);
+                    }
+                    break;
                 case GameState.MAINMENU:
                     menuWindow.Update();
                     break;
@@ -141,7 +166,15 @@ namespace Programon
                     break;
                 case GameState.OVERWORLD:
                 case GameState.NEWGAME:
-                    npc.Update(Map, gameTime);
+                    for (int i = 0; i < actors.Count; i++)
+                    {
+                        if (actors[i] is NPC)
+                        {
+                            NPC npc = actors[i] as NPC;
+                            npc.Update(Map, gameTime);
+                        }
+                    }
+                    
                     MainCamera.Update(Player.FixedPosition, Map.Size);
                     SpriteDrawer.Update(Map.MapDictionary, MainCamera);
                     break;
@@ -181,6 +214,9 @@ namespace Programon
         {
             switch (State)
             {
+                case GameState.INTRO:
+                    SpriteDrawer.DrawGUIItem(introBackground);
+                    break;
                 case GameState.MAINMENU:
                     SpriteDrawer.DrawGUI(menuWindow);
                     break;
