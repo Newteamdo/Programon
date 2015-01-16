@@ -40,7 +40,9 @@ namespace Programon
         private OptionsMenu OptionsMenu { get; set; }
 
         public List<Actor> actors = new List<Actor>();
-        public NPC npc;
+        private NPC npc;
+
+        DialogueBox dialog;
 
         public MainWindow()
         {
@@ -56,9 +58,9 @@ namespace Programon
 
             IsMouseVisible = true;
 
-
             /*Debugging!*/
-            SpriteDrawer.Debug = true;
+
+            SpriteDrawer.Debug = false;
         }
 
         protected override void Initialize()
@@ -83,8 +85,10 @@ namespace Programon
             inventoryMenu = new InventoryMenu(Player, this);
             inventoryMenu.Initialize();
 
-            npc = new NPC(new Vector2(10, 5), new Vector2(4, 4), Map);
+            npc = new NPC(new Vector2(10, 5), new Vector2(4, 4), Map, new Vector2(8,3), new Vector2(12,7));
             actors.Add(npc);
+
+            dialog = new DialogueBox("This is a test text for the dialog box. This needs to be changed a time!", Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), false, SpriteDrawer.BufferSize, Content.Load<Texture2D>("TestGuiTextures/TestBox"));
             base.Initialize();
         }
 
@@ -105,6 +109,7 @@ namespace Programon
                 case GameState.NEWGAME:
                     npc.Load(Content, "TempNPC");
                     Player.Load(Content, "Player/TempPlayer_Stand");
+                    Player.Animations.Clear();
                     Player.LoadAnimation(Content, AnimationTypes.Walking, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
@@ -197,6 +202,9 @@ namespace Programon
                     break;
                 case GameState.PORTABLECOMTAKDEVICE:
                     SpriteDrawer.DrawGUI(portableComtakDevice);
+                    break;
+                case GameState.DIALOG:
+                    SpriteDrawer.DrawGUIItem(dialog);
                     break;
             }
 

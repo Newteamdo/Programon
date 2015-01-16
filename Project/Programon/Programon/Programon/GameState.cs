@@ -16,6 +16,7 @@ namespace Programon
         PROGRAMONSCREEN, 
         INVENTORY,
         PORTABLECOMTAKDEVICE,
-        BATTLE
+        BATTLE,
+        DIALOG
     }
 }

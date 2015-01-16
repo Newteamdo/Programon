@@ -157,8 +157,14 @@ namespace Programon
 
             BackBtn.OnMouseEnter += button_OnMouseEnter;
             BackBtn.OnMouseLeave += button_OnMouseLeave;
+            BackBtn.OnMouseClick += BackBtn_OnMouseClick;
 
             CalculatePositions();
+        }
+
+        void BackBtn_OnMouseClick(Button btn)
+        {
+            GameWindow.SetState(GameState.MAINMENU);
         }
 
 

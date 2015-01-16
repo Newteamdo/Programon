@@ -65,13 +65,19 @@ namespace Programon
                         GameWindow.SetState(GameState.PORTABLECOMTAKDEVICE);
                         break;
                     case (Keys.F1):
-                        GameWindow.SetState(GameState.BATTLE);
+                    //    GameWindow.SetState(GameState.BATTLE);
                         break;
                     case (Keys.F2):
                         GameWindow.SetState(GameState.OVERWORLD);
                         break;
                     case (Keys.F3):
                         GameWindow.SetState(GameState.PROGRAMONSCREEN);
+                        break;
+                    case Keys.F4:
+                        GameWindow.SetState(GameState.DIALOG);
+                        break;
+                    case Keys.F5:
+                        GameWindow.SetState(GameState.MAINMENU);
                         break;
                     default:
                         break;
