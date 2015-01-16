@@ -78,7 +78,7 @@ namespace Programon
             }
             else if(mainWindow.State == GameState.PORTABLECOMTAKDEVICE)
             {
-                for (int i = 0; i < player.Inventory.GetItems().Count; i++)
+                for (int i = 0; i < player.PortableComtakDevie.GetItems().Count; i++)
                 {
                     InventoryItems.Add(new InventoryItem(new Rectangle(0, 0, ITEMWIDTH, ITEMHEIGHT), player.PortableComtakDevie.GetItems().Keys.ElementAt(i), player.PortableComtakDevie.GetItems().Values.ElementAt(i), font));
                 }

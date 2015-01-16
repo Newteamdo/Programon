@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
+using System.Xml.Serialization;
+using System;
 
 namespace ProgramonEngine
 {
+    [Serializable]
     public class Stats
     {
         public int health;

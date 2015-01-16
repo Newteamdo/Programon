@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace ProgramonEngine
 {
+    [Serializable]
     public class Creature : Actor
     {
         public byte level;
@@ -13,11 +14,24 @@ namespace ProgramonEngine
         public string name;
         public Stats programonBaseStats;
         public Stats programonTotalStats;
+        [System.Xml.Serialization.XmlIgnore]
         public List<Buff> buffList = new List<Buff>();
         public Stats statsPerLevel;
+        [System.Xml.Serialization.XmlIgnore]
         public List<Ability> abilities = new List<Ability>();
+        public string description;
 
-        public Creature(Vector2 startPos,string name, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities, Map currentMap)
+        protected internal Creature()
+        {
+            this.level = 0x00;
+            this.exp = 0;
+            this.name = "";
+            this.programonBaseStats = new Stats();
+            this.programonTotalStats = new Stats();
+            this.statsPerLevel = new Stats();
+        }
+
+        public Creature(Vector2 startPos,string name, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities, Map currentMap, string description)
             : base(startPos, Vector2.One, currentMap)
         {
             this.name = name;
@@ -25,6 +39,7 @@ namespace ProgramonEngine
             this.programonBaseStats = programonStats;
             this.statsPerLevel = statsPerLevel;
             this.abilities = abilities;
+            this.description = description;
         }
 
         public void AddBuff(Buff buff)

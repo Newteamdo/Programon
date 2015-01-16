@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using ProgramonEngine;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Programon
 {
@@ -111,6 +113,25 @@ namespace Programon
             }
 
             return new Map(mapId, mapName, mapSizeX, mapSizeY, nodes);
+        }
+    }
+
+        public static class ProgramonLoader
+        {
+        public static Creature LoadProgramon(string xmlLocation)
+        {
+            XmlSerializer serial = new XmlSerializer(typeof(Creature));
+            StreamReader reader = new StreamReader(xmlLocation);
+            Creature c = (Creature)serial.Deserialize(reader);
+            reader.Close();
+            return c;
+        }
+        public static void SaveProgramon(Creature programon, string xmlLocation)
+        {
+            XmlSerializer serial = new XmlSerializer(typeof(Creature));
+            StreamWriter writer = new StreamWriter(xmlLocation + ".xml");
+            serial.Serialize(writer, programon);
+            writer.Close();
         }
     }
 }
