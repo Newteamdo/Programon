@@ -11,7 +11,7 @@ namespace ProgramonEngine
 
         public Ability UseRndAbility(Creature playerProgramon, Creature computerProgramon)
         {
-            int rnd = new Random().Next(0, computerProgramon.abilities.Count - 1);
+            int rnd = new Random().Next(0, computerProgramon.abilities.Length - 1);
             return computerProgramon.abilities[rnd];
         }
 

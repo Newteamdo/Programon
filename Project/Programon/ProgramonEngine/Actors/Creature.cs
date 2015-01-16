@@ -17,8 +17,7 @@ namespace ProgramonEngine
         [System.Xml.Serialization.XmlIgnore]
         public List<Buff> buffList = new List<Buff>();
         public Stats statsPerLevel;
-        [System.Xml.Serialization.XmlIgnore]
-        public List<Ability> abilities = new List<Ability>();
+        public Ability[] abilities;
         public string description;
 
         protected internal Creature()
@@ -31,7 +30,7 @@ namespace ProgramonEngine
             this.statsPerLevel = new Stats();
         }
 
-        public Creature(Vector2 startPos,string name, byte level, Stats programonStats, Stats statsPerLevel, List<Ability> abilities, Map currentMap, string description)
+        public Creature(Vector2 startPos, string name, byte level, Stats programonStats, Stats statsPerLevel, Ability[] abilities, Map currentMap, string description)
             : base(startPos, Vector2.One, currentMap)
         {
             this.name = name;
@@ -59,15 +58,17 @@ namespace ProgramonEngine
 
         public void UpdateBuffDuration()
         {
-            foreach (Buff buff in buffList)
+            for (int i = 0; i < buffList.Count; i++)
             {
+                Buff buff = buffList[i];
+
                 if (buff.duration > 0)
                 {
                     buff.duration--;
                 }
                 else
                 {
-                    buffList.Remove(buff);
+                    buffList.RemoveAt(i);
                 }
             }
         }

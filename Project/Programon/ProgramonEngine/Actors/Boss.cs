@@ -13,7 +13,7 @@ namespace ProgramonEngine
 
         private Dictionary<BossStage, string> Dialogue { get; set; }
 
-        public Boss(string name, Vector2 startPos, byte level, Stats stats, List<Ability> abilities, Map currentMap, string description)
+        public Boss(string name, Vector2 startPos, byte level, Stats stats, Ability[] abilities, Map currentMap, string description)
             : base(startPos, name, level, stats, null, abilities, currentMap, description)
         {
             Dialogue = new Dictionary<BossStage, string>();

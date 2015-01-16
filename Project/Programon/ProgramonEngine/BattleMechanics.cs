@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ProgramonEngine
 {
-    public class BattleMechanics
+    public static class BattleMechanics
     {
-
-        public void PlayerAttack(Creature playerProgramon, Creature computerProgramon, Ability playerAbility)
-        { 
+        public static void PlayerAttack(ref Creature playerProgramon, ref Creature computerProgramon, Ability playerAbility)
+        {
             computerProgramon.AddBuff(playerAbility.enemyBuff);
             playerProgramon.AddBuff(playerAbility.selfBuff);
             computerProgramon.UpdateStats();
             playerProgramon.UpdateStats();
-            computerProgramon.programonBaseStats.health-=Math.Min((playerAbility.damage+playerProgramon.programonTotalStats.attack-computerProgramon.programonTotalStats.defence),0);
+            computerProgramon.programonBaseStats.health -= Math.Max((playerAbility.damage + playerProgramon.programonTotalStats.attack - computerProgramon.programonTotalStats.defence), 0);
+            if (computerProgramon.programonBaseStats.health < 0) computerProgramon.programonBaseStats.health = 0;
         }
 
-        public void ComputerAttack(Creature playerProgramon, Creature computerProgramon)
+        public static void ComputerAttack(ref Creature playerProgramon, ref Creature computerProgramon)
         {
             AI battleAi = new AI();
             Ability computerAbility;
@@ -29,15 +26,15 @@ namespace ProgramonEngine
             playerProgramon.programonBaseStats.health -= Math.Min((computerAbility.damage + computerProgramon.programonTotalStats.attack - playerProgramon.programonTotalStats.defence), 0);
         }
 
-        public void UpdateBuffDurations(Creature playerProgramon, Creature computerProgramon)
+        public static void UpdateBuffDurations(ref Creature playerProgramon, ref Creature computerProgramon)
         {
             playerProgramon.UpdateBuffDuration();
             computerProgramon.UpdateBuffDuration();
         }
 
-        public void Recruit(Creature computerProgramon, Player player)
+        public static void Recruit(ref Creature computerProgramon, ref Player player)
         {
-                player.AddProgramon(computerProgramon);
+            player.AddProgramon(computerProgramon);
         }
     }
 }

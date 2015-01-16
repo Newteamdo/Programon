@@ -65,7 +65,7 @@ namespace Programon
                         GameWindow.SetState(GameState.PORTABLECOMTAKDEVICE);
                         break;
                     case (Keys.F1):
-                    //    GameWindow.SetState(GameState.BATTLE);
+                        GameWindow.SetState(GameState.BATTLE);
                         break;
                     case (Keys.F2):
                         GameWindow.SetState(GameState.OVERWORLD);

@@ -88,6 +88,40 @@ namespace Programon
                 OptionsChilds["OptionsRunName"].Click += onRunClick;
             }
 
+            AttacksChilds.ForEach(i =>
+            {
+                i.Click += (sender, e) =>
+                {
+                    switch ((sender as GuiItem).Name)
+                    {
+                        case ("Attack1"):
+                        case ("Attack1Name"):
+                        case ("Attack1EP"):
+                            BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[0]);
+                            break;
+                        case ("Attack2"):
+                        case ("Attack2Name"):
+                        case ("Attack2EP"):
+                            BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[1]);
+                            break;
+                        case ("Attack3"):
+                        case ("Attack3Name"):
+                        case ("Attack3EP"):
+                            BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[2]);
+                            break;
+                    }
+
+                    BattleMechanics.ComputerAttack(ref curProgramon, ref enemy);
+                    RequestNextStage = true;
+
+                    (PlayerChilds["PlayerProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", curProgramon.programonBaseStats.health.ToString(), curProgramon.programonBaseStats.maxHealth);
+                    (PlayerChilds["PlayerProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.programonBaseStats.health, curProgramon.programonBaseStats.maxHealth, PlayerChilds["PlayerProgramonHealthBar"].Bounds.Width);
+
+                    (EnemyChilds["EnemyProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", enemy.programonBaseStats.health.ToString(), enemy.programonBaseStats.maxHealth);
+                    (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth, EnemyChilds["EnemyProgramonHealthBar"].Bounds.Width);
+                };
+            });
+
             Initialized = true;
         }
 
@@ -112,6 +146,9 @@ namespace Programon
         public void Update(float deltaTime)
         {
             MouseState ms = Mouse.GetState();
+
+            curProgramon.UpdateBuffDuration();
+            enemy.UpdateBuffDuration();
 
             EnemyChilds.Owner.Update(ms);
             EnemyChilds.ForEach(i => Update(i, ms, deltaTime));

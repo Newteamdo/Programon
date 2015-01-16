@@ -8,26 +8,26 @@
       <name>SelfBuff</name>
       <duration>1</duration>
       <statChange>
-        <health>10</health>
-        <maxHealth>100</maxHealth>
-        <attack>1</attack>
-        <defence>2</defence>
-        <sAttack>3</sAttack>
-        <sDefence>4</sDefence>
-        <speed>5</speed>
+        <health>0</health>
+        <maxHealth>0</maxHealth>
+        <attack>0</attack>
+        <defence>0</defence>
+        <sAttack>0</sAttack>
+        <sDefence>0</sDefence>
+        <speed>0</speed>
       </statChange>
     </selfBuff>
     <enemyBuff>
-      <name>EnemyBuff</name>     
+      <name>EnemyBuff</name>
       <duration>1</duration>
       <statChange>
-        <health>10</health>
-        <maxHealth>100</maxHealth>
-        <attack>1</attack>
-        <defence>2</defence>
-        <sAttack>3</sAttack>
-        <sDefence>4</sDefence>
-        <speed>5</speed>
+        <health>0</health>
+        <maxHealth>0</maxHealth>
+        <attack>0</attack>
+        <defence>0</defence>
+        <sAttack>0</sAttack>
+        <sDefence>0</sDefence>
+        <speed>0</speed>
       </statChange>
     </enemyBuff>
     <damage>2</damage>
