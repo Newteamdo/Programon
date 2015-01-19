@@ -28,7 +28,7 @@ namespace Programon
 
         public double VolumeLevel { get; set; }
         public float DeltaTime { get; private set; }
-
+        public int laststate;
         private Background introBackground;
 
         public GameState State { get; private set; }
@@ -53,9 +53,8 @@ namespace Programon
             SpriteDrawer = new SpriteDrawer(this, new Rectangle(0, 0, 1024, 720), false);
             MainCamera = new Camera(Vector2.Zero);
             menuWindow = new MainMenuWindow(this);
-            programonMenu = new ProgramonMenu(SpriteDrawer, this);
-            Keyhandler = new KeyHandler(this);
 
+            Keyhandler = new KeyHandler(this);
             XmlLoader.LoadSettings(this, SpriteDrawer, CONFIGLOCATION);
             Content.RootDirectory = "Content";
             State = GameState.INTRO;
@@ -70,8 +69,11 @@ namespace Programon
         protected override void Initialize()
         {
             menuWindow.initialize();
+            programonMenu = new ProgramonMenu(SpriteDrawer, this);
             programonMenu.Initialize();
             MainCamera.Initialize(GraphicsDevice.Viewport.Bounds);
+
+
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
             Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
@@ -106,6 +108,15 @@ namespace Programon
             MainCamera.Initialize(SpriteDrawer.BufferSize);
         }
 
+        private int GetlastState()
+        {
+            if(GameState.PROGRAMONSCREEN != State)
+            {
+                laststate = (int)State;
+            }
+            return (int)State;
+        }
+
         protected override void LoadContent()
         {
             SpriteDrawer.LoadContent(new SpriteBatch(GraphicsDevice), Content);
@@ -138,11 +149,12 @@ namespace Programon
                     testBattle.InitializeEvents(
                     (sender, e) =>
                     {
-                        //SetState(GameState.PROGRAMONSCREEN);
+                        SetState(GameState.PROGRAMONSCREEN);
+                        Update(new GameTime());
                     },
                     (sender, e) =>
                     {
-                        //SetState(GameState.INVENTORY);
+                        SetState(GameState.INVENTORY);
                     },
                     (sender, e) =>
                     {
@@ -154,18 +166,18 @@ namespace Programon
 
         protected override void UnloadContent()
         {
-            Map = null;
+            //Map = null;
         }
 
         protected override void Update(GameTime gameTime)
         {
+            GetlastState();
             if (firstRun)
             {
                 NextTimeToSwitch = gameTime.TotalGameTime.TotalSeconds + 5;
                 firstRun = false;
             }
             DeltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
-            this.Keyhandler.KeyPress(gameTime);
             switch (State)
             {
                 case GameState.INTRO:
@@ -190,7 +202,8 @@ namespace Programon
                             npc.Update(Map, gameTime);
                         }
                     }
-                    
+
+                    this.Keyhandler.KeyPress(gameTime);
                     MainCamera.Update(Player.FixedPosition, Map.Size);
                     SpriteDrawer.Update(Map.MapDictionary, MainCamera);
                     break;

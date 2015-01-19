@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProgramonEngine;
 
-namespace ProgramonEngine
+namespace Programon
 {
     public class ProgramonMenu : IGuiItem
     {
@@ -23,7 +24,7 @@ namespace ProgramonEngine
         private TextField[] nameTextField { get; set; }
         private Texture2D outlinedSquare { get; set; }
         private Button btnQuit { get; set; }
-        private Game game { get; set; }
+        //private mainwindow mainwindow { get; set; }
         private Creature creature { get; set; }
         private int screenWidth { get; set; }
         private int screenHeight { get; set; }
@@ -32,6 +33,7 @@ namespace ProgramonEngine
         private int currentHealth { get; set; }
         private int level { get; set; }
         private int gamestate { get; set; }
+        MainWindow mainwindow { get; set; }
 
         public ProgramonMenu()
         {
@@ -47,16 +49,18 @@ namespace ProgramonEngine
             hpBars = new Rectangle[amountOfProgramons];
             hpBackgroundBars = new Rectangle[amountOfProgramons];
             nameTextField = new TextField[amountOfProgramons];
+            Texture2D texture = mainwindow.Content.Load<Texture2D>("QuitButton"); 
+            btnQuit = new Button(new Rectangle(100, 100, 100, 100), texture, mainwindow);
+            btnQuit.OnMouseClick += btnQuit_OnMouseClick;
             //maxHealth = stats.maxHealth;
             //currentHealth = stats.health;
             //level = creature.level;
         }
 
-        public ProgramonMenu(SpriteDrawer spritedrawer, Game game, int gamestate)
+        public ProgramonMenu(SpriteDrawer spritedrawer, MainWindow mainwindow)
         {
             amountOfProgramons = 3;
             this.spritedrawer = spritedrawer;
-            this.game = game;
             xpBars = new Rectangle[amountOfProgramons];
             designLine = new Rectangle[amountOfProgramons];
             arrayRect = new Rectangle[amountOfProgramons];
@@ -67,9 +71,10 @@ namespace ProgramonEngine
             hpBackgroundBars = new Rectangle[amountOfProgramons];
             nameTextField = new TextField[amountOfProgramons];
             this.gamestate = gamestate;
-            Texture2D texture = game.Content.Load<Texture2D>("QuitButton"); 
-            btnQuit = new Button(new Rectangle(100,100,100,100), texture, game);
+            Texture2D texture = mainwindow.Content.Load<Texture2D>("QuitButton"); 
+            btnQuit = new Button(new Rectangle(500,500,200,100), texture, mainwindow);
             btnQuit.OnMouseClick += btnQuit_OnMouseClick;
+            this.mainwindow = mainwindow;
             //btnQuit = new Button(new Rectangle(10,10,10,10),)
             //maxHealth = stats.maxHealth;
             //currentHealth = stats.health;
@@ -78,17 +83,18 @@ namespace ProgramonEngine
 
         void btnQuit_OnMouseClick(Button btn)
         {
-             
+            this.mainwindow.SetState((GameState)mainwindow.laststate);
         }
 
         public void Initialize()
         {
-            outlinedSquare = game.Content.Load<Texture2D>("vierkant");
+            outlinedSquare = mainwindow.Content.Load<Texture2D>("vierkant");
             fillFullScreenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
         }
 
         public void Update()
         {
+            btnQuit.Update();
             screenWidth = spritedrawer.BufferSize.Width;
             screenHeight = spritedrawer.BufferSize.Height;
             CheckAmountOfProgramon();
@@ -169,13 +175,13 @@ namespace ProgramonEngine
                 switch (programonPlace)
                 {
                     case 0:
-                        nameTextField[programonPlace] = new TextField(nameProgramon, Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 4, screenHeight / 13, screenWidth / 5, 0), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        nameTextField[programonPlace] = new TextField(nameProgramon, Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 4, screenHeight / 13, screenWidth / 5, 0), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                     case 1:
-                        nameTextField[programonPlace] = new TextField(nameProgramon, Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 4, screenHeight / 4 + screenHeight / 19, screenWidth / 5, 0), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        nameTextField[programonPlace] = new TextField(nameProgramon, Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 4, screenHeight / 4 + screenHeight / 19, screenWidth / 5, 0), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                     case 2:
-                        nameTextField[programonPlace] = new TextField(nameProgramon, Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 4, screenHeight / 3 + screenHeight / 5, screenWidth / 5, 0), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        nameTextField[programonPlace] = new TextField(nameProgramon, Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 4, screenHeight / 3 + screenHeight / 5, screenWidth / 5, 0), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                 }
             }
@@ -223,13 +229,13 @@ namespace ProgramonEngine
                 switch (programonPlace)
                 {
                     case 0:
-                        levelTextField[programonPlace] = new TextField(strbld.ToString(), Color.Brown, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 15 * 10, screenHeight / 6, 0, screenHeight / 24), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        levelTextField[programonPlace] = new TextField(strbld.ToString(), Color.Brown, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 15 * 10, screenHeight / 6, 0, screenHeight / 24), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                     case 1:
-                        levelTextField[programonPlace] = new TextField(strbld.ToString(), Color.Brown, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 15 * 10, (screenHeight / 33 * 11) + screenHeight / 14, 0, screenHeight / 24), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        levelTextField[programonPlace] = new TextField(strbld.ToString(), Color.Brown, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 15 * 10, (screenHeight / 33 * 11) + screenHeight / 14, 0, screenHeight / 24), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                     case 2:
-                        levelTextField[programonPlace] = new TextField(strbld.ToString(), Color.Brown, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 15 * 10, screenHeight / 22 * 14 + screenHeight / 200, 0, screenHeight / 24), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        levelTextField[programonPlace] = new TextField(strbld.ToString(), Color.Brown, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 15 * 10, screenHeight / 22 * 14 + screenHeight / 200, 0, screenHeight / 24), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                 }
             }
@@ -250,13 +256,13 @@ namespace ProgramonEngine
                 switch (programonPlace)
                 {
                     case 0:
-                        hpTextField[programonPlace] = new TextField(strbld.ToString(), Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 14 * 5, screenHeight / 6, 0, screenHeight / 24), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        hpTextField[programonPlace] = new TextField(strbld.ToString(), Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 14 * 5, screenHeight / 6, 0, screenHeight / 24), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                     case 1:
-                        hpTextField[programonPlace] = new TextField(strbld.ToString(), Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 14 * 5, (screenHeight / 8) + (screenHeight / 8) + (screenHeight / 7), 0, screenHeight / 24), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        hpTextField[programonPlace] = new TextField(strbld.ToString(), Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 14 * 5, (screenHeight / 8) + (screenHeight / 8) + (screenHeight / 7), 0, screenHeight / 24), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                     case 2:
-                        hpTextField[programonPlace] = new TextField(strbld.ToString(), Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 14 * 5, screenHeight / 2 + screenHeight / 8, 0, screenHeight / 24), game.Content.Load<SpriteFont>("Fonts/DebugFont"));
+                        hpTextField[programonPlace] = new TextField(strbld.ToString(), Color.Black, Color.Transparent, Color.Transparent, new Rectangle(screenWidth / 14 * 5, screenHeight / 2 + screenHeight / 8, 0, screenHeight / 24), mainwindow.Content.Load<SpriteFont>("Fonts/DebugFont"));
                         break;
                 }
             }
@@ -279,12 +285,12 @@ namespace ProgramonEngine
                     spritebatch.Draw(Sprite.FromStaticColor(Color.Blue, Color.White, spritebatch.GraphicsDevice).Texture, xpBars[i], Color.White);
 
                     spritebatch.Draw(outlinedSquare, arrayRect[i], Color.White);
-
                     hpTextField[i].Draw(spritebatch);
                     levelTextField[i].Draw(spritebatch);
                     nameTextField[i].Draw(spritebatch);
                 }
             }
+            btnQuit.Draw(spritebatch);
         }
     }
 
