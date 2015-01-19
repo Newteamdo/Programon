@@ -29,7 +29,8 @@ namespace Programon
 
                 KeyboardState state = Keyboard.GetState();
 
-                if (state.GetPressedKeys().Length <= 0) return;
+                if (state.GetPressedKeys().Length <= 0)
+                    return;
 
                 switch (state.GetPressedKeys()[0])
                 {
@@ -53,6 +54,21 @@ namespace Programon
                             GameWindow.Player.Move(GameWindow.Map.MapDictionary[GameWindow.Player.Transform.Position + Vector2.UnitX], GameWindow.actors);
                         break;
                     case (Keys.Z):
+                        Vector2 playerPosition = GameWindow.Player.Transform.Position;
+                        for (int i = 0; i < GameWindow.actors.Count; i++)
+                        {
+                            Vector2 npcPosition = GameWindow.actors[i].Transform.Position;
+                            if (playerPosition + new Vector2(0f, 1f) == npcPosition || playerPosition + new Vector2(0f, -1f) == npcPosition || playerPosition + new Vector2(-1f, 0f) == npcPosition || playerPosition + new Vector2(1f, 0f) == npcPosition)
+                            {
+                                //Player is next to npc and interact button has been pressed.
+                                if (GameWindow.actors[i] is NPC)
+                                {
+                                    NPC npc = GameWindow.actors[i] as NPC;
+                                    npc.DisplayDialog();
+                                }
+                            }
+                        }
+                            
                         // action button or agree button
                         break;
                     case (Keys.X):
