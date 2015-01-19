@@ -96,8 +96,10 @@ namespace Programon
 
             introBackground = new Background(Content.Load<Texture2D>("ProgramonIntro"), SpriteDrawer.BufferSize);
 
-            actors.Add(new NPC(new Vector2(5, 32), new Vector2(4, 4), Map, new Vector2(4,25), new Vector2(8,35)));
-            actors.Add(new NPC(new Vector2(10, 5), new Vector2(4, 4), Map, new Vector2(8, 3), new Vector2(12, 7)));
+            List<string> dialogTextsNPC1 = new List<string>() { "This is the text off the first time ", "Second time", "Da rude sandstorm!!", "Everything is AWESOME!!!!" };
+            List<string> dialogTextsNPC2 = new List<string>() { "HACKEN DAN!", "TOF MAN", "APPELFLAPPPPPP!", "Turbo Teun Teken Talent", "Nou En!" };
+            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(5, 32), new Vector2(4, 4), Map, new Vector2(4, 25), new Vector2(8, 35), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC2));
+            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(10, 5), new Vector2(4, 4), Map, new Vector2(8, 3), new Vector2(12, 7), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC1));
 
             dialog = new DialogueBox("This is a test text for the dialog box. This needs to be changed a time!", Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), false, SpriteDrawer.BufferSize, Content.Load<Texture2D>("TestGuiTextures/TestBox"));
             base.Initialize();
@@ -199,7 +201,7 @@ namespace Programon
                         if (actors[i] is NPC)
                         {
                             NPC npc = actors[i] as NPC;
-                            npc.Update(Map, gameTime);
+                            npc.Update(Player, Map, gameTime);
                         }
                     }
 
