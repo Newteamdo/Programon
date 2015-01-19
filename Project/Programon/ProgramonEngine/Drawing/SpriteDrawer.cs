@@ -133,7 +133,14 @@ namespace ProgramonEngine
             for (int i = 0; i < actors.Count(); i++)
             {
                 Actor cur = actors.ElementAt(i);
-
+                if (cur is NPC)
+                {
+                    NPC current = cur as NPC;
+                    if (current.DrawDialog)
+                    {
+                        DrawGUIItem(current.Dialogue);
+                    }
+                }
                 SpriteBatch.Draw(cur.Sprite.Texture,
                     cam.GetRelativePosition(cur.FixedPosition),
                     null,

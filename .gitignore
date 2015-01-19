@@ -216,3 +216,5 @@ pip-log.txt
 *.cachefile
 Project/Programon/Programon/ProgramonContent/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Project/Programon/Programon.v12.suo
+Project/Programon/Programon/Programon/MainWindow.cs
+Project/Programon/Programon/Programon/MainWindow.cs

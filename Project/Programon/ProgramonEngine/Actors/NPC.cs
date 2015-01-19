@@ -1,55 +1,142 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProgramonEngine
 {
     public class NPC : Actor
     {
+        private enum Direction
+        {
+            UP = 0,
+            DOWN = 1,
+            LEFT = 2,
+            RIGHT = 3
+        }
         private double NextKeyStamp = 0;
         Vector2 maxUpperLeftPosition;
         Vector2 maxDownerRightPosition;
+        private bool AllowedWalking = false;
+        public DialogueBox Dialogue { get; private set; }
+        SpriteFont dialogFont;
+        Texture2D dialogBoxTexture;
+        private Rectangle bufferSize;
+        int textIndex = 0;
+        public bool DrawDialog { get; private set; }
 
-        public NPC(Vector2 startPos, Vector2 scale, Map currentMap, Vector2 maxUpperLeftPosition, Vector2 maxDownerRightPosition)
+        private IEnumerable<string> dialogTexts;
+
+        public NPC(Rectangle bufferSize, Vector2 startPos, Vector2 scale, Map currentMap, Vector2 maxUpperLeftPosition, Vector2 maxDownerRightPosition, SpriteFont font, Texture2D boxTexture, IEnumerable<string> dialogTexts)
             : base(startPos, scale, currentMap)
         {
             this.maxUpperLeftPosition = maxUpperLeftPosition;
             this.maxDownerRightPosition = maxDownerRightPosition;
+            this.DrawDialog = false;
+            this.dialogFont = font;
+            this.dialogBoxTexture = boxTexture;
+            this.bufferSize = bufferSize;
+            this.dialogTexts = dialogTexts;
         }
 
-        public void Update(Map map, GameTime gameTime)
+        public void Update(Player player, Map map, GameTime gameTime)
         {
             Vector2 newPosition = Transform.Position;
+            Vector2 playerPos = player.Transform.Position;
+
+            if (newPosition + new Vector2(0f, 1f) == playerPos || newPosition + new Vector2(0f, -1f) == playerPos || newPosition + new Vector2(-1f, 0f) == playerPos || newPosition + new Vector2(1f, 0f) == playerPos)
+            {
+                // Player is next to NPC
+                // Disable walking so its possible to interact
+                AllowedWalking = false;
+            }
+            else
+            {
+                // Player is not next to NPC.
+                // NPC can walk.
+                DrawDialog = false;
+                textIndex = 0;
+                AllowedWalking = true;
+            }
+
             if (gameTime.TotalGameTime.TotalSeconds >= NextKeyStamp)
             {
                 NextKeyStamp = gameTime.TotalGameTime.TotalSeconds + 1;
 
-                Random rnd = new Random();
-                Vector2 direction = new Vector2((float) rnd.Next(-1, 2), (float) rnd.Next(-1, 2));
-
-                //Check if x is between two points
-                if (Transform.Position.X + direction.X < maxUpperLeftPosition.X || Transform.Position.X + direction.X > maxDownerRightPosition.X)
+                if (AllowedWalking)
                 {
-                    direction.X *= -1f;
+                    Vector2 direction = new Vector2(0, 0);
+
+                    Random rnd = new Random();
+                    int dir = rnd.Next(0, 4);
+                    switch (dir)
+                    {
+                        case (int) Direction.UP:
+                            direction = new Vector2(0f, 1f);
+                            break;
+                        case (int) Direction.DOWN:
+                            direction = new Vector2(0f, -1f);
+                            break;
+                        case (int) Direction.LEFT:
+                            direction = new Vector2(-1f, 0f);
+                            break;
+                        case (int) Direction.RIGHT:
+                            direction = new Vector2(1f, 0f);
+                            break;
+                    }
+
+                    //Check if x is between two points
+                    if (Transform.Position.X + direction.X < maxUpperLeftPosition.X || Transform.Position.X + direction.X > maxDownerRightPosition.X)
+                    {
+                        direction.X *= -1f;
+                    }
+
+                    //Check if y is between two points
+                    if (Transform.Position.Y + direction.Y < maxUpperLeftPosition.Y || Transform.Position.Y + direction.Y > maxDownerRightPosition.Y)
+                    {
+                        direction.Y *= -1f;
+                    }
+
+                    newPosition = Transform.Position + direction;
+
+                    if (newPosition == player.Transform.Position)
+                    {
+                        newPosition = newPosition - direction;
+                    }
                 }
 
-                //Check if y is between two points
-                if (Transform.Position.Y + direction.Y < maxUpperLeftPosition.Y || Transform.Position.Y + direction.Y > maxDownerRightPosition.Y)
+                if (map.MapDictionary.ContainsKey(newPosition))
                 {
-                    direction.Y *= -1f;
+                    Move(map.MapDictionary[newPosition]);
                 }
-
-                newPosition = Transform.Position + direction;
-            }
-
-            if (map.MapDictionary.ContainsKey(newPosition))
-            {
-                Move(map.MapDictionary[newPosition]);
             }
         }
 
         public override void Move(Node newPos)
         {
             base.Move(newPos);
+        }
+
+        public void DisplayDialog()
+        {
+            if (!(textIndex + 1> dialogTexts.Count()))
+            {
+                if (!DrawDialog)
+                {
+                    DrawDialog = true;
+                }
+
+                Dialogue = new DialogueBox(dialogTexts.ElementAt(textIndex), dialogFont, true, bufferSize, dialogBoxTexture);
+                textIndex++;
+            }
+            else
+            {
+                DrawDialog = false;
+                textIndex = 0;
+            }
+
         }
     }
 }
