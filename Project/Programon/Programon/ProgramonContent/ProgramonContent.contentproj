@@ -192,11 +192,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="TestGuiTextures\Testbox.png">
-      <Name>Testbox</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="vierkant.png">
@@ -730,6 +725,13 @@
     </Compile>
     <Compile Include="TestNodeTextures\WaterUpperRight.png">
       <Name>WaterUpperRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TestGuiTextures\Testbox.png">
+      <Name>Testbox</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

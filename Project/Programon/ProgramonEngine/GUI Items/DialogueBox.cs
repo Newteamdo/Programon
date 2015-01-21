@@ -25,7 +25,6 @@ namespace ProgramonEngine
         private string Text { get; set; }
         private int TextIndex { get; set; }
         private bool Skipable { get; set; }
-
         public DialogueBox(string text, SpriteFont font, bool skipable, Rectangle bufferSize, Texture2D boxTexture)
         {
             Text = text;
@@ -33,19 +32,18 @@ namespace ProgramonEngine
             BoxTexture = boxTexture;
             Font = font;
 
-            BoxFinalPosition = new Vector2(bufferSize.Width >> 3, bufferSize.Height - (bufferSize.Height >> 2));
+            BoxFinalPosition = new Vector2(bufferSize.X, bufferSize.Height - boxTexture.Height);
             BoxPosition = new Vector2(BoxFinalPosition.X, bufferSize.Height);
-            TextPosition = new Vector2(BoxFinalPosition.X + 10, BoxFinalPosition.Y + 10);
+            TextPosition = new Vector2(BoxFinalPosition.X + 10, BoxFinalPosition.Y);
         }
 
         private string[] GetDrawableText()
         {
             string rawValue = Text.Substring(0, TextIndex);
-            int stringLength = (int)Font.MeasureString(rawValue).X;
+            int stringLength = (int) Font.MeasureString(rawValue).X;
 
-            int lines = BoxTexture.Width > stringLength ? 1 : (int)Math.Ceiling(stringLength / (float)BoxTexture.Width);
+            int lines = BoxTexture.Width > stringLength ? 1 : (int) Math.Ceiling(stringLength / (float) BoxTexture.Width);
             int lineLength = rawValue.Length / lines;
-
             string[] values = new string[lines];
 
             for (int i = 0; i < lines; i++)
@@ -60,8 +58,10 @@ namespace ProgramonEngine
         {
             if (BoxPosition != BoxFinalPosition)
             {
-                if (BoxSpeed < Vector2.Distance(BoxPosition, BoxFinalPosition)) BoxPosition.Y -= BoxSpeed;
-                else BoxPosition = BoxFinalPosition;
+                if (BoxSpeed < Vector2.Distance(BoxPosition, BoxFinalPosition))
+                    BoxPosition.Y -= BoxSpeed;
+                else
+                    BoxPosition = BoxFinalPosition;
 
                 spriteBatch.Draw(BoxTexture, BoxPosition, Color.White);
             }
@@ -70,14 +70,16 @@ namespace ProgramonEngine
                 spriteBatch.Draw(BoxTexture, BoxPosition, Color.White);
 
                 string[] text = GetDrawableText();
-
                 for (int i = 0; i < text.Length; i++)
                 {
-                    spriteBatch.DrawString(Font, text[i], new Vector2(TextPosition.X, TextPosition.Y + (i * Font.MeasureString("t").Y)), Color.Black);
+                    float fontHeight = Font.MeasureString(text[i]).Y;
+                    spriteBatch.DrawString(Font, text[i], new Vector2(TextPosition.X, TextPosition.Y + i * fontHeight), Color.Black);
                 }
 
-                if (Keyboard.GetState().IsKeyDown(SkipKey)) TextIndex = Text.Length - 1;
-                else if (TextIndex != Text.Length) TextIndex += TextSpeed;
+                if (Keyboard.GetState().IsKeyDown(SkipKey))
+                    TextIndex = Text.Length;
+                else if (TextIndex != Text.Length)
+                    TextIndex += TextSpeed;
             }
         }
     }

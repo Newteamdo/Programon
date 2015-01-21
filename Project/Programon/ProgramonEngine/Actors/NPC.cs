@@ -38,7 +38,12 @@ namespace ProgramonEngine
             this.dialogFont = font;
             this.dialogBoxTexture = boxTexture;
             this.bufferSize = bufferSize;
-            this.dialogTexts = dialogTexts;
+            List<string> texts = new List<string>();
+            for (int i = 0; i < dialogTexts.Count(); i++)
+            {
+                texts.Add(StringExtensions.WrapText(dialogTexts.ElementAt(i), boxTexture.Width, font));
+            }
+            this.dialogTexts = texts;
         }
 
         public void Update(Player player, Map map, GameTime gameTime)
@@ -121,7 +126,7 @@ namespace ProgramonEngine
 
         public void DisplayDialog()
         {
-            if (!(textIndex + 1> dialogTexts.Count()))
+            if (!(textIndex + 1 > dialogTexts.Count()))
             {
                 if (!DrawDialog)
                 {

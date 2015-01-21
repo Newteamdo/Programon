@@ -17,7 +17,7 @@ namespace Programon
     public class MainWindow : Game
     {
         public const string CONFIGLOCATION = "config.xml";
-        private const string MAPLOCATION = "Maps/map.xml";
+        private const string MAPLOCATION = "Maps/map2.xml";
 
         private Camera MainCamera { get; set; }
         private SpriteDrawer SpriteDrawer { get; set; }
@@ -96,7 +96,7 @@ namespace Programon
 
             introBackground = new Background(Content.Load<Texture2D>("ProgramonIntro"), SpriteDrawer.BufferSize);
 
-            List<string> dialogTextsNPC1 = new List<string>() { "This is the text off the first time ", "Second time", "Da rude sandstorm!!", "Everything is AWESOME!!!!" };
+            List<string> dialogTextsNPC1 = new List<string>() { "Welcome team (player) in the wonderful world of Programon! The world of Programon is full of surprises and magnificent code. But not without danger of course! I have been told that you want to become the best programon team? Well, you are not then only one. There are many programons to discover, to become the best of the best, you will have to challenge them to a battle. If you win, you can recruit them so they become part of your team. Every programon has its strong and weak points. Try to adjust your fighting style to your opponents weakness. Good luck and dont forget to pay a visit to me, I could help you to get to your first fight.", "Hey! Who are you!? Get out of my house right now!! Wait... Is that a PCD? Professor Piet gave it to you, didnt he? Then you must be the one he was talking about. Im sorry for my rude behavior. I dont get many visitors you see. Let me introduce myself. My name is Corne. I work at the school in the city. But it was taken over by programons recently. They just came in and began to attack everything! But I have done some research. It wasnt just an attack of programons.. It was ordered by a team lead by Sietse and his minions Fer and Fedde. They are currently the best team in the world. If you manage to defeat them you will take their place. But you were here for a map you said? Here you go! Go fight Sietse and his crew when you are ready. To continue your journey, you should proceed to the next village. In this village is a gym. Try to defeat the gym master, Peter, if you manage to defeat him he will surely help you to become the best team that ever existed. Maybe he ll even give the key of the school so you can battle those bastards. Off you go now! And be careful.", "Da rude sandstorm!!", "Everything is AWESOME!!!!" };
             List<string> dialogTextsNPC2 = new List<string>() { "HACKEN DAN!", "TOF MAN", "APPELFLAPPPPPP!", "Turbo Teun Teken Talent", "Nou En!" };
             actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(5, 32), new Vector2(4, 4), Map, new Vector2(4, 25), new Vector2(8, 35), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC2));
             actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(10, 5), new Vector2(4, 4), Map, new Vector2(8, 3), new Vector2(12, 7), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC1));
