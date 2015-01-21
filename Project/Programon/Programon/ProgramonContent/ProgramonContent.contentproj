@@ -51,8 +51,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestNodeTextures\grass.jpg">
-      <Name>grass</Name>
+    <Compile Include="TestNodeTextures\grass2.jpg">
+      <Name>grass2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -288,6 +288,448 @@
   <ItemGroup>
     <Compile Include="ProgramonIntro.png">
       <Name>ProgramonIntro</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TestNodeTextures\BridgeCenterLeft.png">
+      <Name>BridgeCenterLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\BridgeCenterRight.png">
+      <Name>BridgeCenterRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\BridgeLowerLeftGrass.png">
+      <Name>BridgeLowerLeftGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\BridgeLowerRightGrass.png">
+      <Name>BridgeLowerRightGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\BridgeUpperLeftGrass.png">
+      <Name>BridgeUpperLeftGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\BridgeUpperRightGrass.png">
+      <Name>BridgeUpperRightGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\Grass.png">
+      <Name>Grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\GrassBush.png">
+      <Name>GrassBush</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketLowerLeft.png">
+      <Name>MarketLowerLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketLowerMiddleLeft.png">
+      <Name>MarketLowerMiddleLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketLowerMiddleRight.png">
+      <Name>MarketLowerMiddleRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketLowerRight.png">
+      <Name>MarketLowerRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketMiddleLeft.png">
+      <Name>MarketMiddleLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketMiddleMiddleLeft.png">
+      <Name>MarketMiddleMiddleLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketMiddleMiddleRight.png">
+      <Name>MarketMiddleMiddleRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketMiddleRight.png">
+      <Name>MarketMiddleRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofLowerLeft.png">
+      <Name>MarketRoofLowerLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofLowerMiddle.png">
+      <Name>MarketRoofLowerMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofLowerRight.png">
+      <Name>MarketRoofLowerRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofMiddle.png">
+      <Name>MarketRoofMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofMiddleLeft.png">
+      <Name>MarketRoofMiddleLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofMiddleRight.png">
+      <Name>MarketRoofMiddleRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofUpperLeft.png">
+      <Name>MarketRoofUpperLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofUpperMiddle.png">
+      <Name>MarketRoofUpperMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketRoofUpperRight.png">
+      <Name>MarketRoofUpperRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketUpperCenter.png">
+      <Name>MarketUpperCenter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketUpperLeft.png">
+      <Name>MarketUpperLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\MarketUpperRight.png">
+      <Name>MarketUpperRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\PlaceHolder.png">
+      <Name>PlaceHolder</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolDoorLeft.png">
+      <Name>SchoolDoorLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolDoorRight.png">
+      <Name>SchoolDoorRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolFloorLeft.png">
+      <Name>SchoolFloorLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolFloorMiddle.png">
+      <Name>SchoolFloorMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolFloorRight.png">
+      <Name>SchoolFloorRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolLeftWindow1Left.png">
+      <Name>SchoolLeftWindow1Left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolLeftWindow2Left.png">
+      <Name>SchoolLeftWindow2Left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolLogoLeft.png">
+      <Name>SchoolLogoLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolLogoRight.png">
+      <Name>SchoolLogoRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRightWindow1Left.png">
+      <Name>SchoolRightWindow1Left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRightWindow2Left.png">
+      <Name>SchoolRightWindow2Left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofLowerLeft.png">
+      <Name>SchoolRoofLowerLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofLowerMiddle.png">
+      <Name>SchoolRoofLowerMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofLowerRight.png">
+      <Name>SchoolRoofLowerRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofMiddle.png">
+      <Name>SchoolRoofMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofMiddleLeft.png">
+      <Name>SchoolRoofMiddleLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofMiddleRight.png">
+      <Name>SchoolRoofMiddleRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofUpperLeft.png">
+      <Name>SchoolRoofUpperLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofUpperMiddle.png">
+      <Name>SchoolRoofUpperMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolRoofUpperRight.png">
+      <Name>SchoolRoofUpperRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolStairsLeft.png">
+      <Name>SchoolStairsLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolStairsRight.png">
+      <Name>SchoolStairsRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolUpperLeft.png">
+      <Name>SchoolUpperLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolUpperMiddle.png">
+      <Name>SchoolUpperMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolUpperRight.png">
+      <Name>SchoolUpperRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolWallMiddle.png">
+      <Name>SchoolWallMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolWallRight.png">
+      <Name>SchoolWallRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolWindow1Right.png">
+      <Name>SchoolWindow1Right</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolWindow2Left.png">
+      <Name>SchoolWindow2Left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\SchoolWindow2Right.png">
+      <Name>SchoolWindow2Right</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadBottomLeftGrass.png">
+      <Name>StoneRoadBottomLeftGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadBottomMiddleGrass.png">
+      <Name>StoneRoadBottomMiddleGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadBottomRightGrass.png">
+      <Name>StoneRoadBottomRightGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadCenterGrass.png">
+      <Name>StoneRoadCenterGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadMiddleLeftGrass.png">
+      <Name>StoneRoadMiddleLeftGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadMiddleRightGrass.png">
+      <Name>StoneRoadMiddleRightGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadUpperLeftGrass.png">
+      <Name>StoneRoadUpperLeftGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadUpperMiddleGrass.png">
+      <Name>StoneRoadUpperMiddleGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\StoneRoadUpperRightGrass.png">
+      <Name>StoneRoadUpperRightGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeLowerLeftGrass.png">
+      <Name>TreeLowerLeftGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeLowerLeftTree.png">
+      <Name>TreeLowerLeftTree</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeLowerRightGrass.png">
+      <Name>TreeLowerRightGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeLowerRightTree.png">
+      <Name>TreeLowerRightTree</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeUpperLeftGrass.png">
+      <Name>TreeUpperLeftGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeUpperLeftWall.png">
+      <Name>TreeUpperLeftWall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeUpperRightGrass.png">
+      <Name>TreeUpperRightGrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\TreeUpperRightWall.png">
+      <Name>TreeUpperRightWall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WallLowerLeft.png">
+      <Name>WallLowerLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WallLowerMiddle.png">
+      <Name>WallLowerMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WallLowerRight.png">
+      <Name>WallLowerRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WallUpperLeftTrans.png">
+      <Name>WallUpperLeftTrans</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WallUpperMiddleTrans.png">
+      <Name>WallUpperMiddleTrans</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WallUpperRightTrans.png">
+      <Name>WallUpperRightTrans</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WaterCenter.png">
+      <Name>WaterCenter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WaterMiddleLeft.png">
+      <Name>WaterMiddleLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WaterMiddleRight.png">
+      <Name>WaterMiddleRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WaterUpperLeft.png">
+      <Name>WaterUpperLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WaterUpperMiddle.png">
+      <Name>WaterUpperMiddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TestNodeTextures\WaterUpperRight.png">
+      <Name>WaterUpperRight</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
