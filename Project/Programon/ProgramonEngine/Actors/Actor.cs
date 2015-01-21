@@ -17,9 +17,13 @@ namespace ProgramonEngine
         public Sprite Sprite { get; set; }
         [System.Xml.Serialization.XmlIgnore]
         public Map CurrentMap { get; set; }
+        public bool CanEncounter { get; set; }
 
         public delegate void OnEnterEventHandler(Actor actor, Node oldPos, Node newPos);
         public event OnEnterEventHandler OnEnter;
+
+        public delegate void OnEncounterEventHandler(Actor actor);
+        public event OnEncounterEventHandler OnEncounter;
 
         protected internal Actor()
         {
@@ -27,6 +31,7 @@ namespace ProgramonEngine
             this.Transform = new Transform();
             this.Sprite = new Sprite();
             this.CurrentMap = new Map();
+            this.CanEncounter = false;
         }
 
         public Actor(Vector2 startPos, Vector2 scale)
@@ -34,10 +39,11 @@ namespace ProgramonEngine
             Transform = new Transform(startPos, scale);
             CurrentMap = null;
         }
-        public Actor(Vector2 startPos, Vector2 scale, Map currentMap)
+        public Actor(Vector2 startPos, Vector2 scale, Map currentMap, bool canEncounter = false)
         {
             Transform = new Transform(startPos, scale);
             CurrentMap = currentMap;
+            this.CanEncounter = canEncounter;
         }
 
         /// <summary> Move the actor to a new node but only if the node is walkable. </summary>
@@ -46,6 +52,15 @@ namespace ProgramonEngine
             if (!newPos.Walkable)
                 return;
             Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
+
+            // Encounter implementation
+            if (CanEncounter)
+            {
+                if ((new LCGRandom(DateTime.Now.Second).NextShort() % 16) == 0)
+                {
+                    OnEncounter(this);
+                }
+            }
 
             // Implementation check before event call
             if (CurrentMap != null)
