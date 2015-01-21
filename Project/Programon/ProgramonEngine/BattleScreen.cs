@@ -39,15 +39,15 @@ namespace Programon
         }
 
         private GuiItemCollection EnemyChilds;
-        private GuiItemCollection PlayerChilds;
+        public GuiItemCollection PlayerChilds;
         private GuiItemCollection AttacksChilds;
         private GuiItemCollection OptionsChilds;
         private List<GuiItem> FocusTargets;
         private GuiItem FocusItem;
 
         private Player player;
-        private Creature curProgramon;
-        private Creature enemy;
+        public Creature curProgramon;
+        public Creature enemy;
 
         private GraphicsDevice device;
         private Rectangle bufferSize;
@@ -111,6 +111,8 @@ namespace Programon
                             break;
                     }
 
+                    if (enemy.programonBaseStats.health <= 0 || curProgramon.programonBaseStats.health <= 0) return;
+
                     BattleMechanics.ComputerAttack(ref curProgramon, ref enemy);
                     RequestNextStage = true;
 
@@ -143,7 +145,7 @@ namespace Programon
             OptionsChilds.ForEach(i => i.Draw(spriteBatch));
         }
 
-        public void Update(float deltaTime)
+        public bool Update(float deltaTime)
         {
             MouseState ms = Mouse.GetState();
 
@@ -170,6 +172,8 @@ namespace Programon
                 RequestNextStage = false;
                 attacking = false;
             }
+
+            return enemy.programonBaseStats.health <= 0 || curProgramon.programonBaseStats.health <= 0 ? true : false;
         }
 
         public void Load(ContentManager content, string fontName, string smallFontName)

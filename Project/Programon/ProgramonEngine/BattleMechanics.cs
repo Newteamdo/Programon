@@ -23,7 +23,8 @@ namespace ProgramonEngine
             playerProgramon.AddBuff(computerAbility.enemyBuff);
             computerProgramon.UpdateStats();
             playerProgramon.UpdateStats();
-            playerProgramon.programonBaseStats.health -= Math.Min((computerAbility.damage + computerProgramon.programonTotalStats.attack - playerProgramon.programonTotalStats.defence), 0);
+            playerProgramon.programonBaseStats.health -= Math.Max((computerAbility.damage + computerProgramon.programonTotalStats.attack - playerProgramon.programonTotalStats.defence), 0);
+            if (playerProgramon.programonBaseStats.health < 0) playerProgramon.programonBaseStats.health = 0;
         }
 
         public static void UpdateBuffDurations(ref Creature playerProgramon, ref Creature computerProgramon)

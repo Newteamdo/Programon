@@ -1,4 +1,5 @@
 Content\loading screen.xnb
+Content\TestNodeTextures\grass2.xnb
 Content\TestNodeTextures\lava.xnb
 Content\TestNodeTextures\stone.xnb
 Content\TestNodeTextures\Water.xnb
@@ -35,20 +36,12 @@ Content\Player\TempPlayer_Stand.xnb
 Content\TestNodeTextures\Tree.xnb
 Content\TempNPC.xnb
 Content\ProgramonIntro.xnb
-Content\TestSounds\Normal.xnb
-Content\TestSounds\Start.xnb
-Content\Fonts\DebugFont.xnb
-Content\Fonts\GuiFont_Large.xnb
-Content\Fonts\GuiFont_Medium.xnb
-Content\Fonts\GuiFont_Small.xnb
-Content\Abilities\TestAbility.xnb
 Content\TestNodeTextures\BridgeCenterLeft.xnb
 Content\TestNodeTextures\BridgeCenterRight.xnb
 Content\TestNodeTextures\BridgeLowerLeftGrass.xnb
 Content\TestNodeTextures\BridgeLowerRightGrass.xnb
 Content\TestNodeTextures\BridgeUpperLeftGrass.xnb
 Content\TestNodeTextures\BridgeUpperRightGrass.xnb
-Content\TestNodeTextures\grass2.xnb
 Content\TestNodeTextures\Grass.xnb
 Content\TestNodeTextures\GrassBush.xnb
 Content\TestNodeTextures\MarketLowerLeft.xnb
@@ -131,6 +124,13 @@ Content\TestNodeTextures\WaterMiddleRight.xnb
 Content\TestNodeTextures\WaterUpperLeft.xnb
 Content\TestNodeTextures\WaterUpperMiddle.xnb
 Content\TestNodeTextures\WaterUpperRight.xnb
+Content\TestSounds\Normal.xnb
+Content\TestSounds\Start.xnb
+Content\Fonts\DebugFont.xnb
+Content\Fonts\GuiFont_Large.xnb
+Content\Fonts\GuiFont_Medium.xnb
+Content\Fonts\GuiFont_Small.xnb
+Content\Abilities\TestAbility.xnb
 config.xml
 Maps\map.xml
 Maps\CameraTestMap_Big.xml

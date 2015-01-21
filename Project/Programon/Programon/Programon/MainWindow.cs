@@ -92,7 +92,7 @@ namespace Programon
             inventoryMenu.Initialize();
 
             Player.programons.Add(ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml"));
-            testBattle = new BattleScreen(Player, GraphicsDevice, SpriteDrawer.BufferSize, Player.programons[0]);
+            testBattle = new BattleScreen(Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon(Environment.CurrentDirectory + "/testprogramon.xml"));
 
             introBackground = new Background(Content.Load<Texture2D>("ProgramonIntro"), SpriteDrawer.BufferSize);
 
@@ -210,7 +210,13 @@ namespace Programon
                     SpriteDrawer.Update(Map.MapDictionary, MainCamera);
                     break;
                 case GameState.BATTLE:
-                    testBattle.Update(DeltaTime);
+                    if (testBattle.Update(DeltaTime))
+                    {
+                        Creature.GetBattleXp(testBattle.enemy, testBattle.curProgramon);
+                        testBattle.curProgramon.UpdateStats();
+                        testBattle.curProgramon.UpdateBuffDuration();
+                        //SetState(GameState.OVERWORLD);
+                    }
                     break;
                 case GameState.PROGRAMONSCREEN:
                     programonMenu.Update();

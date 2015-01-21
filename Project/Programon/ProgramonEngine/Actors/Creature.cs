@@ -72,5 +72,10 @@ namespace ProgramonEngine
                 }
             }
         }
+
+        public static void GetBattleXp(Creature enemy, Creature friendly)
+        {
+            friendly.exp = enemy.level * 2;
+        }           
     }
 }
