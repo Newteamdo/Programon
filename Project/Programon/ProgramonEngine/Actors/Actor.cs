@@ -63,12 +63,24 @@ namespace ProgramonEngine
             }
 
             // Implementation check before event call
-            if (CurrentMap != null)
+            if (CurrentMap != null && OnEnter != null)
                 OnEnter(this, CurrentMap.MapDictionary[Transform.Position], newPos);
         }
 
         public virtual void Move(Node newPos, IEnumerable<Actor> actors = null)
         {
+            // Encounter implementation
+            if (CanEncounter && newPos.IsTallGrass)
+            {
+                if ((new LCGRandom(DateTime.Now.Second).NextShort() % 16) == 0)
+                {
+                    if (OnEncounter != null)
+                    {
+                        OnEncounter(this);
+                    }
+                }
+            }
+
             if (actors != null)
             {
                 for (int i = 0; i < actors.Count(); i++)
@@ -85,7 +97,7 @@ namespace ProgramonEngine
             Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
 
             // Implementation check before event call
-            if (CurrentMap != null)
+            if (CurrentMap != null && OnEnter != null)
                 OnEnter(this, CurrentMap.MapDictionary[Transform.Position], newPos);
         }
 

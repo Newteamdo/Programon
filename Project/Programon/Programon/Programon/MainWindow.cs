@@ -63,7 +63,7 @@ namespace Programon
 
             /*Debugging!*/
 
-            SpriteDrawer.Debug = false;
+            SpriteDrawer.Debug = true;
         }
 
         protected override void Initialize()
