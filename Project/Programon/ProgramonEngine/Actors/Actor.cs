@@ -54,7 +54,7 @@ namespace ProgramonEngine
             Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
 
             // Encounter implementation
-            if (CanEncounter)
+            if (CanEncounter && newPos.IsTallGrass)
             {
                 if ((new LCGRandom(DateTime.Now.Second).NextShort() % 16) == 0)
                 {

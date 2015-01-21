@@ -104,10 +104,11 @@ namespace Programon
                 int xPos = Convert.ToInt32(xmlNode.Attributes["PosX"].Value);
                 int yPos = Convert.ToInt32(xmlNode.Attributes["PosY"].Value);
                 bool walkable = Convert.ToBoolean(xmlNode.Attributes["Walkable"].Value);
+                bool isTallGrass = Convert.ToBoolean(xmlNode.Attributes["Tallgrass"].Value);
 
                 string texture = xmlNode.Attributes["Texture"].Value;
 
-                Node node = new Node(new Vector2(xPos, yPos), mainWindow.Content.Load<Texture2D>(texture), walkable);
+                Node node = new Node(new Vector2(xPos, yPos), mainWindow.Content.Load<Texture2D>(texture), walkable, isTallGrass);
 
                 nodes.Add(node.Transform.Position, node);
             }
