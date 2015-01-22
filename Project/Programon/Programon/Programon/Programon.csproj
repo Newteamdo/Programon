@@ -90,6 +90,9 @@
     <Content Include="config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Dialogs\Dialogs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Game.ico" />
     <Content Include="Images\GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>

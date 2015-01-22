@@ -25,12 +25,14 @@ namespace ProgramonEngine
         private string Text { get; set; }
         private int TextIndex { get; set; }
         private bool Skipable { get; set; }
+        private bool Done;
         public DialogueBox(string text, SpriteFont font, bool skipable, Rectangle bufferSize, Texture2D boxTexture)
         {
             Text = text;
             Skipable = skipable;
             BoxTexture = boxTexture;
             Font = font;
+            Done = false;
 
             BoxFinalPosition = new Vector2(bufferSize.X, bufferSize.Height - boxTexture.Height);
             BoxPosition = new Vector2(BoxFinalPosition.X, bufferSize.Height);
@@ -80,6 +82,25 @@ namespace ProgramonEngine
                     TextIndex = Text.Length;
                 else if (TextIndex != Text.Length)
                     TextIndex += TextSpeed;
+
+                if (TextIndex == Text.Length)
+                {
+                    Done = true;
+                }
+                else
+                {
+                    Done = false;
+                }
+            }
+        }
+
+        public void SetText(string text)
+        {
+            if (Done)
+            {
+                Text = text;
+                TextIndex = 0;
+                Done = false;
             }
         }
     }

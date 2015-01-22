@@ -116,15 +116,45 @@ namespace Programon
 
             return new Map(mapId, mapName, mapSizeX, mapSizeY, nodes);
         }
+
+        /// <summary>
+        /// Loads dialogs from a xml file.
+        /// </summary>
+        /// <param name="id">The identifier of the dialog.</param>
+        /// <param name="xmlLocation">The XML location of the dialgos.</param>
+        /// <returns>A list of strings with all the dialogs for the specified id.</returns>
+        /// <exception cref="System.NullReferenceException">The dialog with the specified ID doesn't exists.</exception>
+        public static List<string> LoadDialog(int id, string xmlLocation)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(xmlLocation);
+
+            XmlNode dialogNode = xmlDoc.SelectSingleNode("Dialogs");
+
+            XmlNodeList nodeList = dialogNode.SelectNodes("Dialog[@Id='" + id + "']/Item");
+            List<string> dialogTexts = new List<string>();
+
+            foreach (XmlNode xmlNode in nodeList)
+            {
+                dialogTexts.Add(xmlNode.InnerText);
+            }
+
+            if (dialogTexts.Count == 0)
+            {
+                throw new NullReferenceException("The dialog with the specified ID doesn't exists.");
+            }
+
+            return dialogTexts;
+        }
     }
 
-        public static class ProgramonLoader
-        {
+    public static class ProgramonLoader
+    {
         public static Creature LoadProgramon(string xmlLocation)
         {
             XmlSerializer serial = new XmlSerializer(typeof(Creature));
             StreamReader reader = new StreamReader(xmlLocation);
-            Creature c = (Creature)serial.Deserialize(reader);
+            Creature c = (Creature) serial.Deserialize(reader);
             reader.Close();
             return c;
         }

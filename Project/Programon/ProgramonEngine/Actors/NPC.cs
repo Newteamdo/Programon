@@ -41,7 +41,7 @@ namespace ProgramonEngine
             List<string> texts = new List<string>();
             for (int i = 0; i < dialogTexts.Count(); i++)
             {
-                texts.Add(StringExtensions.WrapText(dialogTexts.ElementAt(i), boxTexture.Width, font));
+                texts.Add(StringExtensions.WrapText(dialogTexts.ElementAt(i), boxTexture.Width-20, font));
             }
             this.dialogTexts = texts;
         }
@@ -133,7 +133,14 @@ namespace ProgramonEngine
                     DrawDialog = true;
                 }
 
-                Dialogue = new DialogueBox(dialogTexts.ElementAt(textIndex), dialogFont, true, bufferSize, dialogBoxTexture);
+                if (Dialogue != null)
+                {
+                    Dialogue.SetText(dialogTexts.ElementAt(textIndex));
+                }
+                else
+                {
+                    Dialogue = new DialogueBox(dialogTexts.ElementAt(textIndex), dialogFont, true, bufferSize, dialogBoxTexture);
+                }
                 textIndex++;
             }
             else
@@ -141,7 +148,6 @@ namespace ProgramonEngine
                 DrawDialog = false;
                 textIndex = 0;
             }
-
         }
     }
 }
