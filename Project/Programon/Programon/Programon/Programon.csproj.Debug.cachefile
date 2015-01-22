@@ -131,6 +131,9 @@ Content\Fonts\GuiFont_Large.xnb
 Content\Fonts\GuiFont_Medium.xnb
 Content\Fonts\GuiFont_Small.xnb
 Content\Abilities\TestAbility.xnb
+Content\Abilities\Sync_first.xnb
+Content\Abilities\Terraria.xnb
+Content\Abilities\Vector_layer.xnb
 config.xml
 Maps\map.xml
 Maps\CameraTestMap_Big.xml

@@ -95,19 +95,28 @@ namespace Programon
                     switch ((sender as GuiItem).Name)
                     {
                         case ("Attack1"):
-                        case ("Attack1Name"):
-                        case ("Attack1EP"):
-                            BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[0]);
+                            if (curProgramon.abilities[0].EP > 0)
+                            {
+                                curProgramon.abilities[0].EP--;
+                                BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[0]);
+                                Reload();
+                            }
                             break;
                         case ("Attack2"):
-                        case ("Attack2Name"):
-                        case ("Attack2EP"):
-                            BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[1]);
+                            if (curProgramon.abilities[1].EP > 0)
+                            {
+                                curProgramon.abilities[1].EP--;
+                                BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[1]);
+                                Reload();
+                            }
                             break;
                         case ("Attack3"):
-                        case ("Attack3Name"):
-                        case ("Attack3EP"):
-                            BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[2]);
+                            if (curProgramon.abilities[2].EP > 0)
+                            {
+                                curProgramon.abilities[2].EP--;
+                                BattleMechanics.PlayerAttack(ref curProgramon, ref enemy, curProgramon.abilities[2]);
+                                Reload();
+                            }
                             break;
                     }
 
@@ -118,6 +127,9 @@ namespace Programon
 
                     (PlayerChilds["PlayerProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", curProgramon.programonBaseStats.health.ToString(), curProgramon.programonBaseStats.maxHealth);
                     (PlayerChilds["PlayerProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.programonBaseStats.health, curProgramon.programonBaseStats.maxHealth, PlayerChilds["PlayerProgramonHealthBar"].Bounds.Width);
+
+                    (PlayerChilds["PlayerProgramonXp"] as Label).Text = string.Format("{0}/{1} XP", curProgramon.exp.ToString(), (int)(Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp));
+                    (PlayerChilds["PlayerProgramonXpBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.exp, (int)Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp, PlayerChilds["PlayerProgramonXpBar"].Bounds.Width);
 
                     (EnemyChilds["EnemyProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", enemy.programonBaseStats.health.ToString(), enemy.programonBaseStats.maxHealth);
                     (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth, EnemyChilds["EnemyProgramonHealthBar"].Bounds.Width);
@@ -152,6 +164,12 @@ namespace Programon
             curProgramon.UpdateBuffDuration();
             enemy.UpdateBuffDuration();
 
+            (PlayerChilds["PlayerProgramonXp"] as Label).Text = string.Format("{0}/{1} XP", curProgramon.exp.ToString(), (int)(Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp));
+            (PlayerChilds["PlayerProgramonXpBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.exp, (int)Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp, PlayerChilds["PlayerProgramonXpBar"].Bounds.Width);
+
+            (EnemyChilds["EnemyProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", enemy.programonBaseStats.health.ToString(), enemy.programonBaseStats.maxHealth);
+            (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth, EnemyChilds["EnemyProgramonHealthBar"].Bounds.Width);
+
             EnemyChilds.Owner.Update(ms);
             EnemyChilds.ForEach(i => Update(i, ms, deltaTime));
 
@@ -178,6 +196,8 @@ namespace Programon
 
         public void Load(ContentManager content, string fontName, string smallFontName)
         {
+            
+
             SpriteFont font = content.Load<SpriteFont>(fontName);
             SpriteFont smallFont = content.Load<SpriteFont>(smallFontName);
 
@@ -265,6 +285,13 @@ namespace Programon
 
             Focus = 0;
             Loaded = true;
+        }
+
+        private void Reload()
+        {
+            (AttacksChilds["Attack1Ep"] as Label).Text = curProgramon.abilities[0].EP.ToString() + "/" +curProgramon.abilities[0].maxEP.ToString() + "EP";
+            (AttacksChilds["Attack2Ep"] as Label).Text = curProgramon.abilities[1].EP.ToString()+ "/" +curProgramon.abilities[1].maxEP.ToString() + "EP";
+            (AttacksChilds["Attack3Ep"] as Label).Text = curProgramon.abilities[2].EP.ToString()+ "/" +curProgramon.abilities[2].maxEP.ToString() + "EP";
         }
 
         private int GetProgresBarValue(int value, int maxValue, int barWidth)

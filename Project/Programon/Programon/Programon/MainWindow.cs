@@ -79,8 +79,8 @@ namespace Programon
             Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
             Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()), 1);
 
-            Ability[] ability = new Ability[3] { Ability.Load(Content, "Abilities/testAbility"), Ability.Load(Content, "Abilities/testAbility"), Ability.Load(Content, "Abilities/testAbility") };
-            ProgramonLoader.SaveProgramon(new Creature(new Vector2(0, 0), "TestProgramon", 0x01, new Stats(10, 100, 5, 5, 5, 5, 10), new Stats(), ability, Map, "This is a test programon"), Directory.GetCurrentDirectory() + "/testprogramon");
+            //Ability[] ability = new Ability[3] { Ability.Load(Content, "Abilities/Sync_first"), Ability.Load(Content, "Abilities/Terraria"), Ability.Load(Content, "Abilities/Vector_layer") };
+            //ProgramonLoader.SaveProgramon(new Creature(new Vector2(0, 0), "TestProgramon", 0x01, new Stats(10, 100, 5, 5, 5, 5, 10), new Stats(), ability, Map, "This is a test programon"), Directory.GetCurrentDirectory() + "/testprogramon");
             //string programonName = ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml").name;
             //byte programonLevel = ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml").level;
             //string description = ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml").description;
@@ -91,8 +91,10 @@ namespace Programon
             inventoryMenu = new InventoryMenu(Player, this);
             inventoryMenu.Initialize();
 
+
+
             Player.programons.Add(ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml"));
-            testBattle = new BattleScreen(Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon(Environment.CurrentDirectory + "/testprogramon.xml"));
+            testBattle = new BattleScreen(Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon(Environment.CurrentDirectory + "/testprogramon2.xml"));
 
             introBackground = new Background(Content.Load<Texture2D>("ProgramonIntro"), SpriteDrawer.BufferSize);
 
@@ -215,7 +217,8 @@ namespace Programon
                         Creature.GetBattleXp(testBattle.enemy, testBattle.curProgramon);
                         testBattle.curProgramon.UpdateStats();
                         testBattle.curProgramon.UpdateBuffDuration();
-                        //SetState(GameState.OVERWORLD);
+                        System.Threading.Thread.Sleep(10);
+                        SetState(GameState.OVERWORLD);
                     }
                     break;
                 case GameState.PROGRAMONSCREEN:

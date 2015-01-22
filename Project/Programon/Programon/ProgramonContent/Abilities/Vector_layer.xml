@@ -1,9 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
   <Asset Type="ProgramonEngine.Ability">
-    <name>Vectorlayer</name>
+    <name>Vector_layer</name>
+    <EP>10</EP>
     <maxEP>10</maxEP>
     <selfBuff>
       <name>SelfBuff</name>
+      <duration>0</duration>
       <statChange>
+        <health>0</health>
+        <maxHealth>0</maxHealth>
         <attack>0</attack>
         <defence>0</defence>
         <sAttack>0</sAttack>
@@ -13,15 +19,17 @@
     </selfBuff>
     <enemyBuff>
       <name>EnemyBuff</name>     
-      <duration>0</duration>
+      <duration>1</duration>
       <statChange>
+        <health>0</health>
+        <maxHealth>0</maxHealth>
         <attack>0</attack>
         <defence>0</defence>
         <sAttack>0</sAttack>
         <sDefence>0</sDefence>
-        <speed>5</speed>
+        <speed>0</speed>
       </statChange>
     </enemyBuff>
-    <damage>0</damage>
+    <damage>1</damage>
   </Asset>
-</XnaContent> 
+</XnaContent>

@@ -1,9 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
   <Asset Type="ProgramonEngine.Ability">
-    <name>Terarria</name>
+    <name>Terraria</name>
+    <EP>10</EP>
     <maxEP>10</maxEP>
     <selfBuff>
       <name>SelfBuff</name>
+      <duration>1</duration>
       <statChange>
+        <health>0</health>
+        <maxHealth>0</maxHealth>
         <attack>0</attack>
         <defence>0</defence>
         <sAttack>0</sAttack>
@@ -13,8 +19,10 @@
     </selfBuff>
     <enemyBuff>
       <name>EnemyBuff</name>     
-      <duration>0</duration>
+      <duration>1</duration>
       <statChange>
+        <health>0</health>
+        <maxHealth>0</maxHealth>
         <attack>0</attack>
         <defence>0</defence>
         <sAttack>0</sAttack>
@@ -22,6 +30,6 @@
         <speed>0</speed>
       </statChange>
     </enemyBuff>
-    <damage>6</damage>
+    <damage>3</damage>
   </Asset>
 </XnaContent>
