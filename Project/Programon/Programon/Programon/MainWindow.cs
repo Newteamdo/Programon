@@ -72,7 +72,7 @@ namespace Programon
 
             /*Debugging!*/
 
-            SpriteDrawer.Debug = false;
+            SpriteDrawer.Debug = true;
         }
 
         protected override void Initialize()
@@ -93,7 +93,7 @@ namespace Programon
             }
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
-            Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
+            Player = new Player(new Vector2(19, 31), new Vector2(4, 4), Map);
             Player.OnEncounter += Player_OnEncounter;
             Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()), 1);
 
@@ -116,8 +116,8 @@ namespace Programon
 
             List<string> dialogTextsNPC1 = XmlLoader.LoadDialog(0, "Dialogs/Dialogs.xml");
             List<string> dialogTextsNPC2 = XmlLoader.LoadDialog(1, "Dialogs/Dialogs.xml");
-            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(5, 32), new Vector2(4, 4), Map, new Vector2(4, 25), new Vector2(8, 35), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC2));
-            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(10, 5), new Vector2(4, 4), Map, new Vector2(8, 3), new Vector2(12, 7), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC1));
+            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(14, 34), new Vector2(4, 4), Map, new Vector2(12, 26), new Vector2(16, 36), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC1));
+            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(2, 28), new Vector2(4, 4), Map, new Vector2(2, 32), new Vector2(5,32), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC2));
 
             dialog = new DialogueBox("This is a test text for the dialog box. This needs to be changed a time!", Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), false, SpriteDrawer.BufferSize, Content.Load<Texture2D>("TestGuiTextures/TestBox"));
             base.Initialize();
