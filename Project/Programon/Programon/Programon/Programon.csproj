@@ -107,6 +107,9 @@
     <Content Include="Maps\map2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\mapnew1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Programons\testprogramon.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -17,7 +17,7 @@ namespace Programon
     public class MainWindow : Game
     {
         public const string CONFIGLOCATION = "config.xml";
-        private const string MAPLOCATION = "Maps/map.xml";
+        private const string MAPLOCATION = "Maps/mapnew1.xml";
 
         private Camera MainCamera { get; set; }
         private SpriteDrawer SpriteDrawer { get; set; }
@@ -72,7 +72,7 @@ namespace Programon
 
             /*Debugging!*/
 
-            SpriteDrawer.Debug = true;
+            SpriteDrawer.Debug = false;
         }
 
         protected override void Initialize()
