@@ -94,6 +94,7 @@
     <Compile Include="Drawing\SpriteDrawer.cs" />
     <Compile Include="Actor_Values\Stats.cs" />
     <Compile Include="GUI Items\TextField.cs" />
+    <Compile Include="ScreenAnimation.cs" />
     <Compile Include="StringExtentions.cs" />
     <Compile Include="Transform.cs" />
   </ItemGroup>
