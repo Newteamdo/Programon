@@ -21,6 +21,12 @@ namespace ProgramonEngine
         [System.Xml.Serialization.XmlIgnore]
         public Direction Direction { get; private set; }
 
+        [System.Xml.Serialization.XmlIgnore]
+        public Dictionary<AnimationTypes, Animation> Animations { get; private set; }
+        [System.Xml.Serialization.XmlIgnore]
+        public bool IsWalking { get; private set; }
+        [System.Xml.Serialization.XmlIgnore]
+        private int updateCount { get; set; }
 
         public delegate void OnEnterEventHandler(Actor actor, Node oldPos, Node newPos);
         public event OnEnterEventHandler OnEnter;
@@ -35,10 +41,13 @@ namespace ProgramonEngine
             this.Sprite = new Sprite();
             this.CurrentMap = new Map();
             this.CanEncounter = false;
+            this.Direction = ProgramonEngine.Direction.RIGHT;
+            this.Animations = new Dictionary<AnimationTypes, Animation>();
         }
 
         public Actor(Vector2 startPos, Vector2 scale)
         {
+            Animations = new Dictionary<AnimationTypes, Animation>();
             Transform = new Transform(startPos, scale);
             CurrentMap = null;
         }
@@ -46,38 +55,66 @@ namespace ProgramonEngine
         {
             Transform = new Transform(startPos, scale);
             CurrentMap = currentMap;
+            Animations = new Dictionary<AnimationTypes, Animation>();
             this.CanEncounter = canEncounter;
+        }
+
+        public virtual void Update()
+        {
+            if (updateCount > 0)
+                IsWalking = false;
+            updateCount++;
         }
 
         /// <summary> Move the actor to a new node but only if the node is walkable. </summary>
         public virtual void Move(Node newPos)
         {
+            IsWalking = true;
+            updateCount = 0;
+
             if (newPos.Transform.Position.Y < Transform.Position.Y)
             {
                 //Moving up
                 Direction = ProgramonEngine.Direction.UP;
+                if (Animations.ContainsKey(AnimationTypes.WalkingUp) && Animations[AnimationTypes.WalkingUp] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingUp][0];
+                }
             }
 
             if (newPos.Transform.Position.Y > Transform.Position.Y)
             {
                 //Moving down
                 Direction = ProgramonEngine.Direction.DOWN;
+                if (Animations.ContainsKey(AnimationTypes.WalkingDown) && Animations[AnimationTypes.WalkingDown] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingDown][0];
+                }
             }
 
             if (newPos.Transform.Position.X < Transform.Position.X)
             {
                 //Moving left
                 Direction = ProgramonEngine.Direction.LEFT;
+                if (Animations.ContainsKey(AnimationTypes.WalkingLeft) && Animations[AnimationTypes.WalkingLeft] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingLeft][0];
+                }
             }
 
             if (newPos.Transform.Position.X > Transform.Position.X)
             {
                 //Moving right
                 Direction = ProgramonEngine.Direction.RIGHT;
+                if (Animations.ContainsKey(AnimationTypes.WalkingLeft) && Animations[AnimationTypes.WalkingLeft] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingLeft][0];
+                }
             }
 
             if (!newPos.Walkable)
                 return;
+
             Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
 
             // Encounter implementation
@@ -99,28 +136,47 @@ namespace ProgramonEngine
 
         public virtual void Move(Node newPos, IEnumerable<Actor> actors = null)
         {
+            IsWalking = true;
+            updateCount = 0;
+
             if (newPos.Transform.Position.Y < Transform.Position.Y)
             {
                 //Moving up
                 Direction = ProgramonEngine.Direction.UP;
+                if (Animations.ContainsKey(AnimationTypes.WalkingUp) && Animations[AnimationTypes.WalkingUp] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingUp][0];
+                }
             }
 
             if (newPos.Transform.Position.Y > Transform.Position.Y)
             {
                 //Moving down
                 Direction = ProgramonEngine.Direction.DOWN;
+                if (Animations.ContainsKey(AnimationTypes.WalkingDown) && Animations[AnimationTypes.WalkingDown] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingDown][0];
+                }
             }
 
             if (newPos.Transform.Position.X < Transform.Position.X)
             {
                 //Moving left
                 Direction = ProgramonEngine.Direction.LEFT;
+                if (Animations.ContainsKey(AnimationTypes.WalkingLeft) && Animations[AnimationTypes.WalkingLeft] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingLeft][0];
+                }
             }
 
             if (newPos.Transform.Position.X > Transform.Position.X)
             {
                 //Moving right
                 Direction = ProgramonEngine.Direction.RIGHT;
+                if (Animations.ContainsKey(AnimationTypes.WalkingLeft) && Animations[AnimationTypes.WalkingLeft] != null)
+                {
+                    Sprite = Animations[AnimationTypes.WalkingLeft][0];
+                }
             }
 
             // Encounter implementation
@@ -160,6 +216,14 @@ namespace ProgramonEngine
         public virtual void Load(ContentManager content, string textureName)
         {
             Sprite = new Sprite(content.Load<Texture2D>(textureName));
+        }
+
+        public virtual void LoadAnimation(ContentManager content, AnimationTypes type, params string[] attrNames)
+        {
+            Animation animation = new Animation(type.ToString());
+            animation.Load(content, attrNames);
+
+            Animations.Add(type, animation);
         }
     }
 }

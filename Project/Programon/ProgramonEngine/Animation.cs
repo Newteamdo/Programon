@@ -5,8 +5,8 @@ namespace ProgramonEngine
 {
     public enum AnimationTypes
     {
-        WalkingRightWalkingUp,
-        WalkingRight,
+        WalkingUp,
+        WalkingLeft,
         WalkingDown
     }
 
@@ -37,9 +37,18 @@ namespace ProgramonEngine
         public Sprite NextFrame()
         {
             currentFrame++;
-            if (currentFrame > MaxFrames) currentFrame = 1;
+            if (currentFrame > MaxFrames)
+                currentFrame = 1;
 
             return Sprites[currentFrame - 1];
+        }
+
+        public Sprite this[int index]
+        {
+            get
+            {
+                return Sprites[index];
+            }
         }
     }
 }

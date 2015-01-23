@@ -85,11 +85,11 @@ namespace Programon
             Ability[] enemieRandomAbilities = new Ability[3];
             for (int i = 0; i < 10; i++)
             {
-                if(i<3)
+                if (i < 3)
                 {
-                    enemieRandomAbilities[i] = new Ability("Testability"+i,10,Math.Min(i+ 1,2));
+                    enemieRandomAbilities[i] = new Ability("Testability" + i, 10, Math.Min(i + 1, 2));
                 }
-                enemies.Add(new Creature(Vector2.Zero,"Programon " + i,(byte)Math.Min((Math.Round(i/2f) -2),5),new Stats(Math.Min(i * 100, 500),Math.Min(i * 100, 500),Math.Min(i * 2,10),Math.Min(i * 2,5),1,Math.Min(i*2,2),1),new Stats(1,1,1,1,1,1,1), enemieRandomAbilities ,Map,"This is a test programon"));
+                enemies.Add(new Creature(Vector2.Zero, "Programon " + i, (byte) Math.Min((Math.Round(i / 2f) - 2), 5), new Stats(Math.Min(i * 100, 500), Math.Min(i * 100, 500), Math.Min(i * 2, 10), Math.Min(i * 2, 5), 1, Math.Min(i * 2, 2), 1), new Stats(1, 1, 1, 1, 1, 1, 1), enemieRandomAbilities, Map, "This is a test programon"));
             }
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
@@ -117,7 +117,7 @@ namespace Programon
             List<string> dialogTextsNPC1 = XmlLoader.LoadDialog(0, "Dialogs/Dialogs.xml");
             List<string> dialogTextsNPC2 = XmlLoader.LoadDialog(1, "Dialogs/Dialogs.xml");
             actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(14, 34), new Vector2(4, 4), Map, new Vector2(12, 26), new Vector2(16, 36), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC1));
-            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(2, 28), new Vector2(4, 4), Map, new Vector2(2, 32), new Vector2(5,32), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC2));
+            actors.Add(new NPC(SpriteDrawer.BufferSize, new Vector2(2, 28), new Vector2(4, 4), Map, new Vector2(2, 32), new Vector2(5, 32), Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), Content.Load<Texture2D>("TestGuiTextures/TestBox"), dialogTextsNPC2));
 
             dialog = new DialogueBox("This is a test text for the dialog box. This needs to be changed a time!", Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), false, SpriteDrawer.BufferSize, Content.Load<Texture2D>("TestGuiTextures/TestBox"));
             base.Initialize();
@@ -129,7 +129,7 @@ namespace Programon
             {
                 testBattle = new BattleScreen(actor as Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon("Programons/testprogramon2.xml"));
                 AnimateScreen(GameState.BATTLE);
-            }     
+            }
         }
 
         public void ReInit()
@@ -139,11 +139,11 @@ namespace Programon
 
         private int GetlastState()
         {
-            if(GameState.PROGRAMONSCREEN != State)
+            if (GameState.PROGRAMONSCREEN != State)
             {
-                laststate = (int)State;
+                laststate = (int) State;
             }
-            return (int)State;
+            return (int) State;
         }
 
         protected override void LoadContent()
@@ -161,13 +161,18 @@ namespace Programon
                         if (actors[i] is NPC)
                         {
                             NPC npc = actors[i] as NPC;
-                            npc.Load(Content, "TempNPC");
+                            npc.Load(Content, "Actors/NPC/NPCDown0");
+                            npc.LoadAnimation(Content, AnimationTypes.WalkingLeft, "Actors/NPC/NPCLeft0", "Actors/NPC/NPCLeft1", "Actors/NPC/NPCLeft2");
+                            npc.LoadAnimation(Content, AnimationTypes.WalkingUp, "Actors/NPC/NPCUp0", "Actors/NPC/NPCUp1", "Actors/NPC/NPCUp2");
+                            npc.LoadAnimation(Content, AnimationTypes.WalkingDown, "Actors/NPC/NPCDown0", "Actors/NPC/NPCDown1", "Actors/NPC/NPCDown2");
                         }
                     }
 
-                    Player.Load(Content, "Player/TempPlayer_Stand");
+                    Player.Load(Content, "Actors/Player/PlayerDown0");
                     Player.Animations.Clear();
-                    Player.LoadAnimation(Content, AnimationTypes.WalkingRight, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
+                    Player.LoadAnimation(Content, AnimationTypes.WalkingLeft, "Actors/Player/PlayerLeft0", "Actors/Player/PlayerLeft1", "Actors/Player/PlayerLeft2");
+                    Player.LoadAnimation(Content, AnimationTypes.WalkingUp, "Actors/Player/PlayerUp0", "Actors/Player/PlayerUp1", "Actors/Player/PlayerUp2");
+                    Player.LoadAnimation(Content, AnimationTypes.WalkingDown, "Actors/Player/PlayerDown0", "Actors/Player/PlayerDown1", "Actors/Player/PlayerDown2");
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.OVERWORLD:

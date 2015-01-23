@@ -9,41 +9,20 @@ namespace ProgramonEngine
 {
     public class Player : Actor
     {
-        public bool IsWalking { get; private set; }
-        public Dictionary<AnimationTypes, Animation> Animations { get; private set; }
         public List<Creature> programons = new List<Creature>();
         public Inventory Inventory { get; set; }
         public Inventory PortableComtakDevie { get; set; } // I'm using marco's class to display all programons.
-        private int updateCount { get; set; }
 
         public Player(Vector2 startPos, Vector2 scale, Map currentMap)
             : base(startPos, scale, currentMap)
         {
-            Animations = new Dictionary<AnimationTypes, Animation>();
             Inventory = new Inventory();
             PortableComtakDevie = new Inventory();
             CanEncounter = true;
         }
 
-        public void LoadAnimation(ContentManager content, AnimationTypes type, params string[] attrNames)
-        {
-            Animation animation = new Animation(type.ToString());
-            animation.Load(content, attrNames);
-
-            Animations.Add(type, animation);
-        }
-
-        public void Update()
-        {
-            if (updateCount > 0)
-                IsWalking = false;
-            updateCount++;
-        }
-
         public override void Move(Node newPos, IEnumerable<Actor> actors)
         {
-            IsWalking = true;
-            updateCount = 0;
             base.Move(newPos, actors);
         }
 

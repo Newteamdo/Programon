@@ -42,13 +42,15 @@ namespace ProgramonEngine
             List<string> texts = new List<string>();
             for (int i = 0; i < dialogTexts.Count(); i++)
             {
-                texts.Add(StringExtensions.WrapText(dialogTexts.ElementAt(i), boxTexture.Width-20, font));
+                texts.Add(StringExtensions.WrapText(dialogTexts.ElementAt(i), boxTexture.Width - 20, font));
             }
             this.dialogTexts = texts;
         }
 
         public void Update(Player player, Map map, GameTime gameTime)
         {
+            base.Update();
+
             Vector2 newPosition = Transform.Position;
             Vector2 playerPos = player.Transform.Position;
 
@@ -112,17 +114,16 @@ namespace ProgramonEngine
                         newPosition = newPosition - direction;
                     }
                 }
+                else
+                {
+                    return;
+                }
 
                 if (map.MapDictionary.ContainsKey(newPosition))
                 {
                     Move(map.MapDictionary[newPosition]);
                 }
             }
-        }
-
-        public override void Move(Node newPos)
-        {
-            base.Move(newPos);
         }
 
         public void DisplayDialog()
