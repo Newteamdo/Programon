@@ -41,7 +41,7 @@ namespace ProgramonEngine
 
         public void BeginDraw()
         {
-            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend,SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone);
+            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend,SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
         }
 
         /// <summary> Draw the background, player and special nodes. </summary>
