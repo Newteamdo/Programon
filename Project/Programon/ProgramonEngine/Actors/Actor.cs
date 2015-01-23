@@ -56,9 +56,12 @@ namespace ProgramonEngine
             // Encounter implementation
             if (CanEncounter && newPos.IsTallGrass)
             {
-                if ((new LCGRandom(DateTime.Now.Second).NextShort() % 16) == 0)
+                if ((new LCGRandom(DateTime.Now.Second).NextShort() & 7) == 0)
                 {
-                    OnEncounter(this);
+                    if (OnEncounter != null)
+                    {
+                        OnEncounter(this);
+                    }
                 }
             }
 
@@ -72,7 +75,8 @@ namespace ProgramonEngine
             // Encounter implementation
             if (CanEncounter && newPos.IsTallGrass)
             {
-                if ((new LCGRandom(DateTime.Now.Second).NextShort() % 16) == 0)
+                //Optimalised modulo 7
+                if ((new LCGRandom(DateTime.Now.Second).NextShort() & 6) == 0)
                 {
                     if (OnEncounter != null)
                     {

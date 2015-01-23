@@ -17,7 +17,7 @@ namespace Programon
     public class MainWindow : Game
     {
         public const string CONFIGLOCATION = "config.xml";
-        private const string MAPLOCATION = "Maps/map2.xml";
+        private const string MAPLOCATION = "Maps/map.xml";
 
         private Camera MainCamera { get; set; }
         private SpriteDrawer SpriteDrawer { get; set; }
@@ -77,6 +77,7 @@ namespace Programon
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
             Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);
+            Player.OnEncounter += Player_OnEncounter;
             Player.Inventory.AddItem(new Item("This is an item in the inventory property of player.", "This is an nice item description. This is supposed to work.:)", new Sprite()), 1);
 
             //Ability[] ability = new Ability[3] { Ability.Load(Content, "Abilities/Sync_first"), Ability.Load(Content, "Abilities/Terraria"), Ability.Load(Content, "Abilities/Vector_layer") };
@@ -105,6 +106,15 @@ namespace Programon
 
             dialog = new DialogueBox("This is a test text for the dialog box. This needs to be changed a time!", Content.Load<SpriteFont>("Fonts/GuiFont_Medium"), false, SpriteDrawer.BufferSize, Content.Load<Texture2D>("TestGuiTextures/TestBox"));
             base.Initialize();
+        }
+
+        private void Player_OnEncounter(Actor actor)
+        {
+            if (actor is Player)
+            {
+                testBattle = new BattleScreen(actor as Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon(Environment.CurrentDirectory + "/testprogramon2.xml"));
+                SetState(GameState.BATTLE);
+            }     
         }
 
         public void ReInit()

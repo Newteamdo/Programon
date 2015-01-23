@@ -22,6 +22,7 @@ namespace ProgramonEngine
             Animations = new Dictionary<AnimationTypes, Animation>();
             Inventory = new Inventory();
             PortableComtakDevie = new Inventory();
+            CanEncounter = true;
         }
 
         public void LoadAnimation(ContentManager content, AnimationTypes type, params string[] attrNames)
