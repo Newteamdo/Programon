@@ -23,6 +23,8 @@ namespace Programon
         private SpriteDrawer SpriteDrawer { get; set; }
         private KeyHandler Keyhandler { get; set; }
 
+        private List<Creature> enemies;
+
         public Player Player { get; private set; }
         public Map Map { get; private set; }
 
@@ -54,6 +56,7 @@ namespace Programon
 
         public MainWindow()
         {
+            enemies = new List<Creature> { };
             SpriteDrawer = new SpriteDrawer(this, new Rectangle(0, 0, 1024, 720), false);
             MainCamera = new Camera(Vector2.Zero);
             menuWindow = new MainMenuWindow(this);
@@ -79,7 +82,15 @@ namespace Programon
             programonMenu.Initialize();
             MainCamera.Initialize(GraphicsDevice.Viewport.Bounds);
 
-
+            Ability[] enemieRandomAbilities = new Ability[3];
+            for (int i = 0; i < 10; i++)
+            {
+                if(i<3)
+                {
+                    enemieRandomAbilities[i] = new Ability("Testability"+i,10,Math.Min(i+ 1,2));
+                }
+                enemies.Add(new Creature(Vector2.Zero,"Programon " + i,(byte)Math.Min((Math.Round(i/2f) -2),5),new Stats(Math.Min(i * 100, 500),Math.Min(i * 100, 500),Math.Min(i * 2,10),Math.Min(i * 2,5),1,Math.Min(i*2,2),1),new Stats(1,1,1,1,1,1,1), enemieRandomAbilities ,Map,"This is a test programon"));
+            }
 
             OptionsMenu = new OptionsMenu(this, SpriteDrawer);
             Player = new Player(new Vector2(1, 1), new Vector2(4, 4), Map);

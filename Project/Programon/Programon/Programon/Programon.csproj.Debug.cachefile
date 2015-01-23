@@ -135,6 +135,8 @@ Content\Abilities\Sync_first.xnb
 Content\Abilities\Terraria.xnb
 Content\Abilities\Vector_layer.xnb
 Dialogs\Dialogs.xml
+Programons\testprogramon.xml
+Programons\testprogramon2.xml
 config.xml
 Maps\map.xml
 Maps\CameraTestMap_Big.xml
