@@ -41,6 +41,10 @@ namespace Programon
         private InventoryMenu portableComtakDevice;
         private OptionsMenu OptionsMenu { get; set; }
 
+        private ScreenAnimation ScreenAnimation;
+        private bool ShowScreenAnimation;
+        private GameState AfterScreenAnimation;
+
         public List<Actor> actors = new List<Actor>();
 
         DialogueBox dialog;
@@ -60,6 +64,8 @@ namespace Programon
             State = GameState.INTRO;
 
             IsMouseVisible = true;
+
+            ShowScreenAnimation = false;
 
             /*Debugging!*/
 
@@ -92,8 +98,6 @@ namespace Programon
             inventoryMenu = new InventoryMenu(Player, this);
             inventoryMenu.Initialize();
 
-
-
             Player.programons.Add(ProgramonLoader.LoadProgramon("Programons/testprogramon.xml"));
             testBattle = new BattleScreen(Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon("Programons/testprogramon2.xml"));
 
@@ -113,7 +117,7 @@ namespace Programon
             if (actor is Player)
             {
                 testBattle = new BattleScreen(actor as Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon("Programons/testprogramon2.xml"));
-                SetState(GameState.BATTLE);
+                AnimateScreen(GameState.BATTLE);
             }     
         }
 
@@ -152,7 +156,7 @@ namespace Programon
 
                     Player.Load(Content, "Player/TempPlayer_Stand");
                     Player.Animations.Clear();
-                    Player.LoadAnimation(Content, AnimationTypes.Walking, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
+                    Player.LoadAnimation(Content, AnimationTypes.WalkingRight, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.OVERWORLD:
@@ -185,6 +189,15 @@ namespace Programon
 
         protected override void Update(GameTime gameTime)
         {
+            if (ShowScreenAnimation)
+            {
+                if (ScreenAnimation.Update(gameTime))
+                {
+                    ShowScreenAnimation = false;
+                    SetState(AfterScreenAnimation);
+                }
+                return;
+            }
             GetlastState();
             if (firstRun)
             {
@@ -294,6 +307,11 @@ namespace Programon
                     break;
             }
 
+            if (ShowScreenAnimation)
+            {
+                ScreenAnimation.Draw();
+            }
+
             base.Draw(gameTime);
         }
 
@@ -302,6 +320,13 @@ namespace Programon
             SpriteDrawer.EndDraw();
 
             base.EndDraw();
+        }
+
+        public void AnimateScreen(GameState afterAnimation)
+        {
+            ScreenAnimation = new ScreenAnimation(GraphicsDevice, SpriteDrawer.SpriteBatch, Color.Black);
+            AfterScreenAnimation = afterAnimation;
+            ShowScreenAnimation = true;
         }
     }
 }

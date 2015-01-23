@@ -41,7 +41,7 @@ namespace ProgramonEngine
 
         public void BeginDraw()
         {
-            SpriteBatch.Begin();
+            SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend,SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone);
         }
 
         /// <summary> Draw the background, player and special nodes. </summary>
@@ -49,11 +49,13 @@ namespace ProgramonEngine
         {
             DrawBackground(camera);
 
-            if (actors != null) DrawActors(actors, camera);
+            if (actors != null)
+                DrawActors(actors, camera);
 
             DrawPlayer(player, camera);
 
-            if (addedNodes != null) DrawNodes(addedNodes, camera);
+            if (addedNodes != null)
+                DrawNodes(addedNodes, camera);
         }
 
         private void DrawBackground(Camera cam)
@@ -102,29 +104,86 @@ namespace ProgramonEngine
         {
             if (player.IsWalking)
             {
-                Sprite frame = player.Animations[AnimationTypes.Walking].NextFrame();
+                Sprite frame;
+                switch (player.Direction)
+                {
+                    case Direction.LEFT:
+                    case Direction.RIGHT:
+                        frame = player.Animations[AnimationTypes.WalkingRight].NextFrame();
+                        break;
 
-                SpriteBatch.Draw(frame.Texture,
-                    cam.GetRelativePosition(player.FixedPosition),
-                    null,
-                    frame.Tint,
-                    0f,
-                    Vector2.Zero,
-                    player.Transform.Scale,
-                    SpriteEffects.None,
-                    0f);
+                    case Direction.UP:
+                        frame = player.Animations[AnimationTypes.WalkingRight].NextFrame();
+                        break;
+
+                    case Direction.DOWN:
+                        frame = player.Animations[AnimationTypes.WalkingRight].NextFrame();
+                        break;
+                        
+                    default:
+                        frame = player.Animations[AnimationTypes.WalkingRight].NextFrame();
+                        break;
+                }
+
+                switch (player.Direction)
+                {
+                    case Direction.LEFT:
+                        SpriteBatch.Draw(frame.Texture,
+                        cam.GetRelativePosition(player.FixedPosition),
+                        null,
+                        frame.Tint,
+                        0f,
+                        Vector2.Zero,
+                        player.Transform.Scale,
+                        SpriteEffects.FlipHorizontally,
+                        0f);
+                        break;
+                    case Direction.UP:
+                    case Direction.DOWN:
+                    case Direction.RIGHT:
+                    default:
+                        SpriteBatch.Draw(frame.Texture,
+                        cam.GetRelativePosition(player.FixedPosition),
+                        null,
+                        frame.Tint,
+                        0f,
+                        Vector2.Zero,
+                        player.Transform.Scale,
+                        SpriteEffects.None,
+                        0f);
+                        break;
+                }
             }
             else
             {
-                SpriteBatch.Draw(player.Sprite.Texture,
-                    cam.GetRelativePosition(player.FixedPosition),
-                    null,
-                    player.Sprite.Tint,
-                    0f,
-                    Vector2.Zero,
-                    player.Transform.Scale,
-                    SpriteEffects.None,
-                    0f);
+                switch (player.Direction)
+                {
+                    case Direction.LEFT:
+                        SpriteBatch.Draw(player.Sprite.Texture,
+                        cam.GetRelativePosition(player.FixedPosition),
+                        null,
+                        player.Sprite.Tint,
+                        0f,
+                        Vector2.Zero,
+                        player.Transform.Scale,
+                        SpriteEffects.FlipHorizontally,
+                        0f);
+                        break;
+                    case Direction.DOWN:
+                    case Direction.UP:
+                    case Direction.RIGHT:
+                    default:
+                        SpriteBatch.Draw(player.Sprite.Texture,
+                        cam.GetRelativePosition(player.FixedPosition),
+                        null,
+                        player.Sprite.Tint,
+                        0f,
+                        Vector2.Zero,
+                        player.Transform.Scale,
+                        SpriteEffects.None,
+                        0f);
+                        break;
+                }
             }
         }
 
@@ -141,15 +200,35 @@ namespace ProgramonEngine
                         DrawGUIItem(current.Dialogue);
                     }
                 }
-                SpriteBatch.Draw(cur.Sprite.Texture,
-                    cam.GetRelativePosition(cur.FixedPosition),
-                    null,
-                    cur.Sprite.Tint,
-                    cur.Transform.Rotation,
-                    Vector2.Zero,
-                    cur.Transform.Scale,
-                    SpriteEffects.None,
-                    0f);
+
+                switch (cur.Direction)
+                {
+                    case Direction.LEFT:
+                        SpriteBatch.Draw(cur.Sprite.Texture,
+                        cam.GetRelativePosition(cur.FixedPosition),
+                        null,
+                        cur.Sprite.Tint,
+                        0f,
+                        Vector2.Zero,
+                        cur.Transform.Scale,
+                        SpriteEffects.FlipHorizontally,
+                        0f);
+                        break;
+                    case Direction.DOWN:
+                    case Direction.UP:
+                    case Direction.RIGHT:
+                    default:
+                        SpriteBatch.Draw(cur.Sprite.Texture,
+                        cam.GetRelativePosition(cur.FixedPosition),
+                        null,
+                        cur.Sprite.Tint,
+                        0f,
+                        Vector2.Zero,
+                        cur.Transform.Scale,
+                        SpriteEffects.None,
+                        0f);
+                        break;
+                }
             }
         }
 
