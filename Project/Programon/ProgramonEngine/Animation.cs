@@ -5,7 +5,9 @@ namespace ProgramonEngine
 {
     public enum AnimationTypes
     {
-        Walking
+        WalkingRightWalkingUp,
+        WalkingRight,
+        WalkingDown
     }
 
     public class Animation

@@ -156,7 +156,7 @@ namespace Programon
 
                     Player.Load(Content, "Player/TempPlayer_Stand");
                     Player.Animations.Clear();
-                    Player.LoadAnimation(Content, AnimationTypes.Walking, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
+                    Player.LoadAnimation(Content, AnimationTypes.WalkingRight, "Player/TempPlayer_Walk01", "Player/TempPlayer_Walk02", "Player/TempPlayer_Walk03", "Player/TempPlayer_Walk04", "Player/TempPlayer_Walk05");
                     Map = XmlLoader.LoadMap(this, MAPLOCATION);
                     break;
                 case GameState.OVERWORLD:

@@ -7,15 +7,16 @@ using System.Linq;
 
 namespace ProgramonEngine
 {
+    public enum Direction
+    {
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3
+    }
+
     public class NPC : Actor
     {
-        private enum Direction
-        {
-            UP = 0,
-            DOWN = 1,
-            LEFT = 2,
-            RIGHT = 3
-        }
         private double NextKeyStamp = 0;
         Vector2 maxUpperLeftPosition;
         Vector2 maxDownerRightPosition;

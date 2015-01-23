@@ -18,6 +18,9 @@ namespace ProgramonEngine
         [System.Xml.Serialization.XmlIgnore]
         public Map CurrentMap { get; set; }
         public bool CanEncounter { get; set; }
+        [System.Xml.Serialization.XmlIgnore]
+        public Direction Direction { get; private set; }
+
 
         public delegate void OnEnterEventHandler(Actor actor, Node oldPos, Node newPos);
         public event OnEnterEventHandler OnEnter;
@@ -49,6 +52,30 @@ namespace ProgramonEngine
         /// <summary> Move the actor to a new node but only if the node is walkable. </summary>
         public virtual void Move(Node newPos)
         {
+            if (newPos.Transform.Position.Y < Transform.Position.Y)
+            {
+                //Moving up
+                Direction = ProgramonEngine.Direction.UP;
+            }
+
+            if (newPos.Transform.Position.Y > Transform.Position.Y)
+            {
+                //Moving down
+                Direction = ProgramonEngine.Direction.DOWN;
+            }
+
+            if (newPos.Transform.Position.X < Transform.Position.X)
+            {
+                //Moving left
+                Direction = ProgramonEngine.Direction.LEFT;
+            }
+
+            if (newPos.Transform.Position.X > Transform.Position.X)
+            {
+                //Moving right
+                Direction = ProgramonEngine.Direction.RIGHT;
+            }
+
             if (!newPos.Walkable)
                 return;
             Transform = new Transform(newPos.Transform.Position, Transform.Scale, Transform.Rotation);
@@ -72,6 +99,30 @@ namespace ProgramonEngine
 
         public virtual void Move(Node newPos, IEnumerable<Actor> actors = null)
         {
+            if (newPos.Transform.Position.Y < Transform.Position.Y)
+            {
+                //Moving up
+                Direction = ProgramonEngine.Direction.UP;
+            }
+
+            if (newPos.Transform.Position.Y > Transform.Position.Y)
+            {
+                //Moving down
+                Direction = ProgramonEngine.Direction.DOWN;
+            }
+
+            if (newPos.Transform.Position.X < Transform.Position.X)
+            {
+                //Moving left
+                Direction = ProgramonEngine.Direction.LEFT;
+            }
+
+            if (newPos.Transform.Position.X > Transform.Position.X)
+            {
+                //Moving right
+                Direction = ProgramonEngine.Direction.RIGHT;
+            }
+
             // Encounter implementation
             if (CanEncounter && newPos.IsTallGrass)
             {
