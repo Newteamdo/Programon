@@ -77,7 +77,8 @@ namespace ProgramonEngine
                 if (Debug)
                 {
                     SpriteBatch.DrawString(DebugFont, cur.Transform.Position.ToString(), cam.GetRelativePosition(cur.FixedPosition), Color.Black);
-                    SpriteBatch.DrawString(DebugFont, "W: " + cur.Walkable, cam.GetRelativePosition(cur.FixedPosition + new Vector2(0, 16)), cur.Walkable ? Color.Black : Color.Red);
+                    SpriteBatch.DrawString(DebugFont, "W: " + cur.Walkable, cam.GetRelativePosition(cur.FixedPosition + new Vector2(0, 12)), cur.Walkable ? Color.Black : Color.Red);
+                    SpriteBatch.DrawString(DebugFont, "T: " + cur.IsTallGrass, cam.GetRelativePosition(cur.FixedPosition + new Vector2(0, 24)), cur.IsTallGrass ? Color.Red : Color.Black);
                 }
             }
         }
