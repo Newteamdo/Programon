@@ -25,7 +25,6 @@ Content\TestGuiTextures\TestBattleTextures\BoxMiddle1.xnb
 Content\TestGuiTextures\TestBattleTextures\BoxMiddle2.xnb
 Content\TestGuiTextures\TestBattleTextures\BoxMiddle3.xnb
 Content\TestGuiTextures\TestBattleTextures\BoxMiddle4.xnb
-Content\TestGuiTextures\Testbox.xnb
 Content\vierkant.xnb
 Content\Player\TempPlayer_Walk01.xnb
 Content\Player\TempPlayer_Walk02.xnb
@@ -124,6 +123,7 @@ Content\TestNodeTextures\WaterMiddleRight.xnb
 Content\TestNodeTextures\WaterUpperLeft.xnb
 Content\TestNodeTextures\WaterUpperMiddle.xnb
 Content\TestNodeTextures\WaterUpperRight.xnb
+Content\TestGuiTextures\Testbox.xnb
 Content\TestSounds\Normal.xnb
 Content\TestSounds\Start.xnb
 Content\Fonts\DebugFont.xnb
@@ -134,6 +134,8 @@ Content\Abilities\TestAbility.xnb
 Content\Abilities\Sync_first.xnb
 Content\Abilities\Terraria.xnb
 Content\Abilities\Vector_layer.xnb
+Dialogs\Dialogs.xml
 config.xml
 Maps\map.xml
 Maps\CameraTestMap_Big.xml
+Maps\map2.xml

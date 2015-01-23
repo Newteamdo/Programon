@@ -124,15 +124,6 @@ namespace Programon
 
                     BattleMechanics.ComputerAttack(ref curProgramon, ref enemy);
                     RequestNextStage = true;
-
-                    (PlayerChilds["PlayerProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", curProgramon.programonBaseStats.health.ToString(), curProgramon.programonBaseStats.maxHealth);
-                    (PlayerChilds["PlayerProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.programonBaseStats.health, curProgramon.programonBaseStats.maxHealth, PlayerChilds["PlayerProgramonHealthBar"].Bounds.Width);
-
-                    (PlayerChilds["PlayerProgramonXp"] as Label).Text = string.Format("{0}/{1} XP", curProgramon.exp.ToString(), (int)(Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp));
-                    (PlayerChilds["PlayerProgramonXpBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.exp, (int)Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp, PlayerChilds["PlayerProgramonXpBar"].Bounds.Width);
-
-                    (EnemyChilds["EnemyProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", enemy.programonBaseStats.health.ToString(), enemy.programonBaseStats.maxHealth);
-                    (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth, EnemyChilds["EnemyProgramonHealthBar"].Bounds.Width);
                 };
             });
 
@@ -164,11 +155,14 @@ namespace Programon
             curProgramon.UpdateBuffDuration();
             enemy.UpdateBuffDuration();
 
+            (PlayerChilds["PlayerProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", curProgramon.programonBaseStats.health.ToString(), curProgramon.programonBaseStats.maxHealth);
+            (PlayerChilds["PlayerProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.programonBaseStats.health, curProgramon.programonBaseStats.maxHealth);
+
             (PlayerChilds["PlayerProgramonXp"] as Label).Text = string.Format("{0}/{1} XP", curProgramon.exp.ToString(), (int)(Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp));
-            (PlayerChilds["PlayerProgramonXpBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.exp, (int)Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp, PlayerChilds["PlayerProgramonXpBar"].Bounds.Width);
+            (PlayerChilds["PlayerProgramonXpBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.exp, (int)Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp);
 
             (EnemyChilds["EnemyProgramonHealth"] as Label).Text = string.Format("{0}/{1} HP", enemy.programonBaseStats.health.ToString(), enemy.programonBaseStats.maxHealth);
-            (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth, EnemyChilds["EnemyProgramonHealthBar"].Bounds.Width);
+            (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth);
 
             EnemyChilds.Owner.Update(ms);
             EnemyChilds.ForEach(i => Update(i, ms, deltaTime));
@@ -236,7 +230,7 @@ namespace Programon
             EnemyChilds.Add(new Label(device, new Rectangle(0, enemyBase.Bounds.Height >> 1, 1, 1), font) { AutoSize = true, Name = "EnemyProgramonHealth", Text = string.Format("{0}/{1} HP", enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth), BackColor = Color.Transparent });
 
             EnemyChilds.Add(new ProgresBar(device, new Rectangle(0, (enemyBase.Bounds.Height >> 1) - (font.MeasureString("a").Y() >> 2), enemyBase.Bounds.Width, 15)) { Name = "EnemyProgramonHealthBar", ForeColor = Color.Red, BackColor = Color.LightGray });
-            (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth, EnemyChilds["EnemyProgramonHealthBar"].Bounds.Width);
+            (EnemyChilds["EnemyProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(enemy.programonBaseStats.health, enemy.programonBaseStats.maxHealth);
 
             //Status Icon
             #endregion
@@ -253,12 +247,12 @@ namespace Programon
             PlayerChilds.Add(new Label(device, new Rectangle(0, (playerBase.Bounds.Height >> 1) - (font.MeasureString("a").Y() >> 2), 1, 1), font) { AutoSize = true, Name = "PlayerProgramonHealth", Text = string.Format("{0}/{1} HP", curProgramon.programonBaseStats.health, curProgramon.programonBaseStats.maxHealth), BackColor = Color.Transparent });
 
             PlayerChilds.Add(new ProgresBar(device, new Rectangle(0, (playerBase.Bounds.Height >> 1) - (font.MeasureString("a").Y() >> 1), playerBase.Bounds.Width, 15)) { Name = "PlayerProgramonHealthBar", ForeColor = Color.Red, BackColor = Color.LightGray });
-            (PlayerChilds["PlayerProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.programonBaseStats.health, curProgramon.programonBaseStats.maxHealth, PlayerChilds["PlayerProgramonHealthBar"].Bounds.Width);
+            (PlayerChilds["PlayerProgramonHealthBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.programonBaseStats.health, curProgramon.programonBaseStats.maxHealth);
 
             PlayerChilds.Add(new Label(device, new Rectangle(0, (playerBase.Bounds.Height >> 1) + PlayerChilds["PlayerProgramonHealth"].Bounds.Height, 1, 1), font) { AutoSize = true, Name = "PlayerProgramonXp", Text = string.Format("{0}/{1} XP", curProgramon.exp, Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp), BackColor = Color.Transparent });
 
             PlayerChilds.Add(new ProgresBar(device, new Rectangle(0, (playerBase.Bounds.Height >> 1) + PlayerChilds["PlayerProgramonHealth"].Bounds.Height - (font.MeasureString("a").Y() >> 2), playerBase.Bounds.Width, 15)) { Name = "PlayerProgramonXpBar", ForeColor = Color.DeepSkyBlue, BackColor = Color.LightGray });
-            (PlayerChilds["PlayerProgramonXpBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.exp, (int)Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp, PlayerChilds["PlayerProgramonXpBar"].Bounds.Width);
+            (PlayerChilds["PlayerProgramonXpBar"] as ProgresBar).Value = GetProgresBarValue(curProgramon.exp, (int)Math.Pow(curProgramon.level, 1.337) * LevelingSystem.startingExp);
 
             //Status Icon
             #endregion
@@ -294,12 +288,11 @@ namespace Programon
             (AttacksChilds["Attack3Ep"] as Label).Text = curProgramon.abilities[2].EP.ToString()+ "/" +curProgramon.abilities[2].maxEP.ToString() + "EP";
         }
 
-        private int GetProgresBarValue(int value, int maxValue, int barWidth)
+        private int GetProgresBarValue(int value, int maxValue)
         {
-            float ppp = barWidth / 100f;
-            float ppv = maxValue / 100;
-            value /= (int)ppp;
-            return (int)(ppp * value);
+            float curToOne = (float)value / (float)maxValue;
+            float curToMax = curToOne * 100f;
+            return (int)curToMax;
         }
 
         private void OnAttackClick(object sender, MouseState e) { attacking = true; }
