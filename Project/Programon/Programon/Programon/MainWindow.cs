@@ -94,8 +94,8 @@ namespace Programon
 
 
 
-            Player.programons.Add(ProgramonLoader.LoadProgramon(Directory.GetCurrentDirectory() + "/testprogramon.xml"));
-            testBattle = new BattleScreen(Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon(Environment.CurrentDirectory + "/testprogramon2.xml"));
+            Player.programons.Add(ProgramonLoader.LoadProgramon("Programons/testprogramon.xml"));
+            testBattle = new BattleScreen(Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon("Programons/testprogramon2.xml"));
 
             introBackground = new Background(Content.Load<Texture2D>("ProgramonIntro"), SpriteDrawer.BufferSize);
 
@@ -112,7 +112,7 @@ namespace Programon
         {
             if (actor is Player)
             {
-                testBattle = new BattleScreen(actor as Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon(Environment.CurrentDirectory + "/testprogramon2.xml"));
+                testBattle = new BattleScreen(actor as Player, GraphicsDevice, SpriteDrawer.BufferSize, ProgramonLoader.LoadProgramon("Programons/testprogramon2.xml"));
                 SetState(GameState.BATTLE);
             }     
         }
