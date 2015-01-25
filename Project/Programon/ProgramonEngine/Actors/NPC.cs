@@ -42,7 +42,7 @@ namespace ProgramonEngine
             List<string> texts = new List<string>();
             for (int i = 0; i < dialogTexts.Count(); i++)
             {
-                texts.Add(StringExtensions.WrapText(dialogTexts.ElementAt(i), boxTexture.Width - 20, font));
+                 texts.Add(dialogTexts.ElementAt(i).WrapText(boxTexture.Width - 20, font));
             }
             this.dialogTexts = texts;
         }
@@ -121,7 +121,7 @@ namespace ProgramonEngine
 
                 if (map.MapDictionary.ContainsKey(newPosition))
                 {
-                    Move(map.MapDictionary[newPosition]);
+                    Move(map.MapDictionary[newPosition], player);
                 }
             }
         }

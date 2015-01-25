@@ -79,17 +79,17 @@ namespace Programon
             buttonX = scrWidth / 2 - buttonWidth / 2;
             buttonY = scrHeight / 6 - buttonHeight / 2;
 
-            LeaveMenu = new Background(mainWindow.Content.Load<Texture2D>("LeaveMenu"), new Rectangle(0,0,100,100));
+            LeaveMenu = new Background(mainWindow.Content.Load<Texture2D>(@"Menus\MainMenu\LeaveMenu"), new Rectangle(0,0,100,100));
 
             playRect = new Rectangle(buttonX, buttonY * 2, buttonWidth, buttonHeight);
             loadRect = new Rectangle(buttonX, buttonY * 3, buttonWidth, buttonHeight);
             optionsRect = new Rectangle(buttonX, buttonY * 4, buttonWidth, buttonHeight);
             quitRect = new Rectangle(buttonX, buttonY * 5, buttonWidth, buttonHeight);
 
-            btnPlay = new Button(playRect, mainWindow.Content.Load<Texture2D>("NewGameButton"), mainWindow);
-            btnLoad = new Button(loadRect, mainWindow.Content.Load<Texture2D>("LoadGameButton"), mainWindow);
-            btnOptions = new Button(optionsRect, mainWindow.Content.Load<Texture2D>("OptionsButton"), mainWindow);
-            btnQuit = new Button(quitRect, mainWindow.Content.Load<Texture2D>("QuitButton"), mainWindow);
+            btnPlay = new Button(playRect, mainWindow.Content.Load<Texture2D>(@"Menus\MainMenu\NewGameButton"), mainWindow);
+            btnLoad = new Button(loadRect, mainWindow.Content.Load<Texture2D>(@"Menus\MainMenu\LoadGameButton"), mainWindow);
+            btnOptions = new Button(optionsRect, mainWindow.Content.Load<Texture2D>(@"Menus\MainMenu\OptionsButton"), mainWindow);
+            btnQuit = new Button(quitRect, mainWindow.Content.Load<Texture2D>(@"Menus\MainMenu\QuitButton"), mainWindow);
 
             btnPlay.OnMouseClick += btnPlay_OnMouseClick;
 

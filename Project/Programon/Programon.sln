@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramonContent", "Program
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramonEngine", "ProgramonEngine\ProgramonEngine.csproj", "{76DC92FF-9D24-4C7C-8E8F-FDFC6948A291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramonSoundEngine", "ProgramonSoundEngine\ProgramonSoundEngine.csproj", "{0F5AAE86-AF76-485C-A864-5F143F4CBB92}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -27,10 +25,6 @@ Global
 		{76DC92FF-9D24-4C7C-8E8F-FDFC6948A291}.Debug|x86.Build.0 = Debug|x86
 		{76DC92FF-9D24-4C7C-8E8F-FDFC6948A291}.Release|x86.ActiveCfg = Release|x86
 		{76DC92FF-9D24-4C7C-8E8F-FDFC6948A291}.Release|x86.Build.0 = Release|x86
-		{0F5AAE86-AF76-485C-A864-5F143F4CBB92}.Debug|x86.ActiveCfg = Debug|x86
-		{0F5AAE86-AF76-485C-A864-5F143F4CBB92}.Debug|x86.Build.0 = Debug|x86
-		{0F5AAE86-AF76-485C-A864-5F143F4CBB92}.Release|x86.ActiveCfg = Release|x86
-		{0F5AAE86-AF76-485C-A864-5F143F4CBB92}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

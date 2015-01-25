@@ -20,7 +20,6 @@ namespace Programon
                 {
                     Background,
                     BackBtn,
-                   // ControlsBtn,
                     SaveChangesBtn, 
                     PrevButtonResolution,
                     NextButtonResolution,
@@ -44,7 +43,6 @@ namespace Programon
         private SpriteDrawer SpriteDrawer { get; set; }
 
         private Button BackBtn { get; set; }
-       // private Button ControlsBtn { get; set; }
         private Button SaveChangesBtn { get; set; }
 
         private Button PrevButtonResolution { get; set; }
@@ -84,7 +82,6 @@ namespace Programon
             this.CurrentIndexResolution = 0;
 
             BackBtn = null;
-            //ControlsBtn = null;
 
             SaveChangesBtn = null;
 
@@ -121,13 +118,11 @@ namespace Programon
 
             GetSupportedResolutions();
 
-            BackBtn = new Button(new Rectangle(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 8, ScreenHeight / 10), GameWindow.Content.Load<Texture2D>(@"OptionsMenu\BackButton"), mainWindow);
+            BackBtn = new Button(new Rectangle(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 8, ScreenHeight / 10), GameWindow.Content.Load<Texture2D>(@"Menus\OptionsMenu\BackButton"), mainWindow);
 
             BackBtn.OnMouseClick += backBtn_OnClick;
 
-            //ControlsBtn = new Button(new Rectangle(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 50), ScreenWidth / 4, ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\ControlsButton"), mainWindow);
-
-            SaveChangesBtn = new Button(new Rectangle(20, ScreenHeight - (ScreenHeight / 10 + 50), (int)((float)ScreenWidth / 2.5), ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\SaveChangesButton"), mainWindow);
+            SaveChangesBtn = new Button(new Rectangle(20, ScreenHeight - (ScreenHeight / 10 + 50), (int)((float)ScreenWidth / 2.5), ScreenHeight / 10), mainWindow.Content.Load<Texture2D>(@"Menus\OptionsMenu\SaveChangesButton"), mainWindow);
             SaveChangesBtn.OnMouseClick += saveChangesBtn_OnClick;
 
             ResolutionText = new TextField("Resolution:", Color.Black, Color.Transparent, Color.Transparent, new Rectangle(300, 300, 10, 20), TextFont);
@@ -137,13 +132,13 @@ namespace Programon
             ResolutionTextField = new TextField(SupportedResolutions[CurrentIndexResolution], Color.Red, Color.White, Color.Black, new Rectangle(500, 300, 10, 20), TextFont);
             MasterVolumeTextField = new TextField("100", Color.Red, Color.White, Color.Black, new Rectangle(500, 400, 300, 20), TextFont);
 
-            PrevButtonResolution = new Button(new Rectangle(475, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\prevButton"), mainWindow);
+            PrevButtonResolution = new Button(new Rectangle(475, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"Menus\OptionsMenu\prevButton"), mainWindow);
             PrevButtonResolution.OnMouseClick += prevButtonResolution_OnMouseClick;
 
-            NextButtonResolution = new Button(new Rectangle(800, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"OptionsMenu\nextButton"), mainWindow);
+            NextButtonResolution = new Button(new Rectangle(800, 300, 20, 20), mainWindow.Content.Load<Texture2D>(@"Menus\OptionsMenu\nextButton"), mainWindow);
             NextButtonResolution.OnMouseClick += nextButtonResolution_OnMouseClick;
 
-            BackgroundTexture = mainWindow.Content.Load<Texture2D>(@"OptionsMenu\Background");
+            BackgroundTexture = mainWindow.Content.Load<Texture2D>(@"Menus\OptionsMenu\Background");
             Slider = new Slider(new Rectangle((int)(ScreenWidth / 1.8), ScreenHeight / 2 + 2, ScreenWidth / 4, ScreenHeight / 35), 20, 0, 100, mainWindow.VolumeLevel, Color.Red, TextFont);
             Slider.OnMouseHold += slider_OnMouseHold;
 
@@ -151,9 +146,6 @@ namespace Programon
 
             SaveChangesBtn.OnMouseEnter += button_OnMouseEnter;
             SaveChangesBtn.OnMouseLeave += button_OnMouseLeave;
-
-            //ControlsBtn.OnMouseEnter += button_OnMouseEnter;
-            //ControlsBtn.OnMouseLeave += button_OnMouseLeave;
 
             BackBtn.OnMouseEnter += button_OnMouseEnter;
             BackBtn.OnMouseLeave += button_OnMouseLeave;
@@ -223,9 +215,6 @@ namespace Programon
            
             BackBtn.SetPosition(ScreenWidth - (ScreenWidth / 8 + 20), ScreenHeight - (ScreenHeight / 10 + 20));
             BackBtn.SetSize(ScreenWidth / 8, ScreenHeight / 10);
-
-            //ControlsBtn.SetPosition(ScreenWidth / 2 + 20, ScreenHeight - (ScreenHeight / 10 + 20));
-            //ControlsBtn.SetSize(ScreenWidth / 4, ScreenHeight / 10);
 
             SaveChangesBtn.SetPosition(20, ScreenHeight - (ScreenHeight / 10 + 20));
             SaveChangesBtn.SetSize((int)((float)ScreenWidth / 2.5), ScreenHeight / 10);

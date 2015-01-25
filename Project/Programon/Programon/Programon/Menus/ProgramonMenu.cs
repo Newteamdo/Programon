@@ -71,7 +71,7 @@ namespace Programon
             hpBackgroundBars = new Rectangle[amountOfProgramons];
             nameTextField = new TextField[amountOfProgramons];
             this.gamestate = gamestate;
-            Texture2D texture = mainwindow.Content.Load<Texture2D>("QuitButton"); 
+            Texture2D texture = mainwindow.Content.Load<Texture2D>(@"Menus\MainMenu\QuitButton"); 
             btnQuit = new Button(new Rectangle(500,500,200,100), texture, mainwindow);
             btnQuit.OnMouseClick += btnQuit_OnMouseClick;
             this.mainwindow = mainwindow;
@@ -88,7 +88,7 @@ namespace Programon
 
         public void Initialize()
         {
-            outlinedSquare = mainwindow.Content.Load<Texture2D>("vierkant");
+             outlinedSquare = mainwindow.Content.Load<Texture2D>(@"Menus\ProgramonMenu\vierkant");
             fillFullScreenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
         }
 

@@ -21,11 +21,6 @@ namespace ProgramonEngine
             CanEncounter = true;
         }
 
-        public override void Move(Node newPos, IEnumerable<Actor> actors)
-        {
-            base.Move(newPos, actors);
-        }
-
         public void AddProgramon(Creature programon)
         {
             programons.Add(programon);
